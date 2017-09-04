@@ -1,0 +1,143 @@
+@import "val";
+/* 公用样式 */
+
+/* 全局样式，注意：只声明全局样式，别加入其他样式到该文件 */
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  min-height: 100%;
+  height: 100%;
+  _height:100%;
+  // 用百分比来指定文本大小在设备尺寸不同的情况下如何调整
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  _height:100%;
+  height:100%;
+  font-size: @default-font-size;
+  font-family: @default-font-family;
+  color: @default-font-color;
+  text-align: center;
+  //background: #f8f9fb repeat-x;// 默认背景X轴平铺
+  //background: #e3f6fb repeat-x;// 默认背景X轴平铺
+  background-color: #f8f9fb;
+  //background: -webkit-linear-gradient(rgba(0, 153, 204, 0.3), #f8f9fb); /* Safari 5.1 - 6.0 */
+  //background: -o-linear-gradient(rgba(0, 153, 204, 0.3), #f8f9fb); /* Opera 11.1 - 12.0 */
+  //background: -moz-linear-gradient(rgba(0, 153, 204, 0.3), #f8f9fb); /* Firefox 3.6 - 15 */
+  //background: linear-gradient(rgba(0, 153, 204, 0.3), #f8f9fb) repeat-x; /* 标准的语法 */
+}
+
+table {
+  border-collapse:collapse;
+}
+
+input, button, a, img {
+  outline: 0;
+  //border-width: 0;
+  //border: 0 none;/* \9 支持 IE6-IE10 */
+}
+
+input {
+  padding: 1px;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+/*css定义超链接四个状态也有顺序的。*/
+a:link, a:visited {
+  text-decoration: none;
+  color: @default-a-color;
+}
+a:hover, a:active {
+  text-decoration: underline;
+  color: @default-a-un-color;
+  border: none;
+  outline: 0;
+}
+/*以上语句分别定义了"链接、已访问过的链接、鼠标停在上方时、点下鼠标时"的样式。
+注意，必须按以上顺序写，否则显示可能和你预想的不一样。记住它们的顺序是“LVHA”。*/
+
+ul {
+  clear: both;
+  overflow: hidden;
+  width: 100%;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+hr {
+  height: 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box
+}
+
+/*======万能Float闭合======*/
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clear {display: inline-block;} /* for IE/Mac */
+
+.clear {
+  zoom: 1;/* triggers hasLayout */
+  display: block;/* resets display for IE/Win */
+}
+/*======万能Float闭合2======*/
+/*控制背景溢出*/
+.overflow-hidden{overflow:hidden;}
+/*控制高度足够小*/
+.equal-height{margin-bottom:-32800px;padding-bottom:32800px;}
+
+/*======万能Float闭合3======*/
+.clear {
+  height:0;
+  clear:both;
+  font-size:0;
+  line-height:0;
+  zoom: 1;
+}
+
+/*html5*/
+header, section, footer, aside, nav, main, article, dialog, figure, menu, menuitem, details, figcaption, summary {
+  display: block
+}
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline
+}
+
+// 所有不带controls属性的所有audio标签
+audio:not([controls]) {
+  display: none;
+  height: 0
+}
+
+svg:not(:root) {
+  overflow: hidden
+}
+
+template {
+  display: none
+}

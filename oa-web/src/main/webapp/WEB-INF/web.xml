@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>oa-project</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- 加载spring容器 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:spring/spring-*.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!--
+        防止spring内存溢出监听器
+          在Web应用程序关闭时IntrospectorCleanupListener将会刷新JDK的JavaBeans的Introspector缓存。
+          确保Web应用程序的类加载器以及其加载的类正确的释放资源
+        注意
+           在使用Spring内部的bean机制时，不需要使用此监听器，因为Spring自己的introspection results cache
+           将会立即刷新被分析过的JavaBeans Introspector cache，而仅仅会在应用程序自己的ClassLoader里面持有一个cache。
+    -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+    <!--<listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>-->
+
+    <!--<listener>-->
+        <!--<listener-class>cn.comm.web.context.AppContext</listener-class>-->
+    <!--</listener>-->
+
+
+    <!-- post乱码过虑器 -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>IllegalCharacterFilter</filter-name>
+        <filter-class>com.oa.web.parent.filter.character.IllegalCharacterFilter</filter-class>
+        <init-param>
+            <param-name>characterParams</param-name>
+            <param-value>',",&lt;,&gt;,/>,/xss,script>,../,&amp;(,)[,],%</param-value>
+            <!-- 此处加入要过滤的字符或字符串，以逗号隔开 -->
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>IllegalCharacterFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--<filter>-->
+        <!--<filter-name>loginFilter</filter-name>-->
+        <!--<filter-class>cn.kjzf.comm.web.filter.LoginFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>AuthType</param-name>-->
+            <!--<param-value>local</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>loginFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+
+    <!-- SpringMvc 前端控制器 -->
+    <servlet>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <!-- 配置 DispatcherServlet 的一个初始化参数（配置处理器映射器、适配器等等）：配置 SpringMVC 配置文件的位置和名称
+			实际上也可以不通过 contextConfigLocation 来配置SpringMVC的配置文件，
+			如果不配置contextConfigLocation，默认加载的是：/WEB-INF/<servlet-name>-servlet.xml（springmvc-servlet.xml）
+		-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!-- 配置SpringMVC的配置文件的路径 -->
+            <param-value>classpath:spring/spring-mvc.xml</param-value>
+        </init-param>
+
+        <!-- 服务器自动加载该 Servlet （加载优先级） -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <!--
+            第一种：*.action，访问以.action结尾 由DispatcherServlet进行解析
+            第二种：/，所以访问的地址都由DispatcherServlet进行解析，对于静态文件的解析需要配置不让DispatcherServlet进行解析,
+                      使用此种方式可以实现 RESTful风格的url
+            第三种：/*，这样配置不对，使用这种配置，最终要转发到一个jsp页面时，
+            仍然会由DispatcherServlet解析jsp地址，不能根据jsp页面找到handler，会报错。
+         -->
+        <url-pattern>/mvc/*</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- 配置session超时时间，单位分钟 -->
+    <session-config>
+        <session-timeout>900</session-timeout>
+    </session-config>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/static/error/error404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/static/error/error500.jsp</location>
+    </error-page>
+
+
+</web-app>

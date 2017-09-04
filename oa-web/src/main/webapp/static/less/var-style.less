@@ -1,0 +1,186 @@
+@import "function";
+/* 定位 */
+// 左浮动
+.fl {float: left;}
+// 右浮动
+.fr {float: right;}
+.tl {text-align: left;}
+.tc {text-align: center;}
+.tr {text-align: right;}
+.cb {clear:both}
+.cl {clear:left}
+.cr {clear:right}
+.vm {vertical-align:middle}
+.pr {position:relative}
+.pa {position:absolute}
+.zoom {zoom:1}
+.hidden {visibility:hidden}
+.none {display:none}
+
+.ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 文字排版、颜色 */
+.f12 {font-size:12px;}
+.f13 {font-size:13px;}
+.f14 {font-size:14px;}
+.f16 {font-size:16px;}
+.f20 {font-size:20px;}
+.fb {font-weight:bold;}
+.fn {font-weight:normal;}
+.t2 {text-indent:2px;}
+.t4 {text-indent:4px;}
+.ls2 {letter-spacing: 2px;}
+
+/* a标签下划线 */
+.unl{text-decoration:underline;}
+.no_unl{text-decoration:none;}
+
+
+/* 宽高 */
+/*长度高度*/
+.w {width:100%;}
+.w60 {width:60px;}
+.w80 {width:80px;}
+.w100 {width:100px;}
+.w110 {width:110px;}
+.w120 {width:120px;}
+.w140 {width:140px;}
+.w160 {width:160px;}
+.w180 {width:180px;}
+.w200 {width:200px;}
+.w260 {width:260px;}
+.h {height:100%;}
+.h50 {height:50px;}
+.h80 {height:80px;}
+.h100 {height:100px;}
+.h200 {height:200px;}
+.h282 {height:282px;}
+
+
+/* 边距 */
+.m10 {margin:10px;}
+.m15 {margin:15px;}
+.m30 {margin:30px;}
+.mlr20 {margin: 0 20px;}
+.mt10 {margin-top: 10px;}
+.mt20 {margin-top: 20px;}
+.mt24 {margin-top: 24px;}
+.mr10 {margin-right: 10px;}
+.mr20 {margin-right: 20px;}
+.mb10 {margin-bottom: 10px;}
+.mb12 {margin-bottom: 12px;}
+.ml10 {margin-left: 10px;}
+.ml20 {margin-left: 20px;}
+
+.p10 {padding:10px;}
+.p15 {padding:15px;}
+.p30 {padding:30px;}
+.pt10 {padding-top: 10px;}
+.pr10 {padding-right: 10px;}
+.pb10 {padding-bottom: 10px;}
+.pl10 {padding-left: 10px;}
+.pl20 {padding-left: 20px;}
+.pl56 {padding-left: 56px;}
+
+/* 布局 */
+.col-l {
+  width: 100%;
+  float: left;
+}
+
+.col-l-15 {
+  float: left;
+  width: 100% * 0.15;
+}
+
+.col-l-2 {
+  float: left;
+  width: 100% * 0.2;
+}
+
+.col-l-24 {
+  float: left;
+  width: 100% * 0.24;
+}
+
+.col-l-3 {
+  float: left;
+  width: round(100% / 3, 2);
+}
+
+.col-l-4 {
+  float: left;
+  width: 100% * 0.4;
+}
+.col-l-5 {
+  float: left;
+  width: 100% * 0.5;
+}
+.col-l-6 {
+  float: left;
+  width: 100% * 0.6;
+}
+.col-l-7 {
+  float: left;
+  width: 100% * 0.7;
+}
+.col-l-76 {
+  float: left;
+  width: 100% * 0.76;
+}
+.col-l-77 {
+  float: left;
+  width: 100% * 0.77;
+}
+
+.col-l-8 {
+  float: left;
+  width: 100% * 0.8;
+}
+.col-r-2 {
+  float: right;
+  width: 100% * 0.2;
+}
+
+/* 常用颜色 */
+.greenyellow {color: greenyellow;}
+.carC {color: #62a8ea;}
+.docC {color: #eaa60b;}
+.green {color: green;}
+.red {color: red;}
+
+/* 文本框样式 */
+.p-input {
+  .public_input();
+}
+
+/* 按钮样式 */
+.p-but {
+  .p_but(@default-but-color-border, @default-but-color-bac);
+}
+
+
+/* 复选框以及单选样式共用 */
+.ck-rd-custom {
+  padding: 10px 10px 10px 20px;
+
+  &.sp-p {
+    padding: 6px 6px 2px 40px;
+  }
+
+  .public_custom();
+}
+
+
+
+
+
+
+
+
+
+

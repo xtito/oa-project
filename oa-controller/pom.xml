@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 当前pom模型的版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 定义实际项目中的一个模块 也就是项目名 -->
+    <artifactId>oa-controller</artifactId>
+
+    <!-- 项目名 -->
+    <name>oa-controller</name>
+
+    <!-- 定义该项目的打包方式 -->
+    <packaging>jar</packaging>
+
+    <parent>
+        <artifactId>oa-project</artifactId>
+        <groupId>com.oa.project</groupId>
+        <version>1.0-RELEASE</version>
+    </parent>
+
+    <!--项目引入所需要的额外依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>com.oa.project</groupId>
+            <artifactId>oa-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oa.project</groupId>
+            <artifactId>oa-bean</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oa.project</groupId>
+            <artifactId>oa-web-parent</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oa.project</groupId>
+            <artifactId>oa-mapper</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oa.project</groupId>
+            <artifactId>oa-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
