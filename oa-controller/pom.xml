@@ -37,12 +37,6 @@
 
         <dependency>
             <groupId>com.oa.project</groupId>
-            <artifactId>oa-web-parent</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.oa.project</groupId>
             <artifactId>oa-mapper</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -50,6 +44,12 @@
         <dependency>
             <groupId>com.oa.project</groupId>
             <artifactId>oa-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oa.project</groupId>
+            <artifactId>oa-web-parent</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
