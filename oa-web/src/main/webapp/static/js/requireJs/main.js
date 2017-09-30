@@ -9,15 +9,20 @@ define(function () {
         paths: {
             "domReady": "domReady",
             "jquery": "../jquery-1.9.1.min",
-            "date.format": "../utils/date.format"
-        }/*,
+            "date.format": "../utils/date.format",
+            "zTree": "../zTree/jquery.zTree.all.min"
+        },
         // 不符合AMD规范的使用
         shim: {
-            /!*'jquery.loadPaging': {
+            'zTree': {
+                deps: ['jquery'],
+                exports: 'jQuery.fn.zTree'
+            }
+            /*'jquery.loadPaging': {
                 deps: ['jquery'],
                 exports: 'jQuery.fn.loadPaging'
-            },*!/
-        }*/
+            },*/
+        }
     });
 
     var errorCount = 20;
