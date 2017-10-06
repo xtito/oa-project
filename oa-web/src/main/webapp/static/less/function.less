@@ -3,7 +3,7 @@
 /* 方法样式文件，只写方法，别写其他样式 */
 /*文本框样式*/
 .public_input() {
-  padding: 4px 0 4px 8px;
+  padding: 6px 0 6px 8px;
   border: 1px solid @default-input-color;
   font-size: 14px;
   *padding-top: 0;
@@ -20,9 +20,18 @@
   text-align: center;
   -webkit-padding-before: 4px;
   -webkit-padding-after: 4px;
+  height: 26px \9;
   padding: 6px 0;
+  border-radius: 3px;
+  color: white;
 
-  &:active&:enabled {
+  &:disabled {
+    border: 1px solid #d5d5d5;
+    background-color: #d5d5d5;
+    cursor: no-drop;
+  }
+
+  &:active {
     background-color: lighten(@color, 8%);
   }
 }
@@ -52,6 +61,12 @@
       text-decoration: underline;
       cursor: pointer;
     }
+  }
+
+  .tit-but {
+    position: absolute;
+    top: 10px;
+    right: 30px;
   }
 }
 
@@ -106,8 +121,8 @@
       width: 21px;
       height: 21px;
       opacity: 0;
-      width: 22px\9;
-      height: 22px\9;
+      width: 22px \9;
+      height: 22px \9;
       line-height: normal;
       box-sizing: border-box;
       margin: 0;
@@ -431,84 +446,81 @@
   }*!
 }*/
 
+/*
+.public_but(@width, @height, @border, @color) {
+  width: @width;
+  height: @height;
+  border: 1px solid @border;
+  background-color: @color;
+  font-size: @fontSize12;
+  cursor: pointer;
 
-  /*
-  .public_but(@width, @height, @border, @color) {
-    width: @width;
-    height: @height;
-    border: 1px solid @border;
-    background-color: @color;
-    font-size: @fontSize12;
-    cursor: pointer;
-
-    &:active&:enabled {
-      background-color: lighten(@color, 4%);
-    }
+  &:active&:enabled {
+    background-color: lighten(@color, 4%);
   }
+}
 
-  .private_but(@top, @left, @border, @color) {
-    padding: @top @left;
-    border: 1px solid @border;
-    background-color: @color;
-    font-size: @fontSize12;
-    text-align: center;
+.private_but(@top, @left, @border, @color) {
+  padding: @top @left;
+  border: 1px solid @border;
+  background-color: @color;
+  font-size: @fontSize12;
+  text-align: center;
+}
+
+.public_but1(@top, @left, @border, @color) {
+  cursor: pointer;
+  .private_but(@top, @left, @border, @color);
+
+  &:active&:enabled {
+    background-color: lighten(@color, 8%);
   }
-
-  .public_but1(@top, @left, @border, @color) {
-    cursor: pointer;
-    .private_but(@top, @left, @border, @color);
-
-    &:active&:enabled {
-      background-color: lighten(@color, 8%);
-    }
-  }
+}
 
 
 
-  .public_but2(@top, @left, @border, @color) {
-    cursor: no-drop;
-    letter-spacing: 2px;
-    .private_but(@top, @left, @border, @color);
-  }
+.public_but2(@top, @left, @border, @color) {
+  cursor: no-drop;
+  letter-spacing: 2px;
+  .private_but(@top, @left, @border, @color);
+}
 
 
-  !* 文字超长省略 *!
-  .text-omit() {
-    text-overflow: ellipsis;
-    word-wrap: normal;
-    white-space: nowrap;
-    overflow: hidden;
-  }
+!* 文字超长省略 *!
+.text-omit() {
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 
-  !* 文字强换行 *!
-  .text-line() {
-    word-break: break-all;
-    word-wrap: break-word;
-  }
+!* 文字强换行 *!
+.text-line() {
+  word-break: break-all;
+  word-wrap: break-word;
+}
 
-  !* 错误信息样式 *!
-  .public_error() {
-    color: @font-color-red;
-    margin-left: 6px;
-    font-family: "????", serif;
-    font-weight: bold;
-    line-height: 24px;
-    display: block;
-    float: left;
-  }
-
-
-
-  .p-error() {
-    width: inherit;
-    padding-left:6px;
-    color: @error-color;
-    font-weight: bold;
-  }
-  */
+!* 错误信息样式 *!
+.public_error() {
+  color: @font-color-red;
+  margin-left: 6px;
+  font-family: "????", serif;
+  font-weight: bold;
+  line-height: 24px;
+  display: block;
+  float: left;
+}
 
 
+
+.p-error() {
+  width: inherit;
+  padding-left:6px;
+  color: @error-color;
+  font-weight: bold;
+}
+*/
 
 .disabledSelectText() {
   -moz-user-select: none;
@@ -516,4 +528,178 @@
   -ms-user-select: none;
   //-khtml-user-select: none;
   user-select: none;
+}
+
+.win-keep-out-fun() {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  background-color: #000000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  -webkit-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+
+
+
+/* 弹窗样式 */
+.win-box-fun() {
+  //display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+
+  .win-inner {
+    z-index: 1050;
+    width: auto;
+    padding: 10px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &.opa {
+    opacity: 1;
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+
+    .win-inner {
+      -webkit-transition: -webkit-transform 0.3s ease-out;
+      -moz-transition: -moz-transform 0.3s ease-out;
+      -o-transition: -o-transform 0.3s ease-out;
+      transition: transform 0.3s ease-out;
+      -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      transform: translate(0, 0);
+    }
+  }
+
+  .win-con {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    outline: none;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+  }
+
+  .win-header {
+    min-height: 16.428571429px;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+
+    .win-close {
+      margin-top: -2px;
+    }
+
+    button.win-close {
+      padding: 0;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      -webkit-appearance: none;
+    }
+  }
+
+  .win-body {
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .win-wrapper {
+    overflow: hidden;
+
+    .wrap-con {
+      overflow: auto;
+      max-height: 320px;
+    }
+
+  }
+
+  .win-footer {
+    padding: 19px 20px 20px;
+    margin-top: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+    position: relative;
+  }
+
+  .e-con {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    .e-info {
+      font-size: 18px;
+      color: red;
+    }
+  }
+
+  .win-close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+
+    &:hover, &:focus {
+      color: #000000;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+  }
+
+  .win-tit {
+    margin: 0;
+    line-height: 1.428571429;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  @media screen and (min-width: 768px) {
+    .win-inner {
+      right: auto;
+      left: 50%;
+      width: 600px;
+      padding-top: 160px;
+      padding-bottom: 30px;
+    }
+
+    .win-con {
+      -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.p-info () {
+  color: red;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* 强制不换行 */
+.text-no-line() {
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  white-space: nowrap;
 }
