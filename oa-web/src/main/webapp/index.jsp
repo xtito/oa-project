@@ -12,11 +12,6 @@
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
-    <script type="text/javascript">
-        function jumpLoginPage() {
-            window.location.href = "${ctx}/mvc/loginController/manager/page";
-        }
-    </script>
 </head>
 
 <body>
