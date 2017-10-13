@@ -12,6 +12,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="${ctx}/static/images/logo/favicon.ico"/>
 <link rel="stylesheet" href="${ctx}/static/css/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="${ctx}/static/css/main-public.css" />
+<script src="${ctx}/static/js/requireJs/require.min.js" data-main="${ctx}/static/js/requireJs/main" defer async></script>
 <!--[if lt IE 9]>
 <script src="../js/html5shiv.min.js"></script>
 <script src="../js/respond.min.js"></script>
