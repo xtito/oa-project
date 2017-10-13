@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <%@ include file="./static/common/public-inc.jsp"%>
+    <%@ include file="static/common/public-inc.jsp"%>
     <link rel="stylesheet" href="${ctx}/static/css/login.css">
     <title>登录</title>
 </head>
