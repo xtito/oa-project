@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- securityManager 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="customRealm" />
+    </bean>
+
+    <!-- shiro的web过滤器。 也是web.xml 中 shiro 的 filter 对应的 bean -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <!-- logiUrl 认证提交地址，如果没有认证通过将会请求此地址进行认证，请求此地址将由 formAuthenticationFilter 进行表单认证 -->
+        <property name="loginUrl" value="/login" />
+        <!-- 认证成功后统一跳转到first.action，建议不配置，shiro认证成功自动到上一个链接 -->
+        <property name="successUrl" value="/first" />
+        <!-- 通过 unauthorizedUrl 指定没有权限时跳转页面 -->
+        <property name="unauthorizedUrl" value="/refuse.jsp" />
+        <!-- 自定义filter配置 -->
+        <property name="filters">
+            <map>
+                <!--<entry key="authc" value-ref="formAuthenticationFilter"/>-->
+            </map>
+        </property>
+
+        <!-- 过滤器链定义，从上向下顺序执行，一般将/**放在最后面 -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!--静态资源可以匿名访问 -->
+                /images/** = anon
+                /js/** = anon
+                /styles/** = anon
+                <!--登录验证码匿名访问-->
+                /validatecode.jsp = anon
+                <!--任何链接都可以不认证访问-->
+                /** = anon
+            </value>
+        </property>
+    </bean>
+
+    <!-- 自定义的realm -->
+    <bean id="customRealm" class="com.oa.web.parent.shiro.CustomRealm"/>
+
+</beans>
