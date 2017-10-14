@@ -1,13 +1,15 @@
-@import "val";
 @import "function/after-layout";
 @import "function/before-layout";
 @import "function/grid";
 @import "function/public-fun";
+@import "function/button";
+@import "function/vendor";
 
 
 
-/* 方法样式文件，只写方法，别写其他样式 */
-/*文本框样式*/
+/*
+!* 方法样式文件，只写方法，别写其他样式 *!
+!*文本框样式*!
 .public_input() {
   padding: 6px 0 6px 8px;
   border: 1px solid @default-input-color;
@@ -42,7 +44,7 @@
   }
 }
 
-/* 模块标题样式 */
+!* 模块标题样式 *!
 .model-tit() {
   position: relative;
   height: 46px;
@@ -76,7 +78,7 @@
   }
 }
 
-/* 文字超长剪切以省略号显示 */
+!* 文字超长剪切以省略号显示 *!
 .text-omit() {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -84,7 +86,7 @@
   white-space: nowrap;
 }
 
-/* 复选框以及单选样式共用 */
+!* 复选框以及单选样式共用 *!
 .public_custom() {
   .cr-custom {
     position: relative;
@@ -258,13 +260,13 @@
       }
     }
 
-    /*&.disabled label {
+    !*&.disabled label {
       cursor: not-allowed;
-    }*/
+    }*!
   }
 }
 
-/*
+!*
 .public_custom() {
   position: relative;
   display: block;
@@ -450,9 +452,9 @@
   !*&.disabled label {
     cursor: not-allowed;
   }*!
-}*/
+}*!
 
-/*
+!*
 .public_but(@width, @height, @border, @color) {
   width: @width;
   height: @height;
@@ -526,7 +528,7 @@
   color: @error-color;
   font-weight: bold;
 }
-*/
+*!
 
 .disabledSelectText() {
   -moz-user-select: none;
@@ -553,7 +555,7 @@
 
 
 
-/* 弹窗样式 */
+!* 弹窗样式 *!
 .win-box-fun() {
   //display: none;
   overflow: hidden;
@@ -703,9 +705,9 @@
   letter-spacing: 2px;
 }
 
-/* 强制不换行 */
+!* 强制不换行 *!
 .text-no-line() {
   text-overflow: ellipsis;
   word-wrap: normal;
   white-space: nowrap;
-}
+}*/

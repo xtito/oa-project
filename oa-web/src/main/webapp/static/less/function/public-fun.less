@@ -141,6 +141,12 @@
   white-space: nowrap;
 }
 
+/*文字强制不换行*/
+.text-no-line() {
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  white-space: nowrap;
+}
 
 .clearFixFn() {
   &:before, &:after {
@@ -150,4 +156,16 @@
   &:after {
     clear: both;
   }
+}
+
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+.ele-block() {
+  width: 100%;
+  display: block;
 }

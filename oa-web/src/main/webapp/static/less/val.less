@@ -1,18 +1,148 @@
 /* CSS变量文件 */
+@font-size-min: 12;
+@font-size-max: 32;
+@font-size: 14px; // 默认字体大小
+@font-size-large: ceil((@font-size * 1.25)); // ~18px
+@font-size-small: ceil((@font-size * 0.85)); // ~12px
+@font-color: #333; // 默认字体颜色
+@font-family: "Microsoft YaHei", serif; // 默认字体
 
-@default-font-color: #333;// 默认字体颜色
-@default-font-size: 14px;// 默认字体大小
-@default-font-family: "Microsoft YaHei", serif;// 默认字体
+@brand-primary: darken(#428bca, 6.5%); // #337ab7
+@brand-success: #5cb85c;
+@brand-info: #5bc0de;
+@brand-warning: #f0ad4e;
+@brand-danger: #d9534f;
 
-@default-a-color: #305aa8;// 默认 a 标签未访问、已访问颜色
-@default-a-un-color: #bd0a01;// 默认 a 标签悬浮和活动链接颜色
+@gray-base:     #000;
+@gray-darker:   lighten(@gray-base, 13.5%); // #222
+@gray-dark:     lighten(@gray-base, 20%); // #333
+@gray:          lighten(@gray-base, 33.5%); // #555
+@gray-light:    lighten(@gray-base, 46.7%); // #777
+@gray-lighter:  lighten(@gray-base, 93.5%); // #eee
 
-@default-input-color: #999;// 默认文本框边框色
+// 超小屏幕（手机，小于 768px）
+@screen-xs-min: 480px;
 
-@default-but-color-border: #2a8c9a;// 默认按钮颜色
-@default-but-color-bac: #09c;// 默认按钮背景颜色
-@default-con-color: #fbfbfb;// 默认主体区背景颜色
-@default-border-color: #e4e4e4;// 默认边框颜色
+// 小屏幕（平板，大于等于 768px）
+@screen-sm-min: 768px;
+
+// 中等屏幕（桌面显示器，大于等于 992px）
+@screen-md-min: 992px;
+
+// 大屏幕（大桌面显示器，大于等于 1200px）
+@screen-lg-min: 1200px;
+
+// 所以媒体查询不重叠在需要时,提供一个最大值
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+
+// Small screen / tablet
+@container-tablet: (720px + @grid-gutter-width);
+//** For `@screen-sm-min` and up.
+@container-sm: @container-tablet;
+
+// Medium screen / desktop
+@container-desktop: (940px + @grid-gutter-width);
+//** For `@screen-md-min` and up.
+@container-md: @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop: (1140px + @grid-gutter-width);
+//** For `@screen-lg-min` and up.
+@container-lg: @container-large-desktop;
+
+// 网格中的列数.
+@grid-columns: 12;
+// 列之间的间距，被分一半.
+@grid-gutter-width: 32px;
+// 导航 collapse
+// 该尺寸下导航不合并边框.
+@grid-float-breakpoint: @screen-sm-min;
+// 该尺寸下导航合并边框为一个单一的边框.
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+@border-radius: 4px;
+@border-radius-large: 6px;
+@border-radius-small: 3px;
+
+@padding-base-vertical: 6px; // 垂直
+@padding-base-horizontal: 12px; // 水平
+
+@padding-large-vertical: 10px; // 垂直
+@padding-large-horizontal: 16px; // 水平
+
+@padding-small-vertical: 5px; // 垂直
+@padding-small-horizontal: 10px; // 水平
+
+@padding-xs-vertical: 1px; // 垂直
+@padding-xs-horizontal: 5px; // 水平
+
+
+@line-height-base: 1.428571429; // 20/14
+@line-height-large: 1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small: 1.5;
+
+@but-font-weight: "normal";
+@but-color: @font-color;
+@but-bg: #fff;
+@but-border: #ccc;
+@but-link-disabled-color: @gray-light;
+
+@but-border-radius-large: @border-radius-large;
+@but-border-radius-small: @border-radius-small;
+
+@but-primary-color: #fff;
+@but-primary-bg: @brand-primary;
+@but-primary-border: darken(@but-primary-bg, 5%);
+
+@but-success-color: #fff;
+@but-success-bg: @brand-success;
+@but-success-border: darken(@but-success-bg, 5%);
+
+@but-info-color: #fff;
+@but-info-bg: @brand-info;
+@but-info-border: darken(@but-info-bg, 5%);
+
+@but-warning-color: #fff;
+@but-warning-bg: @brand-warning;
+@but-warning-border: darken(@but-warning-bg, 5%);
+
+@but-danger-color: #fff;
+@but-danger-bg: @brand-danger;
+@but-danger-border: darken(@but-danger-bg, 5%);
+
+@link-color: @brand-primary;
+@link-hover-color: darken(@link-color, 15%);
+@link-hover-decoration: underline;
+
+
+
+
+@cursor-disabled: not-allowed;
+
+
+
+
+
+
+
+
+
+
+@default-font-color: @font-color;
+@default-font-size: @font-size; // 默认字体大小
+@default-font-family: @font-family; // 默认字体
+
+@default-a-color: #305aa8; // 默认 a 标签未访问、已访问颜色
+@default-a-un-color: #bd0a01; // 默认 a 标签悬浮和活动链接颜色
+
+@default-input-color: #999; // 默认文本框边框色
+
+@default-but-color-border: #2a8c9a; // 默认按钮颜色
+@default-but-color-bac: #09c; // 默认按钮背景颜色
+@default-con-color: #fbfbfb; // 默认主体区背景颜色
+@default-border-color: #e4e4e4; // 默认边框颜色
 
 @success-color: #46be8a;
 @error-color: #f96868;
