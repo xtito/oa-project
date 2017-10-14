@@ -1,3 +1,147 @@
+// 字体大小2
+.font-size-fn(@max:@font-size-max, @min:@font-size-min) when (@min <= @max) {
+  .f@{min} {
+    font-size: @min + 0px;
+  }
+
+  .font-size-fn(@max, (@min + 2));
+}
+
+// 文字首行缩进
+.text-indent-fn(@max:10, @min:2) when (@min <= @max) {
+  .t@{min} {
+    text-indent: @min + 0px;
+  }
+
+  .text-indent-fn(@max, (@min + 2));
+}
+
+// 文字行间距
+.letter-spacing-fn(@max:10, @min:2) when (@min <= @max) {
+  .ls@{min} {
+    letter-spacing: @min + 0px;
+  }
+
+  .letter-spacing-fn(@max, (@min + 2));
+}
+
+// 宽度设置
+.width-fn(@max:260, @min:60) when (@min <= @max) {
+  .w@{min} {
+    width: @min + 0px;
+  }
+
+  .width-fn(@max, (@min + 10));
+}
+
+// 高度设置
+.height-fn(@max:280, @min:40) when (@min <= @max) {
+  .h@{min} {
+    height: @min + 0px;
+  }
+
+  .height-fn(@max, (@min + 10));
+}
+
+.margin-fn(@max:40, @min:10) when (@min <= @max) {
+  .m@{min} {
+    margin: @min + 0px;
+  }
+
+  .margin-fn(@max, (@min + 10));
+}
+
+
+.margin-left-fn(@max:40, @min:10) when (@min <= @max) {
+  .ml@{min} {
+    margin-left: @min + 0px;
+  }
+
+  .margin-left-fn(@max, (@min + 10));
+}
+
+
+.margin-right-fn(@max:40, @min:10) when (@min <= @max) {
+  .mr@{min} {
+    margin-right: @min + 0px;
+  }
+
+  .margin-right-fn(@max, (@min + 10));
+}
+
+
+.margin-top-fn(@max:40, @min:10) when (@min <= @max) {
+  .mt@{min} {
+    margin-top: @min + 0px;
+  }
+
+  .margin-top-fn(@max, (@min + 10));
+}
+
+.margin-bottom-fn(@max:40, @min:10) when (@min <= @max) {
+  .mb@{min} {
+    margin-bottom: @min + 0px;
+  }
+
+  .margin-bottom-fn(@max, (@min + 10));
+}
+
+
+.padding-fn(@max:40, @min:10) when (@min <= @max) {
+  .p@{min} {
+    padding: @min + 0px;
+  }
+
+  .padding-fn(@max, (@min + 10));
+}
+
+
+.padding-left-fn(@max:40, @min:10) when (@min <= @max) {
+  .pl@{min} {
+    padding-left: @min + 0px;
+  }
+
+  .padding-left-fn(@max, (@min + 10));
+}
+
+
+.padding-right-fn(@max:40, @min:10) when (@min <= @max) {
+  .pr@{min} {
+    padding-right: @min + 0px;
+  }
+
+  .padding-right-fn(@max, (@min + 10));
+}
+
+
+.padding-top-fn(@max:40, @min:10) when (@min <= @max) {
+  .pt@{min} {
+    padding-top: @min + 0px;
+  }
+
+  .padding-top-fn(@max, (@min + 10));
+}
+
+
+.padding-bottom-fn(@max:40, @min:10) when (@min <= @max) {
+  .pb@{min} {
+    padding-bottom: @min + 0px;
+  }
+
+  .padding-bottom-fn(@max, (@min + 10));
+}
+
+
+
+/*文字超长剪切以省略号显示*/
+.text-omit() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  white-space: nowrap;
+}
+
+
 .clearFixFn() {
   &:before, &:after {
     content: " "; // 1
