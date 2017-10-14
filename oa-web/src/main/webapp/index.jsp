@@ -11,24 +11,33 @@
 
 <head>
     <meta charset="UTF-8">
+    <%@ include file="static/common/public-inc.jsp"%>
     <title>主页</title>
+    <script type="text/javascript">
+        <!--
+        // require.js加载完时调用main.js，main.js调用此方法
+        function onRequireReady() {
+            require(["domReady"], function(doc) {
+            });
+        }
+        //-->
+    </script>
 </head>
 
 <body>
 
-    <h1>我是首页</h1>
-    <p>
-        1、使用Spring+SpringMvc+Mybatis
-        2、安全框架使用Apache Shiro
-        3、前端使用Bootstrap
-        4、树使用zTree
-        5、工作流使用Activity
-        6、日期控件使用DateTime Picker
-        7、文件上传使用百度的Webuploader
-        8、富文本编辑器使用百度的UEditor
-        9、图表插件使用百度的ECharts
-        10、Freemarker
-    </p>
+    <div class="container" style="border: 1px solid red">
+        <button class="but but-default">按钮</button>
+        <button class="but but-primary">按钮</button>
+        <button class="but but-success">按钮</button>
+        <button class="but but-info">按钮</button>
+        <button class="but but-warning">按钮</button>
+        <button class="but but-danger">按钮</button>
+        <button class="but but-link">按钮</button>
+        <button class="but but-primary but-lg">按钮</button>
+        <button class="but but-primary but-sm">按钮</button>
+        <button class="but but-primary but-xs">按钮</button>
+    </div>
 
 </body>
 
