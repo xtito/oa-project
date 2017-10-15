@@ -45,20 +45,30 @@
             <div class="zy-work-min">
                 <div class="main-body">
                     <div class="ng-scope">
-                        <div class="home">
+                        <div class="section-main">
+                            <div class="home">
+                                <div class="home-ads">
+                                    <div class="ads-path col-lg-12">
+                                        <ol class="breadcrumb">
+                                            <li><i class="fa icon-home"></i><a href="index.html">Home</a></li>
+                                            <li><i class="fa icon-laptop"></i>Dashboard</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
 
-                        </div>
-                        <div class="home-section-main">
-                            <button class="but but-default">按钮</button>
-                            <button class="but but-primary">按钮</button>
-                            <button class="but but-success">按钮</button>
-                            <button class="but but-info">按钮</button>
-                            <button class="but but-warning">按钮</button>
-                            <button class="but but-danger">按钮</button>
-                            <button class="but but-link">按钮</button>
-                            <button class="but but-primary but-lg">按钮</button>
-                            <button class="but but-primary but-sm">按钮</button>
-                            <button class="but but-primary but-xs">按钮</button>
+                            <div class="main-content">
+                                <button class="but but-default">按钮</button>
+                                <button class="but but-primary">按钮</button>
+                                <button class="but but-success">按钮</button>
+                                <button class="but but-info">按钮</button>
+                                <button class="but but-warning">按钮</button>
+                                <button class="but but-danger">按钮</button>
+                                <button class="but but-link">按钮</button>
+                                <button class="but but-primary but-lg">按钮</button>
+                                <button class="but but-primary but-sm">按钮</button>
+                                <button class="but but-primary but-xs">按钮</button>
+                            </div>
                         </div>
                     </div>
                 </div>
