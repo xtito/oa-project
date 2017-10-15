@@ -48,3 +48,131 @@
     }
   }
 }
+
+
+/* 左侧菜单 */
+.sidebar-nav {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: left;
+
+  .sidebar-title {
+    height: 40px;
+    background: #42485B;
+    color: #fff;
+    line-height: 40px;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    overflow: hidden;
+
+    .sidebar-title-inner {
+      &:hover {
+        background-color: @nav-hover-bg-color;
+      }
+
+      &.active {
+        color: @nav-active-bg-color;
+      }
+    }
+  }
+
+  .title-icon {
+    width: 14px;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 4px 0 20px;
+    vertical-align: middle;
+    transition: transform 0.12s;
+    -o-transition: -o-transform 0.12s;
+    -ms-transition: -ms-transform 0.12s;
+    -moz-transition: -moz-transform 0.12s;
+    -webkit-transition: -webkit-transform 0.12s;
+
+    &.active {
+      vertical-align: text-top;
+      transform: rotate(90deg);
+    }
+  }
+
+  .title-text {
+    font-size: 12px;
+  }
+
+  .nav-icon {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    float: left;
+    color: #aeb9c2;
+  }
+
+  .nav-title {
+    float: left;
+    font-size: 12px;
+    overflow: hidden;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    width: 130px;
+  }
+
+  ul {
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    li {
+      position: relative;
+
+      a {
+        display: block;
+        width: 180px;
+        height: 40px;
+        line-height: 40px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      &.active a {
+        background-color: @nav-active-bg-color;
+        transition: none;
+        -webkit-transition: none;
+
+        .nav-icon {
+          color: #fff;
+        }
+
+        .nav-title {
+          color: #fff;
+        }
+      }
+
+      &:hover a {
+        background-color: @nav-hover-bg-color;
+
+        .nav-icon {
+          color: #fff;
+        }
+
+        .nav-title {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  span, li, a {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.02em;
+  }
+}
+/* 左侧菜单 END */

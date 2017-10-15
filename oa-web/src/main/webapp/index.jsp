@@ -11,13 +11,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <%@ include file="static/common/public-inc.jsp"%>
+    <%@ include file="static/common/public-inc.jsp" %>
     <title>主页</title>
     <script type="text/javascript">
         <!--
         // require.js加载完时调用main.js，main.js调用此方法
         function onRequireReady() {
-            require(["domReady"], function(doc) {
+            require(["domReady"], function (doc) {
             });
         }
         //-->
@@ -26,55 +26,192 @@
 
 <body>
 
-    <div class="zy-container">
-        <div class="zy-top-bar">
+<div class="zy-container">
+    <div class="zy-top-bar">
 
-        </div>
+    </div>
 
-        <div class="zy-work-body">
-            <div class="zy-work-sidebar">
-                <div class="sidebar-content">
-                    <div class="ng-scope">
-                        <div class="sidebar-inner">
+    <div class="zy-work-body">
+        <div class="zy-work-sidebar">
+            <div class="sidebar-content">
+                <div class="ng-scope">
+                    <div class="sidebar-inner">
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+                                    <span class="title-text">云计算基础服务</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item active">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">云服务器</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">云服务器</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-credit-card"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">卡管理</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-lock"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">云服务器</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+                                    <span class="title-text">帐户/权限</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">用户管理</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-user-secret"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">角色管理</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-key"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">权限管理</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+                                    <span class="title-text">系统设置</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-indent"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">菜单管理</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-book"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">数据字典</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-cog"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">系统设置</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="zy-work-min">
-                <div class="main-body">
-                    <div class="ng-scope">
-                        <div class="section-main">
-                            <div class="home">
-                                <div class="home-ads">
-                                    <div class="ads-path col-lg-12">
-                                        <ol class="breadcrumb">
-                                            <li><i class="fa icon-home"></i><a href="index.html">Home</a></li>
-                                            <li><i class="fa icon-laptop"></i>Dashboard</li>
-                                        </ol>
-                                    </div>
+        <div class="zy-work-min">
+            <div class="main-body">
+                <div class="ng-scope">
+                    <div class="section-main">
+                        <div class="home">
+                            <div class="home-ads">
+                                <div class="ads-path col-lg-12">
+                                    <ol class="breadcrumb">
+                                        <li><i class="fa icon-home"></i><a href="index.html">Home</a></li>
+                                        <li><i class="fa icon-laptop"></i>Dashboard</li>
+                                    </ol>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="main-content">
-                                <button class="but but-default">按钮</button>
-                                <button class="but but-primary">按钮</button>
-                                <button class="but but-success">按钮</button>
-                                <button class="but but-info">按钮</button>
-                                <button class="but but-warning">按钮</button>
-                                <button class="but but-danger">按钮</button>
-                                <button class="but but-link">按钮</button>
-                                <button class="but but-primary but-lg">按钮</button>
-                                <button class="but but-primary but-sm">按钮</button>
-                                <button class="but but-primary but-xs">按钮</button>
-                            </div>
+                        <div class="main-content">
+                            <button class="but but-default">按钮</button>
+                            <button class="but but-primary">按钮</button>
+                            <button class="but but-success">按钮</button>
+                            <button class="but but-info">按钮</button>
+                            <button class="but but-warning">按钮</button>
+                            <button class="but but-danger">按钮</button>
+                            <button class="but but-link">按钮</button>
+                            <button class="but but-primary but-lg">按钮</button>
+                            <button class="but but-primary but-sm">按钮</button>
+                            <button class="but but-primary but-xs">按钮</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 
