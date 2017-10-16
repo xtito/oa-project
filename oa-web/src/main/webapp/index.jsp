@@ -28,7 +28,27 @@
 
 <div class="zy-container">
     <div class="zy-top-bar">
+        <div class="console-top-bar">
+            <div class="top-bar-wrap">
+                <div class="top-bar-head">
+                    <a class="btn-logo" href="#">
+                        <img src="${ctx}/static/images/logo/white/logo.png" />
+                    </a>
+                </div>
 
+                <div class="top-bar-info">
+                    <div class="info-item">
+                        <ol>
+                            <li><a href="#">个人门户</a></li>
+                            <li><a href="#">公司门户</a></li>
+                            <li><a href="#">消息中心</a></li>
+                            <li><a href="#"><span class="fa fa-user"></span></a></li>
+                            <li><a href="#"><span class="fa fa-power-off"></span></a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="zy-work-body">
@@ -36,6 +56,10 @@
             <div class="sidebar-content">
                 <div class="ng-scope">
                     <div class="sidebar-inner">
+                        <div class="sidebar-fold">
+                            <span class="fa fa-bars fa-rotate-90"></span>
+                        </div>
+
                         <div class="sidebar-nav">
                             <div class="sidebar-title">
                                 <div class="sidebar-title-inner">
@@ -46,7 +70,7 @@
                                 </div>
                             </div>
                             <ul class="sidebar-ul">
-                                <li class="nav-item active">
+                                <li class="nav-item">
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
@@ -95,10 +119,20 @@
                                     <span class="title-icon">
                                         <i class="fa fa-caret-down"></i>
                                     </span>
-                                    <span class="title-text">帐户/权限</span>
+                                    <span class="title-text">部门/帐户/权限</span>
                                 </div>
                             </div>
                             <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-sitemap"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">部门管理</span>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="item-a">
                                         <div class="nav-icon">
@@ -187,8 +221,8 @@
                             <div class="home-ads">
                                 <div class="ads-path col-lg-12">
                                     <ol class="breadcrumb">
-                                        <li><i class="fa icon-home"></i><a href="index.html">Home</a></li>
-                                        <li><i class="fa icon-laptop"></i>Dashboard</li>
+                                        <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+                                        <li><i class="fa fa-laptop"></i>Dashboard</li>
                                     </ol>
                                 </div>
                             </div>

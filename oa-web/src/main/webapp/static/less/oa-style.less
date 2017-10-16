@@ -1,5 +1,84 @@
 @import "val";
 
+/* top nav begin */
+.console-top-bar {
+  position: relative;
+  z-index: 100;
+  clear: both;
+  height: 50px;
+  background: #373d41;
+  font-size: 12px;
+  min-width: 990px;
+
+  .top-bar-head {
+    background: #2a2f32;
+    height: 50px;
+    position: relative;
+    z-index: 3;
+    float: left;
+  }
+
+  .btn-logo {
+    color: white;
+    line-height: 50px;
+    background: #373d41;
+    display: block;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    margin-right: 1px;
+    float: left;
+
+    &:hover {
+      background-color: #2a2f32;
+    }
+
+    img {
+      height: 40px;
+    }
+  }
+
+  .top-bar-info {
+    background: #2a2f32;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+
+    .info-item {
+      height: 50px;
+      line-height: 50px;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    ol {
+      overflow: hidden;
+
+      li {
+        float: left;
+
+        a {
+          color: #fff;
+          padding: 0 18px;
+          height: 50px;
+          display: block;
+          z-index: 2;
+          background: #373d41;
+          border-right: 1px solid #2a2f32;
+          text-decoration: none;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #2a2f32;
+          }
+        }
+      }
+    }
+  }
+}
+/* end */
+
 .home .home-ads {
   margin: 16px 8px 0 8px;
 }
@@ -51,6 +130,19 @@
 
 
 /* 左侧菜单 */
+.sidebar-fold {
+  height: 30px;
+  width: 100%;
+  background: #4A5064;
+  color: #aeb9c2;
+  text-align: center;
+  line-height: 30px !important;
+  font-size: 12px;
+  user-select: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
 .sidebar-nav {
   width: 100%;
   overflow-x: hidden;
@@ -73,8 +165,8 @@
         background-color: @nav-hover-bg-color;
       }
 
-      &.active {
-        color: @nav-active-bg-color;
+      &.active, &.active:hover {
+        background-color: @nav-active-bg-color;
       }
     }
   }
@@ -141,10 +233,8 @@
         cursor: pointer;
       }
 
-      &.active a {
-        background-color: @nav-active-bg-color;
-        transition: none;
-        -webkit-transition: none;
+      &:hover a {
+        background-color: @nav-hover-bg-color;
 
         .nav-icon {
           color: #fff;
@@ -155,8 +245,10 @@
         }
       }
 
-      &:hover a {
-        background-color: @nav-hover-bg-color;
+      &.active a, &.active a:hover {
+        background-color: @nav-active-bg-color;
+        transition: none;
+        -webkit-transition: none;
 
         .nav-icon {
           color: #fff;
