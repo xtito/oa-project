@@ -66,7 +66,7 @@
                                     <span class="title-icon">
                                         <i class="fa fa-caret-down"></i>
                                     </span>
-                                    <span class="title-text">云计算基础服务</span>
+                                    <span class="title-text">新闻管理</span>
                                 </div>
                             </div>
                             <ul class="sidebar-ul">
@@ -77,7 +77,7 @@
                                                 <i class="fa icon-circle"></i>
                                             </span>
                                         </div>
-                                        <span class="nav-title">云服务器</span>
+                                        <span class="nav-title">新闻类别</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -87,27 +87,40 @@
                                                 <i class="fa icon-cloud"></i>
                                             </span>
                                         </div>
-                                        <span class="nav-title">云服务器</span>
+                                        <span class="nav-title">新闻列表</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+                                    <span class="title-text">公告管理</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">公告类别</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-credit-card"></i>
+                                                <i class="fa icon-cloud"></i>
                                             </span>
                                         </div>
-                                        <span class="nav-title">卡管理</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="item-a">
-                                        <div class="nav-icon">
-                                            <span class="icon-ecs">
-                                                <i class="fa icon-lock"></i>
-                                            </span>
-                                        </div>
-                                        <span class="nav-title">云服务器</span>
+                                        <span class="nav-title">公告列表</span>
                                     </a>
                                 </li>
                             </ul>
