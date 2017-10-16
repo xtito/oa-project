@@ -149,6 +149,25 @@
   overflow-y: auto;
   text-align: left;
 
+  .fa.icon:before {
+    content: "\f0da";
+  }
+
+  &.active {
+    //.fa-caret-right {
+    //  vertical-align: text-top;
+    //  transform: rotate(90deg);// 旋转
+    //}
+
+    .fa.icon:before {
+      content: "\f0d7";
+    }
+
+    .sidebar-ul {
+      display: block;
+    }
+  }
+
   .sidebar-title {
     height: 40px;
     background: #42485B;
@@ -183,11 +202,6 @@
     -ms-transition: -ms-transform 0.12s;
     -moz-transition: -moz-transform 0.12s;
     -webkit-transition: -webkit-transform 0.12s;
-
-    &.active {
-      vertical-align: text-top;
-      transform: rotate(90deg);
-    }
   }
 
   .title-text {
@@ -220,6 +234,7 @@
     list-style: none;
     overflow-y: scroll;
     overflow-x: hidden;
+    display: none;
 
     li {
       position: relative;

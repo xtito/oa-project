@@ -60,11 +60,11 @@
                             <span class="fa fa-bars fa-rotate-90"></span>
                         </div>
 
-                        <div class="sidebar-nav">
+                        <div class="sidebar-nav active">
                             <div class="sidebar-title">
                                 <div class="sidebar-title-inner">
                                     <span class="title-icon">
-                                        <i class="fa fa-caret-down"></i>
+                                        <i class="fa icon"></i>
                                     </span>
                                     <span class="title-text">新闻管理</span>
                                 </div>
@@ -97,7 +97,7 @@
                             <div class="sidebar-title">
                                 <div class="sidebar-title-inner">
                                     <span class="title-icon">
-                                        <i class="fa fa-caret-down"></i>
+                                        <i class="fa icon"></i>
                                     </span>
                                     <span class="title-text">公告管理</span>
                                 </div>
@@ -130,7 +130,7 @@
                             <div class="sidebar-title">
                                 <div class="sidebar-title-inner">
                                     <span class="title-icon">
-                                        <i class="fa fa-caret-down"></i>
+                                        <i class="fa icon"></i>
                                     </span>
                                     <span class="title-text">部门/帐户/权限</span>
                                 </div>
@@ -183,7 +183,7 @@
                             <div class="sidebar-title">
                                 <div class="sidebar-title-inner">
                                     <span class="title-icon">
-                                        <i class="fa fa-caret-down"></i>
+                                        <i class="fa icon"></i>
                                     </span>
                                     <span class="title-text">系统设置</span>
                                 </div>
