@@ -132,6 +132,188 @@
                                     <span class="title-icon">
                                         <i class="fa icon"></i>
                                     </span>
+                                    <span class="title-text">考勤管理</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">我的考勤</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">考勤统计</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">考勤信息管理</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">考勤设置</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa icon"></i>
+                                    </span>
+                                    <span class="title-text">办公用品</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">我的考勤</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">使用申请</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">定义类别</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">基本资料</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">入库管理</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">申请审批</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">采购清单</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa icon"></i>
+                                    </span>
+                                    <span class="title-text">人事管理</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-sitemap"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">人事</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa icon"></i>
+                                    </span>
+                                    <span class="title-text">车辆管理</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-sitemap"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">车辆</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa icon"></i>
+                                    </span>
                                     <span class="title-text">部门/帐户/权限</span>
                                 </div>
                             </div>
