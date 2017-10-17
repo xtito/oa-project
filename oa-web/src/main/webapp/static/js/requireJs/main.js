@@ -47,8 +47,12 @@ define(function () {
             var $oneLevel = $sidebar.find(".sidebar-title .sidebar-title-inner");
             var $twoLevel = $sidebar.find(".sidebar-ul .nav-item");
             $oneLevel.click(function() {
+                var $ele = $(this).parents(".sidebar-nav");
+                var exists = $ele.hasClass("active");
                 $sidebar.find(".sidebar-nav").removeClass("active");
-                $(this).parents(".sidebar-nav").addClass("active");
+                if (!exists) {
+                    $ele.addClass("active");
+                }
             });
 
             $twoLevel.click(function() {
