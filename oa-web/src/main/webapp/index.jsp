@@ -74,7 +74,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa fa-th-list"></i>
+                                                <i class="al al-oas"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">新闻类别</span>
@@ -84,7 +84,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa fa-newspaper-o"></i>
+                                                <i class="al al-aic"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">新闻列表</span>
@@ -107,7 +107,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa fa-th-list"></i>
+                                                <i class="fa fa-cube"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">公告类别</span>
@@ -117,7 +117,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-check-square-o"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">公告审核</span>
@@ -127,7 +127,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-bullhorn"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">公告列表</span>
@@ -150,7 +150,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-user-circle"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">我的考勤</span>
@@ -160,7 +160,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-pie-chart"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">考勤统计</span>
@@ -170,7 +170,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-wpforms"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">考勤信息管理</span>
@@ -180,7 +180,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="al al-topbar-secure-setting"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">考勤设置</span>
@@ -279,7 +279,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-retweet"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">流程列表</span>
