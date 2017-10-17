@@ -226,7 +226,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-cloud"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">任务分析</span>
@@ -236,7 +236,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-sort-amount-desc"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">下属任务</span>
@@ -246,7 +246,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-user-circle"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">我的任务</span>
@@ -256,7 +256,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-area-chart"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">任务报表</span>
@@ -398,7 +398,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa fa-sitemap"></i>
+                                                <i class="fa fa-car"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">车辆使用情况</span>
@@ -408,7 +408,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa fa-sitemap"></i>
+                                                <i class="fa fa-user-circle"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">我的用车</span>
@@ -418,7 +418,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa fa-sitemap"></i>
+                                                <i class="fa fa-sliders"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">用车分析</span>
@@ -428,7 +428,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa fa-sitemap"></i>
+                                                <i class="fa fa-pencil-square"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">用车申请</span>
@@ -438,7 +438,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa fa-sitemap"></i>
+                                                <i class="fa fa-check-square-o"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">用车审批</span>
