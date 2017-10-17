@@ -74,7 +74,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-th-list"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">新闻类别</span>
@@ -84,7 +84,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-newspaper-o"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">新闻列表</span>
@@ -107,10 +107,20 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-th-list"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">公告类别</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-cloud"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">公告审核</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -185,7 +195,7 @@
                                     <span class="title-icon">
                                         <i class="fa icon"></i>
                                     </span>
-                                    <span class="title-text">办公用品</span>
+                                    <span class="title-text">人事档案</span>
                                 </div>
                             </div>
                             <ul class="sidebar-ul">
@@ -196,14 +206,103 @@
                                                 <i class="fa icon-circle"></i>
                                             </span>
                                         </div>
-                                        <span class="nav-title">我的考勤</span>
+                                        <span class="nav-title">档案列表</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa icon"></i>
+                                    </span>
+                                    <span class="title-text">任务管理</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">任务分析</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">下属任务</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">我的任务</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">任务报表</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa icon"></i>
+                                    </span>
+                                    <span class="title-text">流程管理</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">流程列表</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-nav">
+                            <div class="sidebar-title">
+                                <div class="sidebar-title-inner">
+                                    <span class="title-icon">
+                                        <i class="fa icon"></i>
+                                    </span>
+                                    <span class="title-text">办公用品</span>
+                                </div>
+                            </div>
+                            <ul class="sidebar-ul">
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa icon-circle"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">使用申请</span>
@@ -302,7 +401,47 @@
                                                 <i class="fa fa-sitemap"></i>
                                             </span>
                                         </div>
-                                        <span class="nav-title">车辆</span>
+                                        <span class="nav-title">车辆使用情况</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-sitemap"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">我的用车</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-sitemap"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">用车分析</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-sitemap"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">用车申请</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="item-a">
+                                        <div class="nav-icon">
+                                            <span class="icon-ecs">
+                                                <i class="fa fa-sitemap"></i>
+                                            </span>
+                                        </div>
+                                        <span class="nav-title">用车审批</span>
                                     </a>
                                 </li>
                             </ul>
