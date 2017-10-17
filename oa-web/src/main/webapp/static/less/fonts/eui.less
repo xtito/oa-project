@@ -4,17 +4,17 @@
   @font-size: 14px;
   @line-height: 1;
 
-  @eui-css-prefix: "eui";
+  @eui-css-prefix: eui;
 
   @font-face {
     font-family: "eui-icon";
     font-weight: normal;
     font-style: normal;
-    src: url("eui-font.eot?t=@{font-version}");
-    src: url("eui-font.eot?t=@{font-version}#iefix") format("embedded-opentype"),
-    url("eui-font.woff?t=@{font-version}") format("woff"),
-    url("eui-font.ttf?t=@{font-version}") format("truetype"),
-    url("eui-font.svg?t=@{font-version}#eoffice-icon") format("svg")
+    src: url("@{font-path}/eui-font.eot?t=@{font-version}");
+    src: url("@{font-path}/eui-font.eot?t=@{font-version}#iefix") format("embedded-opentype"),
+    url("@{font-path}/eui-font.woff?t=@{font-version}") format("woff"),
+    url("@{font-path}/eui-font.ttf?t=@{font-version}") format("truetype"),
+    url("@{font-path}/eui-font.svg?t=@{font-version}#eoffice-icon") format("svg")
   }
 
   .@{eui-css-prefix} {
