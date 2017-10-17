@@ -40,5 +40,24 @@ define(function () {
         }
     }
 
+    // 左侧菜单事件
+    function activeSidebarMenu() {
+        require(["jquery"], function($) {
+            var $sidebar = $(".sidebar-inner");
+            var $oneLevel = $sidebar.find(".sidebar-title .sidebar-title-inner");
+            var $twoLevel = $sidebar.find(".sidebar-ul .nav-item");
+            $oneLevel.click(function() {
+                $sidebar.find(".sidebar-nav").removeClass("active");
+                $(this).parents(".sidebar-nav").addClass("active");
+            });
+
+            $twoLevel.click(function() {
+                $sidebar.find(".sidebar-ul .nav-item").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    }
+
     loadReady();
+    activeSidebarMenu();
 });
