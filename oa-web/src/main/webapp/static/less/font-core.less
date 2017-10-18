@@ -54,7 +54,6 @@
   font-style: normal;
   font-variant: normal;
   font-weight: normal;
-  font-size: @font-size;
   line-height: @line-height;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -63,16 +62,19 @@
 
 .@{fa-css-prefix} {
   font-family: 'FontAwesome', serif;
+  font-size: @font-size;
   .zy-icon();
 }
 
 .@{al-css-prefix} {
   font-family: 'aliyun-font', serif;
+  font-size: 16px;
   .zy-icon();
 }
 
 .@{eui-css-prefix} {
   font-family: 'eui-icon', serif;
+  font-size: @font-size;
   .zy-icon();
 }
 
@@ -100,11 +102,27 @@
 .@{fa-css-prefix}-pencil-square:before {content: "\f14b"; }
 .@{fa-css-prefix}-power-off:before {content: "\f011"; }
 .@{fa-css-prefix}-bars:before {content: "\f0c9"; }
+.@{fa-css-prefix}-file-o:before {content: "\f016"; }
+.@{fa-css-prefix}-th-large:before {content: "\f009"; }
+.@{fa-css-prefix}-inbox:before {content: "\f01c"; }
+.@{fa-css-prefix}-check-square-o:before {content: "\f046"; }
+.@{fa-css-prefix}-list-alt:before {content: "\f022"; }
 
 
 .@{al-css-prefix}-aic:before {content: "\e6f4"; }
 .@{al-css-prefix}-oas:before {content: "\e645"; }
 .@{al-css-prefix}-topbar-secure-setting:before {content: "\e9d1"; }
+.@{al-css-prefix}-detail-2:before {content: "\e61d"; }
 
 
 .@{eui-css-prefix}-news:before {content: "\e6c3"; }
+
+
+.@{fa-css-prefix}-rotate-90 { .fa-icon-rotate(90deg, 1); }
+
+.fa-icon-rotate(@degrees, @rotation) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=@{rotation})";
+  -webkit-transform: rotate(@degrees);
+  -ms-transform: rotate(@degrees);
+  transform: rotate(@degrees);
+}

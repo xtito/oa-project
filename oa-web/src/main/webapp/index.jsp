@@ -302,7 +302,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-circle"></i>
+                                                <i class="fa fa-file-o"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">使用申请</span>
@@ -312,7 +312,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-th-large"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">定义类别</span>
@@ -322,7 +322,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="al al-detail-2"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">基本资料</span>
@@ -332,7 +332,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-inbox"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">入库管理</span>
@@ -342,7 +342,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-check-square-o"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">申请审批</span>
@@ -352,7 +352,7 @@
                                     <a class="item-a">
                                         <div class="nav-icon">
                                             <span class="icon-ecs">
-                                                <i class="fa icon-cloud"></i>
+                                                <i class="fa fa-list-alt"></i>
                                             </span>
                                         </div>
                                         <span class="nav-title">采购清单</span>
