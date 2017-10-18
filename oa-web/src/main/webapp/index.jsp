@@ -562,17 +562,19 @@
                             </div>
                         </div>
 
-                        <div class="main-content">
-                            <button class="but but-default">按钮</button>
-                            <button class="but but-primary">按钮</button>
-                            <button class="but but-success">按钮</button>
-                            <button class="but but-info">按钮</button>
-                            <button class="but but-warning">按钮</button>
-                            <button class="but but-danger">按钮</button>
-                            <button class="but but-link">按钮</button>
-                            <button class="but but-primary but-lg">按钮</button>
-                            <button class="but but-primary but-sm">按钮</button>
-                            <button class="but but-primary but-xs">按钮</button>
+                        <div class="main-content content">
+                            <div class="inner-con">
+                                <button class="but but-default">按钮</button>
+                                <button class="but but-primary">按钮</button>
+                                <button class="but but-success">按钮</button>
+                                <button class="but but-info">按钮</button>
+                                <button class="but but-warning">按钮</button>
+                                <button class="but but-danger">按钮</button>
+                                <button class="but but-link">按钮</button>
+                                <button class="but but-primary but-lg">按钮</button>
+                                <button class="but but-primary but-sm">按钮</button>
+                                <button class="but but-primary but-xs">按钮</button>
+                            </div>
                         </div>
                     </div>
                 </div>
