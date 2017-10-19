@@ -276,6 +276,7 @@
   overflow: hidden;
 
   .inner-con {
+    overflow: hidden;
     padding: 16px;
 
     .col-panel {
@@ -333,4 +334,59 @@
   text-align: center;
   vertical-align: middle;
   line-height: 18px;
+}
+
+/* 表格 */
+.table {
+  margin: 0;
+
+  thead {
+    tr th {
+      border: 0;
+    }
+  }
+
+  tbody {
+    tr td {
+      border: 0;
+
+      label {
+        margin: 0;
+        padding: 6px 0 6px 6px;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.table-bordered {
+  //border: 1px solid #ddd !important;
+
+  thead {
+    tr {
+      border: 0;
+
+      th {
+        //border: 1px solid #ddd;
+        color: #fff;
+        font-weight: normal;
+        font-size: 15px;
+        letter-spacing: 2px;
+        padding: 10px;
+        border: 1px solid #339966 !important;
+      }
+    }
+
+    tr:first-child {
+      background-color: #339966;
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        border: 1px solid #ddd !important;
+      }
+    }
+  }
 }
