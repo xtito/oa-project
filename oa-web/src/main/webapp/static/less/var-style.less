@@ -14,6 +14,8 @@
 .vm {vertical-align:middle;}
 .pr {position:relative;}
 .pa {position:absolute;}
+.pn {padding: 0;}
+.mn {margin: 0;}
 .zoom {zoom:1;}
 .hidden {visibility:hidden;}
 .none {display:none;}
@@ -134,4 +136,12 @@
   &.success {
     color: #10bb10;
   }
+}
+
+/*元素水平垂直居中*/
+.center {
+  margin: 0 auto; /*水平居中*/
+  position: relative;
+  top: 50%; /*偏移*/
+  transform: translateY(-50%);
 }

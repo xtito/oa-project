@@ -32,7 +32,7 @@
             <div class="top-bar-wrap">
                 <div class="top-bar-head">
                     <a class="btn-logo" href="#">
-                        <img src="${ctx}/static/images/logo/white/logo.png" />
+                        <img src="${ctx}/static/images/logo/white/logo.png"/>
                     </a>
                 </div>
 
@@ -547,34 +547,123 @@
             </div>
         </div>
 
-        <div class="zy-work-min">
+        <div id="target_frame" class="zy-work-min">
             <div class="main-body">
-                <div class="ng-scope">
-                    <div class="section-main">
-                        <div class="home">
-                            <div class="home-ads">
-                                <div class="ads-path col-lg-12">
-                                    <ol class="breadcrumb">
-                                        <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-                                        <li><i class="fa fa-laptop"></i>Dashboard</li>
-                                    </ol>
-                                </div>
+                <div class="section-main">
+                    <div class="home">
+                        <div class="home-ads">
+                            <div class="ads-path col-lg-12">
+                                <ol class="breadcrumb">
+                                    <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+                                    <li><i class="fa fa-laptop"></i>Dashboard</li>
+                                </ol>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="main-content content">
-                            <div class="inner-con">
-                                <button class="but but-default">按钮</button>
-                                <button class="but but-primary">按钮</button>
-                                <button class="but but-success">按钮</button>
-                                <button class="but but-info">按钮</button>
-                                <button class="but but-warning">按钮</button>
-                                <button class="but but-danger">按钮</button>
-                                <button class="but but-link">按钮</button>
-                                <button class="but but-primary but-lg">按钮</button>
-                                <button class="but but-primary but-sm">按钮</button>
-                                <button class="but but-primary but-xs">按钮</button>
+                    <div class="main-content content">
+                        <div class="inner-con">
+                            <div class="col-md-12 pn">
+                                <div class="col-panel">
+                                    <div class="panel pro-panel">
+                                        <div class="panel-heading pro-heading">
+                                            <div class="search-title">
+                                                <span class="fa fa-search-plus fl"></span>
+                                                <h3 class="panel-title pro-title">查询条件</h3>
+                                                <div class="zy-icon xz title-icon"><span class="fa fa-chevron-up"></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <table class="table" style="border: 0 !important;">
+                                                <tbody>
+                                                <tr>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button class="but but-default">按钮</button>
+                                        <button class="but but-primary">按钮</button>
+                                        <button class="but but-success">按钮</button>
+                                        <button class="but but-info">按钮</button>
+                                        <button class="but but-warning">按钮</button>
+                                        <button class="but but-danger">按钮</button>
+                                        <button class="but but-link">按钮</button>
+                                        <button class="but but-primary but-lg">按钮</button>
+                                        <button class="but but-primary but-sm">按钮</button>
+                                        <button class="but but-primary but-xs">按钮</button>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="col-md-12 pn">
+                                <div class="col-panel">
+                                    <div class="panel pro-panel">
+                                        <div class="panel-heading pro-heading">
+                                            <div class="search-title">
+                                                <div class="zy-icon fl"><span class="fa fa-list"></span></div>
+                                                <h3 class="panel-title pro-title">数据列表</h3>
+                                                <div class="title-icon">
+                                                    <div class="zy-icon fl"><span class="fa fa-refresh "></span></div>
+                                                    <div class="zy-icon xz fl ml10"><span class="fa fa-chevron-up "></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <table class="table" style="border: 0 !important;">
+                                                <tbody>
+                                                <tr>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                    <td class="tr"><label>用户</label></td>
+                                                    <td><input type="text" class="form-control"/></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button class="but but-default">按钮</button>
+                                        <button class="but but-primary">按钮</button>
+                                        <button class="but but-success">按钮</button>
+                                        <button class="but but-info">按钮</button>
+                                        <button class="but but-warning">按钮</button>
+                                        <button class="but but-danger">按钮</button>
+                                        <button class="but but-link">按钮</button>
+                                        <button class="but but-primary but-lg">按钮</button>
+                                        <button class="but but-primary but-sm">按钮</button>
+                                        <button class="but but-primary but-xs">按钮</button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
