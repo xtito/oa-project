@@ -64,18 +64,6 @@
 
         <div class="zy-work-min">
             <iframe id="target_frame" name="rightFrame" width="100%" height="765" frameborder="0" src="${ctx}/static/include/home.jsp">加载中...</iframe>
-            <%--<div class="outer" style="overflow: auto; height: 100%">--%>
-                <%--<c:forEach begin="1" end="80" varStatus="i">--%>
-                    <%--<div class="ad">--%>
-                        <%--<ul>--%>
-                            <%--<c:forEach begin="1" end="10">--%>
-                                <%--<li>我不知道你在唱什么</li>--%>
-                            <%--</c:forEach>--%>
-                        <%--</ul>--%>
-                    <%--</div>--%>
-                    <%--<c:if test="${i.index == 80}"><p>11111122结束</p></c:if>--%>
-                <%--</c:forEach>--%>
-            <%--</div>--%>
         </div>
     </div>
 </div>
