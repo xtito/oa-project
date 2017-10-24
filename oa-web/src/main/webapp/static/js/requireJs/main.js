@@ -10,7 +10,8 @@ define(function () {
             "domReady": "domReady",
             "jquery": "../jquery-1.9.1.min",
             "date.format": "../utils/date.format",
-            "zTree": "../zTree/jquery.zTree.all.min"
+            "zTree": "../zTree/jquery.zTree.all.min",
+            "resizeHeight": "../utils/resizeHeight"
         },
         // 不符合AMD规范的使用
         shim: {
@@ -40,6 +41,8 @@ define(function () {
         }
     }
 
+    loadReady();
+
     // 左侧菜单事件
     function activeSidebarMenu() {
         require(["jquery"], function($) {
@@ -62,6 +65,13 @@ define(function () {
         });
     }
 
-    loadReady();
-    activeSidebarMenu();
+
+    require(["domReady", "jquery"], function (doc, $) {
+        console.log($(document).height());
+        console.log($(document.body).height());
+        console.log($(".zy-work-body").height());
+        console.log($(".inner-con").height());
+        activeSidebarMenu();
+        //window.resize;
+    });
 });
