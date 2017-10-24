@@ -71,7 +71,7 @@ define(["jquery"], function($) {
                  calculationHeight += 80;
                  }*/
 
-                calculationHeight += 30;
+                calculationHeight += 50;
                 $(IFrame).attr("height", calculationHeight);
                 $(IFrame).css("height", calculationHeight);
                 $(IFrame).height(calculationHeight);
