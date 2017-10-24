@@ -18,7 +18,8 @@
         // require.js加载完时调用main.js，main.js调用此方法
         function onRequireReady() {
             require(["domReady"], function (doc) {
-                loadContent("${ctx}/static/include/home.jsp");
+                <%--loadContent("${ctx}/static/include/home.jsp");--%>
+//                resize();
             });
         }
 
@@ -61,7 +62,8 @@
     <div class="zy-work-body">
         <%@ include file="./static/include/sidebar-nav.jsp"%>
 
-        <div id="target_frame" class="zy-work-min">
+        <div class="zy-work-min">
+            <iframe id="target_frame" name="rightFrame" width="100%" height="765" frameborder="0" src="${ctx}/static/include/home.jsp">加载中...</iframe>
             <%--<div class="outer" style="overflow: auto; height: 100%">--%>
                 <%--<c:forEach begin="1" end="80" varStatus="i">--%>
                     <%--<div class="ad">--%>

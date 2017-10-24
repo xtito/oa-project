@@ -65,13 +65,17 @@ define(function () {
         });
     }
 
+    window.resize = resizeFun;
+
+    function resizeFun(b, callback) {
+        require(["jquery", "resizeHeight"], function($, resize) {
+            resize.init(b, callback)
+        });
+    }
 
     require(["domReady", "jquery"], function (doc, $) {
-        console.log($(document).height());
-        console.log($(document.body).height());
-        console.log($(".zy-work-body").height());
-        console.log($(".inner-con").height());
+
         activeSidebarMenu();
-        //window.resize;
+        window.resize();
     });
 });
