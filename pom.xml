@@ -30,6 +30,7 @@
         <module>oa-controller</module>
         <module>oa-web-parent</module>
         <module>oa-web</module>
+        <module>oa-web-support</module>
     </modules>
 
     <!-- 配置版本 -->

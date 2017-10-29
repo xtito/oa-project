@@ -101,7 +101,7 @@
 
     <filter>
         <filter-name>IllegalCharacterFilter</filter-name>
-        <filter-class>com.oa.web.parent.filter.character.IllegalCharacterFilter</filter-class>
+        <filter-class>com.oa.web.support.filter.charcter.IllegalCharacterFilter</filter-class>
         <init-param>
             <param-name>characterParams</param-name>
             <param-value>',",&lt;,&gt;,/>,/xss,script>,../,&amp;(,)[,],%</param-value>
