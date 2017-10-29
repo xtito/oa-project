@@ -1,4 +1,4 @@
-package com.oa.web.parent.plugin;
+package com.oa.web.support.plugin;
 
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.executor.ErrorContext;

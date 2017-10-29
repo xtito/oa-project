@@ -1,4 +1,4 @@
-package com.oa.web.parent.filter.character;
+package com.oa.web.support.filter.charcter;
 
 import com.alibaba.fastjson.JSONObject;
 import com.oa.core.utils.StringUtil;
