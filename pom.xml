@@ -81,11 +81,7 @@
         <gson.version>2.8.0</gson.version>
 
         <!--spring mvc 整合JSON-->
-        <json.fastjson.version>1.1.15</json.fastjson.version>
-        <json.jackson.version>1.9.13</json.jackson.version>
-        <json.jackson.databind.version>2.2.3</json.jackson.databind.version>
-        <!-- spring mvc 注解JSON-->
-        <json.jackson.annotations.version>2.2.3</json.jackson.annotations.version>
+        <jackson.version>2.9.2</jackson.version>
 
         <!-- jUnit版本号 -->
         <junit.version>4.12</junit.version>
@@ -365,6 +361,24 @@
                 <version>${spring.version}</version>
             </dependency>
             <!-- Spring和SpringMVC需要的jar包  END -->
+
+            <!-- Spring依赖的JSON -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- Spring依赖的JSON -->
 
             <!-- apache Shrio安全框架 -->
             <dependency>
