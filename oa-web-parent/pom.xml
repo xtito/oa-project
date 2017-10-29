@@ -24,18 +24,6 @@
     <!--项目引入所需要的额外依赖-->
     <dependencies>
         <dependency>
-            <groupId>com.oa.project</groupId>
-            <artifactId>oa-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.oa.project</groupId>
-            <artifactId>oa-bean</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
         </dependency>
@@ -87,7 +75,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
