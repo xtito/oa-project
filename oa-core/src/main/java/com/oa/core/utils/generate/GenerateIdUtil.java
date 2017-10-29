@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * 生成uuid
  *
- * Created by [Zy]
+ * Created by [张渊]
  * 2017/8/10 9:57
  */
 public class GenerateIdUtil {

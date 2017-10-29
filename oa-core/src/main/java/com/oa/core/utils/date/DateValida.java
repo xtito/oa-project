@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * 日期格式验证
  *
- * Created by [Zy]
+ * Created by [张渊]
  * 2017/8/10 11:28
  */
 public class DateValida {

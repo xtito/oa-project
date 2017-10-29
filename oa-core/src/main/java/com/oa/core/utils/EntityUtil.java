@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 实体类工具类
  * <p/>
- * Created by [Zy]
+ * Created by [张渊]
  * 2017/8/10 12:01
  */
 public class EntityUtil {

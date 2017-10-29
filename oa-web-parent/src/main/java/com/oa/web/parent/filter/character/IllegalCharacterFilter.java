@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * 字符过滤
  * <p/>
- * Created by [Zy]
+ * Created by [张渊]
  * 2017/8/10 10:51
  */
 public class IllegalCharacterFilter implements Filter {

@@ -23,7 +23,7 @@ import java.util.*;
 /**
  * Mybatis修改xml时热加载
  *
- * Created by [Zy]
+ * Created by [张渊]
  * 2017/8/9 22:21
  */
 public class MybatisMapperDynamicLoader implements DisposableBean, InitializingBean, ApplicationContextAware {

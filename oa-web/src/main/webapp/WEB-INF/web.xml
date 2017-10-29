@@ -21,14 +21,14 @@
             在这个类中还必须有一个 contextDestroyed(ServletContextEvent event) 销毁方法.用于关闭应用前释放资源，比如说数据库连接的关闭。
         6、得到这个 context-param 的值之后,你就可以做一些操作了.注意,这个时候你的WEB项目还没有完全启动完成.这个动作会比所有的 Servlet 都要早。
     -->
-
-    <!-- 加载spring容器 -->
     <context-param>
+        <description>加载Spring容器，param-value指定Spring配置文件</description>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:spring/spring-*.xml</param-value>
     </context-param>
 
     <listener>
+        <description>加载Spring容器监听器</description>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
@@ -41,24 +41,24 @@
            将会立即刷新被分析过的JavaBeans Introspector cache，而仅仅会在应用程序自己的ClassLoader里面持有一个cache。
     -->
     <listener>
+        <description>防止spring内存溢出监听器</description>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
 
 
-
-    <!-- Shiro Filter
-        shiro过滤器，DelegatingFilterProxy通过代理模式将spring容器的bean和filter关联起来
-    -->
     <filter>
+        <description>ApacheShiro过滤器，DelegatingFilterProxy通过代理模式将spring容器的bean和filter关联起来</description>
         <filter-name>shiroFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <!-- 设置 true 由 servlet 容器控制 filter 的生命周期 -->
+
         <init-param>
+            <description>设置true由servlet容器控制filter的生命周期</description>
             <param-name>targetFilterLifecycle</param-name>
             <param-value>true</param-value>
         </init-param>
-        <!-- 设置 spring 容器 filter 的bean id，如果不设置则找与 filter-name 一致的 bean -->
+
         <init-param>
+            <description>设置 spring 容器 filter 的bean id，如果不设置则找与 filter-name 一致的 bean</description>
             <param-name>targetBeanName</param-name>
             <param-value>shiroFilter</param-value>
         </init-param>
@@ -80,9 +80,11 @@
 
     <!-- post乱码过虑器 -->
     <filter>
+        <description>字符集过滤器</description>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
+            <description>字符集编码</description>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
         </init-param>
@@ -126,8 +128,8 @@
     <!--</filter-mapping>-->
 
 
-    <!-- SpringMvc 前端控制器 -->
     <servlet>
+        <description>SpringMvc前端控制器</description>
         <servlet-name>springDispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 
@@ -136,8 +138,8 @@
 			如果不配置contextConfigLocation，默认加载的是：/WEB-INF/<servlet-name>-servlet.xml（springmvc-servlet.xml）
 		-->
         <init-param>
+            <description>SpringMvc配置文件，param-value指定配置文件路径</description>
             <param-name>contextConfigLocation</param-name>
-            <!-- 配置SpringMVC的配置文件的路径 -->
             <param-value>classpath:spring/spring-mvc.xml</param-value>
         </init-param>
 
@@ -156,6 +158,7 @@
          -->
         <url-pattern>/mvc/*</url-pattern>
     </servlet-mapping>
+
 
 
     <!-- 配置session超时时间，单位分钟 -->

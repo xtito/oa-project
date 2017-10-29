@@ -2,7 +2,7 @@ package com.oa.core.exception;
 
 /**
  * 自定义异常
- * Created by [Zy]
+ * Created by [张渊]
  * 2017/10/7 15:13
  */
 public class CustomException extends Exception {

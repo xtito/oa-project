@@ -1,7 +1,7 @@
 package com.oa.core.exception;
 
 /**
- * Created by [Zy]
+ * Created by [张渊]
  * 2017/8/10 11:29
  */
 public class ValidateException extends Exception {
