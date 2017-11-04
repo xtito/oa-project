@@ -41,7 +41,8 @@ public class AppContext implements ServletContextListener {
 
     public AppStartup defaultStartup;
 
-    private AppContext() {
+    public AppContext() {
+        super();
     }
 
 
@@ -189,5 +190,4 @@ public class AppContext implements ServletContextListener {
 //        return PropertyReader.getBoolean("debugModel");
         return true;
     }
-
 }
