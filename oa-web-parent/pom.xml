@@ -161,6 +161,11 @@
             <artifactId>ehcache-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
         <!-- 上传组件包 -->
         <dependency>
             <groupId>commons-fileupload</groupId>

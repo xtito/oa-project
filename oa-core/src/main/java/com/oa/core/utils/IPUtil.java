@@ -1,7 +1,7 @@
 package com.oa.core.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.oa.core.Logger;
+import com.oa.core.LoggerUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -65,7 +65,7 @@ public class IpUtil {
             }
         } catch (Exception e) {
 
-            Logger.error(IpUtil.class, "获取IP所属地址出错", e);
+            LoggerUtil.error(IpUtil.class, "获取IP所属地址出错", e);
             e.printStackTrace();
         }
         return ipAddress;
@@ -92,7 +92,7 @@ public class IpUtil {
                 return streamConvertToSting(httpCon.getInputStream());
             }
         } catch (Exception e) {
-            Logger.error(IpUtil.class, "获取IP所属地址出错", e);
+            LoggerUtil.error(IpUtil.class, "获取IP所属地址出错", e);
             e.printStackTrace();
         }
         return null;
@@ -151,7 +151,7 @@ public class IpUtil {
             process.waitFor();
             return mac;
         } catch (Exception e) {
-            Logger.error(IpUtil.class, "获取本机MAC地址失败！", e);
+            LoggerUtil.error(IpUtil.class, "获取本机MAC地址失败！", e);
             return null;
         }
     }

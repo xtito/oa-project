@@ -6,11 +6,11 @@ import com.oa.core.utils.date.DateUtil;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.*;
 
 /**
  * 字符串操作相关
- *
+ * <p/>
  * Created by [张渊]
  * 2017/8/10 11:01
  */
@@ -19,7 +19,6 @@ public class StringUtil {
     /**
      * 比较字符串大小 2014年4月2日 19:07:56
      * 主要用于日期。
-     *
      */
     public static boolean compareString(String str1, String str2) {
         char[] c1 = str1.toCharArray();
@@ -37,8 +36,8 @@ public class StringUtil {
         return c1.length < c2.length;
     }
 
-    public static boolean isEmpty(String s) {
-        return s == null || s.trim().equals("");
+    public static boolean isEmpty(Object obj) {
+        return obj == null || obj.toString().trim().equals("");
     }
 
     public static String toStringNum(Object obj) {
@@ -55,7 +54,6 @@ public class StringUtil {
 
     /**
      * 把对象转换为String，如果为日期，转换为yyyy-MM-dd HH:mm:ss的结构
-     *
      */
     public static String valueOf(Object obj) {
         if (obj == null)
@@ -80,7 +78,6 @@ public class StringUtil {
 
     /**
      * 判断字符串是否不为空
-     *
      */
     public static boolean isNotNull(String str) {
         return null != str && !"".equals(str.trim());
@@ -88,7 +85,6 @@ public class StringUtil {
 
     /**
      * 去除所有空格
-     *
      */
     public static String trimAllSpace(String str) {
         if (!isEmpty(str)) {
@@ -117,7 +113,6 @@ public class StringUtil {
     /**
      * String array covert to string
      * Example ["A", "B", "C"]  covert to A,B,C
-     *
      */
     public static String arrayToString(String[] array) {
         if (array == null) {
@@ -200,6 +195,7 @@ public class StringUtil {
 
     /**
      * 去除字符串前后空格
+     *
      * @param string 要去除空格的字符串
      * @return 去除空格后的字符串
      */
@@ -217,8 +213,9 @@ public class StringUtil {
 
     /**
      * 判断多个字符串都不为空或者NULL
-     *
+     * <p/>
      * 只要有一个为NULL或空都返回true，所有字符都不为空返回false
+     *
      * @param str 要判断的多个字符串
      * @return 只要有一个为空或Null则返回true
      */
@@ -229,7 +226,7 @@ public class StringUtil {
         for (String s : str) {
 
             if (s == null || "".equals(s)) {
-                isNull =  true;
+                isNull = true;
                 break;
             }
 
@@ -242,13 +239,14 @@ public class StringUtil {
 
     /**
      * 通过反射给实体类的String字符串字段去除空格
+     *
      * @param object 要去空格实体类对象
      * @return 去除空格后的实体类对象
-     * @throws IllegalAccessException 安全权限异常
+     * @throws IllegalAccessException    安全权限异常
      * @throws InvocationTargetException 执行反射时发生的异常
-     * @throws NoSuchMethodException 没有找到方法异常
+     * @throws NoSuchMethodException     没有找到方法异常
      */
-    public static Object removeBlank(Object object) throws	IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public static Object removeBlank(Object object) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 
         if (object != null) {
             // 获取字节码文件
@@ -283,6 +281,7 @@ public class StringUtil {
 
     /**
      * 截取年份最后两位
+     *
      * @param yearStr 要截取的年份
      * @return 截取后的年份
      */
@@ -306,6 +305,7 @@ public class StringUtil {
 
     /**
      * 计算百份比，返回字符串，默认不保留小数
+     *
      * @param cs 被除数
      * @param zs 总数
      * @param xs 保留几位小数, 如果为 NULL 默认不保留小数
@@ -343,7 +343,7 @@ public class StringUtil {
                     bfb = result.intValue() + "%";
                 }
             } else {
-                for (int i=0; i<defaultXs; i++) {
+                for (int i = 0; i < defaultXs; i++) {
                     if (i == 0) {
                         bfb += ".0";
                     } else {
@@ -375,8 +375,9 @@ public class StringUtil {
 
     /**
      * 获取四舍五入
+     *
      * @param num 要转换的数
-     * @param xs 保留几位小数，默认不保留
+     * @param xs  保留几位小数，默认不保留
      * @return 转换后的数转为字符串
      */
     public static String parsDouble(Double num, int... xs) {
@@ -399,4 +400,48 @@ public class StringUtil {
         return str;
     }
 
+    /**
+     * 判断是否包含指定字符串
+     *
+     * @param seq       原字符串
+     * @param searchSeq 是否包含的字符串
+     * @return 包含返回 true，不包含返回 false
+     */
+    public static boolean contains(String seq, String searchSeq) {
+        return isNotNull(seq) && isNotNull(searchSeq) && seq.contains(searchSeq);
+    }
+
+    /**
+     * 一次性判断多个或单个对象为空。
+     *
+     * @param objects 要判断的对象
+     * @return 只要有一个元素为Blank，则返回true
+     */
+    public static boolean isBlank(Object... objects) {
+        Boolean result = false;
+        for (Object object : objects) {
+            if (isEmpty(object) || "null".equals(object.toString().trim())) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 把数组转换成set
+     * @param array 要转换的数据
+     * @return 转换后的Set集合
+     */
+    public static Set<?> array2Set(Object[] array) {
+        Set<Object> set = new TreeSet<Object>();
+        if (array != null && array.length > 0) {
+            for (Object id : array) {
+                if(null != id){
+                    set.add(id);
+                }
+            }
+        }
+        return set;
+    }
 }

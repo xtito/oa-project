@@ -1,6 +1,6 @@
 package com.oa.core.utils.path;
 
-import com.oa.core.Logger;
+import com.oa.core.LoggerUtil;
 import com.oa.core.utils.StringUtil;
 
 import java.io.File;
@@ -70,7 +70,7 @@ public class PathUtil {
         try {
             path = URLDecoder.decode(path, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            Logger.getLogger(PathUtil.class).error("exception", e);
+            LoggerUtil.getLogger(PathUtil.class).error("exception", e);
         }
 
         if (path.endsWith("bin")) {

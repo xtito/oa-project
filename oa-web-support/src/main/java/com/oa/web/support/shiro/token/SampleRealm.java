@@ -5,14 +5,19 @@ import com.oa.core.constant.Constant;
 import com.oa.web.service.SysPermissionService;
 import com.oa.web.service.SysRoleService;
 import com.oa.web.service.SysUserService;
+import com.oa.web.support.shiro.token.manager.TokenManager;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.Set;
 
 /**
  * shiro 认证 + 授权   重写
@@ -84,10 +89,37 @@ public class SampleRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
-//        Integer userId = TokenManager
+        Long userId = TokenManager.getUserId();
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
-        return null;
+        // 根据用户ID查询角色（role），放入到Authorization里。
+        Set<String> roles = this.roleService.getRoleByUserId(userId);
+        info.setRoles(roles);
+
+        //根据用户ID查询权限（permission），放入到Authorization里。
+        Set<String> permissions = this.permissionService.getPermissionByUserId(userId);
+        info.setStringPermissions(permissions);
+        return info;
     }
 
+
+    /**
+     * 清空当前用户权限信息
+     */
+    public  void clearCachedAuthorizationInfo() {
+        PrincipalCollection principalCollection = SecurityUtils.getSubject().getPrincipals();
+        SimplePrincipalCollection principals = new SimplePrincipalCollection(
+                principalCollection, getName());
+        super.clearCachedAuthorizationInfo(principals);
+    }
+
+    /**
+     * 指定principalCollection 清除
+     */
+    public void clearCachedAuthorizationInfo(PrincipalCollection principalCollection) {
+        SimplePrincipalCollection principals = new SimplePrincipalCollection(
+                principalCollection, getName());
+        super.clearCachedAuthorizationInfo(principals);
+    }
 
 }

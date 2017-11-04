@@ -52,4 +52,13 @@ public class UuidTest {
         System.out.println(d);
     }
 
+
+    @Test
+    public void consStr() {
+        System.out.println(StringUtil.contains("fdsaf:mysql:dfsafdasfdasfasf:mys1ql:", ":mysql:"));
+        System.out.println(StringUtil.contains("fdsaf:oracle:dfsafdasfdasfasf:oracle:", ":oracle:"));
+        System.out.println(StringUtil.contains("fdsaf:db2:dfsafdasfdasfasf:db2:", ":db2:"));
+        System.out.println(StringUtil.contains("fdsaf:sqlserverdfsafdasfdasfasf:sqlserver", ":sqlserver"));
+    }
+
 }
