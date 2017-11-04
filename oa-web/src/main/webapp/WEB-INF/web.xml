@@ -73,9 +73,9 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>-->
 
-    <!--<listener>-->
-        <!--<listener-class>cn.comm.web.context.AppContext</listener-class>-->
-    <!--</listener>-->
+    <listener>
+        <listener-class>com.oa.core.context.AppContext</listener-class>
+    </listener>
 
 
     <!-- post乱码过虑器 -->
