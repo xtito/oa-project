@@ -2,12 +2,14 @@ package com.oa.web.support.shiro.service.impl;
 
 import com.oa.core.LoggerUtil;
 import com.oa.core.config.INI4j;
+import com.oa.core.context.AppContext;
 import com.oa.web.support.shiro.service.ShiroManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.mgt.DefaultFilterChainManager;
 import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 
 import javax.annotation.Resource;
@@ -25,7 +27,6 @@ public class ShiroManagerImpl implements ShiroManager {
 
     // 注意/r/n前不能有空格
     private static final String CRLF = "\r\n";
-
     @Autowired
     private ShiroFilterFactoryBean shiroFilterFactoryBean;
 
@@ -36,8 +37,8 @@ public class ShiroManagerImpl implements ShiroManager {
     }
 
     @Override
-    public void reCreateFilterChains() {
-//		ShiroFilterFactoryBean shiroFilterFactoryBean = (ShiroFilterFactoryBean) SpringContextUtil.getBean("shiroFilterFactoryBean");
+    public synchronized void reCreateFilterChains() {
+
         AbstractShiroFilter shiroFilter = null;
         try {
             shiroFilter = (AbstractShiroFilter) shiroFilterFactoryBean.getObject();
@@ -91,12 +92,4 @@ public class ShiroManagerImpl implements ShiroManager {
         return sb.toString();
     }
 
-
-    public ShiroFilterFactoryBean getShiroFilterFactoryBean() {
-        return shiroFilterFactoryBean;
-    }
-
-    public void setShiroFilterFactoryBean(ShiroFilterFactoryBean shiroFilterFactoryBean) {
-        this.shiroFilterFactoryBean = shiroFilterFactoryBean;
-    }
 }

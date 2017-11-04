@@ -58,6 +58,12 @@
             <artifactId>oa-web-parent</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.oa.project</groupId>
+            <artifactId>oa-web-support</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

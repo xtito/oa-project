@@ -21,7 +21,7 @@ import java.util.List;
 public class TokenManager {
 
     //用户登录管理
-    public static final SampleRealm realm = AppContext.getBean("sampleRealm", SampleRealm.class);
+    public static final SampleRealm realm = AppContext.getBean("customRealm", SampleRealm.class);
     //用户session管理
     public static final CustomSessionManager customSessionManager = AppContext.getBean("customSessionManager", CustomSessionManager.class);
 
@@ -146,8 +146,7 @@ public class TokenManager {
     public static void clearUserAuthByUserId(Long... userIds) {
 
         if (null == userIds || userIds.length == 0) return;
-//        List<SimplePrincipalCollection> result = customSessionManager.getSimplePrincipalCollectionByUserId(userIds);
-        List<SimplePrincipalCollection> result = new ArrayList<>();
+        List<SimplePrincipalCollection> result = customSessionManager.getSimplePrincipalCollectionByUserId(userIds);
 
         for (SimplePrincipalCollection simplePrincipalCollection : result) {
             realm.clearCachedAuthorizationInfo(simplePrincipalCollection);
