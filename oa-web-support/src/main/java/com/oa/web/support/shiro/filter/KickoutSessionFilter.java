@@ -143,8 +143,7 @@ public class KickoutSessionFilter extends AccessControlFilter {
     }
 
 
-    public static void setShiroSessionRepository(
-            ShiroSessionRepository shiroSessionRepository) {
+    public static void setShiroSessionRepository(ShiroSessionRepository shiroSessionRepository) {
         KickoutSessionFilter.shiroSessionRepository = shiroSessionRepository;
     }
 

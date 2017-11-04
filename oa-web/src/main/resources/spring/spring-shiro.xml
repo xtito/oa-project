@@ -137,8 +137,7 @@
 
     <!-- 静态注入 jedisShiroSessionRepository-->
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="staticMethod"
-                  value="com.sojson.core.shiro.filter.KickoutSessionFilter.setShiroSessionRepository"/>
+        <property name="staticMethod" value="com.oa.web.support.shiro.filter.KickoutSessionFilter.setShiroSessionRepository"/>
         <property name="arguments" ref="jedisShiroSessionRepository"/>
     </bean>
 
@@ -147,10 +146,7 @@
         用户有admin或者user角色 就可以访问
     -->
     <!-- 认证数据库存储-->
-    <bean id="shiroFilterFactoryBean" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"/>
-    <bean id="shiroManager" class="com.oa.web.support.shiro.service.impl.ShiroManagerImpl">
-        <property name="shiroFilterFactoryBean" ref="shiroFilterFactoryBean"/>
-    </bean>
+    <bean id="shiroManager" class="com.oa.web.support.shiro.service.impl.ShiroManagerImpl" />
     <bean id="login" class="com.oa.web.support.shiro.filter.LoginFilter"/>
     <bean id="role" class="com.oa.web.support.shiro.filter.RoleFilter"/>
     <bean id="permission" class="com.oa.web.support.shiro.filter.PermissionFilter"/>
@@ -179,16 +175,16 @@
 
         <!-- 过滤器链定义，从上向下顺序执行，一般将/**放在最后面 -->
         <!--<property name="filterChainDefinitions">-->
-        <!--<value>-->
-        <!--&lt;!&ndash;静态资源可以匿名访问 &ndash;&gt;-->
-        <!--/images/** = anon-->
-        <!--/js/** = anon-->
-        <!--/styles/** = anon-->
-        <!--&lt;!&ndash;登录验证码匿名访问&ndash;&gt;-->
-        <!--/validatecode.jsp = anon-->
-        <!--&lt;!&ndash;任何链接都可以不认证访问&ndash;&gt;-->
-        <!--/** = anon-->
-        <!--</value>-->
+            <!--<value>-->
+                <!--静态资源可以匿名访问 -->
+                <!--/images/** = anon-->
+                <!--/js/** = anon-->
+                <!--/styles/** = anon-->
+                <!--登录验证码匿名访问-->
+                <!--/validatecode.jsp = anon-->
+                <!--任何链接都可以不认证访问-->
+                <!--/** = anon-->
+            <!--</value>-->
         <!--</property>-->
         <property name="filterChainDefinitions" value="#{shiroManager.loadFilterChainDefinitions()}"/>
     </bean>
