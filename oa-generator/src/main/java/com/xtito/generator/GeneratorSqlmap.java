@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Mybatis逆向工程生成
+ *
  * Created by [张渊]
  * 2017/11/4 21:44
  */
@@ -30,7 +32,7 @@ public class GeneratorSqlMap {
             DefaultShellCallback callback = new DefaultShellCallback(true);
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
             myBatisGenerator.generate(null);
-            System.out.println("a");
+            System.out.println("生成完毕");
         }
     }
 
