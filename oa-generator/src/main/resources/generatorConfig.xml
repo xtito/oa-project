@@ -40,7 +40,7 @@
             <property name="replaceString" value="Dao"/>
         </plugin>-->
 
-        <commentGenerator type="com.xtito.generator.HairyCommentGenerator">
+        <commentGenerator type="com.xtito.generator.MyCommentGenerator">
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
