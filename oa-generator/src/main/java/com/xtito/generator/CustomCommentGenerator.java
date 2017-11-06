@@ -25,7 +25,7 @@ import static org.mybatis.generator.internal.util.StringUtility.isTrue;
  * Created by [张渊]
  * 2017/11/6 21:47
  */
-public class MyCommentGenerator implements CommentGenerator {
+public class CustomCommentGenerator implements CommentGenerator {
 
     private Properties properties;
     private Properties systemPro;
@@ -33,7 +33,7 @@ public class MyCommentGenerator implements CommentGenerator {
     private boolean suppressAllComments;
     private String currentDateStr;
 
-    public MyCommentGenerator() {
+    public CustomCommentGenerator() {
         super();
         properties = new Properties();
         systemPro = System.getProperties();
