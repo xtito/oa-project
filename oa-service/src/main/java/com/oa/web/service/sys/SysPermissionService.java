@@ -1,4 +1,4 @@
-package com.oa.web.service;
+package com.oa.web.service.sys;
 
 import com.oa.web.mapper.SysPermissionMapper;
 import org.springframework.beans.factory.annotation.Autowired;

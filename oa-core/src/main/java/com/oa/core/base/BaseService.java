@@ -1,40 +1,28 @@
-package com.oa.web.mapper;
-
-import com.oa.bean.sys.SysRole;
-import org.springframework.stereotype.Component;
+package com.oa.core.base;
 
 import java.util.List;
-import java.util.Set;
 
 /**
- * 角色 Mapper
+ * 基础Mapper接口
  *
  * Created by [张渊]
- * 2017/10/29 15:40
+ * 2017/11/7 21:49
  */
-@Component
-public interface SysRoleMapper {
-
-    /**
-     * 根据用户ID获取角色的Set集合
-     * @param userId 用户ID
-     * @return 用户ID的角色集合
-     */
-    Set<String> getRoleByUserId(Long userId);
+public interface BaseService<T> {
 
     /**
      * 将数据插入数据库
-     * @param sysRole 数据实体
+     * @param entity 数据实体
      * @return 返回插入的该数据主键ID或受影响条数
      */
-    int saveSysRole(SysRole sysRole);
+    int save(T entity);
 
     /**
      * 根据数据实体，更新该实体数据对应的数据库表数据
-     * @param sysRole 要更新的数据实体
+     * @param entity 要更新的数据实体
      * @return 返回受影响条数
      */
-    int updateSysRole(SysRole sysRole);
+    int update(T entity);
 
     /**
      * 根据数据实体主键，删除该条数据实体对应的数据库数据
@@ -48,13 +36,11 @@ public interface SysRoleMapper {
      * @param id 数据主键ID
      * @return 数据实体
      */
-    SysRole getByPrimaryKey(Long id);
+    T getByPrimaryKey(Long id);
 
     /**
      * 获取所有数据
      * @return 所有数据的集合
      */
-    List<SysRole> getAll();
-
-
+    List<T> getAll();
 }

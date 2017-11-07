@@ -2,9 +2,9 @@ package com.oa.web.support.shiro.token;
 
 import com.oa.bean.sys.SysUser;
 import com.oa.core.constant.Constant;
-import com.oa.web.service.SysPermissionService;
-import com.oa.web.service.SysRoleService;
-import com.oa.web.service.SysUserService;
+import com.oa.web.service.sys.SysPermissionService;
+import com.oa.web.service.sys.SysRoleService;
+import com.oa.web.service.sys.SysUserService;
 import com.oa.web.support.shiro.token.manager.TokenManager;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -66,7 +66,7 @@ public class SampleRealm extends AuthorizingRealm {
         } else {
             //更新登录时间 last login time
             user.setLastLoginTime(new Date());
-            userService.updateUserById(user);
+            userService.update(user);
         }
 
         // 盐值.实现不同用户同样的密码结果也不同

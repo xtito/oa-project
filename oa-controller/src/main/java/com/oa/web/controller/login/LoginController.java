@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * 2017/8/10 9:11
  */
 @Controller
-@RequestMapping("/loginCtrl/manager")
+@RequestMapping("/login/mgr")
 public class LoginController {
 
 
