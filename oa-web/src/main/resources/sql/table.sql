@@ -50,7 +50,7 @@ CREATE TABLE sys_permission (
   pms_level int(10) DEFAULT NULL COMMENT '权限级别',
   pid varchar(64) DEFAULT NULL COMMENT '父级权限ID，也就是父级权限的UUID',
   icon varchar(255) DEFAULT NULL COMMENT '权限树图标路径',
-  orderby_id int(10) DEFAULT NULL COMMENT '排序ID',
+  order_by_id int(10) DEFAULT NULL COMMENT '排序ID',
   pms_type int(10) DEFAULT NULL COMMENT '权限类型',
   def_identify int(10) unsigned zerofill DEFAULT NULL COMMENT '默认标识（0可删1不可删除）',
   PRIMARY KEY (id)
