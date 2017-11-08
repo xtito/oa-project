@@ -6,6 +6,9 @@ import com.oa.core.LoggerUtil;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 /**
  * IP管理工具类，MAC地址获取
@@ -154,6 +157,50 @@ public class IpUtil {
             LoggerUtil.error(IpUtil.class, "获取本机MAC地址失败！", e);
             return null;
         }
+    }
+
+    /**
+     * 获取本机IP地址
+     */
+    public static String getLocalHostName() {
+
+        try {
+            InetAddress ia = InetAddress.getLocalHost();
+            return ia.getHostName();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    /**
+     * 获取本机所有网卡IP地址
+     * @return ip地址列表
+     */
+    public static List<String> getLocalIpList() {
+
+        List<String> ipList = new ArrayList<String>();
+        try {
+            Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+
+            while (allNetInterfaces.hasMoreElements()) {
+                NetworkInterface netInterface = allNetInterfaces.nextElement();
+                Enumeration<InetAddress> addresses = netInterface.getInetAddresses();
+
+                while (addresses.hasMoreElements()) {
+                    InetAddress ip = addresses.nextElement();
+
+                    if (ip != null && ip instanceof Inet4Address) {
+                        ipList.add(ip.getHostAddress());
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+
+        LoggerUtil.info(IpUtil.class, "本机IP地址：" + ipList.toString());
+        return ipList;
     }
 
 
