@@ -53,9 +53,9 @@ public class SysPermission implements Serializable {
 
     /**
      * 排序ID
-     * 表字段 : sys_permission.orderby_id
+     * 表字段 : sys_permission.order_by_id
      */
-    private Integer orderbyId;
+    private Integer orderById;
 
     /**
      * 权限类型
@@ -135,12 +135,12 @@ public class SysPermission implements Serializable {
         this.icon = icon == null ? null : icon.trim();
     }
 
-    public Integer getOrderbyId() {
-        return orderbyId;
+    public Integer getOrderById() {
+        return orderById;
     }
 
-    public void setOrderbyId(Integer orderbyId) {
-        this.orderbyId = orderbyId;
+    public void setOrderById(Integer orderById) {
+        this.orderById = orderById;
     }
 
     public Integer getPmsType() {
@@ -175,7 +175,7 @@ public class SysPermission implements Serializable {
                 ", pmsLevel=" + pmsLevel +
                 ", pid=" + pid +
                 ", icon=" + icon +
-                ", orderbyId=" + orderbyId +
+                ", orderById=" + orderById +
                 ", pmsType=" + pmsType +
                 ", defIdentify=" + defIdentify +
                 ", serialVersionUID=" + serialVersionUID +
