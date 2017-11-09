@@ -340,7 +340,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="item-a">
+                            <a class="item-a" target="rightFrame" href="${ctx}/static/pages/sys/sys_user.jsp">
                                 <div class="nav-icon">
                                     <span class="icon-ecs"><i class="fa fa-user"></i></span>
                                 </div>

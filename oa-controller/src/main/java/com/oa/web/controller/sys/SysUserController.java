@@ -1,7 +1,10 @@
 package com.oa.web.controller.sys;
 
+import com.oa.web.service.sys.SysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 用户管理
@@ -13,6 +16,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/sysUser/mgr")
 public class SysUserController {
 
+    @Autowired
+    private SysUserService service;
 
+    @RequestMapping("/list")
+    public String list() {
+        return null;
+    }
+
+    @RequestMapping(value = "/save/user", method = {RequestMethod.POST})
+    public String saveSysUser() {
+
+        return null;
+    }
+
+    @RequestMapping(value = "/update/user", method = {RequestMethod.POST})
+    public String updateSysUser() {
+
+        return null;
+    }
+
+    @RequestMapping(value = "/delete/user", method = {RequestMethod.POST})
+    public String deleteSysUser() {
+        return null;
+    }
+
+    @RequestMapping("/addUI")
+    public String addUI() {
+        return "sys/add_user";
+    }
 
 }
