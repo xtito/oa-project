@@ -34,8 +34,8 @@
 
 <body>
 
-<div class="zy-container">
-    <div class="zy-top-bar">
+<div class="ito-container">
+    <div class="ito-top-bar">
         <div class="console-top-bar">
             <div class="top-bar-wrap">
                 <div class="top-bar-head">
@@ -59,10 +59,10 @@
         </div>
     </div>
 
-    <div class="zy-work-body">
+    <div class="ito-work-body">
         <%@ include file="./static/include/sidebar-nav.jsp"%>
 
-        <div class="zy-work-min">
+        <div class="ito-work-min">
             <iframe id="target_frame" name="rightFrame" width="100%" height="765" frameborder="0" src="${ctx}/static/include/home.jsp">加载中...</iframe>
         </div>
     </div>

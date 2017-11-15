@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 
-<div class="zy-work-sidebar">
+<div class="ito-work-sidebar">
     <div class="sidebar-content">
         <div class="ng-scope">
             <div class="sidebar-inner">
