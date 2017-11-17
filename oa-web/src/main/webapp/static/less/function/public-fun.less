@@ -28,7 +28,7 @@
 // 宽度设置
 .width-fn(@max:260, @min:60) when (@min <= @max) {
   .w@{min} {
-    width: @min + 0px;
+    width: @min + 0px !important;
   }
 
   .width-fn(@max, (@min + 10));
@@ -37,7 +37,7 @@
 // 宽度设置
 .width-bfb-fn(@max:100, @min:10) when (@min <= @max) {
   .wb@{min} {
-    width: @min + 0%;
+    width: @min + 0% !important;
   }
 
   .width-bfb-fn(@max, (@min + 10));
