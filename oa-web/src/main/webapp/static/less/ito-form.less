@@ -67,10 +67,40 @@
 
       .custom-label {
         width: 180px;
+
+        @media screen and (min-width: @screen-xs-min) and (max-width: @screen-xs-max) {
+          width: 140px;
+        }
+
+        @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+          width: 160px;
+        }
+
+        @media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+          width: 180px;
+        }
       }
 
-      .custom-in-block {
-        width: auto;
+      .ito-in-block {
+        @media screen and (min-width: @screen-xs-min) and (max-width: @screen-xs-max) {
+          width: 64%;
+        }
+
+        @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+          width: 66%;
+        }
+
+        @media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+          width: 70%;
+        }
+
+        @media screen and (min-width: @screen-lg-min) {
+          width: 80%;
+        }
+
+        &.custom-in-block {
+          width: auto;
+        }
       }
 
       .ito-inline {
