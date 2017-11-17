@@ -1,3 +1,4 @@
+@import "val";
 @import "function/after-layout";
 @import "function/before-layout";
 @import "function/grid";
@@ -6,6 +7,46 @@
 @import "function/vendor";
 
 
+/* 文本框、下拉框、文本域对应的label */
+.ito-label(@height) {
+  height: @height + 0px;
+  float: left;
+  display: block;
+  padding: 8px 14px;
+  font-weight: 400;
+  text-align: right;
+
+  @media screen and (min-width: @screen-xs-min) and (max-width: @screen-xs-max) {
+    width: 24%;
+  }
+
+  @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    width: 22%;
+  }
+
+  @media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    width: 20%;
+  }
+
+  @media screen and (min-width: @screen-lg-min) {
+    width: 14%;
+  }
+}
+
+.ito-in-group(@height) {
+  width: 100%;
+  height: @height + 0px;
+  display: block;
+  box-shadow: none;
+  padding: 4px 30px 4px 10px;
+  line-height: 1.4;
+  color: #76838f;
+  background: #fff none;
+  border: 1px solid #e4eaec;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
 
 /*
 !* 方法样式文件，只写方法，别写其他样式 *!
