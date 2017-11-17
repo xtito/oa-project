@@ -80,11 +80,34 @@
 
             <div class="ito-groups">
                 <div class="ito-group custom-group">
-                    <label class="ito-label custom-label" for="textarea">类型</label>
+                    <label class="ito-label custom-label" for="textarea">普通文本域</label>
                     <div class="ito-in-block">
                         <textarea id="textarea" class="ito-textarea"></textarea>
                         <i class="has-icon"></i>
-                        <small class="help-block">请填写姓名</small>
+                        <small class="help-block">请填写普通文本域</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ito-groups">
+                <div class="ito-group custom-group">
+                    <label class="ito-label custom-label">单选框</label>
+                    <div class="ito-in-block">
+                        <input type="radio" name="sex" value="男" title="男" checked="">
+                        <div class="layui-unselect layui-form-radio layui-form-radioed">
+                            <i class="layui-anim layui-icon layui-anim-scaleSpring"></i>
+                            <span>男</span>
+                        </div>
+                        <input type="radio" name="sex" value="女" title="女">
+                        <div class="layui-unselect layui-form-radio">
+                            <i class="layui-anim layui-icon"></i>
+                            <span>女</span>
+                        </div>
+                        <input type="radio" name="sex" value="禁" title="禁用" disabled="">
+                        <div class="layui-unselect layui-form-radio layui-radio-disbaled layui-disabled">
+                            <i class="layui-anim layui-icon"></i>
+                            <span>禁用</span>
+                        </div>
                     </div>
                 </div>
             </div>
