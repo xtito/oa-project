@@ -40,7 +40,7 @@
             <div class="top-bar-wrap">
                 <div class="top-bar-head">
                     <a class="btn-logo" href="#">
-                        <img src="${ctx}/static/images/logo/white/logo.png"/>
+                        <i class="ito ito-logo2 logo"></i>
                     </a>
                 </div>
 
@@ -50,8 +50,8 @@
                             <li><a href="#">个人门户</a></li>
                             <li><a href="#">公司门户</a></li>
                             <li><a href="#">消息中心</a></li>
-                            <li><a href="#"><span class="fa fa-user"></span></a></li>
-                            <li><a href="#"><span class="fa fa-power-off"></span></a></li>
+                            <li><a href="#"><span class="ito ito-user"></span></a></li>
+                            <li><a href="#"><span class="ito ito-logout"></span></a></li>
                         </ol>
                     </div>
                 </div>
