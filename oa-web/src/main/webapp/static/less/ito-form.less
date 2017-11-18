@@ -14,6 +14,242 @@
   }
 }
 
+.ito-form-checkbox {
+  position: relative;
+  height: 30px;
+  line-height: 28px;
+  margin-right: 10px;
+  padding-right: 30px;
+  border: 1px solid #d2d2d2;
+  cursor: pointer;
+  font-size: 0;
+  border-radius: 2px;
+  -webkit-transition: .1s linear;
+  transition: .1s linear;
+  box-sizing: border-box;
+
+  span {
+    padding: 0 10px;
+    height: 100%;
+    font-size: 14px;
+    background-color: #d2d2d2;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  i {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 30px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  &:hover {
+    border: 1px solid #c2c2c2;
+
+    span {
+      background-color: #c2c2c2;
+    }
+
+    i {
+      color: #c2c2c2;
+    }
+  }
+
+  /* 复选框-原始风格 */
+  &[data-skin="original"] {
+    height: auto !important;
+    line-height: normal !important;
+    border: none !important;
+    margin-right: 0;
+    padding-right: 0;
+    background: none;
+
+    span {
+      float: right;
+      padding-right: 15px;
+      line-height: 18px;
+      background: none;
+      color: #666;
+    }
+
+    i {
+      position: relative;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      border: 1px solid #d2d2d2;
+      font-size: 12px;
+      border-radius: 2px;
+      background-color: #fff;
+      -webkit-transition: .1s linear;
+      transition: .1s linear;
+      font-family: ito-font, serif;
+
+      &:before {
+        content: "\e601";
+      }
+    }
+
+    &:hover {
+
+      i {
+        border-color: #5FB878;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.ito-form-checked {
+  border-color: #5FB878;
+
+  span {
+    background-color: #5FB878;
+  }
+
+  i {
+    color: #5FB878;
+  }
+
+  &:hover {
+    border-color: #5FB878;
+
+    span {
+      background-color: #5FB878;
+    }
+
+    i {
+      color: #5FB878;
+    }
+  }
+
+  /* 原始复选框 */
+  &[data-skin="original"] {
+
+    i {
+      font-family: ito-font, serif;
+      border-color: #5FB878;
+      background-color: #5FB878;
+      color: #fff;
+
+      &:before {
+        content: "\e7cc";
+      }
+    }
+
+    &:hover {
+      span {
+        background: none;
+      }
+    }
+  }
+}
+
+.ito-checkbox-disbaled {
+  cursor: not-allowed !important;
+
+  /* 原始复选框 */
+  &[data-skin="original"] {
+
+    span {
+      background: none!important; color: #c2c2c2;
+    }
+
+    &:hover i {
+      border-color: #d2d2d2;
+    }
+  }
+}
+
+.ito-form-radio {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 28px;
+  margin: 6px 10px 0 0;
+  padding-right: 10px;
+  cursor: pointer;
+  font-size: 0;
+
+  i {
+    margin-right: 8px;
+    font-size: 22px;
+    color: #c2c2c2;
+
+    &:hover {
+      color: #5FB878;
+    }
+  }
+
+  span {
+    font-size: 14px;
+  }
+}
+
+.ito-form-radioed {
+
+  i {
+    color: #5FB878;
+  }
+}
+
+.ito-radio-disbaled {
+  color: #e2e2e2 !important;
+  cursor: not-allowed !important;
+
+  i {
+    color: #e2e2e2 !important;
+  }
+}
+
+
+
+.ito-form-checkbox,
+.ito-form-checkbox *,
+.ito-form-radio,
+.ito-form-radio *,
+.ito-form-switch {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ito-form-checkbox,
+.ito-form-select dl dd.ito-disabled {
+  background-color: #fff;
+}
+
+.ito-disabled,
+.ito-icon,
+.ito-un-select {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+
+.ito-form {
+
+  input[type=checkbox], input[type=radio], select {
+    display: none;
+  }
+
+  .ito-form-checkbox {
+    margin-top: 4px;
+
+    &[data-skin="original"] {
+      margin-top: 10px;
+    }
+  }
+}
+
 .ito-groups {
   margin-bottom: 16px;
   clear: both;
@@ -45,7 +281,7 @@
   }
 
   .ito-input {
-    .ito-in-group(36);
+    .ito-in-input(36);
   }
 
   .ito-select {

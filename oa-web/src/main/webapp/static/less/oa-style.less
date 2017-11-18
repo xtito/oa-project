@@ -20,7 +20,6 @@
 
   .btn-logo {
     color: white;
-    line-height: 50px;
     background: #373d41;
     display: block;
     width: 180px;
@@ -28,6 +27,11 @@
     text-align: center;
     margin-right: 1px;
     float: left;
+    padding: 8px;
+
+    .logo {
+      font-size: 34px;
+    }
 
     &:hover {
       background-color: #2a2f32;
@@ -145,8 +149,10 @@
   overflow-y: auto;
   text-align: left;
 
-  .fa.icon:before {
-    content: "\f0da";
+  .ito.icon:before {
+    font-size: 10px;
+    font-family: ito-font, serif;
+    content: "\e603";
   }
 
   &.active {
@@ -155,8 +161,10 @@
     //  transform: rotate(90deg);// 旋转
     //}
 
-    .fa.icon:before {
-      content: "\f0d7";
+    .ito.icon:before {
+      font-size: 10px;
+      font-family: ito-font, serif;
+      content: "\e600";
     }
 
     .sidebar-ul {
