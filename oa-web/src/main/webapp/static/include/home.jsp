@@ -32,8 +32,8 @@
             <div class="home-ads">
                 <div class="ads-path col-lg-12">
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-home"></i><a href="${ctx}/static/include/home.jsp">首页</a></li>
-                        <li><i class="fa fa-laptop"></i>Dashboard</li>
+                        <li><i class="ito ito-home"></i><a href="${ctx}/static/include/home.jsp">首页</a></li>
+                        <li><i class="ito ito-dian-nao"></i>Dashboard</li>
                     </ol>
                 </div>
             </div>
@@ -46,9 +46,9 @@
                         <div class="panel pro-panel">
                             <div class="panel-heading pro-heading">
                                 <div class="search-title">
-                                    <span class="fa fa-search-plus fl"></span>
+                                    <span class="ito ito-search fl"></span>
                                     <h3 class="panel-title pro-title">查询条件</h3>
-                                    <div class="s-icon xz title-icon"><span class="fa fa-chevron-up"></span></div>
+                                    <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                                 </div>
                             </div>
                             <div class="panel-body">
@@ -89,11 +89,11 @@
                         <div class="panel pro-panel">
                             <div class="panel-heading pro-heading">
                                 <div class="search-title">
-                                    <div class="s-icon fl"><span class="fa fa-list"></span></div>
+                                    <div class="s-icon fl"><span class="ito ito-list-icon"></span></div>
                                     <h3 class="panel-title pro-title">数据列表</h3>
                                     <div class="title-icon">
-                                        <div class="s-icon fl"><span class="fa fa-refresh "></span></div>
-                                        <div class="s-icon xz fl ml10"><span class="fa fa-chevron-up "></span></div>
+                                        <div class="s-icon fl"><span class="ito ito-refresh "></span></div>
+                                        <div class="s-icon xz fl ml10"><span class="ito ito-chevron-up "></span></div>
                                     </div>
                                 </div>
                             </div>
