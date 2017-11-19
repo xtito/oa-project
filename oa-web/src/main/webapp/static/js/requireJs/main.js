@@ -11,7 +11,8 @@ define(function () {
             "jquery": "../jquery-1.9.1.min",
             "date.format": "../utils/date.format",
             "zTree": "../zTree/jquery.zTree.all.min",
-            "resizeHeight": "../utils/resizeHeight"
+            //"resizeHeight": "../utils/resizeHeight",
+            "lay-ui": "../../ui/layui/layui"
         },
         // 不符合AMD规范的使用
         shim: {
@@ -65,17 +66,17 @@ define(function () {
         });
     }
 
-    window.resize = resizeFun;
+   /* window.resize = resizeFun;
 
     function resizeFun(b, callback) {
         require(["jquery", "resizeHeight"], function($, resize) {
             resize.init(b, callback)
         });
-    }
+    }*/
 
     require(["domReady", "jquery"], function (doc, $) {
 
         activeSidebarMenu();
-        window.resize();
+        //window.resize();
     });
 });
