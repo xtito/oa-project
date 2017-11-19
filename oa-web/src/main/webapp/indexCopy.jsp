@@ -12,6 +12,9 @@
 <head>
     <meta charset="UTF-8">
     <%@ include file="static/common/public-inc.jsp" %>
+    <link rel="stylesheet" href="${ctx}/static/css/layout.css" />
+    <link rel="stylesheet" href="${ctx}/static/css/oa-styleCopy.css" />
+    <link rel="stylesheet" href="${ctx}/static/css/bootstrap/bootstrap.min.css" />
     <title>主页</title>
     <script type="text/javascript">
         <!--
@@ -30,6 +33,9 @@
         }
         //-->
     </script>
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -63,7 +69,7 @@
         <%@ include file="./static/include/sidebar-nav.jsp"%>
 
         <div class="ito-work-min">
-            <iframe id="target_frame" name="rightFrame" width="100%" height="765" frameborder="0" src="${ctx}/static/include/home.jsp">加载中...</iframe>
+            <iframe id="target_frame" name="rightFrame" width="100%" height="765" frameborder="0" src="${ctx}/static/include/homeCopy.jsp">加载中...</iframe>
         </div>
     </div>
 </div>

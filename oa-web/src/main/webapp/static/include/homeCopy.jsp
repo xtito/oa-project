@@ -12,6 +12,9 @@
 <head>
     <meta charset="UTF-8">
     <%@ include file="../common/public-inc.jsp" %>
+    <link rel="stylesheet" href="${ctx}/static/css/layout.css" />
+    <link rel="stylesheet" href="${ctx}/static/css/oa-styleCopy.css" />
+    <link rel="stylesheet" href="${ctx}/static/css/bootstrap/bootstrap.min.css" />
     <title>主页</title>
     <script type="text/javascript">
         <!--
