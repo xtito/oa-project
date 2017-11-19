@@ -84,24 +84,35 @@
     }
     //-->
 </script>
-<div class="layui-body">
-    <div class="layui-main">
-        <div>
-            fdsafads
+
+<div class="ito-inner-body">
+    <div class="ito-home-section">
+        <div class="ito-home-address">
+            <div class="ito-home-location">
+                <ol>
+                    <li class="location-item">
+                        <a><i class="ito ito-home"></i><span>首页</span></a>
+                    </li>
+                </ol>
+            </div>
         </div>
+    </div>
 
-        <table class="layui-hide" id="test"></table>
+    <div class="layui-body">
+        <div class="layui-main">
+            <table class="layui-hide" id="test"></table>
 
-        <div>
-            <button type="button" class="layui-btn" onclick="addUI()">新增</button>
+            <div>
+                <button type="button" class="layui-btn" onclick="addUI()">新增</button>
+            </div>
+
+            <script type="text/html" id="switchTpl">
+                <input type="checkbox" name="yyy" lay-skin="switch" lay-text="女|男">
+            </script>
+
+            <script type="text/html" id="checkboxTpl">
+                <input type="checkbox" name="" title="锁定" checked>
+            </script>
         </div>
-
-        <script type="text/html" id="switchTpl">
-            <input type="checkbox" name="yyy" lay-skin="switch" lay-text="女|男">
-        </script>
-
-        <script type="text/html" id="checkboxTpl">
-            <input type="checkbox" name="" title="锁定" checked>
-        </script>
     </div>
 </div>
