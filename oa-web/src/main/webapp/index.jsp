@@ -26,14 +26,26 @@
                     });
                 });
 
-                loadContent("${ctx}/static/pages/demo.jsp");
+                loadContent("static/include/home.jsp");
+                bindLoadContentEvent();
             });
         }
 
 
-        function loadContent(url, param) {
+        function loadContent(url, param, callback) {
             require(["jquery"], function() {
-                $("#main_body").load(url);
+                $("#main_body").load(url, param, callback);
+            });
+        }
+
+        function bindLoadContentEvent() {
+            require(["jquery"], function () {
+                $(".layui-nav-item a").click(function () {
+                    var url = $(this).attr("data-url");
+                    if (url) {
+                        loadContent(url);
+                    }
+                });
             });
         }
         //-->
@@ -46,7 +58,7 @@
     <div class="layui-header">
         <div class="layui-logo">
             <a class="btn-logo" href="#">
-                <i class="ito ito-logo2 logo"></i>
+                <i class="ito ito-logo2 ito-logo-icon"></i>
             </a>
         </div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
@@ -104,19 +116,51 @@
                 </li>
                 <li class="layui-nav-item"><a href="javascript:;">云市场</a></li>
                 <li class="layui-nav-item"><a href="javascript:;">发布商品</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">部门/帐户/权限</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="">
+                                <i class="ito ito-icon ito-department"></i>
+                                <span>部门管理</span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="${ctx}/mvc/sysUser/mgr/list">
+                                <i class="ito ito-icon ito-user"></i>
+                                <span>用户管理</span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="${ctx}/static/pages/tableDemo.jsp">
+                                <i class="ito ito-icon ito-role"></i>
+                                <span>角色管理</span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="">
+                                <i class="ito ito-icon ito-permissions"></i>
+                                <span>权限管理</span>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">菜单管理</a></dd>
+                        <dd><a href="javascript:;">数据字典</a></dd>
+                        <dd><a href="javascript:;">系统设置</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item"><a href="javascript:;" data-url="${ctx}/static/pages/tableDemo.jsp">表格演示</a></li>
             </ul>
         </div>
     </div>
 
     <!-- 内容主体区域 -->
-    <%--<div class="layui-body">
-        <div id="main_body">
-            <iframe id="target_frame" name="rightFrame" width="100%" height="765" frameborder="0" src="${ctx}/static/include/home.jsp">加载中...</iframe>
-        </div>
-    </div>--%>
-
-    <div id="main_body">
-    </div>
+    <div id="main_body" class="main-body"></div>
 
 
 </div>

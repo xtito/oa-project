@@ -1,121 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ include file="/static/include/inc.jsp" %>
 
-<!DOCTYPE html>
-<html lang="en">
-
 <%--
   
   Created by User: Zy
   Created Date: 2017/11/9 21:35
 --%>
 
-<head>
-    <meta charset="UTF-8">
-    <%@ include file="/static/common/public-inc.jsp" %>
-    <title>添加用户页面</title>
-    <script type="text/javascript">
-        <!--
-        // require.js加载完时调用main.js，main.js调用此方法
-        function onRequireReady() {
-            require(["domReady", "jquery"], function (doc, $) {
+<script type="text/javascript">
+    <!--
+    require(["domReady"], function(doc) {
+        require(["lay-ui"], function() {
+            layui.use('form', function(){
+                var form = layui.form;
 
-
-            });
-        }
-
-        function saveUser() {
-            require(["jquery"], function($) {
-                $.ajax({
-                    url: "${ctx}/mvc/sysUser/mgr/save/user",
-                    type: "POST",
-                    data: $("#data_form").serialize(),
-                    dataType: "json",
-                    success: function (json) {
-                        if (json.success) {
-
-                        } else {
-
-                        }
-                    }, error: function () {
-                        alert("");
-                    }
+                //监听提交
+                form.on('submit(formDemo)', function(data){
+                    layer.msg(JSON.stringify(data.field));
+                    return false;
                 });
+
+                form.render();// 重新渲染表单元素
+//                form.render('select'); //刷新select选择框渲染
             });
-        }
-        //-->
-    </script>
-</head>
+        });
+    });
 
-<body>
+    function saveUser() {
+        require(["jquery"], function($) {
+            $.ajax({
+                url: "${ctx}/mvc/sysUser/mgr/save/user",
+                type: "POST",
+                data: $("#data_form").serialize(),
+                dataType: "json",
+                success: function (json) {
+                    if (json.success) {
 
-<div class="main-body">
-    <div class="section-main">
-        <div class="home">
-            <div class="home-ads">
-                <div class="ads-path col-lg-12">
-                    <ol class="breadcrumb">
-                        <li><i class="fa fa-home"></i><a href="${ctx}/static/include/home.jsp">首页</a></li>
-                        <li><i class="fa fa-user"></i><a href="${ctx}/static/pages/sys/sys_user.jsp">用户管理</a></li>
-                        <li><i class="fa fa-plus-circle"></i>用户管理</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
+                    } else {
 
-        <div class="main-content content">
-            <div class="inner-con">
-                <div class="col-md-12 pn">
-                    <div class="col-panel">
-                        <div class="panel pro-panel">
-                            <div class="panel-body">
-                                    <div class="panel panel-info">
-                                        <div class="panel-heading">
-                                            添加用户
-                                        </div>
-                                        <div class="panel-body">
-                                            <form id="data_form" role="form">
-                                                <div class="form-group">
-                                                    <label for="user_name">用户名</label>
-                                                    <input id="user_name" class="form-control" type="text" placeholder="请设置用户名">
-                                                    <p class="help-block">Help text here.</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="user_phone">手机号</label>
-                                                    <input id="user_phone" class="form-control" type="text" placeholder="可用于登录或找回密码">
-                                                    <p class="help-block">Help text here.</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="valid_code">验证码</label>
-                                                    <input id="valid_code" class="form-control" type="text" placeholder="请输入验证码">
-                                                    <p class="help-block">Help text here.</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="user_pwd">密码</label>
-                                                    <input id="user_pwd" class="form-control" type="text" placeholder="请设置登录密码">
-                                                    <p class="help-block">Help text here.</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Text area</label>
-                                                    <textarea class="form-control" rows="3"></textarea>
-                                                </div>
-                                            </form>
+                    }
+                }, error: function () {
+                    alert("");
+                }
+            });
+        });
 
-                                            <div>
-                                                <button type="button" class="but but-primary" onclick="saveUser()">保存</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
+
+    }
+    //-->
+</script>
+
+<div class="layui-body">
+    <div class="layui-main mt20">
+        <div class="site-text site-block">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">输入框</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
                     </div>
                 </div>
 
-            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码框</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" required="" lay-verify="required" lay-vertype="tips" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">辅助文字</div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">选择框</label>
+                    <div class="layui-input-block">
+                        <select name="city" lay-verify="required">
+                            <option value=""></option>
+                            <option value="0">北京</option>
+                            <option value="1">上海</option>
+                            <option value="2">广州</option>
+                            <option value="3">深圳</option>
+                            <option value="4">杭州</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">复选框</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="like[write]" title="写作">
+                        <input type="checkbox" name="like[read]" title="阅读" checked="">
+                        <input type="checkbox" name="like[dai]" title="发呆">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开关</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="switch" lay-skin="switch" lay-text="ON|OFF" lay-filter="switchTest" value="1" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">单选框</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="sex" value="男" title="男" />
+                        <input type="radio" name="sex" value="女" title="女" checked="" />
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">文本域</label>
+                    <div class="layui-input-block">
+                        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
-</body>
-
-</html>
