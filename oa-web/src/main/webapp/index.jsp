@@ -19,13 +19,21 @@
         function onRequireReady() {
             require(["domReady"], function (doc) {
 
-                require(["lay-ui"], function() {
+                require(["lay-ui"], function () {
                     //JavaScript代码区域
-                    layui.use('element', function(){
+                    layui.use('element', function () {
                         var element = layui.element;
                     });
                 });
 
+                loadContent("${ctx}/static/pages/demo.jsp");
+            });
+        }
+
+
+        function loadContent(url, param) {
+            require(["jquery"], function() {
+                $("#main_body").load(url);
             });
         }
         //-->
@@ -43,15 +51,15 @@
         </div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" target="rightFrame">控制台</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" target="rightFrame">商品管理</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" target="rightFrame">用户</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
+                    <dd><a href="javascript:;" target="rightFrame">邮件管理</a></dd>
+                    <dd><a href="javascript:;" target="rightFrame">消息管理</a></dd>
+                    <dd><a href="javascript:;" target="rightFrame">授权管理</a></dd>
                 </dl>
             </li>
         </ul>
@@ -73,14 +81,17 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-this">
+                    <a href="javascript:;" data-url="${ctx}/static/include/home.jsp">概览</a>
+                </li>
+                <li class="layui-nav-item">
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a target="rightFrame" href="${ctx}/static/include/home.jsp">列表一</a></dd>
+                        <dd><a target="rightFrame" href="${ctx}/static/pages/sys/sys_user.jsp">列表二</a></dd>
+                        <dd><a target="rightFrame" href="javascript:;">列表三</a></dd>
+                        <dd><a target="rightFrame" href="javascript:;">超链接</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -88,19 +99,26 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">列表一</a></dd>
                         <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="javascript:;">超链接</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
+                <li class="layui-nav-item"><a href="javascript:;">云市场</a></li>
+                <li class="layui-nav-item"><a href="javascript:;">发布商品</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+    <!-- 内容主体区域 -->
+    <%--<div class="layui-body">
+        <div id="main_body">
+            <iframe id="target_frame" name="rightFrame" width="100%" height="765" frameborder="0" src="${ctx}/static/include/home.jsp">加载中...</iframe>
+        </div>
+    </div>--%>
+
+    <div id="main_body">
     </div>
+
+
 </div>
 
 </body>

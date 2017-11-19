@@ -21,7 +21,7 @@ public class SysUserController {
 
     @RequestMapping("/list")
     public String list() {
-        return null;
+        return "sys/sys_user";
     }
 
     @RequestMapping(value = "/save/user", method = {RequestMethod.POST})

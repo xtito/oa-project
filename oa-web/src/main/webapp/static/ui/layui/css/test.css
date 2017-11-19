@@ -1,0 +1,12 @@
+a {
+    color: red!important;
+}
+
+.site-demo-title {
+    position: fixed; left: 200px; right: 0; top: 65px;
+}
+
+.ito-body {
+    border: 1px solid red;
+    background-color: blue;
+}

@@ -13,6 +13,7 @@
 <%--<link rel="stylesheet" href="${ctx}/static/css/bootstrap/bootstrap.min.css">--%>
 <link rel="stylesheet" href="${ctx}/static/css/main-public.css" />
 <link rel="stylesheet" href="${ctx}/static/ui/layui/css/layui.css" />
+<link rel="stylesheet" href="${ctx}/static/ui/layui/css/global.css" />
 <script src="${ctx}/static/js/requireJs/require.min.js" data-main="${ctx}/static/js/requireJs/main" defer async></script>
 <!--[if lt IE 9]>
 <script src="../js/html5shiv.min.js"></script>

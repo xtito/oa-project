@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <%@ include file="static/common/public-inc.jsp"%>
     <link rel="stylesheet" href="${ctx}/static/css/login.css">
+    <link rel="stylesheet" href="${ctx}/static/css/bootstrap/bootstrap.min.css">
     <title>登录</title>
 </head>
 
