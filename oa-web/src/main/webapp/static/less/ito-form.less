@@ -6,10 +6,11 @@
   border: 1px solid red;
   background-color: #f6f6f6;
   padding: 20px;
+  overflow: auto;
 
   .content {
     background-color: #fff;
-    min-height: 460px;
+    min-height: 960px;
     padding: 20px;
   }
 }
@@ -83,9 +84,9 @@
     i {
       position: relative;
       top: 0;
-      width: 16px;
-      height: 16px;
-      line-height: 16px;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
       border: 1px solid #d2d2d2;
       font-size: 12px;
       border-radius: 2px;
@@ -93,10 +94,6 @@
       -webkit-transition: .1s linear;
       transition: .1s linear;
       font-family: ito-font, serif;
-
-      &:before {
-        content: "\e601";
-      }
     }
 
     &:hover {
@@ -140,10 +137,6 @@
       border-color: #5FB878;
       background-color: #5FB878;
       color: #fff;
-
-      &:before {
-        content: "\e7cc";
-      }
     }
 
     &:hover {
@@ -156,6 +149,16 @@
 
 .ito-checkbox-disbaled {
   cursor: not-allowed !important;
+  border-color: #e2e2e2 !important;
+
+  span {
+    background-color: #e2e2e2 !important;
+  }
+
+  &:hover i {
+    color: #fff !important;
+  }
+
 
   /* 原始复选框 */
   &[data-skin="original"] {
@@ -234,6 +237,62 @@
   -ms-user-select: none;
 }
 
+.ito-form-switch {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 24px;
+  line-height: 24px;
+  width: 54px;
+  padding: 0 5px;
+  margin-top: 8px;
+  border: 1px solid #d2d2d2;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #fff;
+  -webkit-transition: .1s linear;
+  transition: .1s linear;
+
+  em {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 25px;
+    padding: 0 !important;
+    text-align: center !important;
+    color: #999 !important;
+    font-style: normal !important;
+    font-size: 12px;
+  }
+
+  i {
+    position: absolute;
+    left: 5px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 20px;
+    background-color: #d2d2d2;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+  }
+}
+
+.ito-form-on-switch {
+  border-color: #5FB878;
+  background-color: #5FB878;
+
+  em {
+    left: 5px;
+    right: auto;
+    color: #fff !important;
+  }
+
+  i {
+    left: 32px;
+    background-color: #fff;
+  }
+}
 
 .ito-form {
 
@@ -245,7 +304,7 @@
     margin-top: 4px;
 
     &[data-skin="original"] {
-      margin-top: 10px;
+      margin-top: 8px;
     }
   }
 }
@@ -351,6 +410,5 @@
       }
     }
   }
-
 
 }

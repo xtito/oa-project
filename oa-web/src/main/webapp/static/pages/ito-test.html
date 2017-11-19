@@ -15,7 +15,7 @@
 <div class="outer-body">
     <div class="content">
         <form class="ito-form">
-            <!--<div class="ito-groups">
+            <div class="ito-groups">
                 <div class="ito-group custom-group">
                     <label class="ito-label custom-label" for="title">单行输入框</label>
                     <div class="ito-in-block">
@@ -66,11 +66,11 @@
                     <label class="ito-label custom-label" for="type">类型</label>
                     <div class="ito-in-block">
                         <select id="type" class="ito-select">
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
-                            <option>&#45;&#45;请选择&#45;&#45;</option>
+                            <option>--请选择--</option>
+                            <option>--请选择--</option>
+                            <option>--请选择--</option>
+                            <option>--请选择--</option>
+                            <option>--请选择--</option>
                         </select>
                         <i class="has-icon"></i>
                         <small class="help-block">请填写姓名</small>
@@ -87,7 +87,7 @@
                         <small class="help-block">请填写普通文本域</small>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
             <div class="ito-groups">
                 <div class="ito-group custom-group">
@@ -142,22 +142,47 @@
                         <input type="checkbox" name="like[write]" title="写作">
                         <div class="ito-form-checkbox ito-un-select ito-form-checked" data-skin="original">
                             <span>写作</span>
-                            <i class="ito ito-checkbox-original"></i>
+                            <i class="ito ito-ok"></i>
                         </div>
                         <input type="radio" name="sex" value="女" title="女">
                         <div class="ito-form-checkbox ito-un-select" data-skin="original">
                             <span>阅读</span>
-                            <i class="ito ito-checkbox-original"></i>
+                            <i class="ito ito-ok"></i>
                         </div>
                         <input type="radio" name="sex" value="禁" title="禁用" disabled="">
                         <div class="ito-form-checkbox ito-un-select ito-checkbox-disbaled" data-skin="original">
                             <span>游戏</span>
-                            <i class="ito ito-checkbox-original"></i>
+                            <i class="ito ito-ok"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="ito-groups">
+                <div class="ito-group custom-group">
+                    <label class="ito-label custom-label" for="on-of">开关-默认关</label>
+                    <div class="ito-in-block">
+                        <input id="on-of" type="checkbox" name="close">
+                        <div class="ito-form-switch ito-un-select">
+                            <em>OFF</em>
+                            <i class="ito-round"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ito-groups">
+                <div class="ito-group custom-group">
+                    <label class="ito-label custom-label" for="of-on">开关-默认开</label>
+                    <div class="ito-in-block">
+                        <input id="of-on" type="checkbox" name="close">
+                        <div class="ito-form-switch ito-un-select ito-form-on-switch">
+                            <em>ON</em>
+                            <i class="ito-round"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>
