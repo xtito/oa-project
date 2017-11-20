@@ -30,9 +30,9 @@ define(["jquery"], function ($) {
     };
 
     // 字符常量
-    var MOD_NAME = 'carousel', ELEM = '.layui-carousel', THIS = 'layui-this', SHOW = 'layui-show', HIDE = 'layui-hide', DISABLED = 'layui-disabled'
-        , ELEM_ITEM = '>*[carousel-item]>*', ELEM_LEFT = 'layui-carousel-left', ELEM_RIGHT = 'layui-carousel-right', ELEM_PREV = 'layui-carousel-prev',
-        ELEM_NEXT = 'layui-carousel-next', ELEM_ARROW = 'layui-carousel-arrow', ELEM_IND = 'layui-carousel-ind';
+    var MOD_NAME = 'carousel', ELEM = '.ito-carousel', THIS = 'ito-this', SHOW = 'ito-show', HIDE = 'ito-hide', DISABLED = 'ito-disabled'
+        , ELEM_ITEM = '>*[carousel-item]>*', ELEM_LEFT = 'ito-carousel-left', ELEM_RIGHT = 'ito-carousel-right', ELEM_PREV = 'ito-carousel-prev',
+        ELEM_NEXT = 'ito-carousel-next', ELEM_ARROW = 'ito-carousel-arrow', ELEM_IND = 'ito-carousel-ind';
 
     //构造器
     var Class = function (options) {
@@ -272,8 +272,8 @@ define(["jquery"], function ($) {
 
         //模板&#xe603;(上)&#xe600;(下)&#xe602;(右)&#xe604;(左)
         var tplArrow = $([
-            '<button class="layui-icon ' + ELEM_ARROW + '" lay-type="sub">' + (options.anim === 'updown' ? '&#xe603;' : '&#xe604;') + '</button>'
-            , '<button class="layui-icon ' + ELEM_ARROW + '" lay-type="add">' + (options.anim === 'updown' ? '&#xe600;' : '&#xe602;') + '</button>'
+            '<button class="lb-icon ' + ELEM_ARROW + '" lay-type="sub">' + (options.anim === 'updown' ? '&#xe603;' : '&#xe604;') + '</button>'
+            , '<button class="lb-icon ' + ELEM_ARROW + '" lay-type="add">' + (options.anim === 'updown' ? '&#xe600;' : '&#xe602;') + '</button>'
         ].join(''));
 
         //预设基础属性
@@ -304,7 +304,7 @@ define(["jquery"], function ($) {
             function () {
                 var li = [];
                 each(that.elemItem, function (index) {
-                    li.push('<li' + (options.index === index ? ' class="layui-this"' : '') + '></li>');
+                    li.push('<li' + (options.index === index ? ' class="ito-this"' : '') + '></li>');
                 });
                 return li.join('');
             }(),
