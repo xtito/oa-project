@@ -89,9 +89,14 @@
     <div class="ito-home-section">
         <div class="ito-home-address">
             <div class="ito-home-location">
-                <ol>
+                <ol class="ito-breadcrumb">
                     <li class="location-item">
-                        <a><i class="ito ito-home"></i><span>首页</span></a>
+                        <a href="javascript:;" data-url="${ctx}/static/include/home.jsp">
+                            <i class="ito ito-home"></i><span>首页</span>
+                        </a>
+                    </li>
+                    <li class="location-item">
+                        <i class="ito ito-user"></i><span>用户管理</span>
                     </li>
                 </ol>
             </div>
@@ -99,20 +104,70 @@
     </div>
 
     <div class="layui-body">
-        <div class="layui-main">
-            <table class="layui-hide" id="test"></table>
-
-            <div>
-                <button type="button" class="layui-btn" onclick="addUI()">新增</button>
+        <div class="ito-inner-con">
+            <div class="ito-col-panel">
+                <div class="ito-panel">
+                    <div class="panel-heading">
+                        <div class="search-title">
+                            <span class="ito ito-search fl"></span>
+                            <h3 class="panel-title pro-title">查询条件</h3>
+                            <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" style="border: 0 !important;">
+                            <tbody>
+                            <tr>
+                                <td class="tr"><label>用户</label></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td class="tr"><label>用户</label></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td class="tr"><label>用户</label></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr"><label>用户</label></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td class="tr"><label>用户</label></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td class="tr"><label>用户</label></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <button class="layui-btn mr20">查询</button>
+                                    <button class="layui-btn mr20">重置</button>
+                                    <button class="layui-btn" onclick="addUI()">新建</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
-            <script type="text/html" id="switchTpl">
-                <input type="checkbox" name="yyy" lay-skin="switch" lay-text="女|男">
-            </script>
-
-            <script type="text/html" id="checkboxTpl">
-                <input type="checkbox" name="" title="锁定" checked>
-            </script>
+            <div class="ito-col-panel mt20">
+                <div class="ito-panel">
+                    <div class="panel-heading">
+                        <div class="search-title">
+                            <span class="ito ito-search fl"></span>
+                            <h3 class="panel-title pro-title">查询条件</h3>
+                            <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="layui-hide" id="test"></table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script type="text/html" id="switchTpl">
+    <input type="checkbox" name="yyy" lay-skin="switch" lay-text="女|男">
+</script>
+
+<script type="text/html" id="checkboxTpl">
+    <input type="checkbox" name="" title="锁定" checked>
+</script>

@@ -34,13 +34,15 @@
 
         function loadContent(url, param, callback) {
             require(["jquery"], function() {
-                $("#main_body").load(url, param, callback);
+                $("#main_body").load(url, param, function() {
+                    bindLoadContentEvent();
+                });
             });
         }
 
         function bindLoadContentEvent() {
             require(["jquery"], function () {
-                $(".layui-nav-item a").click(function () {
+                $(".layui-nav-item a, .location-item a").click(function () {
                     var url = $(this).attr("data-url");
                     if (url) {
                         loadContent(url);
