@@ -124,6 +124,7 @@ button {
   top: 10px;
 }
 .ito-carousel[lay-indicator="outside"] .ito-carousel-ind ul {
+  width: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .ito-carousel[lay-indicator="none"] .ito-carousel-ind {
@@ -146,6 +147,7 @@ button {
   height: auto;
 }
 .ito-carousel[lay-anim="updown"] .ito-carousel-ind ul {
+  width: auto;
   padding: 3px 5px;
 }
 .ito-carousel[lay-anim="updown"] .ito-carousel-ind li {
@@ -230,6 +232,7 @@ button {
   font-size: 0;
 }
 .ito-carousel-ind ul {
+  width: auto;
   display: inline-block;
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.2);
