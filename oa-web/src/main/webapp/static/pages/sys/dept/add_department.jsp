@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <a href="javascript:;" data-url="${ctx}/mvc/sysUser/mgr/list">
+                        <a href="javascript:;" data-url="${ctx}/mvc/sysDepartment/mgr/list">
                             <i class="ito ito-department"></i><span>部门管理</span>
                         </a>
                     </li>
@@ -79,8 +79,8 @@
                 <div class="ito-panel">
                     <div class="panel-heading">
                         <div class="search-title">
-                            <span class="ito ito-add-user fl"></span>
-                            <h3 class="panel-title pro-title">添加用户页面</h3>
+                            <span class="ito ito-add-icon fl"></span>
+                            <h3 class="panel-title pro-title">添加部门页面</h3>
                             <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                         </div>
                     </div>
@@ -88,57 +88,21 @@
                         <div class="site-text site-block">
                             <form class="layui-form" action="">
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">用户名</label>
+                                    <label class="layui-form-label">部门名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入用户名" autocomplete="off">
+                                        <input type="text" name="name" class="layui-input" lay-verify="required" placeholder="请输入用户名" autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">用户密码</label>
+                                    <label class="layui-form-label">上级部门</label>
                                     <div class="layui-input-block">
-                                        <input type="password" name="password" class="layui-input" lay-verify="required" lay-vertype="tips" placeholder="请输入密码" autocomplete="off">
+                                        <input type="text" name="password" class="layui-input" lay-vertype="tips" placeholder="请输入密码" autocomplete="off">
                                     </div>
                                 </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">再次输入密码</label>
-                                    <div class="layui-input-block">
-                                        <input type="password" name="password" class="layui-input" lay-verify="required" lay-vertype="tips" placeholder="请再次输入密码" autocomplete="off">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" for="user_dept">部门</label>
-                                    <div class="layui-input-block">
-                                        <select id="user_dept" name="city" lay-verify="required">
-                                            <option value=""></option>
-                                            <option value="0">北京</option>
-                                            <option value="1">上海</option>
-                                            <option value="2">广州</option>
-                                            <option value="3">深圳</option>
-                                            <option value="4">杭州</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">Email</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" class="layui-input" placeholder="请输入Email" autocomplete="off">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">手机号</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" class="layui-input" placeholder="请输入手机号" autocomplete="off">
-                                    </div>
-                                </div>
-
 
                                 <div class="layui-form-item layui-form-text">
-                                    <label class="layui-form-label">备注</label>
+                                    <label class="layui-form-label">部门描述</label>
                                     <div class="layui-input-block">
                                         <textarea name="desc" placeholder="请输入用户备注" class="layui-textarea"></textarea>
                                     </div>

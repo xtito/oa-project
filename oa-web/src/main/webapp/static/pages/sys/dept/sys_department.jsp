@@ -128,79 +128,15 @@
                                 <tbody>
                                 <tr>
                                     <td class="tr w110">
-                                        <label class="layui-form-label w120" for="user_status">用户状态</label>
+                                        <label class="layui-form-label w120" for="login_user">部门名称</label>
                                     </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <select id="user_status" name="city">
-                                                <option value=""></option>
-                                                <option value="0">北京</option>
-                                                <option value="1">上海</option>
-                                                <option value="2">广州</option>
-                                                <option value="3">深圳</option>
-                                                <option value="4">杭州</option>
-                                            </select>
+                                    <td class="tl w200">
+                                        <div class="layui-input-block in-block w160">
+                                            <input type="text" id="login_user" class="layui-input" name="title" placeholder="请输入部门名称" autocomplete="off">
                                         </div>
                                     </td>
 
-                                    <td class="tr w110">
-                                        <label class="layui-form-label w120" for="login_user">登录名</label>
-                                    </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <input type="text" id="login_user" class="layui-input" name="title" placeholder="请输入标题" autocomplete="off">
-                                        </div>
-                                    </td>
-
-                                    <td class="tr w110">
-                                        <label class="layui-form-label w120" for="email">Email</label>
-                                    </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <input type="text" id="email" class="layui-input" name="title" placeholder="请输入Email" autocomplete="off">
-                                        </div>
-                                    </td>
-
-                                    <td class="tr w110">
-                                        <label class="layui-form-label w120" for="phone">手机号</label>
-                                    </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <input type="text" id="phone" name="title" class="layui-input" placeholder="请输入标题" autocomplete="off">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tr w110">
-                                        <label class="layui-form-label w120" for="user_name">用户姓名</label>
-                                    </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <input type="text" id="user_name" name="title" class="layui-input" placeholder="请输入标题" autocomplete="off">
-                                        </div>
-                                    </td>
-
-                                    <td class="tr w110">
-                                        <label class="layui-form-label w120" for="begin_time">起始日期</label>
-                                    </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <input type="text" id="begin_time" name="title" class="layui-input" placeholder="创建日期起始日期" autocomplete="off">
-                                        </div>
-                                    </td>
-
-                                    <td class="tr">
-                                        <label class="layui-form-label w120" for="end_time">结束日期</label>
-                                    </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <input type="text" id="end_time" name="title" class="layui-input" placeholder="创建日期结束日期" autocomplete="off">
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td class="tl pl40" colspan="8">
+                                    <td class="tl pl40">
                                         <button type="button" class="layui-btn mr20">查询</button>
                                         <button type="button" class="layui-btn mr20">重置</button>
                                         <button type="button" class="layui-btn" onclick="addUI()">新建</button>
@@ -218,7 +154,7 @@
                     <div class="panel-heading">
                         <div class="search-title">
                             <span class="ito ito-list-icon fl"></span>
-                            <h3 class="panel-title pro-title">用户列表</h3>
+                            <h3 class="panel-title pro-title">部门列表</h3>
                             <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                         </div>
                     </div>
