@@ -211,8 +211,8 @@
                 <div class="ito-panel">
                     <div class="panel-heading">
                         <div class="search-title">
-                            <span class="ito ito-search fl"></span>
-                            <h3 class="panel-title pro-title">查询条件</h3>
+                            <span class="ito ito-list-icon fl"></span>
+                            <h3 class="panel-title pro-title">用户列表</h3>
                             <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                         </div>
                     </div>
