@@ -3,6 +3,9 @@ package com.oa.bean.sys;
 import java.io.Serializable;
 
 public class SysPermission implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 权限主键ID
      * 表字段 : sys_permission.id
@@ -69,7 +72,6 @@ public class SysPermission implements Serializable {
      */
     private Integer defIdentify;
 
-    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;

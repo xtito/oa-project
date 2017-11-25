@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oa.web.mapper.SysDepartmentMapper">
+
+    <resultMap id="BaseResultMap" type="com.oa.bean.sys.SysDepartment">
+        <id property="id" column="id"/>
+        <result property="name" column="name_" />
+        <result property="level" column="level_" />
+        <result property="parentId" column="parent_id" />
+        <result property="description" column="description" />
+        <result property="correlationCode" column="correlation_code" />
+        <result property="createTime" column="create_time" />
+        <result property="defIdentify" column="def_identify" />
+    </resultMap>
+
+    <sql id="Select_Where_Clause">
+
+    </sql>
+
+    <sql id="Base_Column_List">
+        <trim>
+            id, name_, level_, parent_id, description, correlation_code, create_time, def_identify
+        </trim>
+    </sql>
+
+    <insert id="saveDepartment" parameterType="com.oa.bean.sys.SysDepartment">
+        INSERT INTO sys_department (<include refid="Base_Column_List"/>)
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            #{id},#{name},#{level},#{parentId},#{description},#{correlationCode},#{createTime},#{defIdentify}
+        </trim>
+    </insert>
+
+    <update id="updateDepartment" parameterType="com.oa.bean.sys.SysDepartment">
+        UPDATE sys_department
+        <set>
+            <if test="name != null">
+                name_ = #{name},
+            </if>
+            <if test="level != null">
+                level_ = #{level},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="correlationCode != null">
+                correlation_code = #{correlationCode},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="defIdentify != null">
+                def_identify = #{defIdentify},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <if test="_parameter != null">
+            DELETE FROM sys_department WHERE id = #{id}
+        </if>
+    </delete>
+
+    <select id="getByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_department WHERE id = #{id}
+    </select>
+
+</mapper>

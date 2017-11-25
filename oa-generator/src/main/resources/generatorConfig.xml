@@ -86,9 +86,10 @@
 
         <!-- 指定数据库表 -->
         <!-- 系统模块表  -->
-        <table schema="" tableName="sys_user"/>
-        <table schema="" tableName="sys_role"/>
-        <table schema="" tableName="sys_permission"/>
+        <!--<table schema="" tableName="sys_user"/>-->
+        <!--<table schema="" tableName="sys_role"/>-->
+        <!--<table schema="" tableName="sys_permission"/>-->
+        <table schema="" tableName="sys_department"/>
 
     </context>
 </generatorConfiguration>

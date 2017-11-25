@@ -82,7 +82,7 @@
     });
 
     function addUI() {
-        loadContent("${ctx}/static/pages/sys/add_user.jsp");
+        loadContent("${ctx}/static/pages/sys/user/add_user.jsp");
     }
     //-->
 </script>

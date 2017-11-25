@@ -21,7 +21,7 @@ public class SysUserController {
 
     @RequestMapping("/list")
     public String list() {
-        return "sys/sys_user";
+        return "sys/user/sys_user";
     }
 
     @RequestMapping(value = "/save/user", method = {RequestMethod.POST})
@@ -43,7 +43,7 @@ public class SysUserController {
 
     @RequestMapping("/addUI")
     public String addUI() {
-        return "sys/add_user";
+        return "sys/user/add_user";
     }
 
 }

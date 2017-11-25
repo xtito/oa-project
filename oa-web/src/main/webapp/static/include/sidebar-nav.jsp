@@ -330,7 +330,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="item-a" target="rightFrame" href="${ctx}/static/pages/sys/sys_user.jsp">
+                            <a class="item-a" target="rightFrame" href="${ctx}/static/pages/sys/user/sys_user.jsp">
                                 <div class="nav-icon">
                                     <span class="icon-ecs"><i class="ito ito-user"></i></span>
                                 </div>

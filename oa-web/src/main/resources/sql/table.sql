@@ -80,5 +80,16 @@ CREATE TABLE sys_role_permission (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色与系统权限关联关系表';
 
 
-
+DROP TABLE IF EXISTS sys_department;
+CREATE TABLE sys_department (
+  id bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门主键ID',
+  name_ varchar(50) DEFAULT NULL COMMENT '部门名称',
+  level_ int(10) DEFAULT NULL COMMENT '部门级别',
+  parent_id bigint(20) DEFAULT NULL COMMENT '上级所属部门ID',
+  description varchar(300) DEFAULT NULL COMMENT '部门描述',
+  correlation_code varchar(800) DEFAULT NULL COMMENT '部门关联关系描述ID拼接',
+  create_time datetime DEFAULT NULL COMMENT '创建时间',
+  def_identify int(10) unsigned zerofill DEFAULT NULL COMMENT '默认标识（0可删1不可删除）',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门表';
 

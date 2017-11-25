@@ -103,7 +103,7 @@
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
                         <dd><a target="rightFrame" href="${ctx}/static/include/home.jsp">列表一</a></dd>
-                        <dd><a target="rightFrame" href="${ctx}/static/pages/sys/sys_user.jsp">列表二</a></dd>
+                        <dd><a target="rightFrame" href="${ctx}/static/pages/sys/user/sys_user.jsp">列表二</a></dd>
                         <dd><a target="rightFrame" href="javascript:;">列表三</a></dd>
                         <dd><a target="rightFrame" href="javascript:;">超链接</a></dd>
                     </dl>
@@ -122,7 +122,7 @@
                     <a href="javascript:;">部门/帐户/权限</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="">
+                            <a href="javascript:;" data-url="${ctx}/mvc/sysDepartment/mgr/list">
                                 <i class="ito ito-icon ito-department"></i>
                                 <span>部门管理</span>
                             </a>
