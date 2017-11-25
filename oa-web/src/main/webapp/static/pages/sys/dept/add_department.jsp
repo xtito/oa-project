@@ -62,11 +62,11 @@
                     </li>
                     <li class="location-item">
                         <a href="javascript:;" data-url="${ctx}/mvc/sysUser/mgr/list">
-                            <i class="ito ito-user"></i><span>用户管理</span>
+                            <i class="ito ito-department"></i><span>部门管理</span>
                         </a>
                     </li>
                     <li class="location-item">
-                        <i class="ito ito-add-user"></i><span>添加用户</span>
+                        <i class="ito ito-add-icon"></i><span>添加部门</span>
                     </li>
                 </ol>
             </div>
