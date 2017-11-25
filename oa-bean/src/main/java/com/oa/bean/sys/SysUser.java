@@ -26,6 +26,7 @@ public class SysUser implements Serializable {
     private Date updateTime;// 更新时间
     private Date lastLoginTime;// 最后登录时间
     private String userType;// 用户类型ID
+    private String description;// 用户描述
     private int defIdentify;// 默认标识（0可删1不可删除）
 
     public SysUser() {
@@ -45,6 +46,7 @@ public class SysUser implements Serializable {
         this.lastLoginTime = user.lastLoginTime;
         this.userType = user.userType;
         this.defIdentify = user.defIdentify;
+        this.description = user.getDescription();
     }
 
     public Long getId() {
@@ -157,5 +159,13 @@ public class SysUser implements Serializable {
 
     public void setDefIdentify(int defIdentify) {
         this.defIdentify = defIdentify;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

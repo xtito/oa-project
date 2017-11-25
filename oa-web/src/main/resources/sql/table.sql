@@ -18,6 +18,7 @@ CREATE TABLE sys_user (
   update_time datetime DEFAULT NULL COMMENT '更新时间',
   last_login_time datetime DEFAULT NULL COMMENT '最后登录时间',
   user_type varchar(20) DEFAULT NULL COMMENT '用户类型ID',
+  description varchar(300) DEFAULT NULL COMMENT '用户描述',
   def_identify int(10) unsigned zerofill DEFAULT NULL COMMENT '默认标识（0可删1不可删除）',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
