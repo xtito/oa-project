@@ -9,6 +9,8 @@
                 var table = layui.table
                         ,form = layui.form;
 
+                form.render();// 重新渲染表单元素
+
                 /*table.render({
                     elem: '#test',
                     url: ctx + '/static/json/demo1.json',
@@ -115,33 +117,92 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <table class="table" style="border: 0 !important;">
-                            <tbody>
-                            <tr>
-                                <td class="tr"><label>用户</label></td>
-                                <td><input type="text" class="form-control"></td>
-                                <td class="tr"><label>用户</label></td>
-                                <td><input type="text" class="form-control"></td>
-                                <td class="tr"><label>用户</label></td>
-                                <td><input type="text" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td class="tr"><label>用户</label></td>
-                                <td><input type="text" class="form-control"></td>
-                                <td class="tr"><label>用户</label></td>
-                                <td><input type="text" class="form-control"></td>
-                                <td class="tr"><label>用户</label></td>
-                                <td><input type="text" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">
-                                    <button class="layui-btn mr20">查询</button>
-                                    <button class="layui-btn mr20">重置</button>
-                                    <button class="layui-btn" onclick="addUI()">新建</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <form id="search_form" class="layui-form search-form" method="post">
+                            <table class="table" style="border: 0 !important;">
+                                <tbody>
+                                <tr>
+                                    <td class="tr w110">
+                                        <label class="layui-form-label w120" for="user_status">用户状态</label>
+                                    </td>
+                                    <td class="tl w150">
+                                        <div class="layui-input-block in-block w140">
+                                            <select id="user_status" name="city">
+                                                <option value=""></option>
+                                                <option value="0">北京</option>
+                                                <option value="1">上海</option>
+                                                <option value="2">广州</option>
+                                                <option value="3">深圳</option>
+                                                <option value="4">杭州</option>
+                                            </select>
+                                        </div>
+                                    </td>
+
+                                    <td class="tr w110">
+                                        <label class="layui-form-label w120" for="login_user">登录名</label>
+                                    </td>
+                                    <td class="tl w150">
+                                        <div class="layui-input-block in-block w140">
+                                            <input type="text" id="login_user" class="layui-input" name="title" placeholder="请输入标题" autocomplete="off">
+                                        </div>
+                                    </td>
+
+                                    <td class="tr w110">
+                                        <label class="layui-form-label w120" for="email">Email</label>
+                                    </td>
+                                    <td class="tl w150">
+                                        <div class="layui-input-block in-block w140">
+                                            <input type="text" id="email" class="layui-input" name="title" placeholder="请输入Email" autocomplete="off">
+                                        </div>
+                                    </td>
+
+                                    <td class="tr w110">
+                                        <label class="layui-form-label w120" for="phone">手机号</label>
+                                    </td>
+                                    <td class="tl w150">
+                                        <div class="layui-input-block in-block w140">
+                                            <input type="text" id="phone" name="title" class="layui-input" placeholder="请输入标题" autocomplete="off">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tr w110">
+                                        <label class="layui-form-label w120" for="user_name">用户姓名</label>
+                                    </td>
+                                    <td class="tl w150">
+                                        <div class="layui-input-block in-block w140">
+                                            <input type="text" id="user_name" name="title" class="layui-input" placeholder="请输入标题" autocomplete="off">
+                                        </div>
+                                    </td>
+
+                                    <td class="tr w110">
+                                        <label class="layui-form-label w120" for="begin_time">起始日期</label>
+                                    </td>
+                                    <td class="tl w150">
+                                        <div class="layui-input-block in-block w140">
+                                            <input type="text" id="begin_time" name="title" class="layui-input" placeholder="创建日期起始日期" autocomplete="off">
+                                        </div>
+                                    </td>
+
+                                    <td class="tr">
+                                        <label class="layui-form-label w120" for="end_time">结束日期</label>
+                                    </td>
+                                    <td class="tl w150">
+                                        <div class="layui-input-block in-block w140">
+                                            <input type="text" id="end_time" name="title" class="layui-input" placeholder="创建日期结束日期" autocomplete="off">
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="tl pl40" colspan="8">
+                                        <button type="button" class="layui-btn mr20">查询</button>
+                                        <button type="button" class="layui-btn mr20">重置</button>
+                                        <button type="button" class="layui-btn" onclick="addUI()">新建</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -165,7 +226,8 @@
 </div>
 
 <script type="text/html" id="switchTpl">
-    <input type="checkbox" name="yyy" lay-skin="switch" lay-text="女|男">
+    <label for="aaa"></label>
+    <input type="checkbox" id="aaa" name="yyy" lay-skin="switch" lay-text="女|男">
 </script>
 
 <script type="text/html" id="checkboxTpl">

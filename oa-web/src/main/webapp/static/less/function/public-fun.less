@@ -107,7 +107,7 @@
 
 .padding-left-fn(@max:40, @min:10) when (@min <= @max) {
   .pl@{min} {
-    padding-left: @min + 0px;
+    padding-left: @min + 0px !important;
   }
 
   .padding-left-fn(@max, (@min + 10));
