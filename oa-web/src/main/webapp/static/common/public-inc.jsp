@@ -11,6 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <link rel="shortcut icon" type="image/x-icon" href="${ctx}/static/images/logo/favicon.ico"/>
 <%--<link rel="stylesheet" href="${ctx}/static/css/bootstrap/bootstrap.min.css">--%>
+<link rel="stylesheet" href="${ctx}/static/css/zTree/zTree.css" />
 <link rel="stylesheet" href="${ctx}/static/css/main-public.css" />
 <link rel="stylesheet" href="${ctx}/static/ui/layui/css/layui.css" />
 <link rel="stylesheet" href="${ctx}/static/ui/layui/css/global.css" />

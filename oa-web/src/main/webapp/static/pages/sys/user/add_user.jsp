@@ -23,8 +23,41 @@
                 form.render();// 重新渲染表单元素
 //                form.render('select'); //刷新select选择框渲染
             });
+
+//            layui.use('layer', function(){
+//                var layer = layui.layer;
+////                layer.msg('hello');
+//
+//                layer.open({
+//                    type: 1,
+//                    content: '<div>我就是一个文档</div>' //这里content是一个普通的String
+//                });
+//            });
         });
+
+        bindSelectDeptList();
     });
+
+    function bindSelectDeptList() {
+        require(["jquery", "lay-ui"], function($, lay) {
+            $("#user_dept").click(function() {
+                $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function(html) {
+                    layui.use('layer', function(){
+                        var layer = layui.layer;
+                        var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
+
+                        layer.open({
+                            id: "department_list",
+                            type: 1,
+                            title: title,
+                            area: ['400px', '300px'],
+                            content: html
+                        });
+                    });
+                });
+            });
+        });
+    }
 
     function saveUser() {
         require(["jquery"], function($) {
@@ -111,14 +144,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" for="user_dept">部门</label>
                                     <div class="layui-input-block">
-                                        <select id="user_dept" name="city" lay-verify="required">
-                                            <option value=""></option>
-                                            <option value="0">北京</option>
-                                            <option value="1">上海</option>
-                                            <option value="2">广州</option>
-                                            <option value="3">深圳</option>
-                                            <option value="4">杭州</option>
-                                        </select>
+                                        <input type="text" id="user_dept" name="title" class="layui-input" lay-verify="required" placeholder="请点击选择部门" readonly>
                                     </div>
                                 </div>
 

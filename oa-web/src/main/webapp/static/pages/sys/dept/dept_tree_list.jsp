@@ -6,12 +6,10 @@
   Created by User: Zy
   Created Date: 2017/11/26 20:35
 --%>
-<link rel="stylesheet" href="${ctx}/static/css/zTree/zTree.css" />
 <script type="text/javascript">
     <!--
     require(["domReady"], function (doc) {
         require(["jquery", "zTree"], function ($, zTree) {
-            var setting = {showIcon: false, showLine: false};
 
             var zNodes =[
                 { name:"父节点1 - 展开", open:true,
@@ -61,7 +59,7 @@
             ];
 
             $(document).ready(function(){
-                $.fn.zTree.init($("#treeEle"), setting, zNodes);
+                $.fn.zTree.init($("#treeEle"), {view:{showIcon: false, showLine: false}}, zNodes);
             });
 
         });
