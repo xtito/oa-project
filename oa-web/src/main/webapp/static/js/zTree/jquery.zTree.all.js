@@ -2585,7 +2585,7 @@
 		},
 		node: {
 			CURSELECTED_EDIT: "curSelectedNode_Edit",
-			TMPTARGET_TREE: "tmpTargetzTree",
+			TMPTARGET_TREE: "tmpTargetTree",
 			TMPTARGET_NODE: "tmpTargetNode"
 		}
 	},
@@ -2954,7 +2954,7 @@
 					curNode.addClass(setting.treeObj.attr("class"));
 					curNode.appendTo(body);
 
-					tmpArrow = $$("<span class='tmpzTreeMove_arrow'></span>", setting);
+					tmpArrow = $$("<span class='tmpTreeMove_arrow'></span>", setting);
 					tmpArrow.attr("id", "zTreeMove_arrow_tmp");
 					tmpArrow.appendTo(body);
 
