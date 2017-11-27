@@ -19,7 +19,14 @@
                                 { name:"叶子节点111"},
                                 { name:"叶子节点112"},
                                 { name:"叶子节点113"},
-                                { name:"叶子节点114"}
+                                { name:"叶子节点114",
+                                    children: [
+                                        { name:"叶子节点111"},
+                                        { name:"叶子节点112"},
+                                        { name:"叶子节点113"},
+                                        { name:"叶子节点114"}
+                                    ]
+                                }
                             ]},
                         { name:"父节点12 - 折叠",
                             children: [
@@ -59,7 +66,16 @@
             ];
 
             $(document).ready(function(){
-                $.fn.zTree.init($("#treeEle"), {view:{showIcon: false, showLine: false}}, zNodes);
+                var settings = {
+                    view: {showIcon: false, showLine: false, dblClickExpand: false},
+                    callback: {
+                        onClick: function(e, treeId, treeNode) {
+                            var zTree = $.fn.zTree.getZTreeObj("treeEle");
+                            zTree.expandNode(treeNode);
+                        }
+                    }
+                };
+                $.fn.zTree.init($("#treeEle"), settings, zNodes);
             });
 
         });
