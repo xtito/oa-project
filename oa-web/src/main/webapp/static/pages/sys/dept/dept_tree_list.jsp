@@ -66,4 +66,4 @@
     });
     //-->
 </script>
-<div id="treeEle" class="zTree"></div>
+<div id="treeEle" class="zTree ito-tree"></div>
