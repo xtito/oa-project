@@ -1,10 +1,13 @@
 package com.oa.web.controller.sys;
 
+import com.alibaba.fastjson.JSONObject;
 import com.oa.bean.sys.SysDepartment;
+import com.oa.core.base.controller.BaseController;
 import com.oa.web.service.sys.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/sysDepartment/mgr")
-public class SysDepartmentController {
+public class SysDepartmentController extends BaseController {
 
     @Autowired
     private SysDepartmentService deptService;
@@ -48,12 +51,25 @@ public class SysDepartmentController {
     /**
      * 保存部门
      */
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping("/save")
-    public String saveDepartment(SysDepartment dept, BindException bindResult) {
+    public String saveDepartment(SysDepartment dept, BindingResult bindResult) {
 
+        boolean success = true;
+        String info = "添加成功";
+        JSONObject json = new JSONObject();
 
-        return null;
+        try {
+
+//            this.deptService.save(dept);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "保存部门异常，请联系管理员";
+        }
+
+        return parseJsonStr(success, info);
     }
 
 

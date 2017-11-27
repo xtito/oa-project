@@ -26,21 +26,22 @@
         });
     });
 
-    function saveUser() {
-        require(["jquery"], function($) {
+    function saveDepartment() {
+        require(["jquery", "lay-ui"], function($, lay) {
+            var layer = layui.layer;
             $.ajax({
-                url: "${ctx}/mvc/sysUser/mgr/save/user",
+                url: "${ctx}/mvc/sysDepartment/mgr/save",
                 type: "POST",
                 data: $("#data_form").serialize(),
                 dataType: "json",
                 success: function (json) {
+                    console.log(JSON.stringify(json));
                     if (json.success) {
 
-                    } else {
-
                     }
+                    layer.msg(json.info);
                 }, error: function () {
-                    alert("");
+                    layer.msg("操作失败，请重试");
                 }
             });
         });
@@ -86,32 +87,32 @@
                     </div>
                     <div class="panel-body">
                         <div class="site-text site-block">
-                            <form class="layui-form" action="">
+                            <form id="data_form" class="layui-form" method="post">
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">部门名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="name" class="layui-input" lay-verify="required" placeholder="请输入用户名" autocomplete="off">
+                                        <input type="text" name="name" class="layui-input" placeholder="请输入用户名" autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">上级部门</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="password" class="layui-input" lay-vertype="tips" placeholder="请输入密码" autocomplete="off">
+                                        <input type="text" name="parentId" class="layui-input" placeholder="请选择上级部门" readonly>
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item layui-form-text">
                                     <label class="layui-form-label">部门描述</label>
                                     <div class="layui-input-block">
-                                        <textarea name="desc" placeholder="请输入用户备注" class="layui-textarea"></textarea>
+                                        <textarea name="description" placeholder="请输入部门备注" class="layui-textarea"></textarea>
                                     </div>
                                 </div>
 
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+                                        <button type="button" class="layui-btn" onclick="saveDepartment()">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                     </div>
                                 </div>
