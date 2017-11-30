@@ -9,13 +9,13 @@
 
 <script type="text/javascript">
     <!--
-    require(["domReady"], function(doc) {
-        require(["lay-ui"], function() {
-            layui.use('form', function(){
+    require(["domReady"], function (doc) {
+        require(["lay-ui"], function () {
+            layui.use('form', function () {
                 var form = layui.form;
 
                 //监听提交
-                form.on('submit(formDemo)', function(data){
+                form.on('submit(formDemo)', function (data) {
                     layer.msg(JSON.stringify(data.field));
                     return false;
                 });
@@ -24,10 +24,51 @@
 //                form.render('select'); //刷新select选择框渲染
             });
         });
+
+        loadDeptList();
     });
 
+    function loadDeptList() {
+        require(["jquery", "lay-ui"], function ($, lay) {
+            $("#select_dept").click(function() {
+                var $this = $(this);
+
+                $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function(html) {
+                    layui.use('layer', function(){
+                        var layer = layui.layer;
+                        var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
+
+                        layer.open({
+                            id: "department_list",
+                            type: 1,
+                            title: title,
+                            area: ['400px', '320px'],
+                            content: html,
+                            btn: ['确定', '取消'],
+                            yes: function (index) {
+                                var treeObj = $.fn.zTree.getZTreeObj("treeEle");
+                                var nodes = treeObj.getSelectedNodes();
+                                if (nodes) {
+                                    $("#dept_id").val(1);
+                                    console.log(nodes[0].name);
+                                    $this.val(nodes[0].name);
+                                }
+                                layer.close(index);
+                            },
+                            btn2: function(index, layero){
+                                // 按钮【按钮二】的回调
+                                layer.close(index);
+                                //return false 开启该代码可禁止点击该按钮关闭
+                            }
+                        });
+                    });
+                });
+            });
+        });
+    }
+
     function saveDepartment() {
-        require(["jquery", "lay-ui"], function($, lay) {
+        require(["jquery", "lay-ui"], function ($, lay) {
             var layer = layui.layer;
             $.ajax({
                 url: "${ctx}/mvc/sysDepartment/mgr/save",
@@ -35,18 +76,21 @@
                 data: $("#data_form").serialize(),
                 dataType: "json",
                 success: function (json) {
-                    console.log(JSON.stringify(json));
                     if (json.success) {
-
+                        jumpToDeptList();
                     }
-                    layer.msg(json.info);
+                    setTimeout(function () {
+                        layer.msg(json.info);
+                    }, 50);
                 }, error: function () {
                     layer.msg("操作失败，请重试");
                 }
             });
         });
+    }
 
-
+    function jumpToDeptList() {
+        loadContent("${ctx}/mvc/sysDepartment/mgr/list");
     }
     //-->
 </script>
@@ -91,29 +135,35 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">部门名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="name" class="layui-input" placeholder="请输入用户名" autocomplete="off">
+                                        <input type="text" name="name" class="layui-input" placeholder="请输入用户名"
+                                               autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">上级部门</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="parentId" class="layui-input" placeholder="请选择上级部门" readonly>
+                                        <input type="hidden" id="dept_id" name="parentId" value="0"/>
+                                        <input type="text" id="select_dept" class="layui-input" placeholder="请选择上级部门"
+                                               readonly>
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item layui-form-text">
                                     <label class="layui-form-label">部门描述</label>
                                     <div class="layui-input-block">
-                                        <textarea name="description" placeholder="请输入部门备注" class="layui-textarea"></textarea>
+                                        <textarea name="description" placeholder="请输入部门备注"
+                                                  class="layui-textarea"></textarea>
                                     </div>
                                 </div>
 
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button type="button" class="layui-btn" onclick="saveDepartment()">立即提交</button>
-                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                        <button type="button" class="layui-btn mr20" onclick="saveDepartment()">立即提交
+                                        </button>
+                                        <button type="reset" class="layui-btn layui-btn-primary mr20">重置</button>
+                                        <button type="button" class="layui-btn layui-btn-primary" onclick="jumpToDeptList()">返回</button>
                                     </div>
                                 </div>
                             </form>

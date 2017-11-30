@@ -67,11 +67,11 @@
 
             $(document).ready(function(){
                 var settings = {
-                    view: {showIcon: false, showLine: false, dblClickExpand: false},
+                    view: {showIcon: false, showLine: false/*, dblClickExpand: false*/},
                     callback: {
                         onClick: function(e, treeId, treeNode) {
-                            var zTree = $.fn.zTree.getZTreeObj("treeEle");
-                            zTree.expandNode(treeNode);
+//                            var zTree = $.fn.zTree.getZTreeObj("treeEle");
+//                            zTree.expandNode(treeNode);
                         }
                     }
                 };

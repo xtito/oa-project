@@ -218,6 +218,7 @@
 
   li {
     padding: 0;
+    position: relative;
 
     a {
       position: relative;
@@ -253,19 +254,22 @@
         background: none !important;
 
         &.switch {
-          width: 0;
-          height: 0;
-          display: none;
+          width: 20px;
+          height: 20px;
+          top: 6px;
+          left: 16px;
+          position: absolute;
+          z-index: 99;
         }
 
-        &.ico_open, &.ico_close {
+        &.ico_open, &.ico_close, &.ico_docu {
           width: 18px;
           height: 18px;
           font-family: 'ito-font', serif;
           font-size: 14px;
           position: absolute;
-          top: 8px;
-          left: 20px;
+          top: 7px;
+          left: 18px;
         }
 
         &.ico_open {
@@ -283,7 +287,25 @@
             content: "\e603";
           }
         }
+
+        &.ico_docu {
+          background: none !important;
+
+          &:before {
+            content: "\e63f";
+          }
+        }
       }
     }
+  }
+}
+
+// 弹窗按钮
+.layui-layer-btn {
+  border-top: 1px solid #f3f3f3;
+
+  a {
+    height: 34px !important;
+    line-height: 34px !important;
   }
 }
