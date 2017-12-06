@@ -125,7 +125,7 @@ public class LoggerUtil {
      * Error 输出
      *
      * @param clazz   目标.Class
-     * @param message 输出信息
+     * @param msg 输出信息
      * @param ex      异常信息
      */
     public static void error(Class<?> clazz, String msg, Throwable ex) {
