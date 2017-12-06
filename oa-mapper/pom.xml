@@ -31,6 +31,12 @@
 
         <dependency>
             <groupId>com.oa.project</groupId>
+            <artifactId>oa-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oa.project</groupId>
             <artifactId>oa-web-parent</artifactId>
             <version>${project.version}</version>
         </dependency>
