@@ -35,12 +35,34 @@ public class PageBean<T> implements Serializable {
     // 结果集
     private List<T> list;
 
+    // 排序字段 升降序
+    private String orderBy;
+
     // 查询参数
     private Map<String, Object> params = new HashMap<String, Object>();
 
     public PageBean() {}
 
+    public PageBean(int pageNum, int pageSize) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+    }
+
     public PageBean(List<T> list) {
+        if (list instanceof Page) {
+            this.convertPage(list);
+        }
+    }
+
+    public void put(String key, Object value) {
+        this.getParams().put(key, value);
+    }
+
+    /**
+     * 将Mybatis分页插件pageHelper查询的结果集，转换封装为page对象
+     * @param list 结果集
+     */
+    public void convertPage(List<T> list) {
         if (list instanceof Page) {
             Page<T> page = (Page<T>) list;
             this.pageNum = page.getPageNum();
@@ -106,6 +128,14 @@ public class PageBean<T> implements Serializable {
 
     public void setParams(Map<String, Object> params) {
         this.params = params;
+    }
+
+    public String getOrderBy() {
+        return orderBy;
+    }
+
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
     }
 
     @Override
