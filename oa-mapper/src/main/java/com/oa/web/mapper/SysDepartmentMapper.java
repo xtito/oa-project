@@ -53,4 +53,11 @@ public interface SysDepartmentMapper {
      * @return 符合查询条件的结果集
      */
     List<SysDepartment> getDepartmentList(PageBean<SysDepartment> page);
+
+    /**
+     * 根据部门名称查询部门
+     * @param deptName 部门名称
+     * @return 部门实体
+     */
+    SysDepartment getDepartmentByName(String deptName);
 }

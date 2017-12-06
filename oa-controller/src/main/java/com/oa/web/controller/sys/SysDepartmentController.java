@@ -6,6 +6,7 @@ import com.oa.bean.sys.SysDepartment;
 import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
 import com.oa.core.constant.HttpResponseStatusConstant;
+import com.oa.core.exception.ValidateException;
 import com.oa.web.service.sys.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * 部门管理
@@ -33,13 +37,14 @@ public class SysDepartmentController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/list")
-    public Object list(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) throws JsonProcessingException {
+    public Object list(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize,
+                       HttpServletRequest request) throws JsonProcessingException {
 
         PageBean<SysDepartment> page = new PageBean<SysDepartment>(pageNum, pageSize);
 
         try {
 
-            page = this.service.getDepartmentList(page);
+            page = this.service.getDepartmentList(page, request);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,17 +53,6 @@ public class SysDepartmentController extends BaseController {
         }
 
         return page;
-    }
-
-    @ResponseBody
-    @RequestMapping("/demo")
-    public Object demo() {
-        JSONObject json = new JSONObject();
-        json.put("success", true);
-        json.put("info", "操作成功");
-        PageBean page = new PageBean(1, 10);
-        json.put("page", page);
-        return json;
     }
 
 
@@ -88,12 +82,13 @@ public class SysDepartmentController extends BaseController {
 
         try {
 
-            this.service.save(dept);
+            dept.setCreateTime(new Date());
+            this.service.saveDepartment(dept);
 
-        } catch (Exception e) {
+        } catch (ValidateException e) {
             e.printStackTrace();
             success = false;
-            info = "保存部门异常，请联系管理员";
+            info = e.getMsg();
         }
 
         return parseJsonStr(success, info);

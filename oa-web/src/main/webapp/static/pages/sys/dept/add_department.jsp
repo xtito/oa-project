@@ -156,8 +156,6 @@
                                                   class="layui-textarea"></textarea>
                                     </div>
                                 </div>
-                                <input type="text" name="createTime" value="2017-12-16" />
-
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">

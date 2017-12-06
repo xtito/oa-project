@@ -6,19 +6,24 @@ package com.oa.core.exception;
  */
 public class ValidateException extends Exception {
 
-    public enum ValidateErrorType{
-        empty,maxLength,number,integral,email,max,min,minLength,reg
+    public enum ValidateErrorType {
+        empty, maxLength, number, integral, email, max, min, minLength, reg
     }
+
     private String msg;
     private String col;
     private ValidateErrorType errorType;
 
-    public ValidateException(String msg,String col,ValidateErrorType errorType){
+    public ValidateException(String msg, String col, ValidateErrorType errorType) {
         super(msg);
+        this.msg = msg;
+        this.col = col;
+        this.errorType = errorType;
     }
 
     public ValidateException(String msg) {
         super(msg);
+        this.msg = msg;
     }
 
     public String getMsg() {
