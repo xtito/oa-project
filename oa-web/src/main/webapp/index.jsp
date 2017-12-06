@@ -19,15 +19,15 @@
         function onRequireReady() {
             require(["domReady"], function (doc) {
 
-                require(["lay-ui"], function () {
+                require(["jquery", "lay-ui"], function ($, lay) {
                     //JavaScript代码区域
                     layui.use('element', function () {
                         var element = layui.element;
                     });
-                });
 
-                loadContent("static/include/home.jsp");
-                bindLoadContentEvent();
+                    loadContent("static/include/home.jsp");
+                    bindLoadContentEvent($(".layui-nav-item a"));
+                });
             });
         }
 
@@ -35,14 +35,16 @@
         function loadContent(url, param, callback) {
             require(["jquery"], function() {
                 $("#main_body").load(url, param, function() {
-                    bindLoadContentEvent();
+                    bindLoadContentEvent($(".location-item a"));
                 });
             });
         }
 
-        function bindLoadContentEvent() {
+        function bindLoadContentEvent($obj) {
             require(["jquery"], function () {
-                $(".layui-nav-item a, .location-item a").click(function () {
+                // 先取消所有click事件
+                $obj.unbind("click");
+                $obj.click(function () {
                     var url = $(this).attr("data-url");
                     if (url) {
                         loadContent(url);
@@ -122,7 +124,7 @@
                     <a href="javascript:;">部门/帐户/权限</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/mvc/sysDepartment/mgr/list">
+                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/dept/sys_department.jsp">
                                 <i class="ito ito-icon ito-department"></i>
                                 <span>部门管理</span>
                             </a>
