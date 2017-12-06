@@ -42,7 +42,7 @@ public class PageBean<T> implements Serializable {
     private int code;
 
     // 请求结果
-    private int msg;
+    private String msg;
 
     // 查询参数
     private Map<String, Object> params = new HashMap<String, Object>();
@@ -152,11 +152,11 @@ public class PageBean<T> implements Serializable {
         this.code = code;
     }
 
-    public int getMsg() {
+    public String getMsg() {
         return msg;
     }
 
-    public void setMsg(int msg) {
+    public void setMsg(String msg) {
         this.msg = msg;
     }
 
