@@ -20,7 +20,7 @@ public class DbMysql implements Db {
     @Override
     public boolean isViewExist(String viewName) {
         String sql = "SELECT COUNT(*) FROM information_schema.views WHERE table_name = ?";
-        return jdbcTemplate.queryForInt(sql, new Object[] {viewName}) > 0;
+        return jdbcTemplate.queryForObject(sql, new Object[] {viewName}, Integer.class) > 0;
     }
 
     @Override

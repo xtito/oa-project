@@ -90,7 +90,7 @@
     }
 
     function jumpToDeptList() {
-        loadContent("${ctx}/mvc/sysDepartment/mgr/list");
+        loadContent("${ctx}/static/pages/sys/dept/sys_department.jsp");
     }
     //-->
 </script>
@@ -106,7 +106,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <a href="javascript:;" data-url="${ctx}/mvc/sysDepartment/mgr/list">
+                        <a href="javascript:;" data-url="${ctx}/static/pages/sys/dept/sys_department.jsp">
                             <i class="ito ito-department"></i><span>部门管理</span>
                         </a>
                     </li>
@@ -156,6 +156,7 @@
                                                   class="layui-textarea"></textarea>
                                     </div>
                                 </div>
+                                <input type="text" name="createTime" value="2017-12-16" />
 
 
                                 <div class="layui-form-item">

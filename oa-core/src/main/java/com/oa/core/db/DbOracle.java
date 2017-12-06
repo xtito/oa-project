@@ -16,7 +16,7 @@ public class DbOracle implements Db {
         JdbcTemplate jdbcTemplate = (JdbcTemplate) AppContext.getBean("jdbcTemplate");
         String sql = "select count(*) from user_views where table_name = ?";
 
-        return jdbcTemplate.queryForInt(sql, new Object[] {viewName.toUpperCase()}) > 0;
+        return jdbcTemplate.queryForObject(sql, new Object[] {viewName.toUpperCase()}, Integer.class) > 0;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class DbOracle implements Db {
         JdbcTemplate jdbcTemplate = (JdbcTemplate) AppContext.getBean("jdbcTemplate");
         String sql = "select count(*) from user_tables where table_name = ?";
 
-        return jdbcTemplate.queryForInt(sql, new Object[] {tableName.toUpperCase()}) > 0;
+        return jdbcTemplate.queryForObject(sql, new Object[] {tableName.toUpperCase()}, Integer.class) > 0;
     }
 
 }

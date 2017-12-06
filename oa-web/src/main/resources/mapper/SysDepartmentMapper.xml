@@ -70,4 +70,30 @@
         SELECT <include refid="Base_Column_List"/> FROM sys_department WHERE id = #{id}
     </select>
 
+    <select id="getAll" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_department
+    </select>
+
+
+    <select id="getDepartmentList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_department
+        <where>
+            <if test="params.name != null and params.name != ''">
+                AND _name = #{params.name}
+            </if>
+            <if test="params.nameLike != null and params.nameLike != ''">
+                AND _name LIKE '%${params.name}%'
+            </if>
+            <if test="params.begin != null and params.begin != '' and params.end != null and params.end != ''">
+                AND create_time BETWEEN #{params.begin} AND #{params.end}
+            </if>
+        </where>
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            ORDER BY id
+        </if>
+    </select>
+
 </mapper>

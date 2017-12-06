@@ -1,6 +1,8 @@
 package com.oa.web.service.sys.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.oa.bean.sys.SysDepartment;
+import com.oa.core.bean.PageBean;
 import com.oa.web.mapper.SysDepartmentMapper;
 import com.oa.web.service.sys.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +47,11 @@ public class SysDepartmentServiceImpl implements SysDepartmentService {
         return this.mapper.getAll();
     }
 
+    @Override
+    public PageBean<SysDepartment> getDepartmentList(PageBean<SysDepartment> page) {
+        PageHelper.startPage(page.getPageNum(), page.getPageSize());
+        List<SysDepartment> list = this.mapper.getDepartmentList(page);
+        page.convertPage(list);
+        return page;
+    }
 }

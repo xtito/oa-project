@@ -1,14 +1,20 @@
 package com.oa.web.controller.sys;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.oa.bean.sys.SysDepartment;
 import com.oa.core.base.controller.BaseController;
+import com.oa.core.bean.PageBean;
+import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.web.service.sys.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -22,15 +28,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class SysDepartmentController extends BaseController {
 
     @Autowired
-    private SysDepartmentService deptService;
+    private SysDepartmentService service;
 
     /**
      * 部门列表
      */
+    @ResponseBody
     @RequestMapping("/list")
-    public String list() {
+    public String list(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) throws JsonProcessingException {
 
-        return "sys/dept/sys_department";
+        PageBean<SysDepartment> page = new PageBean<SysDepartment>(pageNum, pageSize);
+
+        try {
+
+            page = this.service.getDepartmentList(page);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            page.setCode(HttpResponseStatusConstant.INTERNAL_SERVER_ERROR);
+            page.setMsg("部门列表加载异常，请联系管理员");
+        }
+
+        ObjectMapper jsonMapper = new ObjectMapper();
+        return jsonMapper.writeValueAsString(page);
     }
 
 
@@ -60,7 +80,7 @@ public class SysDepartmentController extends BaseController {
 
         try {
 
-            this.deptService.save(dept);
+            this.service.save(dept);
 
         } catch (Exception e) {
             e.printStackTrace();

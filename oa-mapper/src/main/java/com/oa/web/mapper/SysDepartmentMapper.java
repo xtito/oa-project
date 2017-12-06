@@ -1,6 +1,7 @@
 package com.oa.web.mapper;
 
 import com.oa.bean.sys.SysDepartment;
+import com.oa.core.bean.PageBean;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -46,4 +47,10 @@ public interface SysDepartmentMapper {
      */
     List<SysDepartment> getAll();
 
+    /**
+     * 查询部门列表，可以指定查询参数
+     * @param page 参数实体
+     * @return 符合查询条件的结果集
+     */
+    List<SysDepartment> getDepartmentList(PageBean<SysDepartment> page);
 }
