@@ -68,21 +68,18 @@
         <!--<property name="configLocation" value="classpath:mybatis/mybatisConfig.xml" />-->
 
         <!-- 设置分页 -->
-        <!--<property name="plugins">-->
-            <!--<array>-->
-                <!--<bean class="cn.kjzf.comm.web.mybatis.interceptor.PageInterceptor">-->
-                    <!--<property name="properties">-->
-                        <!--<value>-->
-                            <!--dataType=sqlserver-->
-                        <!--</value>-->
-                    <!--</property>-->
-                <!--</bean>-->
-                <!--<bean class="cn.kjzf.comm.web.mybatis.interceptor.InsertInterceptor">-->
-                <!--</bean>-->
-                <!--<bean class="cn.kjzf.comm.web.mybatis.interceptor.MybatisInterceptor">-->
-                <!--</bean>-->
-            <!--</array>-->
-        <!--</property>-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <!-- spring和mybatis整合配置 mapper扫描器(DAO接口所在包名，Spring会自动查找其下的类) -->
