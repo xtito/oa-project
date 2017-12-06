@@ -38,6 +38,12 @@ public class PageBean<T> implements Serializable {
     // 排序字段 升降序
     private String orderBy;
 
+    // 数据请求是否成功
+    private int code;
+
+    // 请求结果
+    private int msg;
+
     // 查询参数
     private Map<String, Object> params = new HashMap<String, Object>();
 
@@ -138,6 +144,22 @@ public class PageBean<T> implements Serializable {
         this.orderBy = orderBy;
     }
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public int getMsg() {
+        return msg;
+    }
+
+    public void setMsg(int msg) {
+        this.msg = msg;
+    }
+
     @Override
     public String toString() {
         return "PageBean{" +
@@ -147,6 +169,9 @@ public class PageBean<T> implements Serializable {
                 ", total=" + total +
                 ", pages=" + pages +
                 ", list=" + list +
+                ", orderBy='" + orderBy + '\'' +
+                ", code=" + code +
+                ", msg=" + msg +
                 ", params=" + params +
                 '}';
     }
