@@ -30,7 +30,7 @@
                         ,{type: 'checkbox'}
                         ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
                         ,{field:'name', title:'部门名称', sort: true}
-                        ,{field:'lock', title:'创建时间', width:160, sort: true}
+                        ,{field:'createTime', title:'创建时间', width:180, sort: true}
                         ,{field:'description', title:'部门描述'}
                     ]]
                     ,request: {pageName: "pageNum", limitName: "pageSize"}

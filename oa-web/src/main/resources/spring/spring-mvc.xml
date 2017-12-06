@@ -28,7 +28,6 @@
         mvc:status-controller 状态控制器标签 <mvc:status-controller path="/status" status-code="200"/>
         mvc:view-controller 带状态的视图控制器标签
 	-->
-    <!--<mvc:annotation-driven conversion-service="conversionService" />-->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -40,27 +39,27 @@
                 </property>
             </bean>
 
-            <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
-                <!--<description>Jackson响应配置</description>-->
-                <!--<property name="prettyPrint" value="true"/>-->
-                <!--<property name="supportedMediaTypes">-->
-                    <!--<list>-->
-                        <!--<value>application/json;charset=UTF-8</value>-->
-                        <!--<value>text/html;charset=UTF-8</value>-->
-                    <!--</list>-->
-                <!--</property>-->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <description>Jackson响应配置</description>
+                <property name="prettyPrint" value="true"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
 
-                <!--<property name="objectMapper">-->
-                    <!--<bean class="com.fasterxml.jackson.databind.ObjectMapper">-->
-                        <!--<description>配置后台返回JSON日期格式全局处理</description>-->
-                        <!--<property name="dateFormat">-->
-                            <!--<bean class="java.text.SimpleDateFormat">-->
-                                <!--<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />-->
-                            <!--</bean>-->
-                        <!--</property>-->
-                    <!--</bean>-->
-                <!--</property>-->
-            <!--</bean>-->
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <description>配置后台返回JSON日期格式全局处理</description>
+                        <property name="dateFormat">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
         </mvc:message-converters >
     </mvc:annotation-driven>
 

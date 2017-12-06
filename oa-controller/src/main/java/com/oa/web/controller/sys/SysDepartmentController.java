@@ -33,7 +33,7 @@ public class SysDepartmentController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/list")
-    public String list(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) throws JsonProcessingException {
+    public Object list(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) throws JsonProcessingException {
 
         PageBean<SysDepartment> page = new PageBean<SysDepartment>(pageNum, pageSize);
 
@@ -47,7 +47,18 @@ public class SysDepartmentController extends BaseController {
             page.setMsg("部门列表加载异常，请联系管理员");
         }
 
-        return JSONObject.toJSONString(page);
+        return page;
+    }
+
+    @ResponseBody
+    @RequestMapping("/demo")
+    public Object demo() {
+        JSONObject json = new JSONObject();
+        json.put("success", true);
+        json.put("info", "操作成功");
+        PageBean page = new PageBean(1, 10);
+        json.put("page", page);
+        return json;
     }
 
 
