@@ -2,8 +2,6 @@ package com.oa.web.controller.sys;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.oa.bean.sys.SysDepartment;
 import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
@@ -49,8 +47,7 @@ public class SysDepartmentController extends BaseController {
             page.setMsg("部门列表加载异常，请联系管理员");
         }
 
-        ObjectMapper jsonMapper = new ObjectMapper();
-        return jsonMapper.writeValueAsString(page);
+        return JSONObject.toJSONString(page);
     }
 
 
