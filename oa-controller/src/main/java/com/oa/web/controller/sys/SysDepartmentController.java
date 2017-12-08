@@ -46,21 +46,14 @@ public class SysDepartmentController extends BaseController {
 
             page = this.service.getDepartmentList(page, request);
 
-        } catch (Exception e) {
+        } catch (ValidateException e) {
             e.printStackTrace();
+            page.setMsg(e.getMsg());
             page.setCode(HttpResponseStatusConstant.INTERNAL_SERVER_ERROR);
-            page.setMsg("部门列表加载异常，请联系管理员");
         }
 
         return page;
     }
-
-
-    @RequestMapping("/add/ui")
-    public String addUI() {
-        return "sys/dept/add_department";
-    }
-
 
     /**
      * 跳转到更新页面
