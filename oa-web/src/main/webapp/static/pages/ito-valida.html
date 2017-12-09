@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/ito-form.css" />
+    <link rel="stylesheet" href="../../static/css/main-public.css" />
+    <link rel="stylesheet" href="../../static/css/font-core.css" />
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/utils/ito.validation.js"></script>
+    <script type="text/javascript">
+        <!--
+        $(document).ready(function () {
+
+            var options = {
+                feedbackIcons: {
+                    valid: 'ito ito-ok1',
+                    invalid: 'ito ito-remove',
+                    validating: 'ito ito-refresh'
+                },
+                fields: {
+                    userName: {
+                        validators: {
+                            notEmpty: {
+                                message: '名字不能为空'
+                            },
+                            stringLength: {
+                                min: 6,
+                                max: 30,
+                                message: "名字最少六个字符最多30个字符"
+                            }
+                        }
+                    },
+                    birthday: {
+                        validators: {
+                            notEmpty: {
+                                message: '出生日期不能为空'
+                            },
+                            regexp: {
+                                regexp: /^\d{4}(-(\d{1}|\d{2})){2}$/,
+                                message: '出生日期格式必须是yyyy-MM-dd'
+                            }
+                        }
+                    },
+                    officeName: {
+                        validators: {
+                            notEmpty: {
+                                message: '工作单位不能为空'
+                            },
+                            stringLength: {
+                                min: 1,
+                                max: 50,
+                                message: "工作单位最少1个字符最多50个字符"
+                            }
+                        }
+                    },
+                    mobileNum: {
+                        validators: {
+                            notEmpty: {
+                                message: '手机号不能为空'
+                            },
+                            regexp: {
+                                regexp: /\d{11}/,
+                                message: '手机号只能是11位数字'
+                            }
+                        }
+                    }
+                }
+            };
+
+            var formValida = new ito.Validator("#data_form", options);
+
+
+        });
+        //-->
+    </script>
+</head>
+<body>
+    <div style="padding: 40px; background-color: #dddddd; width: 100%; height: 100%">
+        <div style="padding: 40px; background-color: #fff;">
+            <form id="data_form" method="post">
+                <div class="ito-groups">
+                    <div class="ito-group custom-group">
+                        <label class="ito-label custom-label" for="title">姓名</label>
+                        <div class="ito-in-block">
+                            <input id="title" type="text" name="userName" autocomplete="off" placeholder="请输入姓名" class="ito-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ito-groups">
+                    <div class="ito-group custom-group">
+                        <label class="ito-label custom-label" for="birthday">出生年月</label>
+                        <div class="ito-in-block">
+                            <input id="birthday" type="text" name="birthday" autocomplete="off" placeholder="请输入出生年月" class="ito-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ito-groups">
+                    <div class="ito-group custom-group">
+                        <label class="ito-label custom-label" for="officeName">工作单位</label>
+                        <div class="ito-in-block">
+                            <input id="officeName" type="text" name="officeName" autocomplete="off" placeholder="请输入工作单位" class="ito-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ito-groups">
+                    <div class="ito-group custom-group">
+                        <label class="ito-label custom-label" for="mobile">手机</label>
+                        <div class="ito-in-block">
+                            <input id="mobile" type="text" name="mobileNum" autocomplete="off" placeholder="请输入手机" class="ito-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tc">
+                    <button type="submit" class="p-but w80" id="submit_but">提交</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
