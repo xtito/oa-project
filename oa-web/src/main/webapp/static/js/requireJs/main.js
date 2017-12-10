@@ -12,7 +12,8 @@ define(function () {
             "date.format": "../utils/date.format",
             "zTree": "../zTree/jquery.zTree.all.min",
             //"resizeHeight": "../utils/resizeHeight",
-            "lay-ui": "../../ui/layui/layui"
+            "lay-ui": "../../ui/layui/layui",
+            "ito-validation": "../utils/ito-validation"
         },
         // 不符合AMD规范的使用
         shim: {

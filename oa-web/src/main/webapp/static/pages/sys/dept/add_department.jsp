@@ -68,24 +68,41 @@
     }
 
     function saveDepartment() {
-        require(["jquery", "lay-ui"], function ($, lay) {
+        require(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
             var layer = layui.layer;
-            $.ajax({
-                url: "${ctx}/mvc/sysDepartment/mgr/save",
-                type: "POST",
-                data: $("#data_form").serialize(),
-                dataType: "json",
-                success: function (json) {
-                    if (json.success) {
-                        jumpToDeptList();
+            var options = {
+                group: '.layui-form-item',
+                fields: {
+                    name: {
+                        validators: {
+                            notEmpty: {
+                                message: '部门名称不能为空'
+                            }
+                        }
                     }
-                    setTimeout(function () {
-                        layer.msg(json.info);
-                    }, 50);
-                }, error: function () {
-                    layer.msg("操作失败，请重试");
                 }
-            });
+            };
+
+            var validaForm = new valida.Validator("#data_form", options);
+            console.log(validaForm.validateForm());
+            console.log("执行了");
+
+            <%--$.ajax({--%>
+                <%--url: "${ctx}/mvc/sysDepartment/mgr/save",--%>
+                <%--type: "POST",--%>
+                <%--data: $("#data_form").serialize(),--%>
+                <%--dataType: "json",--%>
+                <%--success: function (json) {--%>
+                    <%--if (json.success) {--%>
+                        <%--jumpToDeptList();--%>
+                    <%--}--%>
+                    <%--setTimeout(function () {--%>
+                        <%--layer.msg(json.info);--%>
+                    <%--}, 50);--%>
+                <%--}, error: function () {--%>
+                    <%--layer.msg("操作失败，请重试");--%>
+                <%--}--%>
+            <%--});--%>
         });
     }
 
@@ -159,8 +176,7 @@
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button type="button" class="layui-btn mr20" onclick="saveDepartment()">立即提交
-                                        </button>
+                                        <button type="button" class="layui-btn mr20" onclick="saveDepartment()">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary mr20">重置</button>
                                         <button type="button" class="layui-btn layui-btn-primary" onclick="jumpToDeptList()">返回</button>
                                     </div>
