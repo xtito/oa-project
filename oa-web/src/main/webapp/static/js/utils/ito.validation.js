@@ -543,11 +543,11 @@ var ito = {
                     }
 
                     // 在输入组中修复反馈图标
-                    if ($parent.find('.ito-group').length !== 0) {
+                    if ($parent.find('.ito-input-group').length !== 0) {
                         $icon.css({
                             'top': 0,
                             'z-index': 100
-                        }).insertAfter($parent.find('.ito-group').eq(0));
+                        }).insertAfter($parent.find('.ito-input-group').eq(0));
                     }
                 }
             }
