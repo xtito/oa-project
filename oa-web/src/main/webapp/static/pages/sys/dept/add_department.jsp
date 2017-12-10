@@ -30,11 +30,11 @@
 
     function loadDeptList() {
         require(["jquery", "lay-ui"], function ($, lay) {
-            $("#select_dept").click(function() {
+            $("#select_dept").click(function () {
                 var $this = $(this);
 
-                $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function(html) {
-                    layui.use('layer', function(){
+                $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function (html) {
+                    layui.use('layer', function () {
                         var layer = layui.layer;
                         var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
 
@@ -49,13 +49,12 @@
                                 var treeObj = $.fn.zTree.getZTreeObj("treeEle");
                                 var nodes = treeObj.getSelectedNodes();
                                 if (nodes) {
-                                    $("#dept_id").val(1);
-                                    console.log(nodes[0].name);
+                                    $("#dept_id").val(nodes[0].id);
                                     $this.val(nodes[0].name);
                                 }
                                 layer.close(index);
                             },
-                            btn2: function(index, layero){
+                            btn2: function (index, layero) {
                                 // 按钮【按钮二】的回调
                                 layer.close(index);
                                 //return false 开启该代码可禁止点击该按钮关闭
@@ -84,25 +83,24 @@
             };
 
             var validaForm = new valida.Validator("#data_form", options);
-            console.log(validaForm.validateForm());
-            console.log("执行了");
-
-            <%--$.ajax({--%>
-                <%--url: "${ctx}/mvc/sysDepartment/mgr/save",--%>
-                <%--type: "POST",--%>
-                <%--data: $("#data_form").serialize(),--%>
-                <%--dataType: "json",--%>
-                <%--success: function (json) {--%>
-                    <%--if (json.success) {--%>
-                        <%--jumpToDeptList();--%>
-                    <%--}--%>
-                    <%--setTimeout(function () {--%>
-                        <%--layer.msg(json.info);--%>
-                    <%--}, 50);--%>
-                <%--}, error: function () {--%>
-                    <%--layer.msg("操作失败，请重试");--%>
-                <%--}--%>
-            <%--});--%>
+            if (validaForm.validateForm()) {
+                $.ajax({
+                    url: "${ctx}/mvc/sysDepartment/mgr/save",
+                    type: "POST",
+                    data: $("#data_form").serialize(),
+                    dataType: "json",
+                    success: function (json) {
+                        if (json.success) {
+                            jumpToDeptList();
+                        }
+                        setTimeout(function () {
+                            layer.msg(json.info);
+                        }, 50);
+                    }, error: function () {
+                        layer.msg("操作失败，请重试");
+                    }
+                });
+            }
         });
     }
 
@@ -176,9 +174,12 @@
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button type="button" class="layui-btn mr20" onclick="saveDepartment()">立即提交</button>
+                                        <button type="button" class="layui-btn mr20" onclick="saveDepartment()">立即提交
+                                        </button>
                                         <button type="reset" class="layui-btn layui-btn-primary mr20">重置</button>
-                                        <button type="button" class="layui-btn layui-btn-primary" onclick="jumpToDeptList()">返回</button>
+                                        <button type="button" class="layui-btn layui-btn-primary"
+                                                onclick="jumpToDeptList()">返回
+                                        </button>
                                     </div>
                                 </div>
                             </form>

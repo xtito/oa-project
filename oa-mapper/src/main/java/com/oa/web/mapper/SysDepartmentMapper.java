@@ -60,4 +60,11 @@ public interface SysDepartmentMapper {
      * @return 部门实体
      */
     SysDepartment getDepartmentByName(String deptName);
+
+    /**
+     * 根据部门ID查询子级部门
+     * @param deptId 部门ID
+     * @return 子级部门列表
+     */
+    List<SysDepartment> getDepartmentByPid(String deptId);
 }

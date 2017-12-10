@@ -102,4 +102,8 @@
         SELECT <include refid="Base_Column_List"/> FROM sys_department WHERE name_ = #{deptName}
     </select>
 
+    <select id="getDepartmentByPid" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_department WHERE parent_id = #{deptId}
+    </select>
+
 </mapper>

@@ -1,12 +1,15 @@
 package com.oa.web.controller.sys;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.oa.bean.TreeNode;
 import com.oa.bean.sys.SysDepartment;
 import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
 import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.core.exception.ValidateException;
+import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 部门管理
@@ -76,6 +80,7 @@ public class SysDepartmentController extends BaseController {
         try {
 
             dept.setCreateTime(new Date());
+            dept.setDefIdentify(0);
             this.service.saveDepartment(dept);
 
         } catch (ValidateException e) {
@@ -101,6 +106,23 @@ public class SysDepartmentController extends BaseController {
     public String deleteDepartment(String deptId, BindException bindResult) {
 
         return null;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/list/tree", produces = "application/json; charset=utf-8")
+    public Object listDeptTree(HttpServletRequest request) {
+
+        String deptId = request.getParameter("id");
+        List<TreeNode> treeNodes = null;
+
+        if (StringUtil.isEmpty(deptId)) {
+            treeNodes = this.service.listRootTree();
+        } else {
+            treeNodes = this.service.listChildTree(deptId);
+        }
+
+        return JSONArray.toJSONString(treeNodes);
     }
 
 }

@@ -1,0 +1,1 @@
+INSERT INTO sys_department VALUES ('0', '默认部门', '1', '1', '默认部门', null, '2017-12-10 16:45:00', '1');
