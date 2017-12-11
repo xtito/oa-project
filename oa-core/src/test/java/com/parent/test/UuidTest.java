@@ -41,10 +41,10 @@ public class UuidTest {
     @Test
     public void string() {
 
-        String a = StringUtil.parsDouble(2.2333);
-        String b = StringUtil.parsDouble(2.2333, 1);
-        String c = StringUtil.parsDouble(2.2336, 3);
-        String d = StringUtil.parsDouble(2.0, 3);
+        String a = StringUtil.parseDouble(2.2333);
+        String b = StringUtil.parseDouble(2.2333, 1);
+        String c = StringUtil.parseDouble(2.2336, 3);
+        String d = StringUtil.parseDouble(2.0, 3);
 
         System.out.println(a);
         System.out.println(b);

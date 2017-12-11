@@ -2,17 +2,14 @@ package com.oa.web.support.shiro.service.impl;
 
 import com.oa.core.LoggerUtil;
 import com.oa.core.config.INI4j;
-import com.oa.core.context.AppContext;
 import com.oa.web.support.shiro.service.ShiroManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.mgt.DefaultFilterChainManager;
 import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;

@@ -79,8 +79,8 @@ public class StringUtil {
     /**
      * 判断字符串是否不为空
      */
-    public static boolean isNotNull(String str) {
-        return null != str && !"".equals(str.trim());
+    public static boolean isNotNull(Object str) {
+        return null != str && !"".equals(str.toString().trim());
     }
 
     /**
@@ -158,55 +158,18 @@ public class StringUtil {
         return string;
     }
 
-    /**
-     * 判断是否为数字并强制转换，如果不是则返回0
-     */
-    public static Integer stringToNumber(String value) {
-        Integer num = 0;
-
-        try {
-            if (!"".equals(value) && value != null) {
-                num = Integer.parseInt(value.trim());
-            }
-        } catch (Exception e) {
-            return num;
-        }
-
-        return num;
-    }
-
-    /**
-     * 判断是否为数字并强制转换，如果不是则返回0
-     */
-    public static Integer stringToNumberOrNull(String value) {
-        Integer num = null;
-
-        try {
-            if (!"".equals(value) && value != null) {
-                num = Integer.parseInt(value.trim());
-            }
-        } catch (Exception e) {
-            return null;
-        }
-
-        return num;
-    }
-
 
     /**
      * 去除字符串前后空格
      *
-     * @param string 要去除空格的字符串
+     * @param object 要去除空格的字符串
      * @return 去除空格后的字符串
      */
-    public static String removeTrim(String string) {
-
+    public static String removeTrim(Object object) {
         String str = null;
-
-        if (string != null && !"".equals(string)) {
-            str = string.trim();
+        if (isNotNull(object)) {
+            str = object.toString().trim();
         }
-
         return str;
     }
 
@@ -219,17 +182,15 @@ public class StringUtil {
      * @param str 要判断的多个字符串
      * @return 只要有一个为空或Null则返回true
      */
-    public static boolean isNullBatch(String... str) {
+    public static boolean isNullBatch(Object... str) {
 
         boolean isNull = false;
 
-        for (String s : str) {
-
-            if (s == null || "".equals(s)) {
+        for (Object s : str) {
+            if (isEmpty(s)) {
                 isNull = true;
                 break;
             }
-
         }
 
         return isNull;
@@ -361,44 +322,6 @@ public class StringUtil {
         return bfb;
     }
 
-    /**
-     * 四舍五入取整
-     */
-    public static int getInteger(Double score) {
-        if (score != null) {
-            BigDecimal itg = new BigDecimal(score).setScale(0, BigDecimal.ROUND_HALF_UP);
-            return itg.intValue();
-        }
-        return 0;
-    }
-
-
-    /**
-     * 获取四舍五入
-     *
-     * @param num 要转换的数
-     * @param xs  保留几位小数，默认不保留
-     * @return 转换后的数转为字符串
-     */
-    public static String parsDouble(Double num, int... xs) {
-
-        String str = "0";
-        int defaultXs = 0;// 默认保留0位小数
-        if (num != null) {
-            if (xs.length > 0) {
-                defaultXs = xs[0];
-            }
-
-            BigDecimal format = new BigDecimal(num);
-
-            // 四舍五入转换小数
-            BigDecimal result = format.setScale(defaultXs, BigDecimal.ROUND_HALF_UP);
-
-            str = result.toString();
-        }
-
-        return str;
-    }
 
     /**
      * 判断是否包含指定字符串
@@ -407,8 +330,8 @@ public class StringUtil {
      * @param searchSeq 是否包含的字符串
      * @return 包含返回 true，不包含返回 false
      */
-    public static boolean contains(String seq, String searchSeq) {
-        return isNotNull(seq) && isNotNull(searchSeq) && seq.contains(searchSeq);
+    public static boolean contains(Object seq, Object searchSeq) {
+        return isNotNull(seq) && isNotNull(searchSeq) && seq.toString().contains(searchSeq.toString());
     }
 
     /**
@@ -429,19 +352,86 @@ public class StringUtil {
     }
 
     /**
-     * 把数组转换成set
-     * @param array 要转换的数据
-     * @return 转换后的Set集合
+     * 判断是否为数字并强制转换，如果不是则返回0
      */
-    public static Set<?> array2Set(Object[] array) {
-        Set<Object> set = new TreeSet<Object>();
-        if (array != null && array.length > 0) {
-            for (Object id : array) {
-                if(null != id){
-                    set.add(id);
-                }
+    public static int string2Int(Object value) {
+        try {
+            if (isNotNull(value)) {
+                return Integer.parseInt(value.toString());
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return set;
+        return 0;
+    }
+
+    /**
+     * 将字符转换为数字
+     * @param object 待转换对象
+     * @return 转换后的数字
+     */
+    public static Integer parseInteger(Object object) {
+        try {
+            if (StringUtil.isNotNull(object)) {
+                return Integer.parseInt(object.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 将字符转换为长整型数字
+     * @param object 待转换对象
+     * @return 转换后的长整型数字
+     */
+    public static Long parseLong(Object object) {
+        try {
+            if (StringUtil.isNotNull(object)) {
+                return Long.valueOf(object.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取四舍五入
+     *
+     * @param num 要转换的数
+     * @param xs  保留几位小数，默认不保留
+     * @return 转换后的数转为字符串
+     */
+    public static String parseDouble(Double num, int... xs) {
+
+        String str = "0";
+        int defaultXs = 0;// 默认保留0位小数
+        if (num != null) {
+            if (xs.length > 0) {
+                defaultXs = xs[0];
+            }
+
+            BigDecimal format = new BigDecimal(num);
+
+            // 四舍五入转换小数
+            BigDecimal result = format.setScale(defaultXs, BigDecimal.ROUND_HALF_UP);
+
+            str = result.toString();
+        }
+
+        return str;
+    }
+
+    /**
+     * 四舍五入取整
+     */
+    public static int getInteger(Double score) {
+        if (score != null) {
+            BigDecimal itg = new BigDecimal(score).setScale(0, BigDecimal.ROUND_HALF_UP);
+            return itg.intValue();
+        }
+        return 0;
     }
 }

@@ -1,6 +1,6 @@
-package com.oa.core.db;
+package com.oa.web.support.db;
 
-import com.oa.core.context.AppContext;
+import com.oa.web.support.content.AppContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**

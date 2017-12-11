@@ -1,7 +1,7 @@
 package com.oa.web.support.shiro.token.manager;
 
 import com.oa.bean.sys.SysUser;
-import com.oa.core.context.AppContext;
+import com.oa.web.support.content.AppContext;
 import com.oa.web.support.shiro.session.CustomSessionManager;
 import com.oa.web.support.shiro.token.SampleRealm;
 import org.apache.shiro.SecurityUtils;
@@ -9,7 +9,6 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -103,10 +103,6 @@
             }
         });
     }
-
-    function jumpToDeptList() {
-        loadContent("${ctx}/static/pages/sys/dept/sys_department.jsp");
-    }
     //-->
 </script>
 

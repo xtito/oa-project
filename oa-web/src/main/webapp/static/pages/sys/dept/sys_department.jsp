@@ -9,39 +9,51 @@
 
 <script type="text/javascript">
     <!--
-    require(["domReady"], function(doc) {
-        require(["jquery", "lay-ui"], function($, lay){
-            layui.use('table', function(){
-                var table = layui.table
-                        ,form = layui.form;
+    require(["domReady"], function (doc) {
+        require(["jquery", "lay-ui"], function ($, lay) {
+            layui.use('table', function () {
+                var table = layui.table, form = layui.form, layer = layui.layer;
 
                 form.render();// 重新渲染表单元素
 
-                // page: {curr: 1} 重新从第 1 页开始
                 table.render({
                     elem: '#data_table'
-                    ,id: 'table_reload'
-                    ,url: ctx + '/mvc/sysDepartment/mgr/list'
-                    ,method: "post"
-                    ,page: true
-                    ,cellMinWidth: 100
-                    ,cols: [[
-                        {type:'numbers'}
-                        ,{type: 'checkbox'}
-                        ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
-                        ,{field:'name', title:'部门名称', sort: true}
-                        ,{field:'createTime', title:'创建时间', width:180, sort: true}
-                        ,{field:'description', title:'部门描述'}
+                    , id: 'table_reload'
+                    , url: ctx + '/mvc/sysDepartment/mgr/list'
+                    , method: "post"
+                    , page: true
+                    , cellMinWidth: 100
+                    , cols: [[
+                        {type: 'checkbox'}
+                        , {title: '序号', type: 'numbers'}
+//                        ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
+                        , {field: 'name', title: '部门名称', sort: true}
+                        , {field: 'createTime', title: '创建时间', width: 180, sort: true}
+                        , {field: 'description', title: '部门描述'}
+                        , {title: '操作', width: 100, toolbar: '#operation_con', fixed: 'right'}
                     ]]
-                    ,request: {pageName: "pageNum", limitName: "pageSize"}
-                    ,response: {
+                    , request: {pageName: "pageNum", limitName: "pageSize"}
+                    , response: {
                         countName: "total",
                         dataName: "list"
                     }
                 });
 
+                table.on("tool(operation)", function (obj) {
+                    var data = obj.data;
+                    if (obj.event === 'del') {
+                        var delMsg = '您确定要删除 ' + data.name + " 吗？";
+                        layer.confirm(delMsg, function (index) {
+                            obj.del();
+                            layer.close(index);
+                        });
+                    } else if (obj.event === 'edit') {
+                        loadContent("${ctx}/mvc/sysDepartment/mgr/update/ui?id=" + data.id);
+                    }
+                });
+
                 var active = {
-                    reload: function(){
+                    reload: function () {
                         var $deptName = $('#dept_name');
 
                         //执行重载
@@ -49,14 +61,14 @@
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }
-                            ,where: {
+                            , where: {
                                 deptName: $deptName.val()
                             }
                         });
                     }
                 };
 
-                $("#search_btn").on('click', function(){
+                $("#search_btn").on('click', function () {
                     var type = $(this).data('type');
                     active[type] ? active[type].call(this) : '';
                 });
@@ -66,6 +78,10 @@
 
     function addUI() {
         loadContent("${ctx}/static/pages/sys/dept/add_department.jsp");
+    }
+
+    function jumpToDeptList() {
+        loadContent("${ctx}/static/pages/sys/dept/sys_department.jsp");
     }
     //-->
 </script>
@@ -109,12 +125,15 @@
                                     </td>
                                     <td class="tl w200">
                                         <div class="layui-input-block in-block w160">
-                                            <input type="text" id="dept_name" class="layui-input" name="title" placeholder="请输入部门名称" autocomplete="off">
+                                            <input type="text" id="dept_name" class="layui-input" name="title"
+                                                   placeholder="请输入部门名称" autocomplete="off">
                                         </div>
                                     </td>
 
                                     <td class="tl pl40">
-                                        <button type="button" id="search_btn" class="layui-btn mr20" data-type="reload">查询</button>
+                                        <button type="button" id="search_btn" class="layui-btn mr20" data-type="reload">
+                                            查询
+                                        </button>
                                         <button type="button" class="layui-btn mr20">重置</button>
                                         <button type="button" class="layui-btn" onclick="addUI()">新建</button>
                                     </td>
@@ -136,10 +155,15 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <table class="layui-hide" id="data_table"></table>
+                        <table class="layui-hide" id="data_table" lay-filter="operation"></table>
                     </div>
                 </div>
             </div>
+
+            <script type="text/html" id="operation_con">
+                <a class="operation-btn" lay-event="edit"><i class="ito ito-edit mr10"></i></a>
+                <a class="operation-btn" lay-event="del"><i class="ito ito-delete"></i></a>
+            </script>
         </div>
     </div>
 </div>

@@ -74,7 +74,7 @@
     </listener>-->
 
     <listener>
-        <listener-class>com.oa.core.context.AppContext</listener-class>
+        <listener-class>com.oa.web.support.content.AppContext</listener-class>
     </listener>
 
 

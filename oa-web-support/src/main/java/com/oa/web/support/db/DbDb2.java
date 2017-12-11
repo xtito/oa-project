@@ -1,4 +1,4 @@
-package com.oa.core.db;
+package com.oa.web.support.db;
 
 
 /**
@@ -18,4 +18,5 @@ public class DbDb2 implements Db {
     public boolean isTableExist(String tableName) {
         return false;
     }
+
 }

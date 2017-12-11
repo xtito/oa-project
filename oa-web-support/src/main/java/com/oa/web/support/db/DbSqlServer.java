@@ -1,4 +1,4 @@
-package com.oa.core.db;
+package com.oa.web.support.db;
 
 /**
  * SqlServer判断表或视图是否存在

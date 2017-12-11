@@ -1,4 +1,4 @@
-package com.oa.core.context;
+package com.oa.web.support.content;
 
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
@@ -25,7 +25,7 @@ public class DefaultAppStartupHandler implements AppStartup {
     // 创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行（池中所保存的线程数，即使线程是空闲的也包括在内）
     ScheduledExecutorService executor = Executors.newScheduledThreadPool(3);
 
-    private static void regiestBeanUtilsCovert() {
+    private static void registerBeanUtilsCovert() {
         ConvertUtils.register(new Converter() {
             @Override
             public Object convert(Class type, Object value) {
@@ -38,7 +38,7 @@ public class DefaultAppStartupHandler implements AppStartup {
     public void startup() {
         IS_RUNNING = true;
 
-        regiestBeanUtilsCovert();
+        registerBeanUtilsCovert();
 
         // 表示给定单元粒度的时间段，表示指定分钟递增
         TimeUnit timeUnit = TimeUnit.SECONDS;

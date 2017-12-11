@@ -1,4 +1,4 @@
-package com.oa.core.db;
+package com.oa.web.support.db;
 
 /**
  * 数据库表、视图是否存在接口

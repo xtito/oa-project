@@ -1,9 +1,10 @@
-package com.oa.core.context;
+package com.oa.web.support.content;
 
 
-import com.oa.core.db.DbType;
 import com.oa.core.utils.StringUtil;
 import com.oa.core.utils.path.ConfigUtil;
+import com.oa.web.support.db.DbType;
+import com.oa.web.support.task.SystemInfoTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -60,6 +61,7 @@ public class AppContext implements ServletContextListener {
 
         defaultStartup = new DefaultAppStartupHandler();
         defaultStartup.startup();
+        new Thread(new SystemInfoTask()).start();
         ConfigUtil.build();
     }
 

@@ -1,7 +1,6 @@
 package com.oa.web.controller.sys;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.oa.bean.TreeNode;
 import com.oa.bean.sys.SysDepartment;
@@ -9,10 +8,12 @@ import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
 import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.core.exception.ValidateException;
+import com.oa.web.support.tag.ItoFunctionTag;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,7 +64,9 @@ public class SysDepartmentController extends BaseController {
      * 跳转到更新页面
      */
     @RequestMapping("/update/ui")
-    public String updateUI() {
+    public String updateUI(@RequestParam("id") String id, ModelMap modelMap) {
+        SysDepartment department = this.service.getByPrimaryKey(Long.valueOf(id));
+        modelMap.put("dept", department);
         return "sys/dept/update_department";
     }
 

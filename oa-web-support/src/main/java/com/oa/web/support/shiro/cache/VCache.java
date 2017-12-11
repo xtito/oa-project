@@ -1,6 +1,6 @@
 package com.oa.web.support.shiro.cache;
 
-import com.oa.core.context.AppContext;
+import com.oa.web.support.content.AppContext;
 import com.oa.core.utils.SerializeUtil;
 import redis.clients.jedis.Jedis;
 

@@ -36,7 +36,7 @@ public class DateUtil {
     public static Date parse(String time) {
         try {
             return new SimpleDateFormat(default_pattern).parse(time);
-        } catch (ParseException e) {
+        } catch (Exception e) {
             return null;
         }
     }

@@ -3,6 +3,7 @@ package com.oa.web.support.shiro.session;
 import com.oa.bean.sys.SysUser;
 import com.oa.bean.sys.UserOnline;
 import com.oa.core.LoggerUtil;
+import com.oa.core.utils.CollectionUtil;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.support.shiro.CustomShiroSessionDao;
 import org.apache.shiro.session.Session;
@@ -50,7 +51,7 @@ public class CustomSessionManager {
     @SuppressWarnings("unchecked")
     public List<SimplePrincipalCollection> getSimplePrincipalCollectionByUserId(Long... userIds) {
         //把userIds 转成Set，好判断
-        Set<Long> idset = (Set<Long>) StringUtil.array2Set(userIds);
+        Set<Long> idset = (Set<Long>) CollectionUtil.array2Set(userIds);
         //获取所有session
         Collection<Session> sessions = customShiroSessionDAO.getActiveSessions();
         //定义返回

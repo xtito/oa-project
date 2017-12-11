@@ -4,18 +4,18 @@
 <%--
   
   Created by User: Zy
-  Created Date: 2017/11/25 17:24
+  Created Date: 2017/11/25 17:28
 --%>
 
 <script type="text/javascript">
     <!--
-    require(["domReady"], function(doc) {
-        require(["lay-ui"], function() {
-            layui.use('form', function(){
+    require(["domReady"], function (doc) {
+        require(["lay-ui"], function () {
+            layui.use('form', function () {
                 var form = layui.form;
 
                 //监听提交
-                form.on('submit(formDemo)', function(data){
+                form.on('submit(formDemo)', function (data) {
                     layer.msg(JSON.stringify(data.field));
                     return false;
                 });
@@ -24,29 +24,86 @@
 //                form.render('select'); //刷新select选择框渲染
             });
         });
+
+        loadDeptList();
     });
 
-    function saveUser() {
-        require(["jquery"], function($) {
-            $.ajax({
-                url: "${ctx}/mvc/sysUser/mgr/save/user",
-                type: "POST",
-                data: $("#data_form").serialize(),
-                dataType: "json",
-                success: function (json) {
-                    if (json.success) {
+    function loadDeptList() {
+        require(["jquery", "lay-ui"], function ($, lay) {
+            $("#select_dept").click(function () {
+                var $this = $(this);
 
-                    } else {
+                $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function (html) {
+                    layui.use('layer', function () {
+                        var layer = layui.layer;
+                        var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
 
-                    }
-                }, error: function () {
-                    alert("");
-                }
+                        layer.open({
+                            id: "department_list",
+                            type: 1,
+                            title: title,
+                            area: ['400px', '320px'],
+                            content: html,
+                            btn: ['确定', '取消'],
+                            yes: function (index) {
+                                var treeObj = $.fn.zTree.getZTreeObj("treeEle");
+                                var nodes = treeObj.getSelectedNodes();
+                                if (nodes) {
+                                    $("#dept_id").val(nodes[0].id);
+                                    $this.val(nodes[0].name);
+                                }
+                                layer.close(index);
+                            },
+                            btn2: function (index, layero) {
+                                // 按钮【按钮二】的回调
+                                layer.close(index);
+                                //return false 开启该代码可禁止点击该按钮关闭
+                            }
+                        });
+                    });
+                });
             });
         });
-
-
     }
+
+    function updateDept() {
+        require(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
+            var layer = layui.layer;
+            var options = {
+                group: '.layui-form-item',
+                fields: {
+                    name: {
+                        validators: {
+                            notEmpty: {
+                                message: '部门名称不能为空'
+                            }
+                        }
+                    }
+                }
+            };
+
+            var validaForm = new valida.Validator("#data_form", options);
+            if (validaForm.validateForm()) {
+                $.ajax({
+                    url: "${ctx}/mvc/sysDepartment/mgr/save",
+                    type: "POST",
+                    data: $("#data_form").serialize(),
+                    dataType: "json",
+                    success: function (json) {
+                        if (json.success) {
+                            jumpToDeptList();
+                        }
+                        setTimeout(function () {
+                            layer.msg(json.info);
+                        }, 50);
+                    }, error: function () {
+                        layer.msg("操作失败，请重试");
+                    }
+                });
+            }
+        });
+    }
+
     //-->
 </script>
 
@@ -61,12 +118,12 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <a href="javascript:;" data-url="${ctx}/mvc/sysUser/mgr/list">
-                            <i class="ito ito-user"></i><span>用户管理</span>
+                        <a href="javascript:;" data-url="${ctx}/static/pages/sys/dept/sys_department.jsp">
+                            <i class="ito ito-department"></i><span>部门管理</span>
                         </a>
                     </li>
                     <li class="location-item">
-                        <i class="ito ito-add-user"></i><span>添加用户</span>
+                        <i class="ito ito-edit"></i><span>更新部门</span>
                     </li>
                 </ol>
             </div>
@@ -79,76 +136,47 @@
                 <div class="ito-panel">
                     <div class="panel-heading">
                         <div class="search-title">
-                            <span class="ito ito-add-user fl"></span>
-                            <h3 class="panel-title pro-title">添加用户页面</h3>
+                            <span class="ito ito-edit fl"></span>
+                            <h3 class="panel-title pro-title">更新部门页面</h3>
                             <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="site-text site-block">
-                            <form class="layui-form" action="">
+                            <form id="data_form" class="layui-form" method="post">
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">用户名</label>
+                                    <label class="layui-form-label">部门名称</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入用户名" autocomplete="off">
+                                        <input type="text" name="name" class="layui-input" placeholder="请输入用户名"
+                                               autocomplete="off" value="${requestScope.dept.name}">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">用户密码</label>
+                                    <label class="layui-form-label">上级部门</label>
                                     <div class="layui-input-block">
-                                        <input type="password" name="password" class="layui-input" lay-verify="required" lay-vertype="tips" placeholder="请输入密码" autocomplete="off">
+                                        <input type="hidden" id="dept_id" name="parentId" value="0"/>
+                                        <input type="text" id="select_dept" class="layui-input" placeholder="请点击选择上级部门"
+                                               readonly value="${requestScope.dept.parentId}">
                                     </div>
                                 </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">再次输入密码</label>
-                                    <div class="layui-input-block">
-                                        <input type="password" name="password" class="layui-input" lay-verify="required" lay-vertype="tips" placeholder="请再次输入密码" autocomplete="off">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" for="user_dept">部门</label>
-                                    <div class="layui-input-block">
-                                        <select id="user_dept" name="city" lay-verify="required">
-                                            <option value=""></option>
-                                            <option value="0">北京</option>
-                                            <option value="1">上海</option>
-                                            <option value="2">广州</option>
-                                            <option value="3">深圳</option>
-                                            <option value="4">杭州</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">Email</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" class="layui-input" placeholder="请输入Email" autocomplete="off">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">手机号</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="title" class="layui-input" placeholder="请输入手机号" autocomplete="off">
-                                    </div>
-                                </div>
-
 
                                 <div class="layui-form-item layui-form-text">
-                                    <label class="layui-form-label">备注</label>
+                                    <label class="layui-form-label">部门描述</label>
                                     <div class="layui-input-block">
-                                        <textarea name="desc" placeholder="请输入用户备注" class="layui-textarea"></textarea>
+                                        <textarea name="description" placeholder="请输入部门备注"
+                                                  class="layui-textarea">${requestScope.dept.description}</textarea>
                                     </div>
                                 </div>
 
-
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                        <button type="button" class="layui-btn mr20" onclick="updateDept()">立即提交
+                                        </button>
+                                        <button type="reset" class="layui-btn layui-btn-primary mr20">重置</button>
+                                        <button type="button" class="layui-btn layui-btn-primary"
+                                                onclick="jumpToDeptList()">返回
+                                        </button>
                                     </div>
                                 </div>
                             </form>
