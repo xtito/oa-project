@@ -10,61 +10,8 @@
 <script type="text/javascript">
     <!--
     require(["domReady"], function (doc) {
-        require(["lay-ui"], function () {
-            layui.use('form', function () {
-                var form = layui.form;
-
-                //监听提交
-                form.on('submit(formDemo)', function (data) {
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
-                });
-
-                form.render();// 重新渲染表单元素
-//                form.render('select'); //刷新select选择框渲染
-            });
-        });
-
         loadDeptList();
     });
-
-    function loadDeptList() {
-        require(["jquery", "lay-ui"], function ($, lay) {
-            $("#select_dept").click(function () {
-                var $this = $(this);
-
-                $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function (html) {
-                    layui.use('layer', function () {
-                        var layer = layui.layer;
-                        var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
-
-                        layer.open({
-                            id: "department_list",
-                            type: 1,
-                            title: title,
-                            area: ['400px', '320px'],
-                            content: html,
-                            btn: ['确定', '取消'],
-                            yes: function (index) {
-                                var treeObj = $.fn.zTree.getZTreeObj("treeEle");
-                                var nodes = treeObj.getSelectedNodes();
-                                if (nodes) {
-                                    $("#dept_id").val(nodes[0].id);
-                                    $this.val(nodes[0].name);
-                                }
-                                layer.close(index);
-                            },
-                            btn2: function (index, layero) {
-                                // 按钮【按钮二】的回调
-                                layer.close(index);
-                                //return false 开启该代码可禁止点击该按钮关闭
-                            }
-                        });
-                    });
-                });
-            });
-        });
-    }
 
     function saveDepartment() {
         require(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {

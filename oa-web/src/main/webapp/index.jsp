@@ -40,6 +40,14 @@
             });
         }
 
+        function loadInnerContent(url, param, callback) {
+            require(["jquery"], function() {
+                $("#main_body").children("#inner_main").load(url, param, function() {
+                    bindLoadContentEvent($(".location-item a"));
+                });
+            });
+        }
+
         function bindLoadContentEvent($obj) {
             require(["jquery"], function () {
                 // 先取消所有click事件
