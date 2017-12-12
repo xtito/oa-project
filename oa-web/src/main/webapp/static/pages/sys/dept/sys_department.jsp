@@ -56,7 +56,7 @@
                                     console.log(json.info);
                                     layer.msg(json.info);
                                 }, 50);
-                            });
+                            }, "json");
                         });
                     } else if (obj.event === 'edit') {
                         loadContent("${ctx}/mvc/sysDepartment/mgr/update/ui?id=" + data.id);

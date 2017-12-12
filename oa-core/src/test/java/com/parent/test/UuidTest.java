@@ -1,11 +1,16 @@
 package com.parent.test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.oa.core.bean.PageBean;
 import com.oa.core.utils.StringUtil;
 import com.oa.core.utils.date.DateUtil;
 import com.oa.core.utils.generate.GenerateIdUtil;
 import org.junit.Test;
 
-import java.util.Date;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.*;
 
 /**
  * Created by [张渊]
@@ -59,6 +64,29 @@ public class UuidTest {
         System.out.println(StringUtil.contains("fdsaf:oracle:dfsafdasfdasfasf:oracle:", ":oracle:"));
         System.out.println(StringUtil.contains("fdsaf:db2:dfsafdasfdasfasf:db2:", ":db2:"));
         System.out.println(StringUtil.contains("fdsaf:sqlserverdfsafdasfdasfasf:sqlserver", ":sqlserver"));
+    }
+
+    @Test
+    public void jsonTest() throws IOException {
+//        Map<String, Object> map = new HashMap<String, Object>();
+//        map.put("success", true);
+//        map.put("info", "添加成功");
+//        PageBean page = new PageBean();
+//        page.setCode(200);
+//        page.setMsg("请求成功");
+//        List<PageBean> list = new ArrayList<>();
+//        list.add(page);
+//
+//        PageBean page2 = new PageBean();
+//        page2.setCode(200);
+//        page2.setMsg("请求成功");
+//        page2.setList(list);
+
+        String str = "{\"pageNum\":0,\"pageSize\":0,\"currentSize\":0,\"total\":0,\"pages\":0,\"list\":[{\"pageNum\":0,\"pageSize\":0,\"currentSize\":0,\"total\":0,\"pages\":0,\"list\":null,\"orderBy\":null,\"code\":200,\"msg\":\"请求成功\",\"params\":{}}],\"orderBy\":null,\"code\":200,\"msg\":\"请求成功\",\"params\":{}}";
+
+        ObjectMapper mapper = new ObjectMapper();
+        PageBean page = mapper.readValue(str, PageBean.class);
+        System.out.println(mapper.readValue(str, PageBean.class));;
     }
 
 }

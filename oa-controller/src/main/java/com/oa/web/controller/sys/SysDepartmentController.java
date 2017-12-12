@@ -1,7 +1,6 @@
 package com.oa.web.controller.sys;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.oa.bean.TreeNode;
 import com.oa.bean.sys.SysDepartment;
@@ -9,13 +8,11 @@ import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
 import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.core.exception.ValidateException;
-import com.oa.web.support.tag.ItoFunctionTag;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,7 +39,7 @@ public class SysDepartmentController extends BaseController {
      * 部门列表
      */
     @ResponseBody
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list", produces = "application/json; charset=utf-8")
     public Object list(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize,
                        HttpServletRequest request) throws JsonProcessingException {
 
@@ -75,7 +72,7 @@ public class SysDepartmentController extends BaseController {
      * 保存部门
      */
     @ResponseBody
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save", produces = "application/json; charset=utf-8")
     public String saveDepartment(SysDepartment dept, BindingResult bindResult) {
 
         boolean success = true;
@@ -98,7 +95,7 @@ public class SysDepartmentController extends BaseController {
 
 
     @ResponseBody
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update", produces = "application/json; charset=utf-8")
     public String updateDepartment(SysDepartment dept, BindingResult bindingResult) {
 
         String info = "部门更新成功";
@@ -122,7 +119,7 @@ public class SysDepartmentController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value= "/delete", produces = "application/json; charset=utf-8")
-    public String deleteDepartment(@RequestParam("id") String deptId) {
+    public Object deleteDepartment(@RequestParam("id") String deptId) throws JsonProcessingException {
 
         String info = "部门删除成功";
         boolean success = true;

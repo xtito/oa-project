@@ -159,7 +159,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">上级部门</label>
                                     <div class="layui-input-block">
-                                        <input type="hidden" id="dept_id" name="parentId" value="0"/>
+                                        <input type="hidden" id="dept_id" name="parentId" value="${requestScope.dept.parentId}"/>
                                         <input type="text" id="select_dept" class="layui-input" placeholder="请点击选择上级部门"
                                                readonly value="${ito:getDepartmentNameById(requestScope.dept.parentId)}">
                                     </div>
