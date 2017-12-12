@@ -44,8 +44,19 @@
                     if (obj.event === 'del') {
                         var delMsg = '您确定要删除 ' + data.name + " 吗？";
                         layer.confirm(delMsg, function (index) {
-                            obj.del();
-                            layer.close(index);
+                            $.post("${ctx}/mvc/sysDepartment/mgr/delete", {id: data.id}, function (json) {
+                                console.log(json);
+                                if (json.success) {
+                                    obj.del();
+                                    layer.close(index);
+                                    jumpToDeptList();
+                                }
+
+                                setTimeout(function () {
+                                    console.log(json.info);
+                                    layer.msg(json.info);
+                                }, 50);
+                            });
                         });
                     } else if (obj.event === 'edit') {
                         loadContent("${ctx}/mvc/sysDepartment/mgr/update/ui?id=" + data.id);

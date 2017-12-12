@@ -50,12 +50,12 @@
             <if test="correlationCode != null">
                 correlation_code = #{correlationCode},
             </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="defIdentify != null">
-                def_identify = #{defIdentify},
-            </if>
+            <!--<if test="createTime != null">-->
+                <!--create_time = #{createTime},-->
+            <!--</if>-->
+            <!--<if test="defIdentify != null">-->
+                <!--def_identify = #{defIdentify},-->
+            <!--</if>-->
         </set>
         WHERE id = #{id}
     </update>

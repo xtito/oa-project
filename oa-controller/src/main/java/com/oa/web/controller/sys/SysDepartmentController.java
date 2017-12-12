@@ -1,6 +1,7 @@
 package com.oa.web.controller.sys;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.oa.bean.TreeNode;
 import com.oa.bean.sys.SysDepartment;
@@ -26,7 +27,7 @@ import java.util.List;
 
 /**
  * 部门管理
- *
+ * <p/>
  * Created by [张渊]
  * 2017/11/25 16:44
  */
@@ -98,17 +99,47 @@ public class SysDepartmentController extends BaseController {
 
     @ResponseBody
     @RequestMapping("/update")
-    public String updateDepartment(SysDepartment dept, BindException bindResult) {
+    public String updateDepartment(SysDepartment dept, BindingResult bindingResult) {
 
-        return null;
+        String info = "部门更新成功";
+        boolean success = true;
+
+        try {
+
+            if (dept != null) {
+                this.service.update(dept);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "更新部门异常，请联系管理员！";
+        }
+
+        return parseJsonStr(success, info);
     }
 
 
     @ResponseBody
-    @RequestMapping("/delete")
-    public String deleteDepartment(String deptId, BindException bindResult) {
+    @RequestMapping(value= "/delete", produces = "application/json; charset=utf-8")
+    public String deleteDepartment(@RequestParam("id") String deptId) {
 
-        return null;
+        String info = "部门删除成功";
+        boolean success = true;
+
+        try {
+
+            if (StringUtil.isNotNull(deptId)) {
+                this.service.deleteByPrimaryKey(Long.valueOf(deptId));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "删除部门异常，请联系管理员";
+        }
+
+        return parseJsonStr(success, info);
     }
 
 

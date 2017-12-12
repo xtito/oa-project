@@ -159,6 +159,13 @@
         <url-pattern>/mvc/*</url-pattern>
     </servlet-mapping>
 
+    <!-- 自定义标签 -->
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/ito-tag-function</taglib-uri>
+            <taglib-location>/WEB-INF/tld/ito.tld</taglib-location>
+        </taglib>
+    </jsp-config>
 
 
     <!-- 配置session超时时间，单位分钟 -->

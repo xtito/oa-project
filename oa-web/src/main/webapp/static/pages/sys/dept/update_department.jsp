@@ -1,3 +1,4 @@
+<%@ taglib prefix="ito" uri="/ito-tag-function" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ include file="/static/include/inc.jsp" %>
 
@@ -85,11 +86,12 @@
             var validaForm = new valida.Validator("#data_form", options);
             if (validaForm.validateForm()) {
                 $.ajax({
-                    url: "${ctx}/mvc/sysDepartment/mgr/save",
+                    url: "${ctx}/mvc/sysDepartment/mgr/update",
                     type: "POST",
                     data: $("#data_form").serialize(),
                     dataType: "json",
                     success: function (json) {
+                        console.log(json);
                         if (json.success) {
                             jumpToDeptList();
                         }
@@ -144,6 +146,8 @@
                     <div class="panel-body">
                         <div class="site-text site-block">
                             <form id="data_form" class="layui-form" method="post">
+                                <input type="hidden" name="id" value="${requestScope.dept.id}" />
+
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">部门名称</label>
                                     <div class="layui-input-block">
@@ -157,7 +161,7 @@
                                     <div class="layui-input-block">
                                         <input type="hidden" id="dept_id" name="parentId" value="0"/>
                                         <input type="text" id="select_dept" class="layui-input" placeholder="请点击选择上级部门"
-                                               readonly value="${requestScope.dept.parentId}">
+                                               readonly value="${ito:getDepartmentNameById(requestScope.dept.parentId)}">
                                     </div>
                                 </div>
 
