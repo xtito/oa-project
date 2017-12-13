@@ -1,6 +1,7 @@
 package com.oa.web.mapper;
 
 import com.oa.bean.sys.SysUser;
+import com.oa.core.bean.PageBean;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -49,4 +50,10 @@ public interface SysUserMapper {
      */
     List<SysUser> getAll();
 
+    /**
+     * 查询用户列表
+     * @param page 请求参数实体
+     * @return 用户列表
+     */
+    List<SysUser> getUserList(PageBean<SysUser> page);
 }

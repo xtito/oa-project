@@ -2,6 +2,10 @@ package com.oa.web.service.sys;
 
 import com.oa.bean.sys.SysUser;
 import com.oa.core.base.BaseService;
+import com.oa.core.bean.PageBean;
+import com.oa.core.exception.ValidateException;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户 Service
@@ -13,4 +17,12 @@ public interface SysUserService extends BaseService<SysUser> {
 
     SysUser getUserByUserNameAndPwd(String username, char[] password);
 
+    // 查询用户列表
+    PageBean<SysUser> getUserList(PageBean<SysUser> page);
+
+    // 查询用户列表
+    PageBean<SysUser> getUserList(PageBean<SysUser> page, HttpServletRequest request) throws ValidateException;
+
+    // 保存用户，增加保存前验证
+    void saveUser(SysUser user) throws ValidateException;
 }

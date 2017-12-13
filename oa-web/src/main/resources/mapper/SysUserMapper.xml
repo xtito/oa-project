@@ -20,6 +20,7 @@
         <result column="user_type" property="userType"/>
         <result column="description" property="description"/>
         <result column="def_identify" property="defIdentify"/>
+        <result column="dept_name" property="deptName"/>
     </resultMap>
 
     <sql id="Select_Where_Clause">
@@ -97,6 +98,16 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM sys_user WHERE id = #{id}
+    </select>
+
+    <select id="getUserList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
+        SELECT
+          <trim>
+              A.id, A.login_name, A.nickname, A.email, A.password, A.phone, A.department_id, A.status, A.lock_time,
+              A.create_time, A.update_time, A.last_login_time, A.user_type, A.def_identify, B.name_ AS dept_name
+          </trim>
+        FROM sys_user AS A
+        LEFT JOIN sys_department AS B ON B.id = A.department_id
     </select>
 
 </mapper>

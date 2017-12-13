@@ -13,7 +13,8 @@ define(function () {
             "zTree": "../zTree/jquery.zTree.all.min",
             //"resizeHeight": "../utils/resizeHeight",
             "lay-ui": "../../ui/layui/layui",
-            "ito-validation": "../utils/ito-validation"
+            "ito-validation": "../utils/ito-validation",
+            "sys-user": "../module/sys/sys-user"
         },
         // 不符合AMD规范的使用
         shim: {

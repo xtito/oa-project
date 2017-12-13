@@ -10,76 +10,10 @@
 <script type="text/javascript">
     <!--
     require(["domReady"], function(doc) {
-        require(["lay-ui"], function() {
-            layui.use('form', function(){
-                var form = layui.form;
-
-                //监听提交
-                form.on('submit(formDemo)', function(data){
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
-                });
-
-                form.render();// 重新渲染表单元素
-//                form.render('select'); //刷新select选择框渲染
-            });
-
-//            layui.use('layer', function(){
-//                var layer = layui.layer;
-////                layer.msg('hello');
-//
-//                layer.open({
-//                    type: 1,
-//                    content: '<div>我就是一个文档</div>' //这里content是一个普通的String
-//                });
-//            });
+        require(["sys-user"], function(userJs) {
+            userJs.initBindEvent();
         });
-
-        bindSelectDeptList();
     });
-
-    function bindSelectDeptList() {
-        require(["jquery", "lay-ui"], function($, lay) {
-            $("#user_dept").click(function() {
-                $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function(html) {
-                    layui.use('layer', function(){
-                        var layer = layui.layer;
-                        var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
-
-                        layer.open({
-                            id: "department_list",
-                            type: 1,
-                            title: title,
-                            area: ['400px', '300px'],
-                            content: html
-                        });
-                    });
-                });
-            });
-        });
-    }
-
-    function saveUser() {
-        require(["jquery"], function($) {
-            $.ajax({
-                url: "${ctx}/mvc/sysUser/mgr/save/user",
-                type: "POST",
-                data: $("#data_form").serialize(),
-                dataType: "json",
-                success: function (json) {
-                    if (json.success) {
-
-                    } else {
-
-                    }
-                }, error: function () {
-                    alert("");
-                }
-            });
-        });
-
-
-    }
     //-->
 </script>
 
@@ -123,28 +57,29 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">用户名</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入用户名" autocomplete="off">
+                                        <input type="text" name="title" class="layui-input" placeholder="请输入用户名" autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">用户密码</label>
                                     <div class="layui-input-block">
-                                        <input type="password" name="password" class="layui-input" lay-verify="required" lay-vertype="tips" placeholder="请输入密码" autocomplete="off">
+                                        <input type="password" name="password" class="layui-input" placeholder="请输入密码" autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">再次输入密码</label>
                                     <div class="layui-input-block">
-                                        <input type="password" name="password" class="layui-input" lay-verify="required" lay-vertype="tips" placeholder="请再次输入密码" autocomplete="off">
+                                        <input type="password" name="password" class="layui-input" placeholder="请再次输入密码" autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" for="user_dept">部门</label>
                                     <div class="layui-input-block">
-                                        <input type="text" id="user_dept" name="title" class="layui-input" lay-verify="required" placeholder="请点击选择部门" readonly>
+                                        <input type="hidden" id="dept_id" name="parentId" value="0"/>
+                                        <input type="text" id="user_dept" name="title" class="layui-input" placeholder="请点击选择部门" readonly>
                                     </div>
                                 </div>
 
@@ -173,8 +108,10 @@
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                        <button type="button" id="save_btn" class="layui-btn mr10">立即提交</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary mr10">重置</button>
+                                        <button type="button" id="back_btn" class="layui-btn layui-btn-primary">返回
+                                        </button>
                                     </div>
                                 </div>
                             </form>

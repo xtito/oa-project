@@ -29,6 +29,8 @@ public class SysUser implements Serializable {
     private String description;// 用户描述
     private int defIdentify;// 默认标识（0可删1不可删除）
 
+    private String deptName;// 部门名称
+
     public SysUser() {
     }
 
@@ -167,5 +169,13 @@ public class SysUser implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 }

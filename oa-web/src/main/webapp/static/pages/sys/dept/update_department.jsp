@@ -1,4 +1,3 @@
-<%@ taglib prefix="ito" uri="/ito-tag-function" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ include file="/static/include/inc.jsp" %>
 

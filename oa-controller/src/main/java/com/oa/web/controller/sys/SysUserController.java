@@ -1,10 +1,23 @@
 package com.oa.web.controller.sys;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.oa.bean.sys.SysUser;
+import com.oa.core.base.controller.BaseController;
+import com.oa.core.bean.PageBean;
+import com.oa.core.constant.HttpResponseStatusConstant;
+import com.oa.core.exception.ValidateException;
+import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * 用户管理
@@ -14,36 +27,108 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("/sysUser/mgr")
-public class SysUserController {
+public class SysUserController extends BaseController {
 
     @Autowired
     private SysUserService service;
 
-    @RequestMapping("/list")
-    public String list() {
-        return "sys/user/sys_user";
+    @ResponseBody
+    @RequestMapping(value = "/list", produces = "application/json; charset=utf-8")
+    public Object list(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                       @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                       HttpServletRequest request) throws JsonProcessingException {
+
+        PageBean<SysUser> page = new PageBean<SysUser>(pageNum, pageSize);
+
+        try {
+
+            page = this.service.getUserList(page, request);
+
+        } catch (ValidateException e) {
+            e.printStackTrace();
+            page.setMsg(e.getMsg());
+            page.setCode(HttpResponseStatusConstant.INTERNAL_SERVER_ERROR);
+        }
+
+        return page;
     }
 
-    @RequestMapping(value = "/save/user", method = {RequestMethod.POST})
-    public String saveSysUser() {
 
-        return null;
+    /**
+     * 保存用户
+     */
+    @ResponseBody
+    @RequestMapping(value = "/save/user", produces = "application/json; charset=utf-8")
+    public String saveSysUser(SysUser user, BindingResult bindingResult) {
+
+        boolean success = true;
+        String info = "用户添加成功";
+
+        try {
+
+            user.setCreateTime(new Date());
+            user.setDefIdentify(0);
+            this.service.saveUser(user);
+
+        } catch (ValidateException e) {
+            e.printStackTrace();
+            success = false;
+            info = e.getMsg();
+        }
+
+        return parseJsonStr(success, info);
     }
 
-    @RequestMapping(value = "/update/user", method = {RequestMethod.POST})
-    public String updateSysUser() {
 
-        return null;
+    /**
+     * 更新用户
+     */
+    @ResponseBody
+    @RequestMapping(value = "/update/user", produces = "application/json; charset=utf-8")
+    public String updateSysUser(SysUser user, BindingResult bindingResult) {
+
+        String info = "用户更新成功";
+        boolean success = true;
+
+        try {
+
+            if (user != null) {
+                this.service.update(user);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "更新用户异常，请联系管理员！";
+        }
+
+        return parseJsonStr(success, info);
     }
 
-    @RequestMapping(value = "/delete/user", method = {RequestMethod.POST})
-    public String deleteSysUser() {
-        return null;
-    }
 
-    @RequestMapping("/addUI")
-    public String addUI() {
-        return "sys/user/add_user";
+    /**
+     * 删除用户
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delete/user", produces = "application/json; charset=utf-8")
+    public String deleteSysUser(@RequestParam("id") String userId) {
+
+        String info = "用户删除成功";
+        boolean success = true;
+
+        try {
+
+            if (StringUtil.isNotNull(userId)) {
+                this.service.deleteByPrimaryKey(Long.valueOf(userId));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "删除用户异常，请联系管理员";
+        }
+
+        return parseJsonStr(success, info);
     }
 
 }
