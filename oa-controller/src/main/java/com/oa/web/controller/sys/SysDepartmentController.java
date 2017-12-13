@@ -76,7 +76,7 @@ public class SysDepartmentController extends BaseController {
     public String saveDepartment(SysDepartment dept, BindingResult bindResult) {
 
         boolean success = true;
-        String info = "添加成功";
+        String info = "部门添加成功";
 
         try {
 

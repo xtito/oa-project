@@ -53,7 +53,6 @@
                                 }
 
                                 setTimeout(function () {
-                                    console.log(json.info);
                                     layer.msg(json.info);
                                 }, 50);
                             }, "json");
