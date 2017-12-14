@@ -673,7 +673,7 @@ select.layui-table-edit{padding: 0 0 0 10px; border-color: #C9C9C9;}
 
 body .layui-table-tips .layui-layer-content{background: none; padding: 0; box-shadow: 0 1px 6px rgba(0,0,0,.1);}
 .layui-table-tips-main{margin: -44px 0 0 -1px; max-height: 150px; padding: 8px 15px; font-size: 14px; overflow-y: scroll; background-color: #fff; color: #333;}
-.layui-table-tips-c{position: absolute; right: -3px; top: -12px; width: 18px; height: 18px; padding: 3px; text-align: center; font-weight: 700; border-radius: 100%; font-size: 14px; cursor: pointer; background-color: #666;}
+.layui-table-tips-c{position: absolute; right: -3px; top: -12px; width: 24px; height: 24px; padding: 3px; text-align: center; font-weight: 700; border-radius: 100%; font-size: 14px; cursor: pointer; background-color: #666;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
 .layui-table-tips-c:hover{background-color: #999;}
 
 
