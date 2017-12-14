@@ -20,7 +20,7 @@ public class SysUser implements Serializable {
     private String password;// 用户密码
     private String phone;// 手机号
     private String departmentId;// 所属部门ID
-    private int status;// 用户状态（0正常，1禁止登录，2锁定）
+    private int status;// 用户状态（1正常，2禁止登录，3锁定）
     private Date lockTime;// 锁定时间
     private Date createTime;// 创建时间
     private Date updateTime;// 更新时间

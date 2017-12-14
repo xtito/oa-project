@@ -14,19 +14,19 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
                     , url: ctx + '/mvc/sysUser/mgr/list'
                     , method: "post"
                     , page: true
-                    , cellMinWidth: 100
+                    //, cellMinWidth: 100
                     , cols: [[
                         {type: 'checkbox'}
                         , {title: '序号', type: 'numbers'}
                         , {field: 'loginName', title: '登录名', sort: true}
-                        , {field: 'nickname', title: '用户昵称', sort: true}
+                        //, {field: 'nickname', title: '用户昵称', sort: true}
                         , {field: 'email', title: 'Email', sort: true}
                         , {field: 'phone', title: '手机号'}
                         , {field: 'deptName', title: '部门', sort: true}
-                        , {field: 'status', title: '用户状态', sort: true}
-                        , {field: 'createTime', title: '创建时间', width: 180, sort: true}
-                        , {field: 'lastLoginTime', title: '最后登录时间', width: 160, sort: true}
-                        , {title: '操作', width: 100, toolbar: '#operation_con', fixed: 'right'}
+                        , {field: 'status', title: '用户状态', width: 100, sort: true, templet: '#statusTpl'}
+                        , {field: 'createTime', title: '创建时间', width: 170, sort: true}
+                        , {field: 'lastLoginTime', title: '最后登录时间', width: 170, sort: true}
+                        , {title: '操作', width: 70, toolbar: '#operation_con', fixed: 'right'}
                     ]]
                     , request: {pageName: "pageNum", limitName: "pageSize"}
                     , response: {
@@ -38,9 +38,9 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
                 table.on("tool(operation)", function (obj) {
                     var data = obj.data;
                     if (obj.event === 'del') {
-                        var delMsg = '您确定要删除 ' + data.name + " 吗？";
+                        var delMsg = '您确定要删除 ' + data.loginName + " 吗？";
                         layer.confirm(delMsg, function (index) {
-                            $.post("${ctx}/mvc/sysUser/mgr/delete/user", {id: data.id}, function (json) {
+                            $.post(ctx + "/mvc/sysUser/mgr/delete/user", {id: data.id}, function (json) {
                                 console.log(json);
                                 if (json.success) {
                                     obj.del();
@@ -133,9 +133,9 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
                                 message: '用户名只能是英文和字符组合'
                             },
                             stringLength: {
-                                min: 6,
+                                min: 5,
                                 max: 20,
-                                message: '用户名最少6位最多20位'
+                                message: '用户名最少5位最多20位'
                             }
                         }
                     },
@@ -143,6 +143,11 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
                         validators: {
                             notEmpty: {
                                 message: '密码不能为空'
+                            },
+                            stringLength: {
+                                min: 5,
+                                max: 30,
+                                message: '密码最少5位最多20位'
                             },
                             identical: {
                                 field: 'confirm_password',
@@ -154,6 +159,11 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
                         validators: {
                             notEmpty: {
                                 message: '确认密码不能为空'
+                            },
+                            stringLength: {
+                                min: 5,
+                                max: 30,
+                                message: '密码最少5位最多20位'
                             },
                             identical: {
                                 field: 'password',
@@ -172,6 +182,10 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
                         validators: {
                             notEmpty: {
                                 message: '手机号不能为空'
+                            },
+                            regexp: {
+                                regexp: /^[1]{1}[0-9]{10}$/,
+                                message: '手机号格式不正确'
                             }
                         }
                     }
@@ -211,7 +225,7 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                loadInnerContent("${ctx}/mvc/sysDepartment/mgr/update/ui", {id: id});
+                loadInnerContent(ctx + "/mvc/sysUser/mgr/update/ui", {id: id});
             } else {
                 layui.use('layer', function (layer) {
                     layer.msg("跳转用户更新页面异常，丢失id");

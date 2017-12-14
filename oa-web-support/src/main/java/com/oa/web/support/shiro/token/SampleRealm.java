@@ -46,7 +46,7 @@ public class SampleRealm extends AuthorizingRealm {
         UsernamePasswordToken upToken = (UsernamePasswordToken) authToken;
 
         // 2. 调用数据库的方法, 从数据库中查询 username 对应的用户记录
-        SysUser user = this.userService.getUserByUserNameAndPwd(upToken.getUsername(), upToken.getPassword());
+        SysUser user = this.userService.getUserByLoginNameAndPwd(upToken.getUsername(), upToken.getPassword());
 
         // 若用户不存在, 则可以抛出 UnknownAccountException 异常
         if (null == user) {

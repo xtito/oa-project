@@ -4,7 +4,7 @@
 <%--
   
   Created by User: Zy
-  Created Date: 2017/11/9 21:35
+  Created Date: 2017/12/14 14:12
 --%>
 
 <script type="text/javascript">
@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <i class="ito ito-add-user"></i><span>添加用户</span>
+                        <i class="ito ito-edit-user"></i><span>更新用户</span>
                     </li>
                 </ol>
             </div>
@@ -47,53 +47,45 @@
                     <div class="panel-heading">
                         <div class="search-title">
                             <span class="ito ito-add-user fl"></span>
-                            <h3 class="panel-title pro-title">添加用户页面</h3>
+                            <h3 class="panel-title pro-title">更新用户页面</h3>
                             <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="site-text site-block">
                             <form id="data_form" class="layui-form">
+                                <input type="hidden" name="id" value="${requestScope.user.id}" />
+
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">用户名</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="loginName" class="layui-input" placeholder="您的账户名和登录名" autocomplete="off">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">用户密码</label>
-                                    <div class="layui-input-block">
-                                        <input type="password" name="password" class="layui-input" placeholder="建议至少使用两种字符组合" autocomplete="off">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">再次输入密码</label>
-                                    <div class="layui-input-block">
-                                        <input type="password" name="confirm_password" class="layui-input" placeholder="再次输入密码" autocomplete="off">
+                                        <input type="text" name="loginName" class="layui-input" placeholder="您的账户名和登录名"
+                                               autocomplete="off" value="${requestScope.user.loginName}">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" for="user_dept">部门</label>
                                     <div class="layui-input-block">
-                                        <input type="hidden" id="dept_id" name="departmentId" value="0"/>
-                                        <input type="text" id="user_dept" name="title" class="layui-input" placeholder="请点击选择部门" readonly>
+                                        <input type="hidden" id="dept_id" name="departmentId" value="${requestScope.user.id}"/>
+                                        <input type="text" id="user_dept" name="title" class="layui-input" placeholder="请点击选择部门"
+                                               value="${requestScope.user.deptName}" readonly>
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">Email</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="email" class="layui-input" placeholder="您的常用Email" autocomplete="off">
+                                        <input type="text" name="email" class="layui-input" placeholder="您的常用Email"
+                                               autocomplete="off" value="${requestScope.user.email}">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">手机号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="phone" class="layui-input" placeholder="建议使用常用手机" autocomplete="off">
+                                        <input type="text" name="phone" class="layui-input" placeholder="建议使用常用手机"
+                                               autocomplete="off" value="${requestScope.user.phone}">
                                     </div>
                                 </div>
 
@@ -101,14 +93,15 @@
                                 <div class="layui-form-item layui-form-text">
                                     <label class="layui-form-label">描述</label>
                                     <div class="layui-input-block">
-                                        <textarea name="description" placeholder="请输入用户备注" class="layui-textarea"></textarea>
+                                        <textarea name="description" placeholder="请输入用户备注" class="layui-textarea">
+                                                ${requestScope.user.description}</textarea>
                                     </div>
                                 </div>
 
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button type="button" id="save_btn" class="layui-btn mr10">立即提交</button>
+                                        <button type="button" id="update_btn" class="layui-btn mr10">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary mr10">重置</button>
                                         <button type="button" id="back_btn" class="layui-btn layui-btn-primary">返回
                                         </button>

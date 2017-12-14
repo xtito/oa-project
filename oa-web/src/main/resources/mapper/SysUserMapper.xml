@@ -45,9 +45,9 @@
     <update id="updateSysUser" parameterType="com.oa.bean.sys.SysUser">
         UPDATE sys_user
         <set>
-            <if test="loginName != null">
-                login_name = #{loginName},
-            </if>
+            <!--<if test="loginName != null">-->
+                <!--login_name = #{loginName},-->
+            <!--</if>-->
             <if test="nickname != null">
                 nickname = #{nickname},
             </if>
@@ -63,7 +63,7 @@
             <if test="departmentId != null">
                 department_id = #{departmentId},
             </if>
-            <if test="status != null">
+            <if test="status != null and status != 0">
                 status = #{status},
             </if>
             <if test="lockTime != null">
@@ -94,10 +94,22 @@
         </if>
     </delete>
 
+    <!-- 根据主键ID查询用户，并查询部门名称 -->
     <select id="getByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column_List"/>
-        FROM sys_user WHERE id = #{id}
+        <trim>
+            A.id, A.login_name, A.nickname, A.email, A.password, A.phone, A.department_id, A.status, A.lock_time,
+            A.create_time, A.update_time, A.last_login_time, A.user_type, A.def_identify, B.name_ AS dept_name
+        </trim>
+        FROM sys_user AS A
+        LEFT JOIN sys_department AS B ON B.id = A.department_id
+        WHERE A.id = #{id}
+    </select>
+
+    <!-- 根据用户登录名查询用户，并查询部门名称 -->
+    <select id="getUserByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM sys_user WHERE login_name = #{loginName}
     </select>
 
     <select id="getUserList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
@@ -119,7 +131,7 @@
             ORDER BY ${orderBy}
         </if>
         <if test="orderBy == null or orderBy == ''">
-            ORDER BY loginName, create_time
+            ORDER BY login_name, create_time
         </if>
     </select>
 

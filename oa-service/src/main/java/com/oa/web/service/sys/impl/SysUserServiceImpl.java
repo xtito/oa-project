@@ -55,8 +55,18 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public SysUser getUserByUserNameAndPwd(String username, char[] password) {
+    public SysUser getUserByLoginNameAndPwd(String username, char[] password) {
         return null;
+    }
+
+    /**
+     * 根据用户登录名查询用户
+     * @param loginName 用户登录名
+     * @return 用户实体
+     */
+    @Override
+    public SysUser getUserByLoginName(String loginName) {
+        return this.mapper.getUserByLoginName(loginName);
     }
 
     @Override
@@ -109,6 +119,10 @@ public class SysUserServiceImpl implements SysUserService {
 
         if (StringUtil.isEmpty(user.getLoginName())) {
             throw new ValidateException("用户登录名不能为空");
+        }
+
+        if (this.getUserByLoginName(user.getLoginName()) != null) {
+            throw new ValidateException("该用户已存在，请更换用户名");
         }
 
         this.save(user);

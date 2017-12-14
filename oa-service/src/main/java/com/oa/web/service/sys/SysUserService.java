@@ -15,7 +15,10 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface SysUserService extends BaseService<SysUser> {
 
-    SysUser getUserByUserNameAndPwd(String username, char[] password);
+    SysUser getUserByLoginNameAndPwd(String loginName, char[] password);
+
+    // 根据账号查询用户
+    SysUser getUserByLoginName(String loginName);
 
     // 查询用户列表
     PageBean<SysUser> getUserList(PageBean<SysUser> page);

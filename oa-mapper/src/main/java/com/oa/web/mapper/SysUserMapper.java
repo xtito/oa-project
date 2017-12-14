@@ -56,4 +56,11 @@ public interface SysUserMapper {
      * @return 用户列表
      */
     List<SysUser> getUserList(PageBean<SysUser> page);
+
+    /**
+     * 根据用户登录名查询用户
+     * @param loginName 用户登录名
+     * @return 用户实体
+     */
+    SysUser getUserByLoginName(String loginName);
 }

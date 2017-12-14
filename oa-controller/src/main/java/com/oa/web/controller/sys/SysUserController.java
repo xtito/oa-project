@@ -11,6 +11,7 @@ import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,6 +82,16 @@ public class SysUserController extends BaseController {
         }
 
         return parseJsonStr(success, info);
+    }
+
+    /**
+     * 跳转到更新页面
+     */
+    @RequestMapping("/update/ui")
+    public String updateUI(@RequestParam("id") String id, ModelMap modelMap) {
+        SysUser user = this.service.getByPrimaryKey(Long.valueOf(id));
+        modelMap.put("user", user);
+        return "sys/user/update_user";
     }
 
 

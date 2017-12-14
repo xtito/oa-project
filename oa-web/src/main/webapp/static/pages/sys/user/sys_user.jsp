@@ -52,13 +52,11 @@
                                         </td>
                                         <td class="tl w150">
                                             <div class="layui-input-block in-block w140">
-                                                <select id="user_status" name="city">
+                                                <select id="user_status" name="status">
                                                     <option value=""></option>
-                                                    <option value="0">北京</option>
-                                                    <option value="1">上海</option>
-                                                    <option value="2">广州</option>
-                                                    <option value="3">深圳</option>
-                                                    <option value="4">杭州</option>
+                                                    <option value="0">正常</option>
+                                                    <option value="1">禁用</option>
+                                                    <option value="2">锁定</option>
                                                 </select>
                                             </div>
                                         </td>
@@ -68,7 +66,7 @@
                                         </td>
                                         <td class="tl w150">
                                             <div class="layui-input-block in-block w140">
-                                                <input type="text" id="login_user" class="layui-input" name="title" placeholder="请输入标题" autocomplete="off">
+                                                <input type="text" id="login_user" class="layui-input" name="loginName" placeholder="用户登录名" autocomplete="off">
                                             </div>
                                         </td>
 
@@ -77,7 +75,7 @@
                                         </td>
                                         <td class="tl w150">
                                             <div class="layui-input-block in-block w140">
-                                                <input type="text" id="email" class="layui-input" name="title" placeholder="请输入Email" autocomplete="off">
+                                                <input type="text" id="email" class="layui-input" name="email" placeholder="用户Email" autocomplete="off">
                                             </div>
                                         </td>
 
@@ -86,7 +84,7 @@
                                         </td>
                                         <td class="tl w150">
                                             <div class="layui-input-block in-block w140">
-                                                <input type="text" id="phone" name="title" class="layui-input" placeholder="请输入标题" autocomplete="off">
+                                                <input type="text" id="phone" name="phone" class="layui-input" placeholder="手机号" autocomplete="off">
                                             </div>
                                         </td>
                                     </tr>
@@ -96,7 +94,7 @@
                                         </td>
                                         <td class="tl w150">
                                             <div class="layui-input-block in-block w140">
-                                                <input type="text" id="user_name" name="title" class="layui-input" placeholder="请输入标题" autocomplete="off">
+                                                <input type="text" id="user_name" name="nickname" class="layui-input" placeholder="用户昵称" autocomplete="off">
                                             </div>
                                         </td>
 
@@ -105,7 +103,7 @@
                                         </td>
                                         <td class="tl w150">
                                             <div class="layui-input-block in-block w140">
-                                                <input type="text" id="begin_time" name="title" class="layui-input" placeholder="创建日期起始日期" autocomplete="off">
+                                                <input type="text" id="begin_time" name="begin" class="layui-input" placeholder="创建日期起始日期" autocomplete="off">
                                             </div>
                                         </td>
 
@@ -114,7 +112,7 @@
                                         </td>
                                         <td class="tl w150">
                                             <div class="layui-input-block in-block w140">
-                                                <input type="text" id="end_time" name="title" class="layui-input" placeholder="创建日期结束日期" autocomplete="off">
+                                                <input type="text" id="end_time" name="end" class="layui-input" placeholder="创建日期结束日期" autocomplete="off">
                                             </div>
                                         </td>
 
@@ -144,6 +142,24 @@
                         </div>
                         <div class="panel-body">
                             <table class="layui-hide" id="data_table" lay-filter="operation"></table>
+
+                            <script type="text/html" id="statusTpl">
+                                {{#  if(d.status === 1){ }}
+                                <span class="status-normal">正常</span>
+                                {{#  } }}
+
+                                {{#  if(d.status === 2){ }}
+                                <span class="status-disable">禁用</span>
+                                {{#  } }}
+
+                                {{#  if(d.status === 3){ }}
+                                <span class="status-lock">锁定</span>
+                                {{#  } }}
+
+                                {{#  if(d.status !== 1 && d.status !== 2 && d.status !== 3){ }}
+                                <span>其他</span>
+                                {{#  } }}
+                            </script>
                         </div>
                     </div>
                 </div>
