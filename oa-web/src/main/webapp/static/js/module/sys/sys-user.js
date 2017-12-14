@@ -41,7 +41,6 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
                         var delMsg = '您确定要删除 ' + data.loginName + " 吗？";
                         layer.confirm(delMsg, function (index) {
                             $.post(ctx + "/mvc/sysUser/mgr/delete/user", {id: data.id}, function (json) {
-                                console.log(json);
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);

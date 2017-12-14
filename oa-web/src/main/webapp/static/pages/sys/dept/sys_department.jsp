@@ -45,7 +45,6 @@
                         var delMsg = '您确定要删除 ' + data.name + " 吗？";
                         layer.confirm(delMsg, function (index) {
                             $.post("${ctx}/mvc/sysDepartment/mgr/delete", {id: data.id}, function (json) {
-                                console.log(json);
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);
