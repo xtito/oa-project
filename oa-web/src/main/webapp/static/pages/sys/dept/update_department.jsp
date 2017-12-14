@@ -7,53 +7,6 @@
   Created Date: 2017/11/25 17:28
 --%>
 
-<script type="text/javascript">
-    <!--
-    require(["domReady"], function (doc) {
-        loadDeptList();
-    });
-
-    function updateDept() {
-        require(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
-            var layer = layui.layer;
-            var options = {
-                group: '.layui-form-item',
-                fields: {
-                    name: {
-                        validators: {
-                            notEmpty: {
-                                message: '部门名称不能为空'
-                            }
-                        }
-                    }
-                }
-            };
-
-            var validaForm = new valida.Validator("#data_form", options);
-            if (validaForm.validateForm()) {
-                $.ajax({
-                    url: "${ctx}/mvc/sysDepartment/mgr/update",
-                    type: "POST",
-                    data: $("#data_form").serialize(),
-                    dataType: "json",
-                    success: function (json) {
-                        if (json.success) {
-                            jumpToDeptList();
-                        }
-                        setTimeout(function () {
-                            layer.msg(json.info);
-                        }, 50);
-                    }, error: function () {
-                        layer.msg("操作失败，请重试");
-                    }
-                });
-            }
-        });
-    }
-
-    //-->
-</script>
-
 <div class="ito-inner-body">
     <div class="ito-home-section">
         <div class="ito-home-address">
@@ -120,11 +73,10 @@
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button type="button" class="layui-btn mr20" onclick="updateDept()">立即提交
+                                        <button type="button" id="update_btn" class="layui-btn mr20">立即提交
                                         </button>
                                         <button type="reset" class="layui-btn layui-btn-primary mr20">重置</button>
-                                        <button type="button" class="layui-btn layui-btn-primary"
-                                                onclick="jumpToDeptList()">返回
+                                        <button type="button" id="back_btn" class="layui-btn layui-btn-primary">返回
                                         </button>
                                     </div>
                                 </div>

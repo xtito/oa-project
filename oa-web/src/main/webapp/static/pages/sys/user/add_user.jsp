@@ -7,16 +7,6 @@
   Created Date: 2017/11/9 21:35
 --%>
 
-<script type="text/javascript">
-    <!--
-    require(["domReady"], function(doc) {
-        require(["sys-user"], function(userJs) {
-            userJs.initBindEvent();
-        });
-    });
-    //-->
-</script>
-
 <div class="ito-inner-body">
     <div class="ito-home-section">
         <div class="ito-home-address">
@@ -65,16 +55,14 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">用户密码</label>
                                     <div class="layui-input-block">
-                                        <input type="password" name="password" class="layui-input" placeholder="建议至少使用两种字符组合"
-                                               maxlength="30" autocomplete="off">
+                                        <input type="password" name="password" class="layui-input" placeholder="建议至少使用两种字符组合" autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">再次输入密码</label>
                                     <div class="layui-input-block">
-                                        <input type="password" name="confirm_password" class="layui-input" placeholder="再次输入密码"
-                                               maxlength="30" autocomplete="off">
+                                        <input type="password" name="confirm_password" class="layui-input" placeholder="再次输入密码" autocomplete="off">
                                     </div>
                                 </div>
 
@@ -89,16 +77,14 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">Email</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="email" class="layui-input" placeholder="您的常用Email"
-                                               maxlength="50" autocomplete="off">
+                                        <input type="text" name="email" class="layui-input" placeholder="您的常用Email" autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">手机号</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="phone" class="layui-input" placeholder="建议使用常用手机"
-                                               maxlength="11" autocomplete="off">
+                                        <input type="text" name="phone" class="layui-input" placeholder="建议使用常用手机" autocomplete="off">
                                     </div>
                                 </div>
 
@@ -106,8 +92,7 @@
                                 <div class="layui-form-item layui-form-text">
                                     <label class="layui-form-label">描述</label>
                                     <div class="layui-input-block">
-                                        <textarea name="description" placeholder="请输入用户备注" maxlength="300"
-                                                  class="layui-textarea"></textarea>
+                                        <textarea name="description" placeholder="请输入用户备注" class="layui-textarea"></textarea>
                                     </div>
                                 </div>
 

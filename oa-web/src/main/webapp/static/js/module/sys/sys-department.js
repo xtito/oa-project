@@ -1,6 +1,5 @@
 define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay, valida, commonJs) {
-
-    var userJs = {
+    var deptJs = {
         cache: {},
         loadDataList: function () {
             layui.use('table', function () {
@@ -10,23 +9,19 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
 
                 table.render({
                     elem: '#data_table'
-                    , id: 'user_table'
-                    , url: ctx + '/mvc/sysUser/mgr/list'
+                    , id: 'table_reload'
+                    , url: ctx + '/mvc/sysDepartment/mgr/list'
                     , method: "post"
                     , page: true
-                    //, cellMinWidth: 100
+                    , cellMinWidth: 100
                     , cols: [[
                         {type: 'checkbox'}
                         , {title: '序号', type: 'numbers'}
-                        , {field: 'loginName', title: '登录名', sort: true}
-                        //, {field: 'nickname', title: '用户昵称', sort: true}
-                        , {field: 'email', title: 'Email', sort: true}
-                        , {field: 'phone', title: '手机号'}
-                        , {field: 'deptName', title: '部门', sort: true}
-                        , {field: 'status', title: '用户状态', width: 100, sort: true, templet: '#statusTpl'}
-                        , {field: 'createTime', title: '创建时间', width: 170, sort: true}
-                        , {field: 'lastLoginTime', title: '最后登录时间', width: 170, sort: true}
-                        , {title: '操作', width: 70, toolbar: '#operation_con', fixed: 'right'}
+//                        ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
+                        , {field: 'name', title: '部门名称', sort: true}
+                        , {field: 'createTime', title: '创建时间', width: 180, sort: true}
+                        , {field: 'description', title: '部门描述'}
+                        , {title: '操作', width: 100, toolbar: '#operation_con', fixed: 'right'}
                     ]]
                     , request: {pageName: "pageNum", limitName: "pageSize"}
                     , response: {
@@ -38,13 +33,13 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                 table.on("tool(operation)", function (obj) {
                     var data = obj.data;
                     if (obj.event === 'del') {
-                        var delMsg = '您确定要删除 ' + data.loginName + " 吗？";
+                        var delMsg = '您确定要删除 ' + data.name + " 吗？";
                         layer.confirm(delMsg, function (index) {
-                            $.post(ctx + "/mvc/sysUser/mgr/delete/user", {id: data.id}, function (json) {
+                            $.post(ctx + "/mvc/sysDepartment/mgr/delete", {id: data.id}, function (json) {
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);
-                                    userJs.jumpToDataList();
+                                    deptJs.jumpToDataList();
                                 }
 
                                 setTimeout(function () {
@@ -53,7 +48,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                             }, "json");
                         });
                     } else if (obj.event === 'edit') {
-                        userJs.jumpToUpdatePage(data.id);
+                        deptJs.jumpToUpdatePage(data.id);
                     }
                 });
 
@@ -113,78 +108,19 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         saveOrUpdateForm: function (type) {
 
-            var url = ctx + "/mvc/sysUser/mgr/save/user";
+            var url = ctx + "/mvc/sysDepartment/mgr/save";
             if (type === "update") {
-                url = ctx + "/mvc/sysUser/mgr/update/user";
+                url = ctx + "/mvc/sysDepartment/mgr/update";
             }
 
             var layer = layui.layer;
             var options = {
                 group: '.layui-form-item',
                 fields: {
-                    loginName: {
+                    name: {
                         validators: {
                             notEmpty: {
-                                message: '用户名不能为空'
-                            },
-                            regexp: {
-                                regexp: /^[^\u4e00-\u9fa5]+$/,
-                                message: '用户名只能是英文和字符组合'
-                            },
-                            stringLength: {
-                                min: 5,
-                                max: 30,
-                                message: '用户名最少%s位最多%s位'
-                            }
-                        }
-                    },
-                    password: {
-                        validators: {
-                            notEmpty: {
-                                message: '密码不能为空'
-                            },
-                            stringLength: {
-                                min: 5,
-                                max: 30,
-                                message: '密码最少%s位最多%s位'
-                            },
-                            identical: {
-                                field: 'confirm_password',
-                                message: '密码和确认密码必须相同'
-                            }
-                        }
-                    },
-                    confirm_password: {
-                        validators: {
-                            notEmpty: {
-                                message: '确认密码不能为空'
-                            },
-                            stringLength: {
-                                min: 5,
-                                max: 30,
-                                message: '密码最少%s位最多%s位'
-                            },
-                            identical: {
-                                field: 'password',
-                                message: '密码和确认密码必须相同'
-                            }
-                        }
-                    },
-                    email: {
-                        validators: {
-                            emailAddress: {
-                                message: '请输入正确格式的Email'
-                            }
-                        }
-                    },
-                    phone: {
-                        validators: {
-                            notEmpty: {
-                                message: '手机号不能为空'
-                            },
-                            regexp: {
-                                regexp: /^[1]{1}[0-9]{10}$/,
-                                message: '手机号格式不正确'
+                                message: '部门名称不能为空'
                             }
                         }
                     }
@@ -200,7 +136,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                     dataType: "json",
                     success: function (json) {
                         if (json.success) {
-                            userJs.jumpToDataList();
+                            deptJs.jumpToDataList();
                         }
                         setTimeout(function () {
                             layer.msg(json.info);
@@ -212,40 +148,40 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
             }
         },
         saveForm: function () {
-            userJs.saveOrUpdateForm("add");
+            deptJs.saveOrUpdateForm("add");
         },
         updateForm: function () {
-            userJs.saveOrUpdateForm("update");
+            deptJs.saveOrUpdateForm("update");
         },
         jumpToAddPage: function () {
             // 跳转到添加页面
-            commonJs.loadContent(ctx + "/static/pages/sys/user/add_user.jsp", null, function () {
-                userJs.initBindEvent();
+            commonJs.loadContent(ctx + "/static/pages/sys/dept/add_department.jsp", null, function () {
+                deptJs.initBindEvent();
             });
         },
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                commonJs.loadContent(ctx + "/mvc/sysUser/mgr/update/ui", {id: id}, function () {
-                    userJs.initBindEvent();
+                commonJs.loadContent(ctx + "/mvc/sysDepartment/mgr/update/ui", {id: id}, function () {
+                    deptJs.initBindEvent();
                 });
             } else {
                 layui.use('layer', function (layer) {
-                    layer.msg("跳转用户更新页面异常，丢失id");
+                    layer.msg("跳转部门更新页面异常，丢失id");
                 });
             }
         },
         jumpToDataList: function () {
             // 跳转到列表页
-            commonJs.loadContent(ctx + "/static/pages/sys/user/sys_user.jsp");
+            commonJs.loadContent(ctx + "/static/pages/sys/dept/sys_department.jsp");
         },
         initBindEvent: function () {
             var eleArray = [
-                {ele: "#add_btn", event: userJs.jumpToAddPage},
-                {ele: "#back_btn", event: userJs.jumpToDataList},
-                {ele: "#user_dept", event: userJs.loadDeptTreeList},
-                {ele: "#save_btn", event: userJs.saveForm},
-                {ele: "#update_btn", event: userJs.updateForm}
+                {ele: "#add_btn", event: deptJs.jumpToAddPage},
+                {ele: "#back_btn", event: deptJs.jumpToDataList},
+                {ele: "#select_dept", event: deptJs.loadDeptTreeList},
+                {ele: "#save_btn", event: deptJs.saveForm},
+                {ele: "#update_btn", event: deptJs.updateForm}
             ];
 
             for (var e in eleArray) {
@@ -258,5 +194,5 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         }
     };
 
-    return userJs;
+    return deptJs;
 });

@@ -7,16 +7,6 @@
   Created Date: 2017/12/14 14:12
 --%>
 
-<script type="text/javascript">
-    <!--
-    require(["domReady"], function(doc) {
-        require(["sys-user"], function(userJs) {
-            userJs.initBindEvent();
-        });
-    });
-    //-->
-</script>
-
 <div class="ito-inner-body">
     <div class="ito-home-section">
         <div class="ito-home-address">

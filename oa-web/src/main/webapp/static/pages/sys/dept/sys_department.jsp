@@ -9,128 +9,12 @@
 
 <script type="text/javascript">
     <!--
-    require(["domReady"], function (doc) {
-        require(["jquery", "lay-ui"], function ($, lay) {
-            layui.use('table', function () {
-                var table = layui.table, form = layui.form, layer = layui.layer;
-
-                form.render();// 重新渲染表单元素
-
-                table.render({
-                    elem: '#data_table'
-                    , id: 'table_reload'
-                    , url: ctx + '/mvc/sysDepartment/mgr/list'
-                    , method: "post"
-                    , page: true
-                    , cellMinWidth: 100
-                    , cols: [[
-                        {type: 'checkbox'}
-                        , {title: '序号', type: 'numbers'}
-//                        ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
-                        , {field: 'name', title: '部门名称', sort: true}
-                        , {field: 'createTime', title: '创建时间', width: 180, sort: true}
-                        , {field: 'description', title: '部门描述'}
-                        , {title: '操作', width: 100, toolbar: '#operation_con', fixed: 'right'}
-                    ]]
-                    , request: {pageName: "pageNum", limitName: "pageSize"}
-                    , response: {
-                        countName: "total",
-                        dataName: "list"
-                    }
-                });
-
-                table.on("tool(operation)", function (obj) {
-                    var data = obj.data;
-                    if (obj.event === 'del') {
-                        var delMsg = '您确定要删除 ' + data.name + " 吗？";
-                        layer.confirm(delMsg, function (index) {
-                            $.post("${ctx}/mvc/sysDepartment/mgr/delete", {id: data.id}, function (json) {
-                                if (json.success) {
-                                    obj.del();
-                                    layer.close(index);
-                                    jumpToDeptList();
-                                }
-
-                                setTimeout(function () {
-                                    layer.msg(json.info);
-                                }, 50);
-                            }, "json");
-                        });
-                    } else if (obj.event === 'edit') {
-                        loadInnerContent("${ctx}/mvc/sysDepartment/mgr/update/ui?id=" + data.id);
-                    }
-                });
-
-                var active = {
-                    reload: function () {
-                        var $deptName = $('#dept_name');
-
-                        //执行重载
-                        table.reload('table_reload', {
-                            page: {
-                                curr: 1 //重新从第 1 页开始
-                            }
-                            , where: {
-                                deptName: $deptName.val()
-                            }
-                        });
-                    }
-                };
-
-                $("#search_btn").on('click', function () {
-                    var type = $(this).data('type');
-                    active[type] ? active[type].call(this) : '';
-                });
-            });
+    require(["domReady"], function(doc) {
+        require(["sys-department"], function(deptJs){
+            deptJs.initBindEvent();
+            deptJs.loadDataList();
         });
     });
-
-    function loadDeptList() {
-        require(["jquery", "lay-ui"], function ($, lay) {
-            $("#select_dept").click(function () {
-                var $this = $(this);
-
-                $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function (html) {
-                    layui.use('layer', function () {
-                        var layer = layui.layer;
-                        var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
-
-                        layer.open({
-                            id: "department_list",
-                            type: 1,
-                            title: title,
-                            area: ['400px', '320px'],
-                            content: html,
-                            btn: ['确定', '取消'],
-                            yes: function (index) {
-                                var treeObj = $.fn.zTree.getZTreeObj("treeEle");
-                                var nodes = treeObj.getSelectedNodes();
-                                if (nodes) {
-                                    $("#dept_id").val(nodes[0].id);
-                                    $this.val(nodes[0].name);
-                                }
-                                layer.close(index);
-                            },
-                            btn2: function (index, layero) {
-                                // 按钮【按钮二】的回调
-                                layer.close(index);
-                                //return false 开启该代码可禁止点击该按钮关闭
-                            }
-                        });
-                    });
-                });
-            });
-        });
-    }
-
-    function addUI() {
-        loadInnerContent("${ctx}/static/pages/sys/dept/add_department.jsp");
-    }
-
-    // 跳转模块首页的时候一定要调用外部加载方法 loadContent
-    function jumpToDeptList() {
-        loadContent("${ctx}/static/pages/sys/dept/sys_department.jsp");
-    }
     //-->
 </script>
 
@@ -184,7 +68,7 @@
                                                 查询
                                             </button>
                                             <button type="reset" class="layui-btn mr20">重置</button>
-                                            <button type="button" class="layui-btn" onclick="addUI()">新建</button>
+                                            <button type="button" id="add_btn" class="layui-btn">新建</button>
                                         </td>
                                     </tr>
                                     </tbody>

@@ -17,7 +17,8 @@ define(function () {
             //"lay-layer": "../../ui/layui/lay/modules/layer",
             "ito-validation": "../utils/ito-validation",
             "module-common": "../module/module-common",
-            "sys-user": "../module/sys/sys-user"
+            "sys-user": "../module/sys/sys-user",
+            "sys-department": "../module/sys/sys-department"
         },
         // 不符合AMD规范的使用
         shim: {

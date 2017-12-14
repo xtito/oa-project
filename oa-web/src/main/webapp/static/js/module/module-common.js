@@ -17,6 +17,10 @@ define(["jquery"], function ($) {
         loadContent: function (url, param, callback) {
             $("#main_body").load(url, param, function() {
                 commonJs.bindLoadContentEvent($(".location-item a, .layui-nav-item a"));
+                if (typeof callback === "function") {
+                    console.log("加载完成");
+                    callback();
+                }
             });
         }
     };
