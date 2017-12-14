@@ -30,7 +30,7 @@
     <sql id="Base_Column_List">
         <trim>
             id, login_name, nickname, email, password, phone, department_id, status, lock_time,
-            create_time, update_time, last_login_time, user_type, def_identify
+            create_time, update_time, last_login_time, user_type, description, def_identify
         </trim>
     </sql>
 
@@ -38,7 +38,7 @@
         INSERT INTO sys_user (<include refid="Base_Column_List"/>)
         <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
             #{id},#{loginName},#{nickname},#{email},#{password},#{phone},#{departmentId},#{status},
-            #{lockTime},#{createTime},#{updateTime},#{lastLoginTime},#{userType},#{defIdentify}
+            #{lockTime},#{createTime},#{updateTime},#{lastLoginTime},#{userType},#{description},#{defIdentify}
         </trim>
     </insert>
 
@@ -81,6 +81,9 @@
             <if test="userType != null">
                 user_type = #{userType},
             </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
             <if test="defIdentify != null">
                 def_identify = #{defIdentify}
             </if>
@@ -99,7 +102,7 @@
         SELECT
         <trim>
             A.id, A.login_name, A.nickname, A.email, A.password, A.phone, A.department_id, A.status, A.lock_time,
-            A.create_time, A.update_time, A.last_login_time, A.user_type, A.def_identify, B.name_ AS dept_name
+            A.create_time, A.update_time, A.last_login_time, A.user_type, A.description, A.def_identify, B.name_ AS dept_name
         </trim>
         FROM sys_user AS A
         LEFT JOIN sys_department AS B ON B.id = A.department_id
@@ -116,7 +119,7 @@
         SELECT
         <trim>
             A.id, A.login_name, A.nickname, A.email, A.password, A.phone, A.department_id, A.status, A.lock_time,
-            A.create_time, A.update_time, A.last_login_time, A.user_type, A.def_identify, B.name_ AS dept_name
+            A.create_time, A.update_time, A.last_login_time, A.user_type, A.description, A.def_identify, B.name_ AS dept_name
         </trim>
         FROM sys_user AS A
         LEFT JOIN sys_department AS B ON B.id = A.department_id

@@ -18,45 +18,8 @@
         // require.js加载完时调用main.js，main.js调用此方法
         function onRequireReady() {
             require(["domReady"], function (doc) {
-
-                require(["jquery", "lay-ui"], function ($, lay) {
-                    //JavaScript代码区域
-                    layui.use('element', function () {
-                        var element = layui.element;
-                    });
-
-                    loadContent("static/include/home.jsp");
-                    bindLoadContentEvent($(".layui-nav-item a"));
-                });
-            });
-        }
-
-
-        function loadContent(url, param, callback) {
-            require(["jquery"], function() {
-                $("#main_body").load(url, param, function() {
-                    bindLoadContentEvent($(".location-item a"));
-                });
-            });
-        }
-
-        function loadInnerContent(url, param, callback) {
-            require(["jquery"], function() {
-                $("#main_body").children("#inner_main").load(url, param, function() {
-                    bindLoadContentEvent($(".location-item a"));
-                });
-            });
-        }
-
-        function bindLoadContentEvent($obj) {
-            require(["jquery"], function () {
-                // 先取消所有click事件
-                $obj.unbind("click");
-                $obj.click(function () {
-                    var url = $(this).attr("data-url");
-                    if (url) {
-                        loadContent(url);
-                    }
+                require(["jquery", "module-common"], function ($, commonJs) {
+                    commonJs.loadContent("static/include/home.jsp");
                 });
             });
         }

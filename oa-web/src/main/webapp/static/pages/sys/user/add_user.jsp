@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <a href="javascript:;" data-url="${ctx}/mvc/sysUser/mgr/list">
+                        <a href="javascript:;" data-url="${ctx}/static/pages/sys/user/sys_user.jsp">
                             <i class="ito ito-user"></i><span>用户管理</span>
                         </a>
                     </li>

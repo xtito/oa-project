@@ -13,7 +13,10 @@ define(function () {
             "zTree": "../zTree/jquery.zTree.all.min",
             //"resizeHeight": "../utils/resizeHeight",
             "lay-ui": "../../ui/layui/layui",
+            //"lay-element": "../../ui/layui/lay/modules/element",
+            //"lay-layer": "../../ui/layui/lay/modules/layer",
             "ito-validation": "../utils/ito-validation",
+            "module-common": "../module/module-common",
             "sys-user": "../module/sys/sys-user"
         },
         // 不符合AMD规范的使用
@@ -76,9 +79,18 @@ define(function () {
         });
     }*/
 
-    require(["domReady", "jquery"], function (doc, $) {
+    require(["domReady"], function (doc) {
+        require(["jquery", "lay-ui"], function ($, lay) {
 
-        activeSidebarMenu();
+            // 绑定左侧菜单选中事件
+            activeSidebarMenu();
+
+            //// 绑定layui菜单等点击事件
+            layui.use('element', function () {
+                var element = layui.element;
+            });
+        });
+
         //window.resize();
     });
 });

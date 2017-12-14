@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <a href="javascript:;" data-url="${ctx}/mvc/sysUser/mgr/list">
+                        <a href="javascript:;" data-url="${ctx}/static/pages/sys/user/sys_user.jsp">
                             <i class="ito ito-user"></i><span>用户管理</span>
                         </a>
                     </li>
@@ -59,16 +59,16 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">用户名</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="loginName" class="layui-input" placeholder="您的账户名和登录名"
-                                               autocomplete="off" value="${requestScope.user.loginName}">
+                                        <input type="text" class="layui-input" placeholder="您的账户名和登录名" readonly disabled
+                                               value="${requestScope.user.loginName}">
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label" for="user_dept">部门</label>
                                     <div class="layui-input-block">
-                                        <input type="hidden" id="dept_id" name="departmentId" value="${requestScope.user.id}"/>
-                                        <input type="text" id="user_dept" name="title" class="layui-input" placeholder="请点击选择部门"
+                                        <input type="hidden" id="dept_id" name="departmentId" value="${requestScope.user.departmentId}"/>
+                                        <input type="text" id="user_dept" class="layui-input" placeholder="请点击选择部门"
                                                value="${requestScope.user.deptName}" readonly>
                                     </div>
                                 </div>

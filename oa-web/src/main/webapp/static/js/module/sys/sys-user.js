@@ -1,4 +1,4 @@
-define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
+define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay, valida, commonJs) {
 
     var userJs = {
         cache: {},
@@ -219,12 +219,12 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
         },
         jumpToAddPage: function () {
             // 跳转到添加页面
-            loadInnerContent(ctx + "/static/pages/sys/user/add_user.jsp");
+            commonJs.loadContent(ctx + "/static/pages/sys/user/add_user.jsp");
         },
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                loadInnerContent(ctx + "/mvc/sysUser/mgr/update/ui", {id: id});
+                commonJs.loadContent(ctx + "/mvc/sysUser/mgr/update/ui", {id: id});
             } else {
                 layui.use('layer', function (layer) {
                     layer.msg("跳转用户更新页面异常，丢失id");
@@ -233,7 +233,7 @@ define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
         },
         jumpToDataList: function () {
             // 跳转到列表页
-            loadContent(ctx + "/static/pages/sys/user/sys_user.jsp");
+            commonJs.loadContent(ctx + "/static/pages/sys/user/sys_user.jsp");
         },
         initBindEvent: function () {
             var eleArray = [
