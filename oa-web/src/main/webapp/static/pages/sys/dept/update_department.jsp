@@ -97,7 +97,7 @@
                                     <label class="layui-form-label">部门名称</label>
                                     <div class="layui-input-block">
                                         <input type="text" name="name" class="layui-input" placeholder="请输入用户名"
-                                               autocomplete="off" value="${requestScope.dept.name}">
+                                               maxlength="50" autocomplete="off" value="${requestScope.dept.name}">
                                     </div>
                                 </div>
 
@@ -113,7 +113,7 @@
                                 <div class="layui-form-item layui-form-text">
                                     <label class="layui-form-label">部门描述</label>
                                     <div class="layui-input-block">
-                                        <textarea name="description" placeholder="请输入部门备注"
+                                        <textarea name="description" placeholder="请输入部门备注" maxlength="300"
                                                   class="layui-textarea">${requestScope.dept.description}</textarea>
                                     </div>
                                 </div>

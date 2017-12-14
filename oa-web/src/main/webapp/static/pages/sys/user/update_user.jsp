@@ -65,6 +65,14 @@
                                 </div>
 
                                 <div class="layui-form-item">
+                                    <label class="layui-form-label">昵称</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" name="nickname" placeholder="您的昵称"
+                                               maxlength="64" value="${requestScope.user.nickname}">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
                                     <label class="layui-form-label" for="user_dept">部门</label>
                                     <div class="layui-input-block">
                                         <input type="hidden" id="dept_id" name="departmentId" value="${requestScope.user.departmentId}"/>
@@ -77,7 +85,7 @@
                                     <label class="layui-form-label">Email</label>
                                     <div class="layui-input-block">
                                         <input type="text" name="email" class="layui-input" placeholder="您的常用Email"
-                                               autocomplete="off" value="${requestScope.user.email}">
+                                               autocomplete="off" maxlength="50" value="${requestScope.user.email}">
                                     </div>
                                 </div>
 
@@ -85,7 +93,7 @@
                                     <label class="layui-form-label">手机号</label>
                                     <div class="layui-input-block">
                                         <input type="text" name="phone" class="layui-input" placeholder="建议使用常用手机"
-                                               autocomplete="off" value="${requestScope.user.phone}">
+                                               autocomplete="off" maxlength="11" value="${requestScope.user.phone}">
                                     </div>
                                 </div>
 
@@ -93,8 +101,8 @@
                                 <div class="layui-form-item layui-form-text">
                                     <label class="layui-form-label">描述</label>
                                     <div class="layui-input-block">
-                                        <textarea name="description" placeholder="请输入用户备注" class="layui-textarea">
-                                                ${requestScope.user.description}</textarea>
+                                        <textarea name="description" placeholder="请输入用户备注" maxlength="300"
+                                                  class="layui-textarea">${requestScope.user.description}</textarea>
                                     </div>
                                 </div>
 

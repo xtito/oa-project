@@ -25,13 +25,15 @@ define(["jquery"], function ($) {
             },
 
             format: function (message, parameters) {
-                if (!$.isArray(parameters)) {
-                    parameters = [parameters];
-                }
+                if (message) {
+                    if (!$.isArray(parameters)) {
+                        parameters = [parameters];
+                    }
 
-                for (var i in parameters) {
-                    if (parameters.hasOwnProperty(i)) {
-                        message = message.replace('%s', parameters[i]);
+                    for (var i in parameters) {
+                        if (parameters.hasOwnProperty(i)) {
+                            message = message.replace('%s', parameters[i]);
+                        }
                     }
                 }
 
@@ -162,15 +164,15 @@ define(["jquery"], function ($) {
 
                         switch (true) {
                             case (!!min && !!max):
-                                message = ito.util.format(options.message);
+                                message = ito.util.format(options.message, [parseInt(min, 10), parseInt(max, 10)]);
                                 break;
 
                             case (!!min):
-                                message = ito.util.format(options.message);
+                                message = ito.util.format(options.message, parseInt(min, 10));
                                 break;
 
                             case (!!max):
-                                message = ito.util.format(options.message);
+                                message = ito.util.format(options.message, parseInt(max, 10));
                                 break;
 
                             default:

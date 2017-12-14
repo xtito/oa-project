@@ -94,7 +94,7 @@
                                     <label class="layui-form-label">部门名称</label>
                                     <div class="layui-input-block">
                                         <input type="text" name="name" class="layui-input" placeholder="请输入用户名"
-                                               autocomplete="off">
+                                               maxlength="50" autocomplete="off">
                                     </div>
                                 </div>
 
@@ -110,8 +110,8 @@
                                 <div class="layui-form-item layui-form-text">
                                     <label class="layui-form-label">部门描述</label>
                                     <div class="layui-input-block">
-                                        <textarea name="description" placeholder="请输入部门备注"
-                                                  class="layui-textarea"></textarea>
+                                        <textarea name="description" class="layui-textarea" maxlength="300"
+                                                  placeholder="请输入部门备注"></textarea>
                                     </div>
                                 </div>
 

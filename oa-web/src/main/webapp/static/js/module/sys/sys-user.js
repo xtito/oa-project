@@ -133,8 +133,8 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                             },
                             stringLength: {
                                 min: 5,
-                                max: 20,
-                                message: '用户名最少5位最多20位'
+                                max: 30,
+                                message: '用户名最少%s位最多%s位'
                             }
                         }
                     },
@@ -146,7 +146,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                             stringLength: {
                                 min: 5,
                                 max: 30,
-                                message: '密码最少5位最多20位'
+                                message: '密码最少%s位最多%s位'
                             },
                             identical: {
                                 field: 'confirm_password',
@@ -162,7 +162,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                             stringLength: {
                                 min: 5,
                                 max: 30,
-                                message: '密码最少5位最多20位'
+                                message: '密码最少%s位最多%s位'
                             },
                             identical: {
                                 field: 'password',
