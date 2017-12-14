@@ -37,7 +37,6 @@
                     data: $("#data_form").serialize(),
                     dataType: "json",
                     success: function (json) {
-                        console.log(json);
                         if (json.success) {
                             jumpToDeptList();
                         }

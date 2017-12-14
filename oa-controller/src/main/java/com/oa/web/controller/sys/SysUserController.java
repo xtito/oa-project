@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.oa.bean.sys.SysUser;
 import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
+import com.oa.core.constant.Constant;
 import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
@@ -65,8 +66,11 @@ public class SysUserController extends BaseController {
         String info = "用户添加成功";
 
         try {
-
-            user.setCreateTime(new Date());
+            Date currentDate = new Date();
+            // 用户状态
+            user.setStatus(Constant.USER_NORMAL);
+            user.setCreateTime(currentDate);
+            user.setUpdateTime(currentDate);
             user.setDefIdentify(0);
             this.service.saveUser(user);
 

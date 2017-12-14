@@ -1,4 +1,4 @@
-define(["jquery", "lay-ui", "ito-validation"], function($, lay, valida) {
+define(["jquery", "lay-ui", "ito-validation"], function ($, lay, valida) {
 
     var userJs = {
         cache: {},
@@ -10,7 +10,7 @@ define(["jquery", "lay-ui", "ito-validation"], function($, lay, valida) {
 
                 table.render({
                     elem: '#data_table'
-                    , id: 'table_reload'
+                    , id: 'user_table'
                     , url: ctx + '/mvc/sysUser/mgr/list'
                     , method: "post"
                     , page: true
@@ -24,7 +24,7 @@ define(["jquery", "lay-ui", "ito-validation"], function($, lay, valida) {
                         , {field: 'phone', title: '手机号'}
                         , {field: 'deptName', title: '部门', sort: true}
                         , {field: 'status', title: '用户状态', sort: true}
-                        , {field: 'createTime', title: '创建时间', width: 160, sort: true}
+                        , {field: 'createTime', title: '创建时间', width: 180, sort: true}
                         , {field: 'lastLoginTime', title: '最后登录时间', width: 160, sort: true}
                         , {title: '操作', width: 100, toolbar: '#operation_con', fixed: 'right'}
                     ]]
@@ -63,7 +63,7 @@ define(["jquery", "lay-ui", "ito-validation"], function($, lay, valida) {
                         var $deptName = $('#dept_name');
 
                         //执行重载
-                        table.reload('table_reload', {
+                        table.reload('user_table', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }
@@ -113,18 +113,65 @@ define(["jquery", "lay-ui", "ito-validation"], function($, lay, valida) {
             });
         },
         saveOrUpdateForm: function (type) {
-            if (type === "add") {
 
+            var url = ctx + "/mvc/sysUser/mgr/save/user";
+            if (type === "update") {
+                url = ctx + "/mvc/sysUser/mgr/update/user";
             }
 
             var layer = layui.layer;
             var options = {
                 group: '.layui-form-item',
                 fields: {
-                    name: {
+                    loginName: {
                         validators: {
                             notEmpty: {
-                                message: '用户名称不能为空'
+                                message: '用户名不能为空'
+                            },
+                            regexp: {
+                                regexp: /^[^\u4e00-\u9fa5]+$/,
+                                message: '用户名只能是英文和字符组合'
+                            },
+                            stringLength: {
+                                min: 6,
+                                max: 20,
+                                message: '用户名最少6位最多20位'
+                            }
+                        }
+                    },
+                    password: {
+                        validators: {
+                            notEmpty: {
+                                message: '密码不能为空'
+                            },
+                            identical: {
+                                field: 'confirm_password',
+                                message: '密码和确认密码必须相同'
+                            }
+                        }
+                    },
+                    confirm_password: {
+                        validators: {
+                            notEmpty: {
+                                message: '确认密码不能为空'
+                            },
+                            identical: {
+                                field: 'password',
+                                message: '密码和确认密码必须相同'
+                            }
+                        }
+                    },
+                    email: {
+                        validators: {
+                            emailAddress: {
+                                message: '请输入正确格式的Email'
+                            }
+                        }
+                    },
+                    phone: {
+                        validators: {
+                            notEmpty: {
+                                message: '手机号不能为空'
                             }
                         }
                     }
@@ -134,7 +181,7 @@ define(["jquery", "lay-ui", "ito-validation"], function($, lay, valida) {
             var validaForm = new valida.Validator("#data_form", options);
             if (validaForm.validateForm()) {
                 $.ajax({
-                    url: ctx + "/mvc/sysUser/mgr/save/user",
+                    url: url,
                     type: "POST",
                     data: $("#data_form").serialize(),
                     dataType: "json",
@@ -152,7 +199,10 @@ define(["jquery", "lay-ui", "ito-validation"], function($, lay, valida) {
             }
         },
         saveForm: function () {
-            this.saveOrUpdateForm("add");
+            userJs.saveOrUpdateForm("add");
+        },
+        updateForm: function () {
+            userJs.saveOrUpdateForm("update");
         },
         jumpToAddPage: function () {
             // 跳转到添加页面
@@ -173,10 +223,21 @@ define(["jquery", "lay-ui", "ito-validation"], function($, lay, valida) {
             loadContent(ctx + "/static/pages/sys/user/sys_user.jsp");
         },
         initBindEvent: function () {
-            $("#add_btn").click(userJs.jumpToAddPage);
-            $("#back_btn").click(userJs.jumpToDataList);
-            $("#user_dept").click(userJs.loadDeptTreeList);
-            $("#save_btn").click(userJs.saveForm);
+            var eleArray = [
+                {ele: "#add_btn", event: userJs.jumpToAddPage},
+                {ele: "#back_btn", event: userJs.jumpToDataList},
+                {ele: "#user_dept", event: userJs.loadDeptTreeList},
+                {ele: "#save_btn", event: userJs.saveForm},
+                {ele: "#update_btn", event: userJs.updateForm}
+            ];
+
+            for (var e in eleArray) {
+                if (eleArray.hasOwnProperty(e)) {
+                    if ($(eleArray[e].ele).length > 0) {
+                        $(eleArray[e].ele).click(eleArray[e].event);
+                    }
+                }
+            }
         }
     };
 

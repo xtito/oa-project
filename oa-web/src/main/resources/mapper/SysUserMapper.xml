@@ -69,9 +69,9 @@
             <if test="lockTime != null">
                 lock_time = #{lockTime},
             </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
+            <!--<if test="createTime != null">-->
+                <!--create_time = #{createTime},-->
+            <!--</if>-->
             <if test="updateTime != null">
                 update_time = #{updateTime},
             </if>
@@ -102,12 +102,25 @@
 
     <select id="getUserList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
         SELECT
-          <trim>
-              A.id, A.login_name, A.nickname, A.email, A.password, A.phone, A.department_id, A.status, A.lock_time,
-              A.create_time, A.update_time, A.last_login_time, A.user_type, A.def_identify, B.name_ AS dept_name
-          </trim>
+        <trim>
+            A.id, A.login_name, A.nickname, A.email, A.password, A.phone, A.department_id, A.status, A.lock_time,
+            A.create_time, A.update_time, A.last_login_time, A.user_type, A.def_identify, B.name_ AS dept_name
+        </trim>
         FROM sys_user AS A
         LEFT JOIN sys_department AS B ON B.id = A.department_id
+        <where>
+            <trim>
+                <if test="params.loginName != null and params.loginName != ''">
+                    AND login_name = #{params.loginName}
+                </if>
+            </trim>
+        </where>
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            ORDER BY loginName, create_time
+        </if>
     </select>
 
 </mapper>

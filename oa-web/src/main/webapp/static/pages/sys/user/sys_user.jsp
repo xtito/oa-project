@@ -121,8 +121,8 @@
                                     </tr>
                                     <tr>
                                         <td class="tl pl40" colspan="8">
-                                            <button type="button" class="layui-btn mr20">查询</button>
-                                            <button type="button" class="layui-btn mr20">重置</button>
+                                            <button type="button" id="search_btn" class="layui-btn mr20">查询</button>
+                                            <button type="reset" class="layui-btn mr20">重置</button>
                                             <button type="button" id="add_btn" class="layui-btn">新建</button>
                                         </td>
                                     </tr>
@@ -148,10 +148,10 @@
                     </div>
                 </div>
 
-                <script type="text/html" id="operation_con">
+                <div id="operation_con" style="display: none">
                     <a class="operation-btn" lay-event="edit"><i class="ito ito-edit mr10"></i></a>
                     <a class="operation-btn" lay-event="del"><i class="ito ito-delete"></i></a>
-                </script>
+                </div>
             </div>
         </div>
     </div>

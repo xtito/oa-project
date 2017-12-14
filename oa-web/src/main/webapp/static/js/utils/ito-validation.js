@@ -150,8 +150,8 @@ define(["jquery"], function ($) {
                             return true;
                         }
 
-                        var min = $.isNumeric(options.min) ? options.min : ito.Validator.getDynamicOption($field, options.min),
-                            max = $.isNumeric(options.max) ? options.max : ito.Validator.getDynamicOption($field, options.max),
+                        var min = $.isNumeric(options.min) ? options.min : validator.getDynamicOption($field, options.min),
+                            max = $.isNumeric(options.max) ? options.max : validator.getDynamicOption($field, options.max),
                             length = value.length,
                             isValid = true,
                             message = options.message;
@@ -203,6 +203,64 @@ define(["jquery"], function ($) {
 
                         var regexp = ('string' === typeof options.regexp) ? new RegExp(options.regexp) : options.regexp;
                         return regexp.test(value);
+                    }
+                },
+                identical: {
+                    html5Attributes: {
+                        message: 'message',
+                        field: 'field'
+                    },
+
+                    /**
+                     * 检查是否输入值等于特定的价值
+                     *
+                     * @param {Validator} validator 验证插件实例
+                     * @param {jQuery} $field field元素
+                     * @param {Object} options 选项包括以下键:
+                     * - field: 将用于与当前字段比较的字段名
+                     * @returns {Boolean}
+                     */
+                    validate: function (validator, $field, options) {
+                        var value = $field.val();
+                        if (value === '') {
+                            return true;
+                        }
+
+                        var compareWith = validator.getFieldElements(options.field);
+                        if (compareWith === null) {
+                            return true;
+                        }
+
+                        if (value === compareWith.val()) {
+                            validator.updateStatus(options.field, validator.STATUS_VALID, 'identical');
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                },
+                emailAddress: {
+                    enableByHtml5: function ($field) {
+                        return ('email' === $field.attr('type'));
+                    },
+
+                    /**
+                     * 如果当输入值为有效的电子邮件地址  返回true
+                     *
+                     * @param {Validator} validator 验证插件实例
+                     * @param {jQuery} $field field元素
+                     * @param {Object} [options]
+                     * @returns {Boolean}
+                     */
+                    validate: function (validator, $field, options) {
+                        var value = $field.val();
+                        if (value === '') {
+                            return true;
+                        }
+
+                        // 电子邮件地址的正则表达式
+                        var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                        return emailRegExp.test(value);
                     }
                 }
             };
@@ -765,7 +823,8 @@ define(["jquery"], function ($) {
                 }
 
                 // 提交表单
-                this.disableSubmitButtons(true).defaultSubmit();
+                this.disableSubmitButtons(true);
+                this.defaultSubmit();
             };
 
             /**
