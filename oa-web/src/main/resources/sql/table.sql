@@ -12,7 +12,7 @@ CREATE TABLE sys_user (
   password varchar(50) DEFAULT NULL COMMENT '用户密码',
   phone varchar(20) DEFAULT NULL COMMENT '手机号',
   department_id varchar(20) DEFAULT NULL COMMENT '所属部门ID',
-  status int(10) DEFAULT NULL COMMENT '用户状态（0正常，1禁止登录，2锁定）',
+  status int(10) DEFAULT NULL COMMENT '用户状态（1正常，2禁止登录，3锁定）',
   lock_time datetime DEFAULT NULL COMMENT '锁定时间',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
   update_time datetime DEFAULT NULL COMMENT '更新时间',
