@@ -311,6 +311,20 @@
   }
 }
 
+// 表单必填
+.require-field {
+  position: relative;
+
+  &:before {
+    position: relative;
+    content: "*";
+    font-weight: bold;
+    color: red;
+    top: 2px;
+    right: 4px;
+  }
+}
+
 // 表单用户状态样式
 .status-normal {
   font-weight: bold !important;

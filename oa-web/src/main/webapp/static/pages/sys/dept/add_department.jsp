@@ -45,7 +45,7 @@
                         <div class="site-text site-block">
                             <form id="data_form" class="layui-form" method="post">
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">部门名称</label>
+                                    <label class="layui-form-label require-field">部门名称</label>
                                     <div class="layui-input-block">
                                         <input type="text" name="name" class="layui-input" placeholder="请输入用户名"
                                                maxlength="50" autocomplete="off">

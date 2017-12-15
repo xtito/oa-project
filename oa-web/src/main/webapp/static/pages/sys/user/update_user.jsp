@@ -47,7 +47,7 @@
                                 <input type="hidden" name="id" value="${requestScope.user.id}" />
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">用户名</label>
+                                    <label class="layui-form-label require-field">用户名</label>
                                     <div class="layui-input-block">
                                         <input type="text" class="layui-input" placeholder="您的账户名和登录名" readonly disabled
                                                value="${requestScope.user.loginName}">
@@ -80,7 +80,7 @@
                                 </div>
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">手机号</label>
+                                    <label class="layui-form-label require-field">手机号</label>
                                     <div class="layui-input-block">
                                         <input type="text" name="phone" class="layui-input" placeholder="建议使用常用手机"
                                                autocomplete="off" maxlength="11" value="${requestScope.user.phone}">
