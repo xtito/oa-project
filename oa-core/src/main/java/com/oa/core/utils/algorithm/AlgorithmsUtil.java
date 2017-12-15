@@ -16,7 +16,8 @@ public class AlgorithmsUtil {
 
     private static Logger logger = LoggerUtil.getLogger(AlgorithmsUtil.class);
 
-    private AlgorithmsUtil() {}
+    private AlgorithmsUtil() {
+    }
 
     /**
      * 转换MD5
@@ -71,6 +72,17 @@ public class AlgorithmsUtil {
             }
         }
         return md5StrBuff.toString();
+    }
+
+    /**
+     * 使用MD5加密算法进行加密，并在加密前指定盐值
+     *
+     * @param str  要加密的字符串
+     * @param salt 盐值
+     * @return 加密后的字符
+     */
+    public static String encrypt(String str, String salt) {
+        return encrypt(String.format("%s#%s", salt, str));
     }
 
 }

@@ -85,13 +85,17 @@ public class UuidTest {
 
         ObjectMapper mapper = new ObjectMapper();
         PageBean page = mapper.readValue(str, PageBean.class);
-        System.out.println(mapper.readValue(str, PageBean.class));;
+        System.out.println(mapper.readValue(str, PageBean.class));
+        ;
     }
 
 
     @Test
     public void md5Test() {
         String pwd = "admin";
+        String email = "mr_z2014@126.com";
+        String newPwd = String.format("%s#%s", email, pwd);
+        System.out.println(newPwd);
         System.out.println(AlgorithmsUtil.encryptMd5(pwd));
         System.out.println(AlgorithmsUtil.encrypt(pwd));
     }

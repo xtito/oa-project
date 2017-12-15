@@ -5,6 +5,7 @@ import com.oa.bean.sys.SysUser;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
+import com.oa.core.utils.algorithm.AlgorithmsUtil;
 import com.oa.core.utils.date.DateUtil;
 import com.oa.core.utils.date.DateValida;
 import com.oa.web.mapper.SysUserMapper;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -125,6 +127,20 @@ public class SysUserServiceImpl implements SysUserService {
             throw new ValidateException("该用户已存在，请更换用户名");
         }
 
+        user.setPassword(AlgorithmsUtil.encrypt(user.getPassword(), user.getLoginName()));
         this.save(user);
+    }
+
+
+    /**
+     * 根据用户
+     * @param user 要修改的密码的用户实体
+     * @return 受影响数
+     */
+    @Override
+    public Serializable updateUserPwd(SysUser user) {
+        user = this.getByPrimaryKey(user.getId());
+        user.setPassword(AlgorithmsUtil.encrypt(user.getPassword(), user.getLoginName()));
+        return this.mapper.updateUserPwd(user);
     }
 }

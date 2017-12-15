@@ -5,6 +5,7 @@ import com.oa.core.bean.PageBean;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -63,4 +64,11 @@ public interface SysUserMapper {
      * @return 用户实体
      */
     SysUser getUserByLoginName(String loginName);
+
+    /**
+     * 修改用户密码
+     * @param user 要修改的密码的用户实体
+     * @return 受影响数
+     */
+    Serializable updateUserPwd(SysUser user);
 }

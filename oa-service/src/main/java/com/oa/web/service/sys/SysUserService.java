@@ -6,6 +6,7 @@ import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 
 /**
  * 用户 Service
@@ -28,4 +29,7 @@ public interface SysUserService extends BaseService<SysUser> {
 
     // 保存用户，增加保存前验证
     void saveUser(SysUser user) throws ValidateException;
+
+    // 修改用户密码
+    Serializable updateUserPwd(SysUser user);
 }
