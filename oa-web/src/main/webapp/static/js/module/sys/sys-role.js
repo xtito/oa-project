@@ -10,7 +10,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
 
                 table.render({
                     elem: '#data_table'
-                    , id: 'user_table'
+                    , id: 'role_table'
                     , url: ctx + '/mvc/sysRole/mgr/list'
                     , method: "post"
                     , page: true
@@ -58,7 +58,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                         var $roleName = $('#role_name');
 
                         //执行重载
-                        table.reload('user_table', {
+                        table.reload('role_table', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }

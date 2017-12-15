@@ -57,7 +57,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                         var $deptName = $('#dept_name');
 
                         //执行重载
-                        table.reload('user_table', {
+                        table.reload('table_reload', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }
