@@ -1,5 +1,7 @@
 package com.oa.core.base;
 
+import com.oa.core.exception.ValidateException;
+
 import java.util.List;
 
 /**
