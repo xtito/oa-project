@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <i class="ito ito-user"></i><span>用户管理</span>
+                        <i class="ito ito-user-list"></i><span>用户管理</span>
                     </li>
                 </ol>
             </div>
