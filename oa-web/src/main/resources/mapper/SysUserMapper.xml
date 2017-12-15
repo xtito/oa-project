@@ -9,10 +9,10 @@
         <result column="login_name" property="loginName"/>
         <result column="nickname" property="nickname"/>
         <result column="email" property="email"/>
-        <result column="password" property="password"/>
+        <result column="password_" property="password"/>
         <result column="phone" property="phone"/>
         <result column="department_id" property="departmentId"/>
-        <result column="status" property="status"/>
+        <result column="status_" property="status"/>
         <result column="lock_time" property="lockTime"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
@@ -29,7 +29,7 @@
 
     <sql id="Base_Column_List">
         <trim>
-            id, login_name, nickname, email, password, phone, department_id, status, lock_time,
+            id, login_name, nickname, email, password_, phone, department_id, status_, lock_time,
             create_time, update_time, last_login_time, user_type, description, def_identify
         </trim>
     </sql>
@@ -46,7 +46,7 @@
     <update id="updateUserPwd" parameterType="com.oa.bean.sys.SysUser">
         UPDATE sys_user
         <set>
-            password = #{password}
+            password_ = #{password}
         </set>
         WHERE id = #{id}
     </update>
@@ -64,7 +64,7 @@
                 email = #{email},
             </if>
             <!--<if test="password != null">-->
-                <!--password = #{password},-->
+                <!--password_ = #{password},-->
             <!--</if>-->
             <if test="phone != null">
                 phone = #{phone},
@@ -73,7 +73,7 @@
                 department_id = #{departmentId},
             </if>
             <if test="status != null and status != 0">
-                status = #{status},
+                status_ = #{status},
             </if>
             <if test="lockTime != null">
                 lock_time = #{lockTime},
@@ -110,7 +110,7 @@
     <select id="getByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         SELECT
         <trim>
-            A.id, A.login_name, A.nickname, A.email, A.password, A.phone, A.department_id, A.status, A.lock_time,
+            A.id, A.login_name, A.nickname, A.email, A.password_, A.phone, A.department_id, A.status_, A.lock_time,
             A.create_time, A.update_time, A.last_login_time, A.user_type, A.description, A.def_identify, B.name_ AS dept_name
         </trim>
         FROM sys_user AS A
@@ -127,7 +127,7 @@
     <select id="getUserList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
         SELECT
         <trim>
-            A.id, A.login_name, A.nickname, A.email, A.password, A.phone, A.department_id, A.status, A.lock_time,
+            A.id, A.login_name, A.nickname, A.email, A.password_, A.phone, A.department_id, A.status_, A.lock_time,
             A.create_time, A.update_time, A.last_login_time, A.user_type, A.description, A.def_identify, B.name_ AS dept_name
         </trim>
         FROM sys_user AS A
