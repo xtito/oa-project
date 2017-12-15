@@ -1,15 +1,14 @@
 package com.parent.test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oa.core.bean.PageBean;
 import com.oa.core.utils.StringUtil;
+import com.oa.core.utils.algorithm.AlgorithmsUtil;
 import com.oa.core.utils.date.DateUtil;
 import com.oa.core.utils.generate.GenerateIdUtil;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.*;
 
 /**
@@ -87,6 +86,14 @@ public class UuidTest {
         ObjectMapper mapper = new ObjectMapper();
         PageBean page = mapper.readValue(str, PageBean.class);
         System.out.println(mapper.readValue(str, PageBean.class));;
+    }
+
+
+    @Test
+    public void md5Test() {
+        String pwd = "admin";
+        System.out.println(AlgorithmsUtil.encryptMd5(pwd));
+        System.out.println(AlgorithmsUtil.encrypt(pwd));
     }
 
 }

@@ -107,7 +107,7 @@
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/static/pages/tableDemo.jsp">
+                            <a href="javascript:;" data-url="">
                                 <i class="ito ito-icon ito-role"></i>
                                 <span>角色管理</span>
                             </a>
@@ -123,13 +123,26 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">系统设置</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">菜单管理</a></dd>
-                        <dd><a href="javascript:;">数据字典</a></dd>
-                        <dd><a href="javascript:;">系统设置</a></dd>
+                        <dd>
+                            <a href="javascript:;">
+                                <i class="ito ito-icon ito-menu-setting"></i>
+                                <span>菜单管理</span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">
+                                <i class="ito ito-icon ito-dict"></i>
+                                <span>数据字典</span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">
+                                <i class="ito ito-icon ito-setting"></i>
+                                <span>系统设置</span>
+                            </a>
+                        </dd>
                     </dl>
                 </li>
-
-                <li class="layui-nav-item"><a href="javascript:;" data-url="${ctx}/static/pages/tableDemo.jsp">表格演示</a></li>
             </ul>
         </div>
     </div>
