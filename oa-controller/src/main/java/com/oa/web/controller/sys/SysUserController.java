@@ -108,6 +108,7 @@ public class SysUserController extends BaseController {
         try {
 
             if (user != null) {
+                user.setUpdateTime(new Date());
                 this.service.update(user);
             }
 
