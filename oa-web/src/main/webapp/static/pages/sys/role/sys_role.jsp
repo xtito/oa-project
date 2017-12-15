@@ -76,30 +76,12 @@
                     <div class="panel-heading">
                         <div class="search-title">
                             <span class="ito ito-list-icon fl"></span>
-                            <h3 class="panel-title pro-title">用户列表</h3>
+                            <h3 class="panel-title pro-title">角色列表</h3>
                             <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <table class="layui-hide" id="data_table" lay-filter="operation"></table>
-
-                        <script type="text/html" id="statusTpl">
-                            {{#  if(d.status === 1){ }}
-                            <span class="status-normal">正常</span>
-                            {{#  } }}
-
-                            {{#  if(d.status === 2){ }}
-                            <span class="status-disable">禁用</span>
-                            {{#  } }}
-
-                            {{#  if(d.status === 3){ }}
-                            <span class="status-lock">锁定</span>
-                            {{#  } }}
-
-                            {{#  if(d.status !== 1 && d.status !== 2 && d.status !== 3){ }}
-                            <span>其他</span>
-                            {{#  } }}
-                        </script>
                     </div>
                 </div>
             </div>

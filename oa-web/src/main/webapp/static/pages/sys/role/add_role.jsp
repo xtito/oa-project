@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <i class="ito ito-edit-role"></i><span>更新角色</span>
+                        <i class="ito ito-add-role"></i><span>添加角色</span>
                     </li>
                 </ol>
             </div>
@@ -36,21 +36,19 @@
                 <div class="ito-panel">
                     <div class="panel-heading">
                         <div class="search-title">
-                            <span class="ito ito-edit-role fl"></span>
-                            <h3 class="panel-title pro-title">更新角色页面</h3>
+                            <span class="ito ito-add-role fl"></span>
+                            <h3 class="panel-title pro-title">添加角色页面</h3>
                             <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="site-text site-block">
                             <form id="data_form" class="layui-form">
-                                <input type="hidden" name="id" value="${requestScope.role.id}" />
-
                                 <div class="layui-form-item">
                                     <label class="layui-form-label require-field">角色名</label>
                                     <div class="layui-input-block">
                                         <input type="text" name="name" class="layui-input" placeholder="请输入角色名"
-                                               maxlength="30" autocomplete="off" value="${requestScope.role.name}">
+                                               maxlength="30" autocomplete="off">
                                     </div>
                                 </div>
 
@@ -58,13 +56,13 @@
                                     <label class="layui-form-label">角色描述</label>
                                     <div class="layui-input-block">
                                         <textarea name="description" placeholder="请输入角色备注" class="layui-textarea"
-                                                  maxlength="300" >${requestScope.role.description}</textarea>
+                                                  maxlength="300" ></textarea>
                                     </div>
                                 </div>
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button type="button" id="update_btn" class="layui-btn mr10">立即提交</button>
+                                        <button type="button" id="save_btn" class="layui-btn mr10">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary mr10">重置</button>
                                         <button type="button" id="back_btn" class="layui-btn layui-btn-primary">返回
                                         </button>
