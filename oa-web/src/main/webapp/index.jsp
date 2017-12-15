@@ -107,13 +107,13 @@
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="">
+                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/role/sys_role.jsp">
                                 <i class="ito ito-icon ito-role"></i>
                                 <span>角色管理</span>
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="">
+                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/pms/sys_permission.jsp">
                                 <i class="ito ito-icon ito-permissions"></i>
                                 <span>权限管理</span>
                             </a>
