@@ -115,10 +115,10 @@ define(["jquery"], function ($) {
             // 使用验证
             this.validators = {
                 notEmpty: {
-                    enableByHtml5: function ($field) {
-                        var required = $field.attr('required') + '';
-                        return ('required' === required || 'true' === required);
-                    },
+                    //enableByHtml5: function ($field) {
+                    //    var required = $field.attr('required') + '';
+                    //    return ('required' === required || 'true' === required);
+                    //},
                     validate: function (validator, $field, options) {
                         var type = $field.attr('type');
                         if ('radio' === type || 'checkbox' === type) {
@@ -137,15 +137,15 @@ define(["jquery"], function ($) {
                         min: 'min',
                         max: 'max'
                     },
-                    enableByHtml5: function ($field) {
-                        var maxLength = $field.attr('maxlength');
-                        if (maxLength) {
-                            return {
-                                max: parseInt(maxLength, 10)
-                            };
-                        }
-                        return false;
-                    },
+                    //enableByHtml5: function ($field) {
+                    //    var maxLength = $field.attr('maxlength');
+                    //    if (maxLength) {
+                    //        return {
+                    //            max: parseInt(maxLength, 10)
+                    //        };
+                    //    }
+                    //    return false;
+                    //},
                     validate: function (validator, $field, options) {
                         var value = $field.val();
                         if (value === '') {
@@ -187,16 +187,16 @@ define(["jquery"], function ($) {
                         message: 'message',
                         regexp: 'regexp'
                     },
-                    enableByHtml5: function ($field) {
-                        var pattern = $field.attr('pattern');
-                        if (pattern) {
-                            return {
-                                regexp: pattern
-                            };
-                        }
-
-                        return false;
-                    },
+                    //enableByHtml5: function ($field) {
+                    //    var pattern = $field.attr('pattern');
+                    //    if (pattern) {
+                    //        return {
+                    //            regexp: pattern
+                    //        };
+                    //    }
+                    //
+                    //    return false;
+                    //},
                     validate: function (validator, $field, options) {
                         var value = $field.val();
                         if (value === '') {
@@ -242,9 +242,9 @@ define(["jquery"], function ($) {
                     }
                 },
                 emailAddress: {
-                    enableByHtml5: function ($field) {
-                        return ('email' === $field.attr('type'));
-                    },
+                    //enableByHtml5: function ($field) {
+                    //    return ('email' === $field.attr('type'));
+                    //},
 
                     /**
                      * 如果当输入值为有效的电子邮件地址  返回true
