@@ -147,4 +147,10 @@
         </if>
     </select>
 
+
+    <!-- 根据用户ID查询该用户所拥有的角色ID -->
+    <select id="getRoleByUserId" parameterType="java.lang.Long" resultType="java.util.Set">
+        SELECT <trim>role_id</trim> FROM sys_user_role  WHERE user_id=#{userId}
+    </select>
+
 </mapper>

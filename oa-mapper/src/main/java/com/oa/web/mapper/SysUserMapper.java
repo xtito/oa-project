@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 用户 Mapper
@@ -16,6 +17,13 @@ import java.util.List;
  */
 @Component
 public interface SysUserMapper {
+
+    /**
+     * 根据用户ID获取角色的Set集合
+     * @param userId 用户ID
+     * @return 用户ID的角色集合
+     */
+    Set<String> getRoleByUserId(Long userId);
 
     /**
      * 将数据插入数据库

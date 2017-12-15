@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 系统用户管理Service实现
@@ -137,5 +138,15 @@ public class SysUserServiceImpl implements SysUserService {
         user = this.getByPrimaryKey(user.getId());
         user.setPassword(AlgorithmsUtil.encrypt(user.getPassword(), user.getLoginName()));
         return this.mapper.updateUserPwd(user);
+    }
+
+
+    /**
+     * 根据用户ID查询角色（role）
+     * @param userId 用户ID
+     * @return 角色类型列表
+     */
+    public Set<String> getRoleByUserId(Long userId) {
+        return this.mapper.getRoleByUserId(userId);
     }
 }

@@ -7,6 +7,7 @@ import com.oa.core.exception.ValidateException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * 用户 Service
@@ -32,4 +33,13 @@ public interface SysUserService extends BaseService<SysUser> {
 
     // 修改用户密码
     Serializable updateUserPwd(SysUser user);
+
+
+    /**
+     * 根据用户ID查询角色（role）
+     * @param userId 用户ID
+     * @return 角色类型列表
+     */
+    Set<String> getRoleByUserId(Long userId);
+
 }
