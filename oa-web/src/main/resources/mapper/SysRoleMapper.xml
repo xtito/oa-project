@@ -6,7 +6,7 @@
 
     <resultMap id="BaseResultMap" type="com.oa.bean.sys.SysRole">
         <id column="id" property="id"/>
-        <result column="name" property="name"/>
+        <result column="name_" property="name"/>
         <result column="description" property="description"/>
         <result column="role_type" property="roleType"/>
         <result column="create_time" property="createTime"/>
@@ -14,13 +14,9 @@
         <result column="def_identify" property="defIdentify"/>
     </resultMap>
 
-    <sql id="Select_Where_Clause">
-
-    </sql>
-
     <sql id="Base_Column_List">
         <trim>
-            id, name, description, role_type, create_time, update_time, def_identify
+            id, name_, description, role_type, create_time, update_time, def_identify
         </trim>
     </sql>
 
@@ -34,11 +30,8 @@
     <update id="updateSysRole" parameterType="com.oa.bean.sys.SysRole">
         UPDATE sys_role
         <set>
-            <if test="id != null">
-                id = #{id},
-            </if>
             <if test="name != null">
-                name = #{name},
+                name_ = #{name},
             </if>
             <if test="description != null">
                 description = #{description},
@@ -46,9 +39,9 @@
             <if test="roleType != null">
                 role_type = #{roleType},
             </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
+            <!--<if test="createTime != null">-->
+                <!--create_time = #{createTime},-->
+            <!--</if>-->
             <if test="updateTime != null">
                 update_time = #{updateTime},
             </if>
@@ -68,5 +61,33 @@
     <select id="getByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/> FROM sys_role WHERE id = #{id}
     </select>
+
+    <select id="getRoleByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_role WHERE name_ = #{roleName}
+    </select>
+
+    <select id="getRoleList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_role
+        <where>
+            <trim>
+                <if test="params.name != null and params.name != ''">
+                    AND name_ = #{params.name}
+                </if>
+                <if test="params.nameLike != null and params.nameLike != ''">
+                    AND name_ LIKE '%${params.nameLike}%'
+                </if>
+                <if test="params.begin != null and params.begin != '' and params.end != null and params.end != ''">
+                    AND create_time BETWEEN #{params.begin} AND #{params.end}
+                </if>
+            </trim>
+        </where>
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            ORDER BY id
+        </if>
+    </select>
+
 
 </mapper>

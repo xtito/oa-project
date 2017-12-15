@@ -1,6 +1,7 @@
 package com.oa.web.mapper;
 
 import com.oa.bean.sys.SysRole;
+import com.oa.core.bean.PageBean;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,13 +15,6 @@ import java.util.Set;
  */
 @Component
 public interface SysRoleMapper {
-
-    /**
-     * 根据用户ID获取角色的Set集合
-     * @param userId 用户ID
-     * @return 用户ID的角色集合
-     */
-    Set<String> getRoleByUserId(Long userId);
 
     /**
      * 将数据插入数据库
@@ -50,11 +44,19 @@ public interface SysRoleMapper {
      */
     SysRole getByPrimaryKey(Long id);
 
+
+    /**
+     * 根据数据实体主键ID获取该数据实体
+     * @param roleName 角色名称
+     * @return 数据实体
+     */
+    SysRole getRoleByName(String roleName);
+
     /**
      * 获取所有数据
      * @return 所有数据的集合
      */
-    List<SysRole> getAll();
+    List<SysRole> getRoleList(PageBean<SysRole> page);
 
 
 }
