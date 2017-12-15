@@ -6,7 +6,7 @@
     
     <resultMap id="BaseResultMap" type="com.oa.bean.sys.SysPermission">
         <id column="id" property="id"/>
-        <result column="name" property="name"/>
+        <result column="name_" property="name"/>
         <result column="url" property="url"/>
         <result column="description" property="description"/>
         <result column="uuid" property="uuid"/>
@@ -16,15 +16,12 @@
         <result column="order_by_id" property="orderById"/>
         <result column="pms_type" property="pmsType"/>
         <result column="def_identify" property="defIdentify"/>
+        <result column="parent_name" property="parentName" />
     </resultMap>
-
-    <sql id="Select_Where_Clause">
-
-    </sql>
 
     <sql id="Base_Column_List">
         <trim>
-            id, name, url, description, uuid, pms_level, pid, icon, order_by_id, pms_type, def_identify
+            id, name_, url, description, uuid, pms_level, pid, icon, order_by_id, pms_type, def_identify
         </trim>
     </sql>
 
@@ -43,7 +40,7 @@
                 id = #{id},
             </if>
             <if test="name != null">
-                name = #{name},
+                name_ = #{name},
             </if>
             <if test="url != null">
                 url = #{url},
@@ -85,5 +82,37 @@
     <select id="getByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/> FROM sys_permission WHERE id = #{id}
     </select>
-    
+
+
+    <select id="getPermissionByUrl" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_permission WHERE url = #{urlPath}
+    </select>
+
+    <select id="getPermissionByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_permission WHERE name_ = #{pmsName}
+    </select>
+
+
+    <select id="getPermissionList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM sys_permission
+        <where>
+            <trim>
+                <if test="params.name != null and params.name != ''">
+                    AND name_ = #{params.name}
+                </if>
+                <if test="params.nameLike != null and params.nameLike != ''">
+                    AND name_ LIKE '%${params.nameLike}%'
+                </if>
+            </trim>
+        </where>
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            ORDER BY id
+        </if>
+    </select>
+
 </mapper>

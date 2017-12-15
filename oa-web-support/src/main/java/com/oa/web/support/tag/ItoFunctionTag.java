@@ -60,6 +60,23 @@ public class ItoFunctionTag {
     }
 
 
+    /**
+     * 根据权限ID查询权限名称
+     * @param id 权限ID
+     * @return 权限名称
+     */
+    public static String getPermissionNameById(String id) {
+        if (StringUtil.isNotNull(id) && CollectionUtil.isNotEmpty(pmsList)) {
+            for (SysPermission pms : pmsList) {
+                if (pms.getId() == StringUtil.string2Int(id)) {
+                    return pms.getName();
+                }
+            }
+        }
+        return "";
+    }
+
+
     public static void setDeptList(List<SysDepartment> deptList) {
         ItoFunctionTag.deptList = deptList;
     }

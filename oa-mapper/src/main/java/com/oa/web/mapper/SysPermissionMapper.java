@@ -1,6 +1,7 @@
 package com.oa.web.mapper;
 
 import com.oa.bean.sys.SysPermission;
+import com.oa.core.bean.PageBean;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -47,10 +48,27 @@ public interface SysPermissionMapper {
      */
     SysPermission getByPrimaryKey(Long id);
 
-    /**
-     * 获取所有数据
-     * @return 所有数据的集合
-     */
-    List<SysPermission> getAll();
 
+     /**
+     * 根据权限权限地址查询权限
+     * @param urlPath 权限地址
+     * @return 权限实体
+     */
+    SysPermission getPermissionByUrl(String urlPath);
+
+
+    /**
+     * 根据权限名查询权限
+     * @param pmsName 权限名称
+     * @return 权限实体
+     */
+    SysPermission getPermissionByName(String pmsName);
+
+
+    /**
+     * 查询权限列表
+     * @param page 查询参数实体
+     * @return 权限列表
+     */
+    List<SysPermission> getPermissionList(PageBean<SysPermission> page);
 }

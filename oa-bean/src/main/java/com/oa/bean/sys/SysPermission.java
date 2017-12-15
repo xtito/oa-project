@@ -72,6 +72,8 @@ public class SysPermission implements Serializable {
      */
     private Integer defIdentify;
 
+    private String parentName;// 父级权限名称
+
 
     public Long getId() {
         return id;
@@ -159,6 +161,14 @@ public class SysPermission implements Serializable {
 
     public void setDefIdentify(Integer defIdentify) {
         this.defIdentify = defIdentify;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 
     /**
