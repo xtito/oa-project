@@ -9,10 +9,10 @@ CREATE TABLE sys_user (
   login_name varchar(50) DEFAULT NULL COMMENT '登录名',
   nickname varchar(100) DEFAULT NULL COMMENT '用户昵称',
   email varchar(100) DEFAULT NULL COMMENT 'Email地址',
-  password varchar(50) DEFAULT NULL COMMENT '用户密码',
+  password_ varchar(50) DEFAULT NULL COMMENT '用户密码',
   phone varchar(20) DEFAULT NULL COMMENT '手机号',
   department_id varchar(20) DEFAULT NULL COMMENT '所属部门ID',
-  status int(10) DEFAULT NULL COMMENT '用户状态（1正常，2禁止登录，3锁定）',
+  status_ int(10) DEFAULT NULL COMMENT '用户状态（1正常，2禁止登录，3锁定）',
   lock_time datetime DEFAULT NULL COMMENT '锁定时间',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
   update_time datetime DEFAULT NULL COMMENT '更新时间',
@@ -29,7 +29,7 @@ CREATE TABLE sys_user (
 DROP TABLE IF EXISTS sys_role;
 CREATE TABLE sys_role (
   id bigint(20) NOT NULL AUTO_INCREMENT COMMENT '角色主键ID',
-  name varchar(64) DEFAULT NULL COMMENT '角色名称',
+  name_ varchar(64) DEFAULT NULL COMMENT '角色名称',
   description varchar(255) DEFAULT NULL COMMENT '角色描述',
   role_type varchar(20) DEFAULT NULL COMMENT '角色类型',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
@@ -44,7 +44,7 @@ CREATE TABLE sys_role (
 DROP TABLE IF EXISTS sys_permission;
 CREATE TABLE sys_permission (
   id bigint(20) NOT NULL AUTO_INCREMENT COMMENT '权限主键ID',
-  name varchar(64) DEFAULT NULL COMMENT '权限名称',
+  name_ varchar(64) DEFAULT NULL COMMENT '权限名称',
   url varchar(255) DEFAULT NULL COMMENT '权限URL',
   description varchar(255) DEFAULT NULL COMMENT '权限描述',
   uuid varchar(64) DEFAULT NULL COMMENT 'UUID用于树分级',
