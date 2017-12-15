@@ -93,7 +93,7 @@ public class SampleRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
         // 根据用户ID查询角色（role），放入到Authorization里。
-        Set<String> roles = this.roleService.getRoleByUserId(userId);
+        Set<String> roles = this.userService.getRoleByUserId(userId);
         info.setRoles(roles);
 
         //根据用户ID查询权限（permission），放入到Authorization里。
