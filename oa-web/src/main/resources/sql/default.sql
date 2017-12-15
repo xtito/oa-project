@@ -1,1 +1,2 @@
 INSERT INTO sys_department VALUES ('0', '默认部门', '1', '1', '默认部门', null, '2017-12-10 16:45:00', '1');
+INSERT INTO `sys_user` VALUES ('1', 'admin', '超级管理员', '7924023@qq.com', '57dd03ed397eabaeaa395eb740b770fd', '17600223374', '1', '1', null, '2017-12-15 14:14:30', '2017-12-15 14:14:30', null, null, '这是默认内置的超级管理员帐号', '1');
