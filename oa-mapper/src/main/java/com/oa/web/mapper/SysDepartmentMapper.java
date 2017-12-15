@@ -41,11 +41,6 @@ public interface SysDepartmentMapper {
      */
     SysDepartment getByPrimaryKey(Long id);
 
-    /**
-     * 获取所有数据
-     * @return 所有数据的集合
-     */
-    List<SysDepartment> getAll();
 
     /**
      * 查询部门列表，可以指定查询参数

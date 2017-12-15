@@ -56,11 +56,6 @@ public class SysDepartmentServiceImpl implements SysDepartmentService {
     }
 
     @Override
-    public List<SysDepartment> getAll() {
-        return this.mapper.getAll();
-    }
-
-    @Override
     public int saveDepartment(SysDepartment dept) throws ValidateException {
 
         if (StringUtil.isEmpty(dept.getName())) {

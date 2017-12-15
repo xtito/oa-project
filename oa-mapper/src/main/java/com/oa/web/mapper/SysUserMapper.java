@@ -45,11 +45,6 @@ public interface SysUserMapper {
      */
     SysUser getByPrimaryKey(Long id);
 
-    /**
-     * 获取所有数据
-     * @return 所有数据的集合
-     */
-    List<SysUser> getAll();
 
     /**
      * 查询用户列表

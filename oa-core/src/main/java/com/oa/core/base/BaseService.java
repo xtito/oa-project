@@ -38,9 +38,4 @@ public interface BaseService<T> {
      */
     T getByPrimaryKey(Long id);
 
-    /**
-     * 获取所有数据
-     * @return 所有数据的集合
-     */
-    List<T> getAll();
 }

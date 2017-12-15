@@ -70,11 +70,6 @@
         SELECT <include refid="Base_Column_List"/> FROM sys_department WHERE id = #{id}
     </select>
 
-    <select id="getAll" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/> FROM sys_department
-    </select>
-
-
     <select id="getDepartmentList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/> FROM sys_department
         <where>

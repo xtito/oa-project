@@ -52,11 +52,6 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public List<SysUser> getAll() {
-        return this.mapper.getAll();
-    }
-
-    @Override
     public SysUser getUserByLoginNameAndPwd(String username, char[] password) {
         return null;
     }
