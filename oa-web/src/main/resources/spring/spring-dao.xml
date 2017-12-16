@@ -93,7 +93,7 @@
 
 
     <!-- mybatis热加载，修改mybatis的xml文件时热加载xml -->
-    <!--<bean id="mybatisMapperDynamicLoader" class="com.oa.web.parent.plugin.MybatisMapperDynamicLoader"/>-->
+    <bean id="mybatisMapperDynamicLoader" class="com.oa.web.support.plugin.MybatisMapperDynamicLoader"/>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource" />
