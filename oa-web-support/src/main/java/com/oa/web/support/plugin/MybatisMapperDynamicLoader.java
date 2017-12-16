@@ -138,7 +138,7 @@ public class MybatisMapperDynamicLoader implements DisposableBean, InitializingB
         }
 
         private String getMd(Resource resource) throws IOException {
-            return new StringBuilder().append(resource.contentLength()).append("-").append(resource.lastModified()).toString();
+            return String.valueOf(resource.contentLength()) + "-" + resource.lastModified();
         }
     }
 }
