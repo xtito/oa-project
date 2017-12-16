@@ -75,38 +75,6 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                 });
             });
         },
-        loadDeptTreeList: function () {
-            var $this = $(this);
-
-            $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function (html) {
-                layui.use('layer', function (layer) {
-                    var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
-
-                    layer.open({
-                        id: "department_list",
-                        type: 1,
-                        title: title,
-                        area: ['400px', '320px'],
-                        content: html,
-                        btn: ['确定', '取消'],
-                        yes: function (index) {
-                            var treeObj = $.fn.zTree.getZTreeObj("treeEle");
-                            var nodes = treeObj.getSelectedNodes();
-                            if (nodes) {
-                                $("#dept_id").val(nodes[0].id);
-                                $this.val(nodes[0].name);
-                            }
-                            layer.close(index);
-                        },
-                        btn2: function (index, layero) {
-                            // 按钮【按钮二】的回调
-                            layer.close(index);
-                            //return false 开启该代码可禁止点击该按钮关闭
-                        }
-                    });
-                });
-            });
-        },
         saveOrUpdateForm: function (type) {
 
             var url = ctx + "/mvc/sysRole/mgr/save";
@@ -180,7 +148,6 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
             var eleArray = [
                 {ele: "#add_btn", event: roleJs.jumpToAddPage},
                 {ele: "#back_btn", event: roleJs.jumpToDataList},
-                {ele: "#user_dept", event: roleJs.loadDeptTreeList},
                 {ele: "#save_btn", event: roleJs.saveForm},
                 {ele: "#update_btn", event: roleJs.updateForm}
             ];
