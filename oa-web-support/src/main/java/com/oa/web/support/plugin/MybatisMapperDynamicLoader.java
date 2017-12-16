@@ -69,7 +69,7 @@ public class MybatisMapperDynamicLoader implements DisposableBean, InitializingB
 
     @SuppressWarnings("unchecked")
     class Scanner {
-        private static final String XML_RESOURCE_PATTERN = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX + "cn/kjzf/bean/mybatis/model/xml/*.xml";
+        private static final String XML_RESOURCE_PATTERN = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX + "mapper/*.xml";
         private final ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
 
         public Scanner() throws IOException {
