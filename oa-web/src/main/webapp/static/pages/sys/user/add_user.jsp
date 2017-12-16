@@ -53,6 +53,14 @@
                                 </div>
 
                                 <div class="layui-form-item">
+                                    <label class="layui-form-label">昵称</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" name="nickname" placeholder="您的昵称"
+                                               maxlength="64" value="${requestScope.user.nickname}">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
                                     <label class="layui-form-label require-field">用户密码</label>
                                     <div class="layui-input-block">
                                         <input type="password" name="password" class="layui-input" placeholder="建议至少使用两种字符组合"
