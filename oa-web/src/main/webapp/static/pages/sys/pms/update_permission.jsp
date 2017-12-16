@@ -19,7 +19,7 @@
                     </li>
                     <li class="location-item">
                         <a href="javascript:;" data-url="${ctx}/static/pages/sys/pms/sys_permission.jsp">
-                            <i class="ito ito-user-list"></i><span>权限管理</span>
+                            <i class="ito ito-permissions-list"></i><span>权限管理</span>
                         </a>
                     </li>
                     <li class="location-item">
