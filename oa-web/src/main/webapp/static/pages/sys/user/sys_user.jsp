@@ -98,23 +98,17 @@
                                     </td>
 
                                     <td class="tr w110">
-                                        <label class="layui-form-label w120" for="begin_time">起始日期</label>
+                                        <label class="layui-form-label w120" for="begin_time">创建日期</label>
                                     </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <input type="text" id="begin_time" name="begin" class="layui-input" placeholder="创建日期起始日期" autocomplete="off">
+                                    <td class="tl" colspan="4">
+                                        <div class="layui-input-block in-block w140 fl">
+                                            <input type="text" id="begin_time" name="begin" class="layui-input" placeholder="起始日期" autocomplete="off">
+                                        </div>
+                                        <label class="layui-form-label w60 fl tc" for="end_time">至</label>
+                                        <div class="layui-input-block in-block w140 fl">
+                                            <input type="text" id="end_time" name="end" class="layui-input" placeholder="结束日期" autocomplete="off">
                                         </div>
                                     </td>
-
-                                    <td class="tr">
-                                        <label class="layui-form-label w120" for="end_time">结束日期</label>
-                                    </td>
-                                    <td class="tl w150">
-                                        <div class="layui-input-block in-block w140">
-                                            <input type="text" id="end_time" name="end" class="layui-input" placeholder="创建日期结束日期" autocomplete="off">
-                                        </div>
-                                    </td>
-
                                 </tr>
                                 <tr>
                                     <td class="tl pl40" colspan="8">
@@ -164,8 +158,9 @@
             </div>
 
             <div id="operation_con" style="display: none">
-                <a class="operation-btn" lay-event="edit"><i class="ito ito-edit mr10"></i></a>
-                <a class="operation-btn" lay-event="del"><i class="ito ito-delete"></i></a>
+                <a class="operation-btn" lay-event="detail" title="详情"><i class="ito ito-details mr10"></i></a>
+                <a class="operation-btn" lay-event="edit" title="编辑"><i class="ito ito-edit mr10"></i></a>
+                <a class="operation-btn" lay-event="del" title="删除"><i class="ito ito-delete"></i></a>
             </div>
         </div>
     </div>

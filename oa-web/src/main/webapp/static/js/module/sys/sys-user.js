@@ -24,9 +24,9 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                         , {field: 'phone', title: '手机号'}
                         , {field: 'deptName', title: '部门', sort: true}
                         , {field: 'status', title: '用户状态', width: 100, sort: true, templet: '#statusTpl'}
-                        , {field: 'createTime', title: '创建时间', width: 170, sort: true}
+                        //, {field: 'createTime', title: '创建时间', width: 170, sort: true}
                         , {field: 'lastLoginTime', title: '最后登录时间', width: 170, sort: true}
-                        , {title: '操作', width: 70, toolbar: '#operation_con', fixed: 'right'}
+                        , {title: '操作', width: 100, toolbar: '#operation_con', fixed: 'right'}
                     ]]
                     , request: {pageName: "pageNum", limitName: "pageSize"}
                     , response: {
@@ -37,7 +37,9 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
 
                 table.on("tool(operation)", function (obj) {
                     var data = obj.data;
-                    if (obj.event === 'del') {
+                    if (obj.event === 'detail') {
+                        userJs.viewUserDetail(data.id);
+                    } else if (obj.event === 'del') {
                         var delMsg = '您确定要删除 ' + data.loginName + " 吗？";
                         layer.confirm(delMsg, function (index) {
                             $.post(ctx + "/mvc/sysUser/mgr/delete/user", {id: data.id}, function (json) {
@@ -220,6 +222,25 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         updateForm: function () {
             userJs.saveOrUpdateForm("update");
+        },
+        viewUserDetail: function (id) {
+            if (id) {
+                $.post(ctx + "/mvc/sysUser/mgr/view/detail", {id: id}, function (text) {
+                    var title = "<span><i class='ito ito-user'></i><span class='ml6'>用户详细信息</span></span>";
+                    layui.use('layer', function(layer) {
+                        layer.open({
+                            id: "view_user_detail",
+                            type: 1,
+                            title: title,
+                            area: ['700px', '420px'],
+                            isOutAnim: false,
+                            content: text,
+                            success: function (layero, index) {
+                            }
+                        });
+                    });
+                }, "html");
+            }
         },
         jumpToAddPage: function () {
             // 跳转到添加页面

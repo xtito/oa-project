@@ -94,6 +94,16 @@ public class SysUserController extends BaseController {
         return "sys/user/update_user";
     }
 
+    /**
+     * 跳转到更新页面
+     */
+    @RequestMapping("/view/detail")
+    public String viewDetail(@RequestParam("id") String id, ModelMap modelMap) {
+        SysUser user = this.service.getByPrimaryKey(Long.valueOf(id));
+        modelMap.put("user", user);
+        return "sys/user/view_user";
+    }
+
 
     /**
      * 更新用户
