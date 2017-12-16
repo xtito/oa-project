@@ -81,7 +81,7 @@
                     AND name_ LIKE '%${params.nameLike}%'
                 </if>
                 <if test="params.begin != null and params.begin != '' and params.end != null and params.end != ''">
-                    AND create_time BETWEEN #{params.begin} AND #{params.end}
+                    AND date_format(create_time, '%Y-%m-%d') BETWEEN #{params.begin} AND #{params.end}
                 </if>
             </trim>
         </where>

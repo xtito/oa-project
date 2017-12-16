@@ -97,24 +97,8 @@ public class SysDepartmentServiceImpl implements SysDepartmentService {
             page.put("nameLike", deptName);
         }
 
-        if (StringUtil.isNotNull(begin) && StringUtil.isEmpty(end)) {
-            String currentDate = DateUtil.getCurrentDateFormat("yyyy-MM-dd");
-            DateValida.dateValidate(begin, currentDate);
-
-            page.put("begin", begin);
-            page.put("end", currentDate);
-        }
-
-        if (StringUtil.isEmpty(begin) && StringUtil.isNotNull(end)) {
-            String currentDate = DateUtil.getCurrentDateFormat("yyyy-MM-dd");
-            DateValida.dateValidate(currentDate, end);
-
-            page.put("begin", currentDate);
-            page.put("end", end);
-        }
-
         if (StringUtil.isNotNull(begin) && StringUtil.isNotNull(end)) {
-            DateValida.dateValidate(begin, end);
+            DateValida.startDateOrEndDateValida(begin, end);
 
             page.put("begin", begin);
             page.put("end", end);
