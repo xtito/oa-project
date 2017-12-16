@@ -19,7 +19,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                         {type: 'checkbox'}
                         , {title: '序号', type: 'numbers'}
                         , {field: 'loginName', title: '登录名', sort: true}
-                        //, {field: 'nickname', title: '用户昵称', sort: true}
+                        , {field: 'nickname', title: '用户昵称', sort: true}
                         , {field: 'email', title: 'Email', sort: true}
                         , {field: 'phone', title: '手机号'}
                         , {field: 'deptName', title: '部门', sort: true}
@@ -59,15 +59,19 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
 
                 var active = {
                     reload: function () {
-                        var $deptName = $('#dept_name');
-
                         //执行重载
                         table.reload('user_table', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }
                             , where: {
-                                deptName: $deptName.val()
+                                userStatus: $("#user_status").val(),
+                                loginName: $("#login_user").val(),
+                                email: $("#email").val(),
+                                phone: $("#phone").val(),
+                                nickname: $("#user_name").val(),
+                                begin: $("#begin_time").val(),
+                                end: $("#end_time").val()
                             }
                         });
                     }

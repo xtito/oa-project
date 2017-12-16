@@ -78,32 +78,36 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public PageBean<SysUser> getUserList(PageBean<SysUser> page, HttpServletRequest request) throws ValidateException {
 
-        String userName = StringUtil.removeTrim(request.getParameter("userName"));
+        String userStatus = StringUtil.removeTrim(request.getParameter("userStatus"));
+        String loginName = StringUtil.removeTrim(request.getParameter("loginName"));
+        String email = StringUtil.removeTrim(request.getParameter("email"));
+        String phone = StringUtil.removeTrim(request.getParameter("phone"));
+        String nickname = StringUtil.removeTrim(request.getParameter("nickname"));
         String begin = StringUtil.removeTrim(request.getParameter("begin"));
         String end = StringUtil.removeTrim(request.getParameter("end"));
 
-        if (StringUtil.isNotNull(userName)) {
-            page.put("nameLike", userName);
+        if (StringUtil.isNotNull(userStatus)) {
+            page.put("userStatus", userStatus);
         }
 
-        if (StringUtil.isNotNull(begin) && StringUtil.isEmpty(end)) {
-            String currentDate = DateUtil.getCurrentDateFormat();
-            DateValida.dateValidate(begin, currentDate);
-
-            page.put("begin", begin);
-            page.put("end", currentDate);
+        if (StringUtil.isNotNull(loginName)) {
+            page.put("loginNameLike", loginName);
         }
 
-        if (StringUtil.isEmpty(begin) && StringUtil.isNotNull(end)) {
-            String currentDate = DateUtil.getCurrentDateFormat();
-            DateValida.dateValidate(currentDate, end);
+        if (StringUtil.isNotNull(email)) {
+            page.put("email", email);
+        }
 
-            page.put("begin", currentDate);
-            page.put("end", end);
+        if (StringUtil.isNotNull(phone)) {
+            page.put("phone", phone);
+        }
+
+        if (StringUtil.isNotNull(nickname)) {
+            page.put("nicknameLike", nickname);
         }
 
         if (StringUtil.isNotNull(begin) && StringUtil.isNotNull(end)) {
-            DateValida.dateValidate(begin, end);
+            DateValida.startDateOrEndDateValida(begin, end);
 
             page.put("begin", begin);
             page.put("end", end);

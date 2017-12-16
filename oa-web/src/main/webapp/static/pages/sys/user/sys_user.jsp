@@ -53,9 +53,9 @@
                                         <div class="layui-input-block in-block w140">
                                             <select id="user_status" name="status">
                                                 <option value=""></option>
-                                                <option value="0">正常</option>
-                                                <option value="1">禁用</option>
-                                                <option value="2">锁定</option>
+                                                <option value="1">正常</option>
+                                                <option value="2">禁用</option>
+                                                <option value="3">锁定</option>
                                             </select>
                                         </div>
                                     </td>
@@ -118,7 +118,7 @@
                                 </tr>
                                 <tr>
                                     <td class="tl pl40" colspan="8">
-                                        <button type="button" id="search_btn" class="layui-btn mr20">查询</button>
+                                        <button type="button" id="search_btn" class="layui-btn mr20" data-type="reload">查询</button>
                                         <button type="reset" class="layui-btn mr20">重置</button>
                                         <button type="button" id="add_btn" class="layui-btn">新建</button>
                                     </td>

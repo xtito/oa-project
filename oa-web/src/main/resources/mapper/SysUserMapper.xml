@@ -134,8 +134,29 @@
         LEFT JOIN sys_department AS B ON B.id = A.department_id
         <where>
             <trim>
+                <if test="params.userStatus != null and params.userStatus != ''">
+                    AND A.status_ = #{params.userStatus}
+                </if>
                 <if test="params.loginName != null and params.loginName != ''">
-                    AND login_name = #{params.loginName}
+                    AND A.login_name = #{params.loginName}
+                </if>
+                <if test="params.loginNameLike != null and params.loginNameLike != ''">
+                    AND A.login_name LIKE '%${params.loginNameLike}%'
+                </if>
+                <if test="params.email != null and params.email != ''">
+                    AND A.email = #{params.email}
+                </if>
+                <if test="params.phone != null and params.phone != ''">
+                    AND A.phone = #{params.phone}
+                </if>
+                <if test="params.nickname != null and params.nickname != ''">
+                    AND A.nickname = #{params.nickname}
+                </if>
+                <if test="params.nicknameLike != null and params.nicknameLike != ''">
+                    AND A.nickname LIKE '%${params.nicknameLike}%'
+                </if>
+                <if test="params.begin != null and params.begin != '' and params.end != null and params.end != ''">
+                    AND date_format(A.create_time, '%Y-%m-%d') BETWEEN #{params.begin} AND #{params.end}
                 </if>
             </trim>
         </where>
