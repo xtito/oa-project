@@ -232,7 +232,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                             id: "view_user_detail",
                             type: 1,
                             title: title,
-                            area: ['700px', '420px'],
+                            area: ['700px', '580px'],
                             isOutAnim: false,
                             content: text,
                             success: function (layero, index) {
