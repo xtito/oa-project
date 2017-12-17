@@ -13,6 +13,7 @@ define(function () {
             "zTree": "../zTree/jquery.zTree.all.min",
             "select2": "../plugins/select2/select2",
             "select2-zh-CN": "../plugins/select2/i18n/zh-CN",
+            "load-select": "../plugins/select2/custom/load-select",
             //"resizeHeight": "../utils/resizeHeight",
             "lay-ui": "../../ui/layui/layui",
             //"lay-element": "../../ui/layui/lay/modules/element",
