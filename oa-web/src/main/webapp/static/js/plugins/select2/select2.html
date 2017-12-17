@@ -37,6 +37,23 @@
 
     <br/><br/>
 
+    <label>
+        <select id="demo1" class="js-example-basic-single form-control" title="demo1">
+            <optgroup label="Alaskan/Hawaiian Time Zone">
+                <option value="AK">Alaska</option>
+                <option value="HI">Hawaii</option>
+            </optgroup>
+            <optgroup label="Pacific Time Zone">
+                <option value="CA">California</option>
+                <option value="NV">Nevada</option>
+                <option value="OR">Oregon</option>
+                <option value="WA">Washington</option>
+            </optgroup>
+        </select>
+    </label>
+
+    <br/><br/>
+
     <select id="demo2" class="js-example-basic-single form-control" title="demo2">
         <optgroup label="Alaskan/Hawaiian Time Zone">
             <option value="AK">Alaska</option>
@@ -170,6 +187,10 @@
 <script type="text/javascript">
     $(function() {
         $("#test").select2tree();
+
+        $("#demo1").select2({
+            width: '800px'
+        });
 
         $("#demo2").select2();
 
