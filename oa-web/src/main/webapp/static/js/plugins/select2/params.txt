@@ -1,0 +1,87 @@
+Option	                   Type	                    Default	                Description
+adaptContainerCssClass
+
+adaptDropdownCssClass
+
+ajax	                   object	                null	                提供了支持ajax的数据源.
+
+allowClear	               boolean	                FALSE	                提供了支持可清除的选择.
+
+amdBase	                   string	                ./	                    看到使用与AMD Select2或CommonJS装入器.
+
+amdLanguageBase	           string	                ./i18n/	                看到使用与AMD Select2或CommonJS装入器.
+
+closeOnSelect	           boolean	                TRUE	                控制下拉是否选择后关闭.
+
+containerCss
+
+containerCssClass	       string	                ''
+
+data	                   array of objects	        null	                允许渲染从一个下拉选项数组.
+
+dataAdapter		           SelectAdapter	                                用于覆盖内置的DataAdapter.
+
+debug	                   boolean	                FALSE	                在浏览器中启用调试消息控制台。
+
+dir
+
+disabled	               boolean	                FALSE	                当设置为true, 选择控制将被禁用。
+
+dropdownAdapter		       DropdownAdapter	                                用于覆盖内置的DropdownAdapter
+
+dropdownAutoWidth	       boolean	                FALSE
+
+dropdownCss
+
+dropdownCssClass	       string	                ''
+
+dropdownParent	           jQuery选择器或DOM节点	    $(document.body)	    允许你自定义布局下拉。
+
+escapeMarkup	           callback	                Utils.escapeMarkup	    处理自动转义的内容呈现自定义模板.
+
+initSelection	           callback		                                    "看到 initSelection.这个选项在Select2 v4.0被弃用,并在v4.1将被删除。"
+
+language	               string or object	        EnglishTranslation	    指定Select2消息所使用的语言.
+
+matcher	                   "一个回调将搜索 params                             处理自定义搜索匹配.
+                            和 data对象."
+
+maximumInputLength	       integer	                0	                    最大字符数这可能提供了一个搜索词。
+
+maximumSelectionLength	   integer	                0	                    的最大数量的物品可能在多选选择控制。如果这个选项的值小于1,选中项的数量不会是有限的。
+
+minimumInputLength	       integer	                0	                    开始搜索所需最小字符数。
+
+minimumResultsForSearch	   integer	                0	                    所需的最小数量的结果显示搜索框.
+
+multiple	               boolean	                FALSE	                这个选项允许多选(碉堡)模式。Select2将自动映射的值 multipleHTML属性初始化期间这个选项。
+
+placeholder	               string or object	        null                    指定了占位符的控制。
+
+query	                   "一个函数在 params        Query	                这个选项在Select2 v4.0被弃用,并在v4.1将被删除。
+                            (包括 callback)"
+
+resultsAdapter		       ResultsAdapter	                                用于覆盖内置的ResultsAdapter.
+
+selectionAdapter		                            "SingleSelection或   	用于覆盖内置的SelectionAdapter.
+                                                    MultipleSelection,
+                                                    这取决于的价值 multiple."
+
+selectOnClose	           boolean	                FALSE	                实现了自动选择下拉时关闭。
+
+sorter	                   callback
+
+tags	                   boolean / array      	FALSE	                用于启用自由文本响应.
+                            of objects
+
+templateResult	           callback		                                    定制的方式搜索结果呈现.
+
+templateSelection	       callback		                                    定制的方式选择呈现.
+
+theme	                   string	                default	                允许您设置主题.
+
+tokenizer	               callback		                                    一个回调处理自动标记的自由文本条目.
+
+tokenSeparators	           array	                []	                    的字符列表应该作为象征性的分隔符。
+
+width	                   string	                resolve	                支持自定义容器的宽度.
