@@ -1,7 +1,7 @@
 /**
  * 定义项目全局公用方法JS
  */
-define(["jquery"], function ($) {
+define(["jquery", "lay-ui"], function ($, lay) {
 
     var commonJs = {
         bindLoadContentEvent: function ($obj) {
@@ -12,6 +12,12 @@ define(["jquery"], function ($) {
                 if (url) {
                     commonJs.loadContent(url);
                 }
+            });
+
+            // 绑定layui菜单等点击事件
+            layui.use('element', function () {
+                var element = layui.element;
+                element.render();
             });
         },
         loadContent: function (url, param, callback) {

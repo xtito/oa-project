@@ -83,18 +83,11 @@ define(function () {
     }*/
 
     require(["domReady"], function (doc) {
-        require(["jquery", "lay-ui"], function ($, lay) {
+        require(["jquery"], function ($) {
 
             // 绑定左侧菜单选中事件
             activeSidebarMenu();
 
-            // 延迟一会加载
-            setTimeout(function () {
-                // 绑定layui菜单等点击事件
-                layui.use('element', function () {
-                    var element = layui.element;
-                });
-            }, 100);
         });
 
         //window.resize();
