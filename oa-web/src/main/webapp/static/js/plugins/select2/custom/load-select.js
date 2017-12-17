@@ -23,6 +23,7 @@ define(["jquery", "select2", "select2-zh-CN"], function($, select, zh) {
 
             if ($control) {
                 var settings = {
+                    width: '100%',
                     tags: true,
                     allowClear: true,
                     language: "zh-CN",
@@ -44,7 +45,7 @@ define(["jquery", "select2", "select2-zh-CN"], function($, select, zh) {
             return selectUtil.selectEle;
         },
         loadDataAndFindServer: function(serverFind, url) {
-            if (serverFind && serverFind == true) {
+            if (serverFind && serverFind === true) {
                 return {
                     ajax: {
                         url: url,
