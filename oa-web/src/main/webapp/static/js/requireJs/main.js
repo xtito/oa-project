@@ -11,6 +11,8 @@ define(function () {
             "jquery": "../jquery-1.9.1.min",
             "date.format": "../utils/date.format",
             "zTree": "../zTree/jquery.zTree.all.min",
+            "select2": "../plugins/select2/select2",
+            "select2-zh-CN": "../plugins/select2/i18n/zh-CN",
             //"resizeHeight": "../utils/resizeHeight",
             "lay-ui": "../../ui/layui/layui",
             //"lay-element": "../../ui/layui/lay/modules/element",
@@ -27,6 +29,10 @@ define(function () {
             'zTree': {
                 deps: ['jquery'],
                 exports: 'jQuery.fn.zTree'
+            },
+            'select2-zh-CN': {
+                deps: ['select2'],
+                exports: 'select2-zh-CN'
             }
             /*'jquery.loadPaging': {
                 deps: ['jquery'],
