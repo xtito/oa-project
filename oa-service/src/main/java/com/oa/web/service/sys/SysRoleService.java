@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -60,4 +62,9 @@ public interface SysRoleService extends BaseService<SysRole> {
      */
     PageBean<SysRole> getRoleList(PageBean<SysRole> page, HttpServletRequest request);
 
+
+    /**
+     * 查询角色列表
+     */
+    List<Map<String, Object>> loadRoleList();
 }

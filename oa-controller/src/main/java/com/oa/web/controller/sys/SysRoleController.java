@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by [张渊]
@@ -143,4 +145,9 @@ public class SysRoleController extends BaseController {
     }
 
 
+    @ResponseBody
+    @RequestMapping("/load/role")
+    public Object loadRoleList() {
+        return this.service.loadRoleList();
+    }
 }

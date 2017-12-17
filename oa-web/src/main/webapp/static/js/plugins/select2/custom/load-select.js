@@ -30,7 +30,7 @@ define(["jquery", "select2", "select2-zh-CN"], function($, select, zh) {
                     templateResult: selectUtil.templateResult,
                     templateSelection: selectUtil.templateSelection,
                     escapeMarkup: selectUtil.escapeMarkup,
-                    maximumSelectionLength: 3//最多能够选择的个数
+                    maximumSelectionLength: 5//最多能够选择的个数
                 };
 
                 $.extend(settings, selectUtil.loadDataAndFindServer(serverFind, url));
@@ -77,7 +77,7 @@ define(["jquery", "select2", "select2-zh-CN"], function($, select, zh) {
                 return state.text;
             }
             // state.element.value
-            return "<span class='ito-select-span'><i class='le-icon icon-group f16'></i>" +
+            return "<span class='ito-select-span'><i class='ito ito-role f16'></i>" +
                 "<span class='ito-text'>"+ state.text +"</span></span>";
         },
         templateSelection: function(repo) {
@@ -86,7 +86,7 @@ define(["jquery", "select2", "select2-zh-CN"], function($, select, zh) {
             if (repo.loading) {
                 return repo.text;
             }
-            return "<span class='ito-select-span'><i class='le-icon icon-group f16'></i>" +
+            return "<span class='ito-select-span'><i class='ito ito-role f16'></i>" +
                 "<span class='ito-text'>"+ repo.text +"</span></span>";
         },
         escapeMarkup: function (markup) {

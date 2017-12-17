@@ -1,4 +1,4 @@
-define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay, valida, commonJs) {
+define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], function ($, lay, valida, commonJs, selectJs) {
 
     var userJs = {
         cache: {},
@@ -272,6 +272,11 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                 {ele: "#save_btn", event: userJs.saveForm},
                 {ele: "#update_btn", event: userJs.updateForm}
             ];
+
+            if ($("#role_option").length > 0) {
+                var url = ctx + "/mvc/sysRole/mgr/load/role";
+                selectJs.bindSelect("#role_option", url);
+            }
 
             for (var e in eleArray) {
                 if (eleArray.hasOwnProperty(e)) {

@@ -10,12 +10,14 @@ import com.oa.core.utils.date.DateValida;
 import com.oa.web.mapper.SysRoleMapper;
 import com.oa.web.service.sys.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -30,6 +32,8 @@ public class SysRoleServiceImpl implements SysRoleService {
 
     @Autowired
     private SysRoleMapper mapper;
+    @Autowired
+    private JdbcTemplate template;
 
 
     /**
@@ -151,6 +155,16 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Override
     public SysRole getByPrimaryKey(Long id) {
         return this.mapper.getByPrimaryKey(id);
+    }
+
+
+    /**
+     * 查询所有角色
+     */
+    @Override
+    public List<Map<String, Object>> loadRoleList() {
+        String sql = "SELECT id, name_ AS text FROM sys_role";
+        return this.template.queryForList(sql);
     }
 
 }

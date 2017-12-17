@@ -85,6 +85,15 @@
                                 </div>
 
                                 <div class="layui-form-item">
+                                    <label class="layui-form-label" for="role_option">角色</label>
+                                    <div class="layui-input-block">
+                                        <select id="role_option" class="layui-input" name="roleId" lay-ignore style="display: none"
+                                                multiple="multiple" data-placeholder="请选择角色">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
                                     <label class="layui-form-label">Email</label>
                                     <div class="layui-input-block">
                                         <input type="text" name="email" class="layui-input" placeholder="您的常用Email"
