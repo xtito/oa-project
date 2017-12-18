@@ -51,7 +51,7 @@
                         <div class="ito-panel">
                             <div class="panel-heading">
                                 <div class="search-title">
-                                    <span class="ito ito-add-user fl"></span>
+                                    <span class="ito ito-edit-user fl"></span>
                                     <h3 class="panel-title pro-title">更新用户页面</h3>
                                     <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                                 </div>
