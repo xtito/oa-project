@@ -124,16 +124,12 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         jumpToAddPage: function () {
             // 跳转到添加页面
-            commonJs.loadContent(ctx + "/static/pages/sys/role/add_role.jsp", null, function () {
-                roleJs.initBindEvent();
-            });
+            commonJs.loadContent(ctx + "/static/pages/sys/role/add_role.jsp");
         },
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                commonJs.loadContent(ctx + "/mvc/sysRole/mgr/update/ui", {id: id}, function () {
-                    roleJs.initBindEvent();
-                });
+                commonJs.loadContent(ctx + "/mvc/sysRole/mgr/update/ui", {id: id});
             } else {
                 layui.use('layer', function (layer) {
                     layer.msg("跳转用户更新页面异常，丢失id");
