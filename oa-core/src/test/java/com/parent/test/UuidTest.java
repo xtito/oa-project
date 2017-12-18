@@ -98,6 +98,7 @@ public class UuidTest {
         System.out.println(newPwd);
         System.out.println(AlgorithmsUtil.encryptMd5(pwd));
         System.out.println(AlgorithmsUtil.encrypt(pwd));
+        System.out.println(AlgorithmsUtil.encrypt("admin", "admin"));
     }
 
 }

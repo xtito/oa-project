@@ -244,16 +244,12 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
         },
         jumpToAddPage: function () {
             // 跳转到添加页面
-            commonJs.loadContent(ctx + "/static/pages/sys/user/add_user.jsp", null, function () {
-                userJs.initBindEvent();
-            });
+            commonJs.loadContent(ctx + "/static/pages/sys/user/add_user.jsp");
         },
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                commonJs.loadContent(ctx + "/mvc/sysUser/mgr/update/ui", {id: id}, function () {
-                    userJs.initBindEvent();
-                });
+                commonJs.loadContent(ctx + "/mvc/sysUser/mgr/update/ui", {id: id});
             } else {
                 layui.use('layer', function (layer) {
                     layer.msg("跳转用户更新页面异常，丢失id");

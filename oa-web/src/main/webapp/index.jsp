@@ -65,12 +65,13 @@
         </ul>
     </div>
 
+    <%-- trigger-* 样式(必须)，用于在他处触发后模拟触发事件的元素标识 --%>
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-this">
-                    <a href="javascript:;" data-url="${ctx}/static/include/home.jsp">概览</a>
+                    <a class="trigger-home" href="javascript:;" data-url="${ctx}/static/include/home.jsp">概览</a>
                 </li>
                 <li class="layui-nav-item">
                     <a class="" href="javascript:;">所有商品</a>

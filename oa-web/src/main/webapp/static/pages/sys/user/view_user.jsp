@@ -7,7 +7,7 @@
   Created Date: 2017/12/16 22:50
 --%>
 
-<div class="ito-inner-con">
+<div class="ito-view-con">
     <div class="ito-col-panel">
         <div class="ito-panel">
             <div class="panel-heading">

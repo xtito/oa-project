@@ -115,86 +115,90 @@
   background-color: #fff;
 }
 
+.ito-view-con {
+  padding: 16px;
+}
+
 .ito-inner-con {
   //width: 100%;
   //padding: 16px;
+}
 
-  .ito-col-panel {
-    background-color: #fff;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 16px;
-  }
+.ito-col-panel {
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 16px;
+}
 
-  .ito-panel {
-    position: relative;
+.ito-panel {
+  position: relative;
+  border-radius: 0;
+  border: 0;
+  margin: 0;
+
+  .panel-heading {
+    color: #fff;
+    padding: 10px 20px;
     border-radius: 0;
-    border: 0;
-    margin: 0;
+    background-color: #669999;
+    border: 1px solid #669999;
+    border-bottom: none;
+    overflow: hidden;
 
-    .panel-heading {
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 0;
-      background-color: #669999;
-      border: 1px solid #669999;
-      border-bottom: none;
+    .search-title {
       overflow: hidden;
 
-      .search-title {
-        overflow: hidden;
-
-        span.ito {
-          padding-top: 3px;
-        }
+      span.ito {
+        padding-top: 3px;
       }
     }
-
-    .panel-body {
-      padding: 16px;
-
-      .layui-table-view {
-        margin: 0;
-      }
-    }
-
-    .ito-search {
-      padding-top: 3px;
-    }
-
-    .pro-title {
-      letter-spacing: 2px;
-      float: left;
-      margin-left: 6px;
-    }
-
-    .title-icon {
-      position: absolute;
-      top: 8px;
-      right: 18px;
-      cursor: pointer;
-    }
-
-    .s-icon {
-      width: 20px;
-      height: 20px;
-      font-family: 'FontAwesome', serif;
-      cursor: pointer;
-      text-align: center;
-      vertical-align: middle;
-      line-height: 18px;
-    }
-
-    .s-icon span {
-      font-size: 14px;
-
-      &:hover, &.active:hover {
-        font-weight: bold;
-        color: #9ee6e6;
-      }
-    }
-
   }
+
+  .panel-body {
+    padding: 16px;
+
+    .layui-table-view {
+      margin: 0;
+    }
+  }
+
+  .ito-search {
+    padding-top: 3px;
+  }
+
+  .pro-title {
+    letter-spacing: 2px;
+    float: left;
+    margin-left: 6px;
+  }
+
+  .title-icon {
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    cursor: pointer;
+  }
+
+  .s-icon {
+    width: 20px;
+    height: 20px;
+    font-family: 'FontAwesome', serif;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 18px;
+  }
+
+  .s-icon span {
+    font-size: 14px;
+
+    &:hover, &.active:hover {
+      font-weight: bold;
+      color: #9ee6e6;
+    }
+  }
+
 }
 
 .search-form {
