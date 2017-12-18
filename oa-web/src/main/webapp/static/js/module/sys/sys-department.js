@@ -155,16 +155,12 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         jumpToAddPage: function () {
             // 跳转到添加页面
-            commonJs.loadContent(ctx + "/static/pages/sys/dept/add_department.jsp", null, function () {
-                deptJs.initBindEvent();
-            });
+            commonJs.loadContent(ctx + "/static/pages/sys/dept/add_department.jsp");
         },
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                commonJs.loadContent(ctx + "/mvc/sysDepartment/mgr/update/ui", {id: id}, function () {
-                    deptJs.initBindEvent();
-                });
+                commonJs.loadContent(ctx + "/mvc/sysDepartment/mgr/update/ui", {id: id});
             } else {
                 layui.use('layer', function (layer) {
                     layer.msg("跳转部门更新页面异常，丢失id");
