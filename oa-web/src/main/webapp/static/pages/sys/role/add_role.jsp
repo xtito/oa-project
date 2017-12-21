@@ -18,7 +18,7 @@
 
 <div class="layui-tab layui-tab-brief">
     <jsp:include page="inner_role_menu.jsp">
-        <jsp:param name="active" value="3" />
+        <jsp:param name="active" value="2" />
     </jsp:include>
 
     <div class="ito-home-section">
