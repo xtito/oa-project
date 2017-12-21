@@ -12,14 +12,14 @@ CREATE TABLE sys_user (
   password_ varchar(50) DEFAULT NULL COMMENT '用户密码',
   phone varchar(20) DEFAULT NULL COMMENT '手机号',
   department_id varchar(20) DEFAULT NULL COMMENT '所属部门ID',
-  status_ int(10) DEFAULT NULL COMMENT '用户状态（1正常，2禁止登录，3锁定）',
+  status_ int(10) DEFAULT '0' COMMENT '用户状态（0禁止登录，1正常，2锁定）',
   lock_time datetime DEFAULT NULL COMMENT '锁定时间',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
   update_time datetime DEFAULT NULL COMMENT '更新时间',
   last_login_time datetime DEFAULT NULL COMMENT '最后登录时间',
   user_type varchar(20) DEFAULT NULL COMMENT '用户类型ID',
   description varchar(300) DEFAULT NULL COMMENT '用户描述',
-  def_identify int(10) unsigned zerofill DEFAULT NULL COMMENT '默认标识（0可删1不可删除）',
+  def_identify int(10) DEFAULT '0' COMMENT '默认标识（0可删1不可删除）',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
@@ -34,7 +34,7 @@ CREATE TABLE sys_role (
   role_type varchar(20) DEFAULT NULL COMMENT '角色类型',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
   update_time datetime DEFAULT NULL COMMENT '更新时间',
-  def_identify int(10) unsigned zerofill DEFAULT NULL COMMENT '默认标识（0可删1不可删除）',
+  def_identify int(10) DEFAULT '0' COMMENT '默认标识（0可删1不可删除）',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
 
@@ -53,7 +53,7 @@ CREATE TABLE sys_permission (
   icon varchar(255) DEFAULT NULL COMMENT '权限树图标路径',
   order_by_id int(10) DEFAULT NULL COMMENT '排序ID',
   pms_type int(10) DEFAULT NULL COMMENT '权限类型',
-  def_identify int(10) unsigned zerofill DEFAULT NULL COMMENT '默认标识（0可删1不可删除）',
+  def_identify int(10) DEFAULT '0' COMMENT '默认标识（0可删1不可删除）',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统权限表';
 
@@ -89,7 +89,7 @@ CREATE TABLE sys_department (
   description varchar(300) DEFAULT NULL COMMENT '部门描述',
   correlation_code varchar(800) DEFAULT NULL COMMENT '部门关联关系描述ID拼接',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
-  def_identify int(10) unsigned zerofill DEFAULT NULL COMMENT '默认标识（0可删1不可删除）',
+  def_identify int(10) DEFAULT '0' COMMENT '默认标识（0可删1不可删除）',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门表';
 
