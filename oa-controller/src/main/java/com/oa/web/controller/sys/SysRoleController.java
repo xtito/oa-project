@@ -153,7 +153,9 @@ public class SysRoleController extends BaseController {
      * 分配角色
      */
     @RequestMapping("/assign/roles")
-    public String assignRoles() {
+    public String assignRoles(@RequestParam("userId") String userId, @RequestParam("roleId") String roleId) {
+
+
 
         return null;
     }

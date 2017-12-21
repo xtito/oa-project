@@ -9,8 +9,8 @@ package com.oa.core.constant;
 public interface Constant {
 
     /** user 常量 */
+    int USER_DISABLE = 0;// 帐号禁止登录
     int USER_NORMAL = 1;// 帐号正常状态
-    int USER_DISABLE = 2;// 帐号禁止登录
-    int USER_LOCK = 3;// 帐号锁定
+    int USER_LOCK = 2;// 帐号锁定
 
 }
