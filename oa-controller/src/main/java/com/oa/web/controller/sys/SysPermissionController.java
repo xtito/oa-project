@@ -9,6 +9,7 @@ import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -27,8 +28,12 @@ import java.util.Date;
 @RequestMapping("/sysPermission/mgr")
 public class SysPermissionController extends BaseController {
 
+    private final SysPermissionService service;
+
     @Autowired
-    private SysPermissionService service;
+    public SysPermissionController(SysPermissionService service) {
+        this.service = service;
+    }
 
 
     @ResponseBody
@@ -58,7 +63,7 @@ public class SysPermissionController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/save", produces = "application/json; charset=utf-8")
-    public String saveSysUser(SysPermission pms, BindingResult bindingResult) {
+    public String saveSysPermission(SysPermission pms, BindingResult bindingResult) {
 
         boolean success = true;
         String info = "权限添加成功";
@@ -92,7 +97,7 @@ public class SysPermissionController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/update", produces = "application/json; charset=utf-8")
-    public String updateSysUser(SysPermission pms, BindingResult bindingResult) {
+    public String updateSysPermission(SysPermission pms, BindingResult bindingResult) {
 
         String info = "权限更新成功";
         boolean success = true;
@@ -118,7 +123,7 @@ public class SysPermissionController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/delete", produces = "application/json; charset=utf-8")
-    public String deleteSysUser(@RequestParam("id") String userId) {
+    public String deleteSysPermission(@RequestParam("id") String userId) {
 
         String info = "权限删除成功";
         boolean success = true;
@@ -136,6 +141,16 @@ public class SysPermissionController extends BaseController {
         }
 
         return parseJsonStr(success, info);
+    }
+
+
+    /**
+     * 分配权限
+     */
+    @RequestMapping("/assign/pms")
+    public String assignRoles() {
+
+        return null;
     }
 
 }

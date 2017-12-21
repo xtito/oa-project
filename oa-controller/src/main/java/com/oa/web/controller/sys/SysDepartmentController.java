@@ -32,8 +32,12 @@ import java.util.List;
 @RequestMapping("/sysDepartment/mgr")
 public class SysDepartmentController extends BaseController {
 
+    private final SysDepartmentService service;
+
     @Autowired
-    private SysDepartmentService service;
+    public SysDepartmentController(SysDepartmentService service) {
+        this.service = service;
+    }
 
     /**
      * 部门列表

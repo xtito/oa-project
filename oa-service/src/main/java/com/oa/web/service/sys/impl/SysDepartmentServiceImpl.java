@@ -6,7 +6,6 @@ import com.oa.bean.sys.SysDepartment;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
-import com.oa.core.utils.date.DateUtil;
 import com.oa.core.utils.date.DateValida;
 import com.oa.web.mapper.SysDepartmentMapper;
 import com.oa.web.service.sys.SysDepartmentService;
@@ -23,12 +22,16 @@ import java.util.List;
  * Created by [张渊]
  * 2017/11/25 17:02
  */
-@Service("sysDepartmentService")
+@Service
 @Transactional
 public class SysDepartmentServiceImpl implements SysDepartmentService {
 
+    private final SysDepartmentMapper mapper;
+
     @Autowired
-    private SysDepartmentMapper mapper;
+    public SysDepartmentServiceImpl(SysDepartmentMapper mapper) {
+        this.mapper = mapper;
+    }
 
     @Override
     public int save(SysDepartment entity) {
@@ -56,7 +59,7 @@ public class SysDepartmentServiceImpl implements SysDepartmentService {
     }
 
     @Override
-    public int saveDepartment(SysDepartment dept) throws ValidateException {
+    public void saveDepartment(SysDepartment dept) throws ValidateException {
 
         if (StringUtil.isEmpty(dept.getName())) {
             throw new ValidateException("部门名称不能为空");
@@ -70,7 +73,7 @@ public class SysDepartmentServiceImpl implements SysDepartmentService {
             throw new ValidateException("该部门已经存在");
         }
 
-        return this.save(dept);
+        this.save(dept);
     }
 
     @Override

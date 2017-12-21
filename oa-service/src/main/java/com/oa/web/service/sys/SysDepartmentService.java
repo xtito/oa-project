@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface SysDepartmentService extends BaseService<SysDepartment> {
 
-    int saveDepartment(SysDepartment dept) throws ValidateException;
+    void saveDepartment(SysDepartment dept) throws ValidateException;
 
     SysDepartment getDepartmentByName(String deptName);
 

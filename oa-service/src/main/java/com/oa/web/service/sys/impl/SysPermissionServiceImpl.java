@@ -2,10 +2,8 @@ package com.oa.web.service.sys.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.oa.bean.sys.SysPermission;
-import com.oa.core.base.BaseService;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
-import com.oa.core.utils.CollectionUtil;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.mapper.SysPermissionMapper;
 import com.oa.web.service.sys.SysPermissionService;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -28,8 +25,13 @@ import java.util.Set;
 @Transactional
 public class SysPermissionServiceImpl implements SysPermissionService {
 
+    private final SysPermissionMapper mapper;
+
     @Autowired
-    private SysPermissionMapper mapper;
+    public SysPermissionServiceImpl(SysPermissionMapper mapper) {
+        this.mapper = mapper;
+    }
+
 
     /**
      * 根据用户ID查询用户权限
@@ -66,10 +68,10 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     /**
      * 保存权限
      * @param pms 权限实体
-     * @throws ValidateException
+     * @throws ValidateException 验证失败异常
      */
     @Override
-    public Serializable savePermission(SysPermission pms) throws ValidateException {
+    public void savePermission(SysPermission pms) throws ValidateException {
 
         if (StringUtil.isEmpty(pms.getName())) {
             throw new ValidateException("权限名称不能为空");
@@ -83,7 +85,7 @@ public class SysPermissionServiceImpl implements SysPermissionService {
             throw new ValidateException("该权限URL已存在，请更换权限URL");
         }
 
-        return this.save(pms);
+        this.save(pms);
     }
 
 

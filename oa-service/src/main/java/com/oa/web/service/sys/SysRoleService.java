@@ -4,16 +4,10 @@ import com.oa.bean.sys.SysRole;
 import com.oa.core.base.BaseService;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
-import com.oa.web.mapper.SysRoleMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 角色 Service
@@ -41,17 +35,16 @@ public interface SysRoleService extends BaseService<SysRole> {
     /**
      * 保存角色
      * @param role 角色实体
-     * @throws ValidateException
+     * @throws ValidateException 验证失败异常
      */
-    Serializable saveRole(SysRole role) throws ValidateException;
+    void saveRole(SysRole role) throws ValidateException;
 
 
     /**
      * 更新角色
      * @param role 要更新的数据实体
-     * @return 更新受影响数
      */
-    Serializable updateRole(SysRole role) throws ValidateException;
+    void updateRole(SysRole role) throws ValidateException;
 
 
     /**

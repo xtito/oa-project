@@ -4,14 +4,8 @@ import com.oa.bean.sys.SysPermission;
 import com.oa.core.base.BaseService;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
-import com.oa.web.mapper.SysPermissionMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -50,9 +44,9 @@ public interface SysPermissionService extends BaseService<SysPermission> {
     /**
      * 保存权限
      * @param pms 权限实体
-     * @throws ValidateException
+     * @throws ValidateException 难失败异常
      */
-    Serializable savePermission(SysPermission pms) throws ValidateException;
+    void savePermission(SysPermission pms) throws ValidateException;
 
 
     /**

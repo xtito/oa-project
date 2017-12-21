@@ -25,12 +25,16 @@ import java.util.Set;
  * Created by [张渊]
  * 2017/11/7 22:23
  */
-@Service("sysUserService")
+@Service
 @Transactional
 public class SysUserServiceImpl implements SysUserService {
 
+    private final SysUserMapper mapper;
+
     @Autowired
-    private SysUserMapper mapper;
+    public SysUserServiceImpl(SysUserMapper mapper) {
+        this.mapper = mapper;
+    }
 
     @Override
     public int save(SysUser sysUser) {

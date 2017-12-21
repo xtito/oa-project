@@ -31,8 +31,12 @@ import java.util.Date;
 @RequestMapping("/sysUser/mgr")
 public class SysUserController extends BaseController {
 
+    private final SysUserService service;
+
     @Autowired
-    private SysUserService service;
+    public SysUserController(SysUserService service) {
+        this.service = service;
+    }
 
     @ResponseBody
     @RequestMapping(value = "/list", produces = "application/json; charset=utf-8")

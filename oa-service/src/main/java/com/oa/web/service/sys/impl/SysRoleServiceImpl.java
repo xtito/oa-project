@@ -5,8 +5,6 @@ import com.oa.bean.sys.SysRole;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
-import com.oa.core.utils.date.DateUtil;
-import com.oa.core.utils.date.DateValida;
 import com.oa.web.mapper.SysRoleMapper;
 import com.oa.web.service.sys.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 角色接口实现接口
@@ -26,14 +22,18 @@ import java.util.Set;
  * Created by [张渊]
  * 2017/12/15 15:10
  */
-@Service("sysRoleService")
+@Service
 @Transactional
 public class SysRoleServiceImpl implements SysRoleService {
 
+    private final SysRoleMapper mapper;
+    private final JdbcTemplate template;
+
     @Autowired
-    private SysRoleMapper mapper;
-    @Autowired
-    private JdbcTemplate template;
+    public SysRoleServiceImpl(SysRoleMapper mapper, JdbcTemplate template) {
+        this.mapper = mapper;
+        this.template = template;
+    }
 
 
     /**
@@ -61,9 +61,9 @@ public class SysRoleServiceImpl implements SysRoleService {
     /**
      * 保存角色
      * @param role 角色实体
-     * @throws ValidateException
+     * @throws ValidateException 验证失败异常
      */
-    public Serializable saveRole(SysRole role) throws ValidateException {
+    public void saveRole(SysRole role) throws ValidateException {
 
         if (StringUtil.isEmpty(role.getName())) {
             throw new ValidateException("角色名称不能为空");
@@ -73,16 +73,15 @@ public class SysRoleServiceImpl implements SysRoleService {
             throw new ValidateException("该角色已存在，请更换角色名");
         }
 
-        return this.save(role);
+        this.save(role);
     }
 
 
     /**
      * 更新角色
      * @param role 要更新的数据实体
-     * @return 更新受影响数
      */
-    public Serializable updateRole(SysRole role) throws ValidateException {
+    public void updateRole(SysRole role) throws ValidateException {
 
         if (StringUtil.isEmpty(role.getName())) {
             throw new ValidateException("角色名称不能为空");
@@ -93,7 +92,7 @@ public class SysRoleServiceImpl implements SysRoleService {
             throw new ValidateException("该角色已存在，请更换角色名");
         }
 
-        return this.update(role);
+        this.update(role);
     }
 
 

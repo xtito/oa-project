@@ -29,8 +29,12 @@ import java.util.Map;
 @RequestMapping("/sysRole/mgr")
 public class SysRoleController extends BaseController {
 
+    private final SysRoleService service;
+
     @Autowired
-    private SysRoleService service;
+    public SysRoleController(SysRoleService service) {
+        this.service = service;
+    }
 
 
     @ResponseBody
@@ -142,6 +146,16 @@ public class SysRoleController extends BaseController {
         }
 
         return parseJsonStr(success, info);
+    }
+
+
+    /**
+     * 分配角色
+     */
+    @RequestMapping("/assign/roles")
+    public String assignRoles() {
+
+        return null;
     }
 
 
