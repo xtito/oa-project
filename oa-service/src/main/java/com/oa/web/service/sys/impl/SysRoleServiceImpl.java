@@ -1,7 +1,9 @@
 package com.oa.web.service.sys.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.oa.bean.sys.SysPermission;
 import com.oa.bean.sys.SysRole;
+import com.oa.bean.sys.view.RolePermissionView;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
@@ -222,6 +224,33 @@ public class SysRoleServiceImpl implements SysRoleService {
     public void deleteUserRolesAll(String userId) {
         String sql = "DELETE FROM sys_user_role WHERE user_id = ?";
         this.template.update(sql, userId);
+    }
+
+
+    /**
+     * 查询角色列表并级联查询角色拥有的权限
+     * @param page 参数实体
+     * @return 角色列表
+     */
+    public PageBean<RolePermissionView> getRoleAndPmsList(PageBean<RolePermissionView> page, HttpServletRequest request) {
+
+        String searchCon = request.getParameter("searchCon");
+        if (StringUtil.isNotNull(searchCon)) {
+            page.put("searchCon", searchCon);
+        }
+        return this.getRoleAndPmsList(page);
+    }
+
+    /**
+     * 查询角色列表并级联查询角色拥有的权限
+     * @param page 参数实体
+     * @return 角色列表
+     */
+    private PageBean<RolePermissionView> getRoleAndPmsList(PageBean<RolePermissionView> page) {
+        PageHelper.startPage(page.getPageNum(), page.getPageSize());
+        List<RolePermissionView> list = this.mapper.getRoleAndPmsList(page);
+        page.convertPage(list);
+        return page;
     }
 
 }

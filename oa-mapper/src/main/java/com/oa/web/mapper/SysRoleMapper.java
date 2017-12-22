@@ -1,11 +1,11 @@
 package com.oa.web.mapper;
 
 import com.oa.bean.sys.SysRole;
+import com.oa.bean.sys.view.RolePermissionView;
 import com.oa.core.bean.PageBean;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * 角色 Mapper
@@ -64,4 +64,12 @@ public interface SysRoleMapper {
      * @return 所有角色集合
      */
     List<SysRole> getRoleAllList();
+
+
+    /**
+     * 查询角色列表并级联查询角色拥有的权限
+     * @param page 参数实体
+     * @return 角色列表
+     */
+    List<RolePermissionView> getRoleAndPmsList(PageBean<RolePermissionView> page);
 }

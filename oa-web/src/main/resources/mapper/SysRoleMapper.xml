@@ -14,6 +14,11 @@
         <result column="def_identify" property="defIdentify"/>
     </resultMap>
 
+    <resultMap id="RolePmsResultMap" type="com.oa.bean.sys.view.RolePermissionView" extends="BaseResultMap">
+        <result column="pms_id" property="pmsId"/>
+        <result column="pms_name" property="pmsName" />
+    </resultMap>
+
     <sql id="Base_Column_List">
         <trim>
             id, name_, description, role_type, create_time, update_time, def_identify
@@ -92,6 +97,32 @@
 
     <select id="getRoleAllList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/> FROM sys_role ORDER BY id
+    </select>
+
+
+    <!-- 查询角色权限列表 -->
+    <select id="getRoleAndPmsList" parameterType="com.oa.core.bean.PageBean" resultMap="RolePmsResultMap">
+        SELECT
+            A.id,
+            A.name_,
+            GROUP_CONCAT(DISTINCT C.id ORDER BY C.id SEPARATOR ',') AS pms_id,
+            GROUP_CONCAT(DISTINCT C.name_ ORDER BY C.id SEPARATOR ',') AS pms_name
+        FROM sys_role AS A
+        LEFT JOIN sys_role_permission AS B ON B.role_id = A.id
+        LEFT JOIN sys_permission AS C ON C.id = B.pms_id
+        <where>
+            <if test="params.searchCon != null and params.searchCon != ''">
+                AND LOWER(A.name_) LIKE LOWER(CONCAT('%', #{params.searchCon},'%'))
+            </if>
+        </where>
+        GROUP BY A.id
+
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            ORDER BY id,name_
+        </if>
     </select>
 
 

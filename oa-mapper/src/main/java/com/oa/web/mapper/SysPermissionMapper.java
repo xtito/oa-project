@@ -71,4 +71,11 @@ public interface SysPermissionMapper {
      * @return 权限列表
      */
     List<SysPermission> getPermissionList(PageBean<SysPermission> page);
+
+
+    /**
+     * 获取所有权限列表
+     * @return 所有权限列表集合
+     */
+    List<SysPermission> getPermissionAllList();
 }

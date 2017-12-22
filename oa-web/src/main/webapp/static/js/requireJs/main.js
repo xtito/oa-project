@@ -24,7 +24,8 @@ define(function () {
             "sys-department": "../module/sys/sys-department",
             "sys-role": "../module/sys/sys-role",
             "sys-pms": "../module/sys/sys-permission",
-            "sys-assign-role": "../module/sys/sys-assign-role"
+            "sys-assign-role": "../module/sys/sys-assign-role",
+            "sys-assign-pms": "../module/sys/sys-assign-pms"
         },
         // 不符合AMD规范的使用
         shim: {

@@ -8,6 +8,7 @@ import com.oa.core.utils.StringUtil;
 import com.oa.web.mapper.SysPermissionMapper;
 import com.oa.web.service.sys.SysPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,10 +27,12 @@ import java.util.Set;
 public class SysPermissionServiceImpl implements SysPermissionService {
 
     private final SysPermissionMapper mapper;
+    private final JdbcTemplate template;
 
     @Autowired
-    public SysPermissionServiceImpl(SysPermissionMapper mapper) {
+    public SysPermissionServiceImpl(SysPermissionMapper mapper, JdbcTemplate template) {
         this.mapper = mapper;
+        this.template = template;
     }
 
 
@@ -160,4 +163,58 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     public SysPermission getByPrimaryKey(Long id) {
         return this.mapper.getByPrimaryKey(id);
     }
+
+
+    /**
+     * 保存角色权限
+     * @param roleId 角色ID
+     * @param pmsId 权限ID
+     */
+    public void saveRolePms(String roleId, Object[] pmsId) throws ValidateException {
+
+        if (StringUtil.isEmpty(pmsId)) {
+            throw new ValidateException("请至少选择一个权限！");
+        }
+
+        if (StringUtil.isEmpty(roleId)) {
+            throw new ValidateException("操作异常，角色ID丢失，请刷新页面重试！");
+        }
+
+        for (Object pid : pmsId) {
+            String sql = "INSERT INTO sys_role_permission (role_id, pms_id) VALUES(?, ?)";
+
+            this.template.update(sql, roleId, pid);
+        }
+    }
+
+
+    /**
+     * 删除指定角色所有权限
+     * @param roleId 角色ID
+     */
+    public void deleteRolePmsAll(String roleId) {
+        String sql = "DELETE FROM sys_role_permission WHERE role_id = ?";
+        this.template.update(sql, roleId);
+    }
+
+
+    /**
+     * 根据角色ID查询角色权限列表
+     * @param roleId 角色ID
+     * @return 角色权限列表集合
+     */
+    public List<String> getRolePmsIdByRoleId(String roleId) {
+        String sql = "SELECT pms_id FROM sys_role_permission WHERE role_id = ?";
+        return this.template.queryForList(sql, String.class, roleId);
+    }
+
+
+    /**
+     * 获取所有权限列表
+     * @return 所有权限列表集合
+     */
+    public List<SysPermission> getPermissionList() {
+        return this.mapper.getPermissionAllList();
+    }
+
 }

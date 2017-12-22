@@ -10,7 +10,7 @@
     </li>
 
     <li class="tab-li ${param.active == '2' ? 'layui-this' : ''}">
-        <a data-url="${ctx}/a">
+        <a data-url="${ctx}/static/pages/sys/pms/role_pms_list.jsp">
             <i class="ito ito-setting-permissions"></i>
             <span>权限分配</span>
         </a>

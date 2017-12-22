@@ -1,6 +1,8 @@
 package com.oa.web.service.sys;
 
+import com.oa.bean.sys.SysPermission;
 import com.oa.bean.sys.SysRole;
+import com.oa.bean.sys.view.RolePermissionView;
 import com.oa.core.base.BaseService;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
@@ -85,4 +87,12 @@ public interface SysRoleService extends BaseService<SysRole> {
      * @param userId 用户ID
      */
     void deleteUserRolesAll(String userId);
+
+
+    /**
+     * 查询角色列表并级联查询角色拥有的权限
+     * @param page 参数实体
+     * @return 角色列表
+     */
+    PageBean<RolePermissionView> getRoleAndPmsList(PageBean<RolePermissionView> page, HttpServletRequest request);
 }

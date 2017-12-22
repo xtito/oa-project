@@ -74,6 +74,8 @@ public class SysPermission implements Serializable {
 
     private String parentName;// 父级权限名称
 
+    private boolean pmsChecked;// 权限是否被选中
+
 
     public Long getId() {
         return id;
@@ -169,6 +171,14 @@ public class SysPermission implements Serializable {
 
     public void setParentName(String parentName) {
         this.parentName = parentName;
+    }
+
+    public boolean isPmsChecked() {
+        return pmsChecked;
+    }
+
+    public void setPmsChecked(boolean pmsChecked) {
+        this.pmsChecked = pmsChecked;
     }
 
     /**

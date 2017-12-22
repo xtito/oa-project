@@ -6,10 +6,10 @@ import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
 import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.core.exception.ValidateException;
+import com.oa.core.utils.CollectionUtil;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
+import java.util.List;
 
 /**
  * Created by [张渊]
@@ -144,13 +144,93 @@ public class SysPermissionController extends BaseController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "/pms/win/list", produces = "application/json; charset=utf-8")
+    public Object loadRoleList(@RequestParam("roleId") String roleId) {
+
+        // 分页插件必须要返回指定格式
+        PageBean<SysPermission> page = new PageBean<SysPermission>();
+
+        List<String> rolePms = this.service.getRolePmsIdByRoleId(roleId);
+
+        List<SysPermission> pmsList = this.service.getPermissionList();
+
+        if (CollectionUtil.isNotEmpty(pmsList) && CollectionUtil.isNotEmpty(rolePms)) {
+            // 设置是否选中
+            for (SysPermission pms : pmsList) {
+                pms.setPmsChecked(rolePms.contains(pms.getId().toString()));
+            }
+        }
+
+        page.setList(pmsList);
+
+        return page;
+    }
+
+
     /**
      * 分配权限
      */
-    @RequestMapping("/assign/pms")
-    public String assignRoles() {
+    @ResponseBody
+    @RequestMapping(value = "/assign/pms", produces = "application/json; charset=utf-8")
+    public String assignRoles(@RequestParam("roleId") String roleId, @RequestParam("pmsId[]") List<String> pmsId) {
 
-        return null;
+        boolean success = true;
+        String info = "角色权限分配成功";
+
+        try {
+
+            // 插入前先删除已存在角色
+            this.service.deleteRolePmsAll(roleId);
+
+            this.service.saveRolePms(roleId, pmsId.toArray());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "角色权限分配异常，请联系管理员！";
+            if (e instanceof ValidateException) {
+                info = e.getMessage();
+            }
+        }
+
+        return parseJsonStr(success, info);
+    }
+
+    /**
+     * 分配权限页面
+     */
+    @RequestMapping("/assign/pms/page")
+    public String assignPmsPage(@RequestParam("roleId") String roleId, ModelMap modelMap, HttpServletRequest request) {
+        modelMap.put("roleId", roleId);
+        return "sys/pms/pms_list_win";
+    }
+
+
+
+    /**
+     * 清空角色所有权限
+     */
+    @ResponseBody
+    @RequestMapping(value = "/clear/role/pms", produces = "application/json; charset=utf-8")
+    public String clearRolePms(@RequestParam("roleId") String roleId) {
+
+        boolean success = true;
+        String info = "角色权限清除成功";
+
+        try {
+
+            if (StringUtil.isNotNull(roleId)) {
+                this.service.deleteRolePmsAll(roleId);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "角色权限清除异常，请联系管理员！";
+        }
+
+        return parseJsonStr(success, info);
     }
 
 }

@@ -6,6 +6,7 @@ import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -65,4 +66,33 @@ public interface SysPermissionService extends BaseService<SysPermission> {
      */
     PageBean<SysPermission> getPermissionList(PageBean<SysPermission> page, HttpServletRequest request);
 
+
+    /**
+     * 保存角色权限
+     * @param roleId 角色ID
+     * @param pmsId 权限ID
+     */
+    void saveRolePms(String roleId, Object[] pmsId) throws ValidateException;
+
+
+    /**
+     * 删除指定角色所有权限
+     * @param roleId 角色ID
+     */
+    void deleteRolePmsAll(String roleId);
+
+
+    /**
+     * 根据角色ID查询角色权限列表
+     * @param roleId 角色ID
+     * @return 角色权限列表集合
+     */
+    List<String> getRolePmsIdByRoleId(String roleId);
+
+
+    /**
+     * 获取所有权限列表
+     * @return 所有权限列表集合
+     */
+    List<SysPermission> getPermissionList();
 }

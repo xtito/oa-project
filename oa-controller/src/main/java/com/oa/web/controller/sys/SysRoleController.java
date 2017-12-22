@@ -2,6 +2,7 @@ package com.oa.web.controller.sys;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.oa.bean.sys.SysRole;
+import com.oa.bean.sys.view.RolePermissionView;
 import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
 import com.oa.core.constant.HttpResponseStatusConstant;
@@ -237,6 +238,31 @@ public class SysRoleController extends BaseController {
         }
 
         return parseJsonStr(success, info);
+    }
+
+
+    /**
+     * 获取角色权限列表数据
+     */
+    @ResponseBody
+    @RequestMapping(value = "/role/pms/list", produces = "application/json; charset=utf-8")
+    public Object roleAndPmsList(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                  @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                  HttpServletRequest request) throws JsonProcessingException {
+
+        PageBean<RolePermissionView> page = new PageBean<RolePermissionView>(pageNum, pageSize);
+
+        try {
+
+            page = this.service.getRoleAndPmsList(page, request);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            page.setMsg(e.getMessage());
+            page.setCode(HttpResponseStatusConstant.INTERNAL_SERVER_ERROR);
+        }
+
+        return page;
     }
 
 }
