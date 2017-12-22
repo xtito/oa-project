@@ -181,7 +181,7 @@ public class SysUserServiceImpl implements SysUserService {
      * @param page 查询参数
      * @return 用户角色列表封装集合
      */
-    public PageBean<UserRoleView> getUserAndRoleList(PageBean<UserRoleView> page) {
+    private PageBean<UserRoleView> getUserAndRoleList(PageBean<UserRoleView> page) {
         PageHelper.startPage(page.getPageNum(), page.getPageSize());
         List<UserRoleView> list = this.mapper.getUserAndRoleList(page);
         page.convertPage(list);
