@@ -6,20 +6,20 @@ import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
 import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.core.exception.ValidateException;
+import com.oa.core.utils.CollectionUtil;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by [张渊]
@@ -152,18 +152,61 @@ public class SysRoleController extends BaseController {
     /**
      * 分配角色
      */
-    @RequestMapping("/assign/roles")
-    public String assignRoles(@RequestParam("userId") String userId, @RequestParam("roleId") String roleId) {
-
-
-
-        return null;
-    }
-
-
     @ResponseBody
-    @RequestMapping("/load/role")
-    public Object loadRoleList() {
-        return this.service.loadRoleList();
+    @RequestMapping(value = "/assign/roles", produces = "application/json; charset=utf-8")
+    public String assignRoles(@RequestParam("userId") String userId, @RequestParam("roleId[]") List<String> roleId) {
+
+        boolean success = true;
+        String info = "角色分配成功";
+
+        try {
+
+            // 插入记录前先查询该用户的角色，删除已存在角色
+            List<String> userRoleIds = this.service.getUserRoleIdByUserId(userId);
+            if (CollectionUtil.isNotEmpty(roleId) && CollectionUtil.isNotEmpty(userRoleIds)) {
+                // 删除已存在角色ID
+                roleId.removeAll(userRoleIds);
+            }
+
+            this.service.saveUserRole(userId, roleId.toArray());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "分配角色异常，请联系管理员！";
+            if (e instanceof ValidateException) {
+                info = e.getMessage();
+            }
+        }
+
+        return parseJsonStr(success, info);
     }
+
+
+
+    /**
+     * 清空用户角色
+     */
+    @ResponseBody
+    @RequestMapping(value = "/clear/user/roles", produces = "application/json; charset=utf-8")
+    public String clearUserRole(@RequestParam("userId") String userId) {
+
+        boolean success = true;
+        String info = "用户角色清除成功";
+
+        try {
+
+            if (StringUtil.isNotNull(userId)) {
+                this.service.deleteUserRolesAll(userId);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            success = false;
+            info = "用户角色清除异常，请联系管理员！";
+        }
+
+        return parseJsonStr(success, info);
+    }
+
 }

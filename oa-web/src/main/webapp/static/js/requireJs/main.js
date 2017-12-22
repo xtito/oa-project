@@ -23,7 +23,8 @@ define(function () {
             "sys-user": "../module/sys/sys-user",
             "sys-department": "../module/sys/sys-department",
             "sys-role": "../module/sys/sys-role",
-            "sys-pms": "../module/sys/sys-permission"
+            "sys-pms": "../module/sys/sys-permission",
+            "sys-assign-role": "../module/sys/sys-assign-role"
         },
         // 不符合AMD规范的使用
         shim: {

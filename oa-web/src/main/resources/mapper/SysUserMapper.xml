@@ -23,9 +23,10 @@
         <result column="dept_name" property="deptName"/>
     </resultMap>
 
-    <sql id="Select_Where_Clause">
-
-    </sql>
+    <resultMap id="UserRoleViewMap" type="com.oa.bean.sys.view.UserRoleView" extends="BaseResultMap">
+        <result column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+    </resultMap>
 
     <sql id="Base_Column_List">
         <trim>
@@ -172,6 +173,39 @@
     <!-- 根据用户ID查询该用户所拥有的角色ID -->
     <select id="getRoleByUserId" parameterType="java.lang.Long" resultType="java.util.Set">
         SELECT <trim>role_id</trim> FROM sys_user_role  WHERE user_id=#{userId}
+    </select>
+
+
+    <!-- 查询用户角色列表 -->
+    <select id="getUserAndRoleList" parameterType="com.oa.core.bean.PageBean" resultMap="UserRoleViewMap">
+        SELECT
+            A.id,
+            A.login_name,
+            A.nickname,
+            A.email,
+            A.status_,
+            GROUP_CONCAT(DISTINCT C.id ORDER BY C.id SEPARATOR ',') AS role_id,
+            GROUP_CONCAT(DISTINCT C.name_ ORDER BY C.id SEPARATOR ',') AS role_name
+        FROM sys_user AS A
+        LEFT JOIN sys_user_role AS B ON B.user_id = A.id
+        LEFT JOIN sys_role AS C ON C.id = B.role_id
+        <where>
+            <if test="params.searchCon != null and params.searchCon != ''">
+                AND (
+                  LOWER(A.nickname) LIKE LOWER(CONCAT('%', #{params.searchCon},'%')) or
+                  LOWER(A.login_name) LIKE LOWER(CONCAT('%', #{params.searchCon},'%')) or
+                  LOWER(A.email) LIKE LOWER(CONCAT('%', #{params.searchCon}, '%'))
+                )
+            </if>
+        </where>
+        GROUP BY A.id
+
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            ORDER BY id,login_name
+        </if>
     </select>
 
 </mapper>

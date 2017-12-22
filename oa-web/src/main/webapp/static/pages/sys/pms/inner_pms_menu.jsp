@@ -3,15 +3,15 @@
 
 <ul class="layui-tab-title site-demo-title">
     <li class="tab-li ${param.active == '1' ? 'layui-this' : ''}">
-        <a data-url="${ctx}/a">
-            <i class="ito ito-role"></i>
+        <a data-url="${ctx}/static/pages/sys/pms/user_role_list.jsp">
+            <i class="ito ito-setting-role"></i>
             <span>角色分配</span>
         </a>
     </li>
 
     <li class="tab-li ${param.active == '2' ? 'layui-this' : ''}">
         <a data-url="${ctx}/a">
-            <i class="ito ito-permissions"></i>
+            <i class="ito ito-setting-permissions"></i>
             <span>权限分配</span>
         </a>
     </li>

@@ -1,6 +1,7 @@
 package com.oa.web.mapper;
 
 import com.oa.bean.sys.SysUser;
+import com.oa.bean.sys.view.UserRoleView;
 import com.oa.core.bean.PageBean;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -74,4 +75,11 @@ public interface SysUserMapper {
      * @return 受影响数
      */
     Serializable updateUserPwd(SysUser user);
+
+    /**
+     * 获取用户角色列表
+     * @param page 查询参数
+     * @return 用户角色列表封装集合
+     */
+    List<UserRoleView> getUserAndRoleList(PageBean<UserRoleView> page);
 }

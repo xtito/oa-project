@@ -2,6 +2,7 @@ package com.oa.web.service.sys.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.oa.bean.sys.SysUser;
+import com.oa.bean.sys.view.UserRoleView;
 import com.oa.core.bean.PageBean;
 import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
@@ -156,5 +157,34 @@ public class SysUserServiceImpl implements SysUserService {
      */
     public Set<String> getRoleByUserId(Long userId) {
         return this.mapper.getRoleByUserId(userId);
+    }
+
+
+    /**
+     * 获取用户信息，关联查询角色信息
+     * @param page 查询参数
+     * @return 用户角色列表封装实体
+     */
+    public PageBean<UserRoleView> getUserAndRoleList(PageBean<UserRoleView> page, HttpServletRequest request) {
+
+        String searchCon = request.getParameter("searchCon");
+        if (StringUtil.isNotNull(searchCon)) {
+            page.put("searchCon", searchCon);
+        }
+
+        return this.getUserAndRoleList(page);
+    }
+
+
+    /**
+     * 获取用户角色列表
+     * @param page 查询参数
+     * @return 用户角色列表封装集合
+     */
+    public PageBean<UserRoleView> getUserAndRoleList(PageBean<UserRoleView> page) {
+        PageHelper.startPage(page.getPageNum(), page.getPageSize());
+        List<UserRoleView> list = this.mapper.getUserAndRoleList(page);
+        page.convertPage(list);
+        return page;
     }
 }

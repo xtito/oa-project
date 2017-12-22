@@ -60,4 +60,24 @@ public interface SysRoleService extends BaseService<SysRole> {
      * 查询角色列表
      */
     List<Map<String, Object>> loadRoleList();
+
+    /**
+     * 保存用户角色，为用户分配角色
+     * @param userId 待分配用户的用户ID
+     * @param roleId 用户选择要分配的角色ID
+     */
+    void saveUserRole(String userId, Object[] roleId) throws ValidateException;
+
+    /**
+     * 根据用户ID查询用户角色ID
+     * @param userId 用户ID
+     */
+    List<String> getUserRoleIdByUserId(String userId);
+
+
+    /**
+     * 清空用户所有角色
+     * @param userId 用户ID
+     */
+    void deleteUserRolesAll(String userId);
 }

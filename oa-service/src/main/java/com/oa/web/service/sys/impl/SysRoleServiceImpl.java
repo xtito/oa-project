@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -164,6 +165,54 @@ public class SysRoleServiceImpl implements SysRoleService {
     public List<Map<String, Object>> loadRoleList() {
         String sql = "SELECT id, name_ AS text FROM sys_role";
         return this.template.queryForList(sql);
+    }
+
+
+    /**
+     * 保存用户角色，为用户分配角色
+     * @param userId 待分配用户的用户ID
+     * @param roleId 用户选择要分配的角色ID
+     */
+    public void saveUserRole(String userId, Object[] roleId) throws ValidateException {
+
+        if (StringUtil.isEmpty(roleId)) {
+            throw new ValidateException("请至少选择一个角色！");
+        }
+
+        if (StringUtil.isEmpty(userId)) {
+            throw new ValidateException("操作异常，用户ID丢失，请刷新页面重试！");
+        }
+
+        if (roleId.length > 5) {
+            throw new ValidateException("最多为用户分配5个角色");
+        }
+
+        for (Object rid : roleId) {
+            String sql = "INSERT INTO sys_user_role (user_id, role_id) VALUES(?, ?)";
+
+            this.template.update(sql, userId, rid);
+        }
+    }
+
+
+
+    /**
+     * 根据用户ID查询用户角色ID
+     * @param userId 用户ID
+     */
+    public List<String> getUserRoleIdByUserId(String userId) {
+        String sql = "SELECT role_id FROM sys_user_role WHERE user_id = ?";
+        return this.template.queryForList(sql, String.class, userId);
+    }
+
+
+    /**
+     * 清空用户所有角色
+     * @param userId 用户ID
+     */
+    public void deleteUserRolesAll(String userId) {
+        String sql = "DELETE FROM sys_user_role WHERE user_id = ?";
+        this.template.update(sql, userId);
     }
 
 }

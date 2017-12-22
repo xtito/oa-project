@@ -114,7 +114,7 @@
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/pms/sys_permission.jsp">
+                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/pms/user_role_list.jsp">
                                 <i class="ito ito-icon ito-permissions"></i>
                                 <span>权限管理</span>
                             </a>

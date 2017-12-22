@@ -2,6 +2,7 @@ package com.oa.web.controller.sys;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.oa.bean.sys.SysUser;
+import com.oa.bean.sys.view.UserRoleView;
 import com.oa.core.base.controller.BaseController;
 import com.oa.core.bean.PageBean;
 import com.oa.core.constant.Constant;
@@ -161,4 +162,28 @@ public class SysUserController extends BaseController {
         return parseJsonStr(success, info);
     }
 
+
+    /**
+     * 获取用户角色列表数据
+     */
+    @ResponseBody
+    @RequestMapping(value = "/user/role/list", produces = "application/json; charset=utf-8")
+    public Object userAndRoleList(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                       @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                       HttpServletRequest request) throws JsonProcessingException {
+
+        PageBean<UserRoleView> page = new PageBean<UserRoleView>(pageNum, pageSize);
+
+        try {
+
+            page = this.service.getUserAndRoleList(page, request);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            page.setMsg(e.getMessage());
+            page.setCode(HttpResponseStatusConstant.INTERNAL_SERVER_ERROR);
+        }
+
+        return page;
+    }
 }
