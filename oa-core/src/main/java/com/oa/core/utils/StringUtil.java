@@ -40,6 +40,10 @@ public class StringUtil {
         return obj == null || obj.toString().trim().equals("");
     }
 
+    public static boolean isEmpty(Object[] obj) {
+        return obj == null || obj.length == 0;
+    }
+
     public static String toStringNum(Object obj) {
         String value = toString(obj);
         return isEmpty(value) ? "0" : value;
@@ -83,6 +87,10 @@ public class StringUtil {
         return null != str && !"".equals(str.toString().trim());
     }
 
+    public static boolean isNotNull(Object[] obj) {
+        return obj != null && obj.length > 0;
+    }
+
     /**
      * 去除所有空格
      */
@@ -118,11 +126,11 @@ public class StringUtil {
         if (array == null) {
             return "";
         }
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (String s : array) {
-            str += "," + s;
+            str.append(",").append(s);
         }
-        return isEmpty(str) ? str : str.substring(1);
+        return isEmpty(str.toString()) ? str.toString() : str.substring(1);
     }
 
 
@@ -136,10 +144,11 @@ public class StringUtil {
         if (isNotNull(str)) {
             String[] temp = str.split(",");
             if (temp.length > 0) {
-                str = "";
+                StringBuilder strBuilder = new StringBuilder();
                 for (String aTemp : temp) {
-                    str += "'" + aTemp + "',";
+                    strBuilder.append("'").append(aTemp).append("',");
                 }
+                str = strBuilder.toString();
                 str = str.substring(0, str.lastIndexOf(","));
             }
             return str;
@@ -274,7 +283,7 @@ public class StringUtil {
      */
     public static String parsBfb(Integer cs, Integer zs, Integer... xs) {
 
-        String bfb = "0";
+        StringBuilder bfb = new StringBuilder("0");
         Integer defaultXs = 0;// 默认保留0位小数
 
         try {
@@ -298,20 +307,20 @@ public class StringUtil {
                 BigDecimal result = format.setScale(defaultXs, BigDecimal.ROUND_HALF_UP);
 
                 if (defaultXs > 0) {
-                    bfb = result.toString() + "%";
+                    bfb = new StringBuilder(result.toString() + "%");
                 } else {
                     // 四舍五入转换整数
-                    bfb = result.intValue() + "%";
+                    bfb = new StringBuilder(result.intValue() + "%");
                 }
             } else {
                 for (int i = 0; i < defaultXs; i++) {
                     if (i == 0) {
-                        bfb += ".0";
+                        bfb.append(".0");
                     } else {
-                        bfb += "0";
+                        bfb.append("0");
                     }
                 }
-                bfb += "%";
+                bfb.append("%");
             }
 
 
@@ -319,7 +328,7 @@ public class StringUtil {
             e.printStackTrace();
         }
 
-        return bfb;
+        return bfb.toString();
     }
 
 
