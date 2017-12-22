@@ -59,4 +59,9 @@ public interface SysRoleMapper {
     List<SysRole> getRoleList(PageBean<SysRole> page);
 
 
+    /**
+     * 获取所有角色列表
+     * @return 所有角色集合
+     */
+    List<SysRole> getRoleAllList();
 }

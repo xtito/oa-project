@@ -90,4 +90,9 @@
     </select>
 
 
+    <select id="getRoleAllList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_role ORDER BY id
+    </select>
+
+
 </mapper>

@@ -85,7 +85,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                         type: 1,
                         title: title,
                         skin: 'layui-layer-molv', //样式类名
-                        area: ['400px', '320px'],
+                        area: ['460px', '380px'],
                         closeBtn: 0,
                         content: html,
                         btn: ['确定', '取消'],

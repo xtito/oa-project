@@ -14,9 +14,9 @@
                 table.render({
                     elem: '#win_role_table'
                     , id: 'win_assign_role_table'
-                    , url: ctx + '/mvc/sysRole/mgr/list'
+                    , url: ctx + '/mvc/sysRole/mgr/role/win/list'
                     , method: "post"
-                    , width: 360
+                    , width: 412
                     , page: false
                     , cols: [[
                         {type: 'checkbox'}
@@ -31,8 +31,8 @@
     });
     //-->
 </script>
-<div class="con-layout">
-    <div class="win-role-body">
+<div class="ito-view-con">
+    <div class="view-body">
         <table id="win_role_table"></table>
     </div>
 </div>

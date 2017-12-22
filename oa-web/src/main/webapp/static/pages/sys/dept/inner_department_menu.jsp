@@ -17,6 +17,11 @@
     </li>
 
     <c:if test="${param.active == '3'}">
-        <li class="tab-li layui-this"><a>更新部门</a></li>
+        <li class="tab-li layui-this">
+            <a>
+                <i class="ito ito-edit"></i>
+                <span>更新部门</span>
+            </a>
+        </li>
     </c:if>
 </ul>

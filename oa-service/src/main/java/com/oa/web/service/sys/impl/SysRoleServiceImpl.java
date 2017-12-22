@@ -195,6 +195,15 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
 
+    /**
+     * 获取所有角色列表
+     * @return 所有角色集合
+     */
+    public List<SysRole> getRoleList() {
+        return this.mapper.getRoleAllList();
+    }
+
+
 
     /**
      * 根据用户ID查询用户角色ID

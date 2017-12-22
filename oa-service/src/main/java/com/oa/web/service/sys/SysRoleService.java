@@ -74,6 +74,11 @@ public interface SysRoleService extends BaseService<SysRole> {
      */
     List<String> getUserRoleIdByUserId(String userId);
 
+    /**
+     * 获取所有角色列表
+     * @return 所有角色集合
+     */
+    List<SysRole> getRoleList();
 
     /**
      * 清空用户所有角色

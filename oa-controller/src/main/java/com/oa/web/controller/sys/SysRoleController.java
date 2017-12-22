@@ -59,6 +59,18 @@ public class SysRoleController extends BaseController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "/role/win/list", produces = "application/json; charset=utf-8")
+    public Object loadRoleList() throws JsonProcessingException {
+
+        // 分页插件必须要返回指定格式
+        PageBean<SysRole> page = new PageBean<SysRole>();
+        page.setList(this.service.getRoleList());
+
+        return page;
+    }
+
+
     /**
      * 保存角色
      */
