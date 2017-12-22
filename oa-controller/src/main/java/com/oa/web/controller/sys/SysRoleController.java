@@ -195,12 +195,8 @@ public class SysRoleController extends BaseController {
 
         try {
 
-            // 插入记录前先查询该用户的角色，删除已存在角色
-            List<String> userRoleIds = this.service.getUserRoleIdByUserId(userId);
-            if (CollectionUtil.isNotEmpty(roleId) && CollectionUtil.isNotEmpty(userRoleIds)) {
-                // 删除已存在角色ID
-                roleId.removeAll(userRoleIds);
-            }
+            // 插入前先删除已存在角色
+            this.service.deleteUserRolesAll(userId);
 
             this.service.saveUserRole(userId, roleId.toArray());
 
