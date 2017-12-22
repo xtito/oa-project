@@ -74,7 +74,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
             });
         },
         loadRoleWinList: function (uid) {
-            $.post(ctx + "/static/pages/sys/role/role_list_win.jsp", function (html) {
+            $.post(ctx + "/mvc/sysRole/mgr/assign/roles/page", {userId: uid}, function (html) {
                 layui.use('layer', function (layer) {
                     var table = layui.table;
                     var userId = uid;

@@ -9,6 +9,7 @@ import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.CollectionUtil;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysRoleService;
+import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -61,11 +62,23 @@ public class SysRoleController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/role/win/list", produces = "application/json; charset=utf-8")
-    public Object loadRoleList() throws JsonProcessingException {
+    public Object loadRoleList(@RequestParam("userId") String userId) throws JsonProcessingException {
 
         // 分页插件必须要返回指定格式
         PageBean<SysRole> page = new PageBean<SysRole>();
-        page.setList(this.service.getRoleList());
+
+        List<String> userRoleIds = this.service.getUserRoleIdByUserId(userId);
+
+        List<SysRole> roles = this.service.getRoleList();
+
+        if (CollectionUtil.isNotEmpty(roles) && CollectionUtil.isNotEmpty(userRoleIds)) {
+            // 设置是否选中
+            for (SysRole role : roles) {
+                role.setRoleChecked(userRoleIds.contains(role.getId().toString()));
+            }
+        }
+
+        page.setList(roles);
 
         return page;
     }
@@ -158,6 +171,15 @@ public class SysRoleController extends BaseController {
         }
 
         return parseJsonStr(success, info);
+    }
+
+    /**
+     * 分配页面
+     */
+    @RequestMapping("/assign/roles/page")
+    public String assignRolesPage(@RequestParam("userId") String userId, ModelMap modelMap, HttpServletRequest request) {
+        modelMap.put("userId", userId);
+        return "/sys/role/role_list_win";
     }
 
 

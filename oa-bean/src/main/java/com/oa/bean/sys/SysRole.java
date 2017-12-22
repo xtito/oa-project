@@ -49,6 +49,11 @@ public class SysRole implements Serializable {
      */
     private Integer defIdentify;
 
+    /**
+     * 数据列是否选中状态
+     */
+    private boolean roleChecked = false;
+
     public Long getId() {
         return id;
     }
@@ -103,6 +108,14 @@ public class SysRole implements Serializable {
 
     public void setDefIdentify(Integer defIdentify) {
         this.defIdentify = defIdentify;
+    }
+
+    public boolean isRoleChecked() {
+        return roleChecked;
+    }
+
+    public void setRoleChecked(boolean roleChecked) {
+        this.roleChecked = roleChecked;
     }
 
     /**
