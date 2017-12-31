@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@include file="/static/include/inc.jsp" %>
+<%@include file="/pages/include/inc.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +35,7 @@
             <div class="home-ads">
                 <div class="ads-path col-lg-12">
                     <ol class="breadcrumb">
-                        <li><i class="ito ito-home"></i><a href="${ctx}/static/include/home.jsp">首页</a></li>
+                        <li><i class="ito ito-home"></i><a href="${ctx}/pages/include/home.jsp">首页</a></li>
                         <li><i class="ito ito-dian-nao"></i>Dashboard</li>
                     </ol>
                 </div>
