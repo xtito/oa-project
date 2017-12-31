@@ -156,7 +156,7 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <!-- logiUrl 认证提交地址，如果没有认证通过将会请求此地址进行认证，请求此地址将由 formAuthenticationFilter 进行表单认证 -->
-        <property name="loginUrl" value="/login.jsp"/>
+        <property name="loginUrl" value="/pages/login.jsp"/>
         <!-- 认证成功后统一跳转到first.action，建议不配置，shiro认证成功自动到上一个链接 -->
         <property name="successUrl" value="/first"/>
         <!-- 通过 unauthorizedUrl 指定没有权限时跳转页面 -->
