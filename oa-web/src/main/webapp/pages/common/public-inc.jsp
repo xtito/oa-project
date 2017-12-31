@@ -18,9 +18,10 @@
 <link rel="stylesheet" href="${ctx}/static/js/plugins/select2/css/select2.css" />
 <script src="${ctx}/static/js/requireJs/require.min.js" data-main="${ctx}/static/js/requireJs/main" defer async></script>
 <!--[if lt IE 9]>
-<script src="../js/html5shiv.min.js"></script>
-<script src="../js/respond.min.js"></script>
+<script src="../static/js/html5shiv.min.js"></script>
+<script src="../static/js/respond.min.js"></script>
 <![endif]-->
+
 <script type="text/javascript">
     var ctx = "${ctx}";
 </script>
