@@ -1,26 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ include file="/static/include/inc.jsp" %>
-
-<%--
-  
-  Created by User: Zy
-  Created Date: 2017/11/25 17:23
---%>
+<%@ include file="/pages/common/inc.jsp"%>
 
 <script type="text/javascript">
     <!--
     require(["domReady"], function(doc) {
-        require(["sys-department"], function(deptJs){
-            deptJs.initBindEvent();
-            deptJs.loadDataList();
+        require(["sys-assign-pms"], function(pmsJs){
+            pmsJs.loadDataList();
         });
     });
     //-->
 </script>
 
 <div class="layui-tab layui-tab-brief">
-    <jsp:include page="inner_department_menu.jsp">
-        <jsp:param name="active" value="1" />
+    <jsp:include page="inner_pms_menu.jsp">
+        <jsp:param name="active" value="2" />
     </jsp:include>
 
     <div class="ito-home-section">
@@ -33,7 +26,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <i class="ito ito-department"></i><span>部门管理</span>
+                        <i class="ito ito-setting-permissions"></i><span>权限分配</span>
                     </li>
                 </ol>
             </div>
@@ -59,12 +52,12 @@
                                         <tbody>
                                         <tr>
                                             <td class="tr w110">
-                                                <label class="layui-form-label w120" for="dept_name">部门名称</label>
+                                                <label class="layui-form-label w120" for="search_con">搜索条件</label>
                                             </td>
                                             <td class="tl w200">
                                                 <div class="layui-input-block in-block w160">
-                                                    <input type="text" id="dept_name" class="layui-input" name="title"
-                                                           placeholder="请输入部门名称" autocomplete="off">
+                                                    <input type="text" id="search_con" class="layui-input" name="searchCon"
+                                                           placeholder="角色名" autocomplete="off">
                                                 </div>
                                             </td>
 
@@ -73,7 +66,6 @@
                                                     查询
                                                 </button>
                                                 <button type="reset" class="layui-btn mr20">重置</button>
-                                                <button type="button" id="add_btn" class="layui-btn">新建</button>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -88,7 +80,7 @@
                             <div class="panel-heading">
                                 <div class="search-title">
                                     <span class="ito ito-list-icon fl"></span>
-                                    <h3 class="panel-title pro-title">部门列表</h3>
+                                    <h3 class="panel-title pro-title">分配角色权限，角色列表</h3>
                                     <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                                 </div>
                             </div>
@@ -99,8 +91,8 @@
                     </div>
 
                     <div id="operation_con" style="display: none">
-                        <a class="operation-btn" lay-event="edit"><i class="ito ito-edit mr10"></i></a>
-                        <a class="operation-btn" lay-event="del"><i class="ito ito-delete"></i></a>
+                        <a class="operation-btn" lay-event="edit"><i class="ito ito-configuration mr10" title="分配权限"></i></a>
+                        <a class="operation-btn" lay-event="del"><i class="ito ito-delete" title="清空权限"></i></a>
                     </div>
                 </div>
             </div>

@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ include file="/static/include/inc.jsp" %>
+<%@ include file="/pages/common/inc.jsp" %>
 
 <%--
   
   Created by User: Zy
-  Created Date: 2017/11/25 17:24
+  Created Date: 2017/12/15 21:35
 --%>
 <script type="text/javascript">
     <!--
     require(["domReady"], function(doc) {
-        require(["sys-department"], function(deptJs){
-            deptJs.initBindEvent();
+        require(["sys-role"], function(roleJs){
+            roleJs.initBindEvent();
         });
     });
     //-->
 </script>
 
 <div class="layui-tab layui-tab-brief">
-    <jsp:include page="inner_department_menu.jsp">
-        <jsp:param name="active" value="2" />
+    <jsp:include page="inner_role_menu.jsp">
+        <jsp:param name="active" value="3" />
     </jsp:include>
 
     <div class="ito-home-section">
@@ -31,12 +31,12 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <a href="javascript:;" data-trigger-class="trigger-dept-list">
-                            <i class="ito ito-department"></i><span>部门管理</span>
+                        <a href="javascript:;" data-trigger-class="trigger-role-list">
+                            <i class="ito ito-role-list"></i><span>角色管理</span>
                         </a>
                     </li>
                     <li class="location-item">
-                        <i class="ito ito-add-icon"></i><span>添加部门</span>
+                        <i class="ito ito-edit-role"></i><span>更新角色</span>
                     </li>
                 </ol>
             </div>
@@ -51,43 +51,36 @@
                         <div class="ito-panel">
                             <div class="panel-heading">
                                 <div class="search-title">
-                                    <span class="ito ito-add-icon fl"></span>
-                                    <h3 class="panel-title pro-title">添加部门页面</h3>
+                                    <span class="ito ito-edit-role fl"></span>
+                                    <h3 class="panel-title pro-title">更新角色页面</h3>
                                     <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                                 </div>
                             </div>
                             <div class="panel-body">
                                 <div class="site-text site-block">
-                                    <form id="data_form" class="layui-form" method="post">
-                                        <div class="layui-form-item">
-                                            <label class="layui-form-label require-field">部门名称</label>
-                                            <div class="layui-input-block">
-                                                <input type="text" name="name" class="layui-input" placeholder="请输入用户名"
-                                                       maxlength="50" autocomplete="off">
-                                            </div>
-                                        </div>
+                                    <form id="data_form" class="layui-form">
+                                        <input type="hidden" name="id" value="${requestScope.role.id}" />
 
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label">上级部门</label>
+                                            <label class="layui-form-label require-field">角色名</label>
                                             <div class="layui-input-block">
-                                                <input type="hidden" id="dept_id" name="parentId" value="0"/>
-                                                <input type="text" id="select_dept" class="layui-input" placeholder="请点击选择上级部门"
-                                                       readonly>
+                                                <input type="text" name="name" class="layui-input" placeholder="请输入角色名"
+                                                       maxlength="30" autocomplete="off" value="${requestScope.role.name}">
                                             </div>
                                         </div>
 
                                         <div class="layui-form-item layui-form-text">
-                                            <label class="layui-form-label">部门描述</label>
+                                            <label class="layui-form-label">角色描述</label>
                                             <div class="layui-input-block">
-                                        <textarea name="description" class="layui-textarea" maxlength="300"
-                                                  placeholder="请输入部门备注"></textarea>
+                                        <textarea name="description" placeholder="请输入角色备注" class="layui-textarea"
+                                                  maxlength="300" >${requestScope.role.description}</textarea>
                                             </div>
                                         </div>
 
                                         <div class="layui-form-item">
                                             <div class="layui-input-block">
-                                                <button type="button" id="save_btn" class="layui-btn mr20">立即提交</button>
-                                                <button type="reset" class="layui-btn layui-btn-primary mr20">重置</button>
+                                                <button type="button" id="update_btn" class="layui-btn mr10">立即提交</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary mr10">重置</button>
                                                 <button type="button" id="back_btn" class="layui-btn layui-btn-primary">返回
                                                 </button>
                                             </div>

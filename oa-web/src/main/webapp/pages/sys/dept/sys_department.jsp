@@ -1,18 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ include file="/static/include/inc.jsp"%>
+<%@ include file="/pages/common/inc.jsp" %>
+
+<%--
+  
+  Created by User: Zy
+  Created Date: 2017/11/25 17:23
+--%>
 
 <script type="text/javascript">
     <!--
     require(["domReady"], function(doc) {
-        require(["sys-assign-role"], function(assignRoleJs){
-            assignRoleJs.loadDataList();
+        require(["sys-department"], function(deptJs){
+            deptJs.initBindEvent();
+            deptJs.loadDataList();
         });
     });
     //-->
 </script>
 
 <div class="layui-tab layui-tab-brief">
-    <jsp:include page="inner_pms_menu.jsp">
+    <jsp:include page="inner_department_menu.jsp">
         <jsp:param name="active" value="1" />
     </jsp:include>
 
@@ -26,7 +33,7 @@
                         </a>
                     </li>
                     <li class="location-item">
-                        <i class="ito ito-setting-role"></i><span>角色分配</span>
+                        <i class="ito ito-department"></i><span>部门管理</span>
                     </li>
                 </ol>
             </div>
@@ -52,12 +59,12 @@
                                         <tbody>
                                         <tr>
                                             <td class="tr w110">
-                                                <label class="layui-form-label w120" for="search_con">搜索条件</label>
+                                                <label class="layui-form-label w120" for="dept_name">部门名称</label>
                                             </td>
                                             <td class="tl w200">
                                                 <div class="layui-input-block in-block w160">
-                                                    <input type="text" id="search_con" class="layui-input" name="searchCon"
-                                                           placeholder="昵称/帐号/email" autocomplete="off">
+                                                    <input type="text" id="dept_name" class="layui-input" name="title"
+                                                           placeholder="请输入部门名称" autocomplete="off">
                                                 </div>
                                             </td>
 
@@ -66,6 +73,7 @@
                                                     查询
                                                 </button>
                                                 <button type="reset" class="layui-btn mr20">重置</button>
+                                                <button type="button" id="add_btn" class="layui-btn">新建</button>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -80,21 +88,19 @@
                             <div class="panel-heading">
                                 <div class="search-title">
                                     <span class="ito ito-list-icon fl"></span>
-                                    <h3 class="panel-title pro-title">分配用户角色，用户列表</h3>
+                                    <h3 class="panel-title pro-title">部门列表</h3>
                                     <div class="s-icon xz title-icon"><span class="ito ito-chevron-up"></span></div>
                                 </div>
                             </div>
                             <div class="panel-body">
                                 <table class="layui-hide" id="data_table" lay-filter="operation"></table>
-
-                                <%@ include file="../user/include_user_status.jsp"%>
                             </div>
                         </div>
                     </div>
 
                     <div id="operation_con" style="display: none">
-                        <a class="operation-btn" lay-event="edit"><i class="ito ito-configuration mr10" title="分配角色"></i></a>
-                        <a class="operation-btn" lay-event="del"><i class="ito ito-delete" title="清空角色"></i></a>
+                        <a class="operation-btn" lay-event="edit"><i class="ito ito-edit mr10"></i></a>
+                        <a class="operation-btn" lay-event="del"><i class="ito ito-delete"></i></a>
                     </div>
                 </div>
             </div>

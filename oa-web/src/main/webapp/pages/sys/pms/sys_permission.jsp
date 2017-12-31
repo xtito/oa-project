@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ include file="/static/include/inc.jsp"%>
+<%@ include file="/pages/common/inc.jsp"%>
 
 <script type="text/javascript">
     <!--
