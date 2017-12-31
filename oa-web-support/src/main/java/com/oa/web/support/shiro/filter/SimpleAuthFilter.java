@@ -53,7 +53,7 @@ public class SimpleAuthFilter extends AccessControlFilter {
         //先退出
         Subject subject = getSubject(request, response);
         subject.logout();
-        /**
+        /*
          * 保存Request，用来保存当前Request，然后登录后可以跳转到当前浏览的页面。
          * 比如：
          * 我要访问一个URL地址，/admin/index.html，这个页面是要登录。然后要跳转到登录页面，但是登录后要跳转回来到/admin/index.html这个地址，怎么办？

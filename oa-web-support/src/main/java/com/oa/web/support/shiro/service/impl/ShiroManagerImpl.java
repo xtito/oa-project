@@ -24,8 +24,12 @@ public class ShiroManagerImpl implements ShiroManager {
 
     // 注意/r/n前不能有空格
     private static final String CRLF = "\r\n";
+    private final ShiroFilterFactoryBean shiroFilterFactoryBean;
+
     @Autowired
-    private ShiroFilterFactoryBean shiroFilterFactoryBean;
+    public ShiroManagerImpl(ShiroFilterFactoryBean shiroFilterFactoryBean) {
+        this.shiroFilterFactoryBean = shiroFilterFactoryBean;
+    }
 
     @Override
     public String loadFilterChainDefinitions() {

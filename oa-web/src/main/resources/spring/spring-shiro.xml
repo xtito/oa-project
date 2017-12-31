@@ -30,7 +30,7 @@
     </bean>
 
     <!-- custom shiro session listener -->
-    <bean id="customShiroSessionDAO" class="com.oa.web.support.shiro.CustomShiroSessionDao">
+    <bean id="customShiroSessionDao" class="com.oa.web.support.shiro.CustomShiroSessionDao">
         <property name="shiroSessionRepository" ref="jedisShiroSessionRepository"/>
         <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
     </bean>
@@ -66,7 +66,7 @@
         <property name="sessionValidationInterval" value="1800000"/>
         <!-- session 有效时间为半小时 （毫秒单位）-->
         <property name="globalSessionTimeout" value="1800000"/>
-        <property name="sessionDAO" ref="customShiroSessionDAO"/>
+        <property name="sessionDAO" ref="customShiroSessionDao"/>
         <!-- session 监听，可以多个。 -->
         <property name="sessionListeners">
             <list>
@@ -121,7 +121,7 @@
     <!-- 手动操作Session，管理Session -->
     <bean id="customSessionManager" class="com.oa.web.support.shiro.session.CustomSessionManager">
         <property name="shiroSessionRepository" ref="jedisShiroSessionRepository"/>
-        <property name="customShiroSessionDAO" ref="customShiroSessionDAO"/>
+        <property name="customShiroSessionDao" ref="customShiroSessionDao"/>
     </bean>
 
     <!-- 静态注入，相当于调用SecurityUtils.setSecurityManager(securityManager) -->

@@ -30,8 +30,8 @@ public class LoginController {
                 throw new Exception();//最终在异常处理器生成未知错误
             }
         }
-        //此方法不处理登录成功(认证成功)，shiro认证成功会自动跳转到上一个请求路径。
-        //登录失败还到login页面
+        // 此方法不处理登录成功(认证成功)，shiro认证成功会自动跳转到上一个请求路径。
+        // 登录失败还到login页面
         return "login";
     }
 
