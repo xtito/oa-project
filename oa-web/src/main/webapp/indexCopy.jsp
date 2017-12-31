@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@include file="/static/include/inc.jsp" %>
+<%@include file="pages/include/inc.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <%@ include file="static/common/public-inc.jsp" %>
+    <%@ include file="pages/common/public-inc.jsp" %>
     <link rel="stylesheet" href="${ctx}/static/css/layout.css" />
     <link rel="stylesheet" href="${ctx}/static/css/oa-styleCopy.css" />
     <link rel="stylesheet" href="${ctx}/static/css/bootstrap/bootstrap.min.css" />
@@ -66,7 +66,7 @@
     </div>
 
     <div class="ito-work-body">
-        <%@ include file="./static/include/sidebar-nav.jsp"%>
+        <%@ include file="pages/include/sidebar-nav.jsp"%>
 
         <div class="ito-work-min">
             <iframe id="target_frame" name="rightFrame" width="100%" height="765" frameborder="0" src="${ctx}/static/include/homeCopy.jsp">加载中...</iframe>
