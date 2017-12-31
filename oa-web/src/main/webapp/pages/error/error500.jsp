@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@include file="/static/include/inc.jsp" %>
+<%@include file="../include/inc.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <%@ include file="/static/common/public-inc.jsp"%>
+    <%@ include file="../common/public-inc.jsp"%>
     <title>500系统错误</title>
 
     <style type="text/css">
@@ -71,7 +71,7 @@
         var time = parseInt(document.getElementById("time").innerText);
         if (time === 0) {
             clearInterval(inter);
-            top.location.href = "${ctx}/";
+            top.location.href = "../../";
             return;
         }
         document.getElementById("time").innerText = --time + "";
