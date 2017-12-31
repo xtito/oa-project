@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@include file="../include/inc.jsp" %>
+<%@include file="/pages/common/inc.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <%@ include file="../common/public-inc.jsp"%>
+    <%@ include file="/pages/common/public-inc.jsp"%>
     <title>404找不到页面</title>
 
     <style type="text/css">
