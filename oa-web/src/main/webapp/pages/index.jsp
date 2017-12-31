@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@include file="/static/include/inc.jsp" %>
+<%@include file="/pages/common/inc.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <%@ include file="static/common/public-inc.jsp" %>
+    <%@ include file="/pages/common/public-inc.jsp" %>
     <title>主页</title>
     <script type="text/javascript">
         <!--
