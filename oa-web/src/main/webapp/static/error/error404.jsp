@@ -38,6 +38,11 @@
             color: #af0000;
             padding: 0 5px;
         }
+
+        .info-text {
+            clear: both;
+            padding:20px
+        }
     </style>
 </head>
 
@@ -47,9 +52,13 @@
         <img src="${ctx}/static/images/error/404-zsp.jpg" width="362" height="282"/>
         <img src="${ctx}/static/images/error/404-info.jpg" width="324" height="220"/>
     </div>
-    <div style="clear: both;padding:20px">
-        找不到页面，将在<span id="time" class="time">5</span>秒后<a href="${ctx}/">回到首页</a>，或者点击返回<a
-            href="javascript:history.go(-1);">返回上页</a>
+    <div class="info-text">
+        <span>找不到页面，将在</span>
+        <span id="time" class="time">5</span>
+        <span>秒后</span>
+        <a href="${ctx}/">回到首页</a>
+        <span>，或者点击返回</span>
+        <a href="javascript:history.go(-1);">返回上一页</a>
     </div>
 
 </body>
@@ -59,13 +68,13 @@
 <script type="text/javascript">
     <!--
     var inter = setInterval(function () {
-        var time = parseInt(document.getElementById("time").innerHTML);
-        if (time == 0) {
+        var time = parseInt(document.getElementById("time").innerText);
+        if (time === 0) {
             clearInterval(inter);
             top.location.href = "${ctx}/";
             return;
         }
-        document.getElementById("time").innerHTML = --time + "";
+        document.getElementById("time").innerText = --time + "";
     }, 1000);
     //-->
 </script>
