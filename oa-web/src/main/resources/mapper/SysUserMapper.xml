@@ -35,7 +35,7 @@
         </trim>
     </sql>
 
-    <insert id="saveSysUser" parameterType="com.oa.bean.sys.SysUser">
+    <insert id="saveSysUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.oa.bean.sys.SysUser">
         INSERT INTO sys_user (<include refid="Base_Column_List"/>)
         <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
             #{id},#{loginName},#{nickname},#{email},#{password},#{phone},#{departmentId},#{status},
