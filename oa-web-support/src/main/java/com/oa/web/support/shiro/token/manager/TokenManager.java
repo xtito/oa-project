@@ -19,10 +19,10 @@ import java.util.List;
  */
 public class TokenManager {
 
-    //用户登录管理
-    public static final SampleRealm realm = AppContext.getBean("customRealm", SampleRealm.class);
-    //用户session管理
-    public static final CustomSessionManager customSessionManager = AppContext.getBean("customSessionManager", CustomSessionManager.class);
+    // 用户登录管理
+    private static final SampleRealm realm = AppContext.getBean("customRealm", SampleRealm.class);
+    // 用户session管理
+    private static final CustomSessionManager customSessionManager = AppContext.getBean("customSessionManager", CustomSessionManager.class);
 
     /**
      * 使用 Shiro 方式获取当前登录用户
@@ -119,21 +119,21 @@ public class TokenManager {
      * 这里只是说明下这个逻辑，当你清空了权限，<code> doGetAuthorizationInfo(...)  </code>就会被再次调用。
      */
     public static void clearNowUserAuth() {
-        /**
+        /*
          * 这里需要获取到shrio.xml 配置文件中，对Realm的实例化对象。才能调用到 Realm 父类的方法。
          */
-        /**
+        /*
          * 获取当前系统的Realm的实例化对象，方法一（通过 @link org.apache.shiro.web.mgt.DefaultWebSecurityManager 或者它的实现子类的{Collection<Realm> getRealms()}方法获取）。
          * 获取到的时候是一个集合。Collection<Realm>
          RealmSecurityManager securityManager =
          (RealmSecurityManager) SecurityUtils.getSecurityManager();
          SampleRealm realm = (SampleRealm)securityManager.getRealms().iterator().next();
          */
-        /**
+        /*
          * 方法二、通过ApplicationContext 从Spring容器里获取实列化对象。
          */
         realm.clearCachedAuthorizationInfo();
-        /**
+        /*
          * 当然还有很多直接或者间接的方法，此处不纠结。
          */
     }
@@ -142,7 +142,7 @@ public class TokenManager {
     /**
      * 根据UserIds 	清空权限信息。
      */
-    public static void clearUserAuthByUserId(Long... userIds) {
+    private static void clearUserAuthByUserId(Long... userIds) {
 
         if (null == userIds || userIds.length == 0) return;
         List<SimplePrincipalCollection> result = customSessionManager.getSimplePrincipalCollectionByUserId(userIds);
