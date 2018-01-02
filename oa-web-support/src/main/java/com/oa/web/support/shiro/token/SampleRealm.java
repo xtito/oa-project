@@ -2,6 +2,7 @@ package com.oa.web.support.shiro.token;
 
 import com.oa.bean.sys.SysUser;
 import com.oa.core.constant.Constant;
+import com.oa.core.utils.algorithm.AlgorithmsUtil;
 import com.oa.web.service.sys.SysPermissionService;
 import com.oa.web.service.sys.SysRoleService;
 import com.oa.web.service.sys.SysUserService;
@@ -49,21 +50,15 @@ public class SampleRealm extends AuthorizingRealm {
 
         // 2. 调用数据库的方法, 从数据库中查询 username 对应的用户记录
         SysUser user = this.userService.getUserByLoginName(upToken.getUsername());
+
         if (null == user) {
+
             // 若用户不存在, 则可以抛出 UnknownAccountException 异常
             throw new UnknownAccountException("用户不存在！");
-        }
-
-        user = this.userService.getUserByLoginNameAndPwd(upToken.getUsername(), upToken.getPassword());
-
-        if (null == user) {
-
-            throw new IncorrectCredentialsException("帐号密码不正确！");
 
         } else if (Constant.USER_DISABLE == user.getStatus()) {
-            /*
-             * 如果用户的status为禁用。那么就抛出<code>DisabledAccountException</code>
-             */
+
+            // 如果用户的status为禁用。那么就抛出<code>DisabledAccountException</code>
             throw new DisabledAccountException("帐号已经禁止登录！");
 
         } else if (Constant.USER_LOCK == user.getStatus()) {
@@ -80,6 +75,7 @@ public class SampleRealm extends AuthorizingRealm {
         ByteSource credentialsSalt = ByteSource.Util.bytes(user.getLoginName());
 
         /*
+         * 密码比对
          * 参数一：principal 认证的实体信息. 可以是 username, 也可以是数据表对应的用户的实体类对象.
          * 参数二：hashedCredentials 密码. 数据库查询的密码
          * 参数三：credentialsSalt 盐值.

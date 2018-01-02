@@ -22,15 +22,19 @@ public class ConfigUtil {
         super();
     }
 
-    public static final String JDBC_FILE = "jdbc.properties";
+    private static final String JDBC_FILE = "jdbc.properties";
+    private static final String SHIRO_FILE = "shiro-config.properties";
+
     /**
      * 构建系统配置
      */
     public static void build() {
 
         File jdbcFile = PathUtil.loadingFile(JDBC_FILE);
+        File shiroFile = PathUtil.loadingFile(SHIRO_FILE);
         logger.info("正在加载配置文件...");
         build(jdbcFile);
+        build(shiroFile);
         logger.info("配置文件加载完毕.");
     }
 

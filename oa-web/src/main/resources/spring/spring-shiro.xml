@@ -7,11 +7,12 @@
     <!-- 自定义的realm。授权 认证 -->
     <bean id="customRealm" class="com.oa.web.support.shiro.token.SampleRealm">
         <description>指定加密算法</description>
+        <property name="cachingEnabled" value="false"/>
         <property name="credentialsMatcher">
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
                 <description>hashAlgorithmName指定加密算法。hashIterations指定可以加密的次数，针对MD5加密的结果再次加密的次数</description>
-                <property name="hashAlgorithmName" value="MD5"/>
-                <property name="hashIterations" value="1024"/>
+                <property name="hashAlgorithmName" value="${encryption.algorithm}"/>
+                <property name="hashIterations" value="${encryption.count}"/>
             </bean>
         </property>
     </bean>
