@@ -124,7 +124,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         jumpToAddPage: function () {
             // 跳转到添加页面
-            commonJs.loadContent(ctx + "/static/pages/sys/role/add_role.jsp");
+            commonJs.loadContent(ctx + "/pages/sys/role/add_role.jsp");
         },
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
@@ -138,7 +138,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         jumpToDataList: function () {
             // 跳转到列表页
-            commonJs.loadContent(ctx + "/static/pages/sys/role/sys_role.jsp");
+            commonJs.loadContent(ctx + "/pages/sys/role/sys_role.jsp");
         },
         initBindEvent: function () {
             var eleArray = [

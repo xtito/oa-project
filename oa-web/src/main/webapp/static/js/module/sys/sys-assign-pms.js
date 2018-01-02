@@ -146,7 +146,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         jumpToDataList: function () {
             // 跳转到列表页
-            commonJs.loadContent(ctx + "/static/pages/sys/pms/role_pms_list.jsp");
+            commonJs.loadContent(ctx + "/pages/sys/pms/role_pms_list.jsp");
         }
     };
 

@@ -88,7 +88,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
         loadDeptTreeList: function () {
             var $this = $(this);
 
-            $.post(ctx + "/static/pages/sys/dept/dept_tree_list.jsp", function (html) {
+            $.post(ctx + "/pages/sys/dept/dept_tree_list.jsp", function (html) {
                 layui.use('layer', function (layer) {
                     var title = "<span><i class='ito ito-department'></i><span class='ml6'>部门列表</span></span>";
 
@@ -244,7 +244,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
         },
         jumpToAddPage: function () {
             // 跳转到添加页面
-            commonJs.loadContent(ctx + "/static/pages/sys/user/add_user.jsp");
+            commonJs.loadContent(ctx + "/pages/sys/user/add_user.jsp");
         },
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
@@ -258,7 +258,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
         },
         jumpToDataList: function () {
             // 跳转到列表页
-            commonJs.loadContent(ctx + "/static/pages/sys/user/sys_user.jsp");
+            commonJs.loadContent(ctx + "/pages/sys/user/sys_user.jsp");
         },
         initBindEvent: function () {
             var eleArray = [

@@ -71,13 +71,13 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-this">
-                    <a class="trigger-home" href="javascript:;" data-url="${ctx}/static/include/home.jsp">概览</a>
+                    <a class="trigger-home" href="javascript:;" data-url="${ctx}/include/home.jsp">概览</a>
                 </li>
                 <li class="layui-nav-item">
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
-                        <dd><a target="rightFrame" href="${ctx}/static/include/home.jsp">列表一</a></dd>
-                        <dd><a target="rightFrame" href="${ctx}/static/pages/sys/user/sys_user.jsp">列表二</a></dd>
+                        <dd><a target="rightFrame" href="${ctx}/pages/include/home.jsp">列表一</a></dd>
+                        <dd><a target="rightFrame" href="${ctx}/pages/sys/user/sys_user.jsp">列表二</a></dd>
                         <dd><a target="rightFrame" href="javascript:;">列表三</a></dd>
                         <dd><a target="rightFrame" href="javascript:;">超链接</a></dd>
                     </dl>
@@ -96,25 +96,25 @@
                     <a href="javascript:;">部门/帐户/权限</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/dept/sys_department.jsp">
+                            <a href="javascript:;" data-url="${ctx}/pages/sys/dept/sys_department.jsp">
                                 <i class="ito ito-icon ito-department"></i>
                                 <span>部门管理</span>
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/user/sys_user.jsp">
+                            <a href="javascript:;" data-url="${ctx}/pages/sys/user/sys_user.jsp">
                                 <i class="ito ito-icon ito-user"></i>
                                 <span>用户管理</span>
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/role/sys_role.jsp">
+                            <a href="javascript:;" data-url="${ctx}/pages/sys/role/sys_role.jsp">
                                 <i class="ito ito-icon ito-role"></i>
                                 <span>角色管理</span>
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/static/pages/sys/pms/user_role_list.jsp">
+                            <a href="javascript:;" data-url="${ctx}/pages/sys/pms/user_role_list.jsp">
                                 <i class="ito ito-icon ito-permissions"></i>
                                 <span>权限管理</span>
                             </a>
