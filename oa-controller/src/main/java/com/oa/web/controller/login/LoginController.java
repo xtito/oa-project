@@ -4,7 +4,6 @@ import com.oa.bean.sys.SysUser;
 import com.oa.core.LoggerUtil;
 import com.oa.core.base.controller.BaseController;
 import com.oa.core.constant.HttpResponseStatusConstant;
-import com.oa.core.exception.CustomException;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.support.shiro.token.manager.TokenManager;
 import org.apache.shiro.authc.DisabledAccountException;
@@ -77,6 +76,20 @@ public class LoginController extends BaseController {
             }
         }
 
+        return resultMap;
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/loginOut")
+    public Object loginOut() {
+        try {
+            TokenManager.logout();
+            resultMap.put("status", 200);
+        } catch (Exception e) {
+            resultMap.put("status", 500);
+            LoggerUtil.fmtError(getClass(), "退出出现错误，%s。", e, e.getMessage());
+        }
         return resultMap;
     }
 

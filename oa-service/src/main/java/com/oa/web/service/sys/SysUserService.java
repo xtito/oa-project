@@ -52,4 +52,13 @@ public interface SysUserService extends BaseService<SysUser> {
      */
     PageBean<UserRoleView> getUserAndRoleList(PageBean<UserRoleView> page, HttpServletRequest request);
 
+
+    /**
+     * 对比密码
+     * @param databasePwd 数据库密码，已加密
+     * @param strPwd 要比对的未加密密码
+     * @param salt 加密盐值
+     * @return 对比成功返回 true，对比失败返回 false
+     */
+    boolean eqPassword(String databasePwd, String strPwd, String salt);
 }

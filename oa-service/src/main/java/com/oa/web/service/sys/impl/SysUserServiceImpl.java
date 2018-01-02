@@ -196,6 +196,18 @@ public class SysUserServiceImpl implements SysUserService {
         return page;
     }
 
+    /**
+     * 对比密码
+     * @param databasePwd 数据库密码，已加密
+     * @param strPwd 要比对的未加密密码
+     * @param salt 加密盐值
+     * @return 对比成功返回 true，对比失败返回 false
+     */
+    public boolean eqPassword(String databasePwd, String strPwd, String salt) {
+        String pwd = this.encrypt(strPwd, salt);
+        return pwd.equals(databasePwd);
+    }
+
     private String encrypt(String source, String saltStr) {
         // 指定加密算法
         String hashAlgorithmName = ConfigUtil.get("encryption.algorithm");

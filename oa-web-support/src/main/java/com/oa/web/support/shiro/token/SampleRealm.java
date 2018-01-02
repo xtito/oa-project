@@ -55,6 +55,10 @@ public class SampleRealm extends AuthorizingRealm {
 
             // 若用户不存在, 则可以抛出 UnknownAccountException 异常
             throw new UnknownAccountException("用户不存在！");
+        } else if (!this.userService.eqPassword(user.getPassword(), String.valueOf(upToken.getPassword()), user.getLoginName())) {
+
+            // 密码错误
+            throw new IncorrectCredentialsException("帐号密码不正确！");
 
         } else if (Constant.USER_DISABLE == user.getStatus()) {
 
