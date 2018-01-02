@@ -1,9 +1,5 @@
 package com.oa.core.base;
 
-import com.oa.core.exception.ValidateException;
-
-import java.util.List;
-
 /**
  * 基础Mapper接口
  *
