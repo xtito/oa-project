@@ -29,14 +29,14 @@ import java.util.Map;
 public class KickoutSessionFilter extends AccessControlFilter {
 
     //静态注入
-    static String kickoutUrl;
+    private static String kickoutUrl;
     //在线用户
-    final static String ONLINE_USER = KickoutSessionFilter.class.getCanonicalName() + "_online_user";
+    private final static String ONLINE_USER = KickoutSessionFilter.class.getCanonicalName() + "_online_user";
     //踢出状态，true标示踢出
-    final static String KICKOUT_STATUS = KickoutSessionFilter.class.getCanonicalName() + "_kickout_status";
+    private final static String KICKOUT_STATUS = KickoutSessionFilter.class.getCanonicalName() + "_kickout_status";
 
     //session获取
-    static ShiroSessionRepository shiroSessionRepository;
+    private static ShiroSessionRepository shiroSessionRepository;
 
 
     @Override
@@ -52,7 +52,7 @@ public class KickoutSessionFilter extends AccessControlFilter {
         }
         Session session = subject.getSession();
         Serializable sessionId = session.getId();
-        /**
+        /*
          * 判断是否已经踢出
          * 1.如果是Ajax 访问，那么给予json返回值提示。
          * 2.如果是普通请求，直接跳转到登录页
@@ -86,7 +86,7 @@ public class KickoutSessionFilter extends AccessControlFilter {
             return Boolean.TRUE;
         }
         //如果用户相同，Session不相同，那么就要处理了
-        /**
+        /*
          * 如果用户Id相同,Session不相同
          * 1.获取到原来的session，并且标记为踢出。
          * 2.继续走
