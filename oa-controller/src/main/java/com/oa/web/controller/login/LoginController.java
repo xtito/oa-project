@@ -31,7 +31,7 @@ public class LoginController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/login", produces = "application/json; charset=utf-8")
-    public Object loginUI(@RequestParam(value = "rememberMe", required = false) boolean rememberMe,
+    public Object login(@RequestParam(value = "rememberMe", required = false) boolean rememberMe,
                           SysUser user, HttpServletRequest request) throws Exception {
 
         try {
