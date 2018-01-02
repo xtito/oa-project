@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="${ctx}/static/css/zTree/zTree.css" />
 <link rel="stylesheet" href="${ctx}/static/css/main-public.css" />
 <link rel="stylesheet" href="${ctx}/static/ui/layui/css/layui.css" />
+<link rel="stylesheet" href="${ctx}/static/js/plugins/layer/theme/default/layer.css" />
 <link rel="stylesheet" href="${ctx}/static/ui/layui/css/global.css" />
 <link rel="stylesheet" href="${ctx}/static/js/plugins/select2/css/select2.css" />
 <script src="${ctx}/static/js/requireJs/require.min.js" data-main="${ctx}/static/js/requireJs/main" defer async></script>
