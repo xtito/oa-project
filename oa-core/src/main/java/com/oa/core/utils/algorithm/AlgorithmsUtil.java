@@ -81,11 +81,20 @@ public class AlgorithmsUtil {
      * @param salt 盐值
      * @return 加密后的字符，如果 str 或 salt为null 则返回 null
      */
-    public static String encrypt(Object str, Object salt) {
-        if (str != null && salt != null) {
-            return encrypt(String.format("%s#%s", String.valueOf(str), String.valueOf(salt)));
-        }
-        return null;
+    public static String encrypt(String str, String salt) {
+        return encrypt(String.format("%s#%s", String.valueOf(str), String.valueOf(salt)));
     }
+
+    /**
+     * 使用MD5加密算法进行加密，并在加密前指定盐值
+     *
+     * @param str  要加密的字符串
+     * @param salt 盐值
+     * @return 加密后的字符，如果 str 或 salt为null 则返回 null
+     */
+    public static String encrypt(char[] str, String salt) {
+        return encrypt(String.valueOf(str), salt);
+    }
+
 
 }
