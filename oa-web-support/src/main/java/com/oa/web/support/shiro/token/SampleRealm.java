@@ -27,17 +27,19 @@ import java.util.Set;
  */
 public class SampleRealm extends AuthorizingRealm {
 
+    private final SysUserService userService;
+    private final SysRoleService roleService;
+    private final SysPermissionService permissionService;
+
     @Autowired
-    private SysUserService userService;
-    @Autowired
-    private SysRoleService roleService;
-    @Autowired
-    private SysPermissionService permissionService;
+    public SampleRealm(SysUserService userService, SysRoleService roleService, SysPermissionService permissionService) {
+        this.userService = userService;
+        this.roleService = roleService;
+        this.permissionService = permissionService;
+    }
 
     /**
      * 用于认证的方法，主要针对用户登录
-     *
-     * @throws AuthenticationException
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authToken) throws AuthenticationException {
@@ -46,15 +48,20 @@ public class SampleRealm extends AuthorizingRealm {
         UsernamePasswordToken upToken = (UsernamePasswordToken) authToken;
 
         // 2. 调用数据库的方法, 从数据库中查询 username 对应的用户记录
-        SysUser user = this.userService.getUserByLoginNameAndPwd(upToken.getUsername(), upToken.getPassword());
+        SysUser user = this.userService.getUserByLoginName(upToken.getUsername());
+        if (null == user) {
+            // 若用户不存在, 则可以抛出 UnknownAccountException 异常
+            throw new UnknownAccountException("用户不存在！");
+        }
 
-        // 若用户不存在, 则可以抛出 UnknownAccountException 异常
+        user = this.userService.getUserByLoginNameAndPwd(upToken.getUsername(), upToken.getPassword());
+
         if (null == user) {
 
-            throw new AccountException("帐号或密码不正确！");
+            throw new IncorrectCredentialsException("帐号密码不正确！");
 
         } else if (Constant.USER_DISABLE == user.getStatus()) {
-            /**
+            /*
              * 如果用户的status为禁用。那么就抛出<code>DisabledAccountException</code>
              */
             throw new DisabledAccountException("帐号已经禁止登录！");
@@ -64,7 +71,7 @@ public class SampleRealm extends AuthorizingRealm {
             throw new LockedAccountException("用户已被锁定！");
 
         } else {
-            //更新登录时间 last login time
+            // 更新登录时间 last login time
             user.setLastLoginTime(new Date());
             userService.update(user);
         }
@@ -72,7 +79,7 @@ public class SampleRealm extends AuthorizingRealm {
         // 盐值.实现不同用户同样的密码结果也不同
         ByteSource credentialsSalt = ByteSource.Util.bytes(user.getLoginName());
 
-        /**
+        /*
          * 参数一：principal 认证的实体信息. 可以是 username, 也可以是数据表对应的用户的实体类对象.
          * 参数二：hashedCredentials 密码. 数据库查询的密码
          * 参数三：credentialsSalt 盐值.
