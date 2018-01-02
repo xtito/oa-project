@@ -344,18 +344,22 @@ public class StringUtil {
     }
 
     /**
-     * 一次性判断多个或单个对象为空。
+     * 一次性判断多个或单个对象为空或null，只要有一个为空或null返回true。
      *
      * @param objects 要判断的对象
      * @return 只要有一个元素为Blank，则返回true
      */
     public static boolean isBlank(Object... objects) {
         Boolean result = false;
-        for (Object object : objects) {
-            if (isEmpty(object) || "null".equals(object.toString().trim())) {
-                result = true;
-                break;
+        if (isNotNull(objects)) {
+            for (Object object : objects) {
+                if (isEmpty(object) || "null".equals(object.toString().trim())) {
+                    result = true;
+                    break;
+                }
             }
+        } else {
+            result = true;
         }
         return result;
     }
