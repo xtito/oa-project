@@ -1,10 +1,22 @@
 package com.oa.web.controller.login;
 
+import com.oa.bean.sys.SysUser;
+import com.oa.core.LoggerUtil;
+import com.oa.core.base.controller.BaseController;
+import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.core.exception.CustomException;
+import com.oa.core.utils.StringUtil;
+import com.oa.web.support.shiro.token.manager.TokenManager;
+import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.web.util.SavedRequest;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,25 +26,56 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/login/mgr")
-public class LoginController {
+public class LoginController extends BaseController {
 
 
-    @RequestMapping("/login")
-    public String login(HttpServletRequest request) throws Exception {
-        // 如果登录失败从request中获取认证异常信息，shiroLoginFailure就是shiro异常类的全限定名
-        String exceptionClassName = (String) request.getAttribute("shiroLoginFailure");
-        if (exceptionClassName != null) {
-            if (UnknownAccountException.class.getName().equals(exceptionClassName)) {
-                throw new CustomException("账号不存在");
-            } else if (IncorrectCredentialsException.class.getName().equals(exceptionClassName)) {
-                throw new CustomException("用户名或密码错误");
+    @ResponseBody
+    @RequestMapping(value = "/login", produces = "application/json; charset=utf-8")
+    public Object loginUI(@RequestParam(value = "rememberMe", required = false) boolean rememberMe,
+                          SysUser user, HttpServletRequest request) throws Exception {
+
+        try {
+
+            user = TokenManager.login(user, rememberMe);
+            resultMap.put(STATUS, HttpResponseStatusConstant.OK);
+            resultMap.put(MESSAGE, "登录成功");
+
+            // shiro 获取登录之前的地址
+            SavedRequest savedRequest = WebUtils.getSavedRequest(request);
+            String url = null;
+            if (null != savedRequest) {
+                url = savedRequest.getRequestUrl();
+            }
+
+            /*
+             * 我们平常用的获取上一个请求的方式，在Session不一致的情况下是获取不到的
+             * String url = (String) request.getAttribute(WebUtils.FORWARD_REQUEST_URI_ATTRIBUTE);
+             */
+            LoggerUtil.fmtDebug(getClass(), "获取登录之前的URL:[%s]", url);
+            // 如果登录之前没有地址，那么就跳转到首页。
+            if (StringUtil.isBlank(url)) {
+                url = request.getContextPath() + "/pages/index.jsp";
+            }
+
+            // 跳转地址
+            resultMap.put("toUrl", url);
+
+        } catch (Exception e) {
+            resultMap.put(STATUS, HttpResponseStatusConstant.INTERNAL_SERVER_ERROR);
+            if (e instanceof UnknownAccountException) {
+                resultMap.put(MESSAGE, "用户不存在！");
+            } else if (e instanceof IncorrectCredentialsException) {
+                resultMap.put(MESSAGE, "帐号密码不正确！");
+            } else if (e instanceof LockedAccountException) {
+                resultMap.put(MESSAGE, "用户已被锁定！");
+            } else if (e instanceof DisabledAccountException) {
+                resultMap.put(MESSAGE, "帐号已经禁止登录！");
             } else {
-                throw new Exception();//最终在异常处理器生成未知错误
+                resultMap.put(MESSAGE, "登录异常，请联系管理员！");
             }
         }
-        // 此方法不处理登录成功(认证成功)，shiro认证成功会自动跳转到上一个请求路径。
-        // 登录失败还到login页面
-        return "login";
+
+        return resultMap;
     }
 
 }

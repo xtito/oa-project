@@ -132,7 +132,7 @@
 
     <!-- session 校验单个用户是否多次登录 -->
     <bean id="kickoutSessionFilter" class="com.oa.web.support.shiro.filter.KickoutSessionFilter">
-        <property name="kickoutUrl" value="/u/login.shtml?kickout"/>
+        <property name="kickoutUrl" value="/pages/login.jsp?kickout"/>
     </bean>
 
     <!-- 静态注入 jedisShiroSessionRepository-->
@@ -158,7 +158,7 @@
         <!-- logiUrl 认证提交地址，如果没有认证通过将会请求此地址进行认证，请求此地址将由 formAuthenticationFilter 进行表单认证 -->
         <property name="loginUrl" value="/pages/login.jsp"/>
         <!-- 认证成功后统一跳转到first.action，建议不配置，shiro认证成功自动到上一个链接 -->
-        <property name="successUrl" value="/first"/>
+        <!--<property name="successUrl" value="/pages/index.jsp"/>-->
         <!-- 通过 unauthorizedUrl 指定没有权限时跳转页面 -->
         <property name="unauthorizedUrl" value="/refuse.jsp"/>
         <!-- 自定义filter配置 -->
