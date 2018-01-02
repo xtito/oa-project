@@ -3,7 +3,7 @@
 
 <ul class="layui-tab-title site-demo-title">
     <li class="tab-li ${param.active == '1' ? 'layui-this' : ''}">
-        <a class="trigger-user-list" data-url="${ctx}/static/pages/sys/user/sys_user.jsp">
+        <a class="trigger-user-list" data-url="${ctx}/pages/sys/user/sys_user.jsp">
             <i class="ito ito-user-list"></i>
             <span>用户列表</span>
         </a>
@@ -17,7 +17,7 @@
     </li>
 
     <li class="tab-li ${param.active == '3' ? 'layui-this' : ''}">
-        <a data-url="${ctx}/static/pages/sys/user/add_user.jsp">
+        <a data-url="${ctx}/pages/sys/user/add_user.jsp">
             <i class="ito ito-add-user"></i>
             <span>添加用户</span>
         </a>

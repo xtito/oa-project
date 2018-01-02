@@ -3,14 +3,14 @@
 
 <ul class="layui-tab-title site-demo-title">
     <li class="tab-li ${param.active == '1' ? 'layui-this' : ''}">
-        <a class="trigger-role-list" data-url="${ctx}/static/pages/sys/role/sys_role.jsp">
+        <a class="trigger-role-list" data-url="${ctx}/pages/sys/role/sys_role.jsp">
             <i class="ito ito-role-list"></i>
             <span>角色列表</span>
         </a>
     </li>
 
     <li class="tab-li ${param.active == '2' ? 'layui-this' : ''}">
-        <a data-url="${ctx}/static/pages/sys/role/add_role.jsp">
+        <a data-url="${ctx}/pages/sys/role/add_role.jsp">
             <i class="ito ito-add-role"></i>
             <span>添加角色</span>
         </a>

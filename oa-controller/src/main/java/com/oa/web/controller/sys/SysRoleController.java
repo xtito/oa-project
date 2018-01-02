@@ -264,4 +264,10 @@ public class SysRoleController extends BaseController {
         return page;
     }
 
+    @ResponseBody
+    @RequestMapping("/load/role")
+    public Object loadRoleList() {
+        return this.service.loadRoleList();
+    }
+
 }

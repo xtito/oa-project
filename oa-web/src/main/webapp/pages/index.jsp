@@ -19,7 +19,7 @@
         function onRequireReady() {
             require(["domReady"], function (doc) {
                 require(["jquery", "module-common"], function ($, commonJs) {
-                    commonJs.loadContent("static/include/home.jsp");
+                    commonJs.loadContent(ctx + "/pages/include/home.jsp");
                 });
             });
         }

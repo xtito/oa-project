@@ -71,7 +71,7 @@
         var time = parseInt(document.getElementById("time").innerText);
         if (time === 0) {
             clearInterval(inter);
-            top.location.href = "../../";
+            top.location.href = "${ctx}/";
             return;
         }
         document.getElementById("time").innerText = --time + "";
