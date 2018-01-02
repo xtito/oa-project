@@ -16,6 +16,7 @@ define(function () {
             "load-select": "../plugins/select2/custom/load-select",
             //"resizeHeight": "../utils/resizeHeight",
             "lay-ui": "../../ui/layui/layui",
+            "layer": "../plugins/layer/layer",
             //"lay-element": "../../ui/layui/lay/modules/element",
             //"lay-layer": "../../ui/layui/lay/modules/layer",
             "ito-validation": "../utils/ito-validation",
