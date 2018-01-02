@@ -19,9 +19,9 @@
         <!--
         function onRequireReady() {
             require(["domReady"], function (doc) {
-                require(["jquery", "layer"], function () {
+                require(["jquery", "layer"], function ($, layer) {
                     $(document).ready(function () {
-                        $("#sub_btn").click(function ($, layer) {
+                        $("#sub_btn").click(function () {
                             $.ajax({
                                 url: "${ctx}/mvc/login/mgr/login",
                                 type: "POST",
@@ -31,6 +31,7 @@
                                     if (json.status === 200) {
                                         window.location.href = json.toUrl;
                                     }
+
                                     layer.msg(json.message);
                                 }, error: function () {
                                     layer.msg("操作失败，请重试！");

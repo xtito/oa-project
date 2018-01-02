@@ -8,7 +8,7 @@
     <display-name>oa-project</display-name>
 
     <welcome-file-list>
-        <welcome-file>pages/login.jsp</welcome-file>
+        <welcome-file>pages/index.jsp</welcome-file>
     </welcome-file-list>
 
     <!--

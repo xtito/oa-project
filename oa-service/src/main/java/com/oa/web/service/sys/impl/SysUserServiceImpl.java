@@ -9,8 +9,11 @@ import com.oa.core.utils.StringUtil;
 import com.oa.core.utils.algorithm.AlgorithmsUtil;
 import com.oa.core.utils.date.DateUtil;
 import com.oa.core.utils.date.DateValida;
+import com.oa.core.utils.path.ConfigUtil;
 import com.oa.web.mapper.SysUserMapper;
 import com.oa.web.service.sys.SysUserService;
+import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -137,7 +140,7 @@ public class SysUserServiceImpl implements SysUserService {
             throw new ValidateException("该用户已存在，请更换用户名");
         }
 
-        user.setPassword(AlgorithmsUtil.encrypt(user.getPassword(), user.getLoginName()));
+        user.setPassword(this.encrypt(user.getPassword(), user.getLoginName()));
         this.save(user);
     }
 
@@ -192,4 +195,16 @@ public class SysUserServiceImpl implements SysUserService {
         page.convertPage(list);
         return page;
     }
+
+    private String encrypt(String source, String saltStr) {
+        // 指定加密算法
+        String hashAlgorithmName = ConfigUtil.get("encryption.algorithm");
+        // 盐值，一般可以用用户名
+        Object salt = ByteSource.Util.bytes(saltStr);
+        // 加密次数
+        int hashIterations = Integer.parseInt(ConfigUtil.get("encryption.count"));
+        Object result = new SimpleHash(hashAlgorithmName, source, salt, hashIterations);
+        return result.toString();
+    }
+
 }

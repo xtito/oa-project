@@ -60,6 +60,8 @@ public class LoginController extends BaseController {
             // 跳转地址
             resultMap.put("toUrl", url);
 
+            LoggerUtil.info(getClass(), user.getLoginName() + "成功登录系统");
+
         } catch (Exception e) {
             resultMap.put(STATUS, HttpResponseStatusConstant.INTERNAL_SERVER_ERROR);
             if (e instanceof UnknownAccountException) {
