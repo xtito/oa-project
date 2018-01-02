@@ -17,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -58,8 +60,11 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public SysUser getUserByLoginNameAndPwd(String username, char[] password) {
-        return null;
+    public SysUser getUserByLoginNameAndPwd(String loginName, String password) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("loginName", loginName);
+        map.put("password", password);
+        return this.mapper.getUserByLoginNameAndPwd(map);
     }
 
     /**

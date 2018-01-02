@@ -125,6 +125,11 @@
         FROM sys_user WHERE login_name = #{loginName}
     </select>
 
+    <!-- 根据用户登录名和密码查询用户 -->
+    <select id="getUserByLoginNameAndPwd" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_user WHERE login_name = #{loginName} AND password_ = #{password}
+    </select>
+
     <select id="getUserList" parameterType="com.oa.core.bean.PageBean" resultMap="BaseResultMap">
         SELECT
         <trim>

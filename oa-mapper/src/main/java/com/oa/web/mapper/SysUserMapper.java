@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -82,4 +83,11 @@ public interface SysUserMapper {
      * @return 用户角色列表封装集合
      */
     List<UserRoleView> getUserAndRoleList(PageBean<UserRoleView> page);
+
+    /**
+     * 通过用户名和密码查询用户
+     * @param map 参数Map实体，key：loginName 登录名  key：password 密码
+     * @return 用户实体信息
+     */
+    SysUser getUserByLoginNameAndPwd(Map<String, String> map);
 }

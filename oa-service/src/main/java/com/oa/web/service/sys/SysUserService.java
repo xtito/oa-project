@@ -19,7 +19,7 @@ import java.util.Set;
  */
 public interface SysUserService extends BaseService<SysUser> {
 
-    SysUser getUserByLoginNameAndPwd(String loginName, char[] password);
+    SysUser getUserByLoginNameAndPwd(String loginName, String password);
 
     // 根据账号查询用户
     SysUser getUserByLoginName(String loginName);
