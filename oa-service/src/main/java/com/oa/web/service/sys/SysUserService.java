@@ -8,7 +8,6 @@ import com.oa.core.exception.ValidateException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 /**
