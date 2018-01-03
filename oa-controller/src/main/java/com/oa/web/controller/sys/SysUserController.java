@@ -9,18 +9,19 @@ import com.oa.core.constant.Constant;
 import com.oa.core.constant.HttpResponseStatusConstant;
 import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
+import com.oa.web.service.sys.SysRoleService;
 import com.oa.web.service.sys.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户管理
@@ -33,10 +34,12 @@ import java.util.Date;
 public class SysUserController extends BaseController {
 
     private final SysUserService service;
+    private final SysRoleService roleService;
 
     @Autowired
-    public SysUserController(SysUserService service) {
+    public SysUserController(SysUserService service, SysRoleService roleService) {
         this.service = service;
+        this.roleService = roleService;
     }
 
     @ResponseBody
@@ -66,19 +69,26 @@ public class SysUserController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/save/user", produces = "application/json; charset=utf-8")
-    public String saveSysUser(SysUser user, BindingResult bindingResult) {
+    public String saveSysUser(SysUser user, BindingResult bindingResult, HttpServletRequest request) {
 
         boolean success = true;
         String info = "用户添加成功";
 
         try {
             Date currentDate = new Date();
+            String[] roleIds = request.getParameterValues("roleId");
+
             // 用户状态
             user.setStatus(Constant.USER_NORMAL);
             user.setCreateTime(currentDate);
             user.setUpdateTime(currentDate);
             user.setDefIdentify(0);
             this.service.saveUser(user);
+
+            // 保存用户和角色关系
+            if (user.getId() != null) {
+                this.roleService.saveUserRole(user.getId().toString(), roleIds);
+            }
 
         } catch (ValidateException e) {
             e.printStackTrace();
@@ -95,7 +105,9 @@ public class SysUserController extends BaseController {
     @RequestMapping("/update/ui")
     public String updateUI(@RequestParam("id") String id, ModelMap modelMap) {
         SysUser user = this.service.getByPrimaryKey(Long.valueOf(id));
+        List<String> roleIdList = this.roleService.getUserRoleIdByUserId(id);
         modelMap.put("user", user);
+        modelMap.put("roleIds", StringUtil.arrayToString(roleIdList.toArray()));
         return "sys/user/update_user";
     }
 
@@ -115,7 +127,7 @@ public class SysUserController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/update/user", produces = "application/json; charset=utf-8")
-    public String updateSysUser(SysUser user, BindingResult bindingResult) {
+    public String updateSysUser(SysUser user, BindingResult bindingResult, HttpServletRequest request) {
 
         String info = "用户更新成功";
         boolean success = true;
@@ -125,6 +137,15 @@ public class SysUserController extends BaseController {
             if (user != null) {
                 user.setUpdateTime(new Date());
                 this.service.update(user);
+
+                String[] roleIds = request.getParameterValues("roleId");
+
+                // 保存用户和角色关系
+                if (user.getId() != null) {
+                    // 先删除用户角色关联
+                    this.roleService.deleteUserRolesAll(user.getId().toString());
+                    this.roleService.saveUserRole(user.getId().toString(), roleIds);
+                }
             }
 
         } catch (Exception e) {

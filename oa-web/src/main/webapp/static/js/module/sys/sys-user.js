@@ -2,6 +2,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
 
     var userJs = {
         cache: {},
+        selectEle: null,
         loadDataList: function () {
             layui.use('table', function () {
                 var table = layui.table, form = layui.form, layer = layui.layer;
@@ -271,7 +272,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
 
             if ($("#role_option").length > 0) {
                 var url = ctx + "/mvc/sysRole/mgr/load/role";
-                selectJs.bindSelect("#role_option", url);
+                userJs.selectEle = selectJs.bindSelect("#role_option", url);
             }
 
             for (var e in eleArray) {

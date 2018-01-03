@@ -122,12 +122,13 @@ public class StringUtil {
      * String array covert to string
      * Example ["A", "B", "C"]  covert to A,B,C
      */
-    public static String arrayToString(String[] array) {
-        if (array == null) {
+    public static String arrayToString(Object[] array) {
+        if (array == null || array.length == 0) {
             return "";
         }
+
         StringBuilder str = new StringBuilder();
-        for (String s : array) {
+        for (Object s : array) {
             str.append(",").append(s);
         }
         return isEmpty(str.toString()) ? str.toString() : str.substring(1);

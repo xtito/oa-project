@@ -11,6 +11,10 @@
     require(["domReady"], function(doc) {
         require(["sys-user"], function(userJs){
             userJs.initBindEvent();
+            setTimeout(function () {
+                var roleIds = "${requestScope.roleIds}";
+                userJs.selectEle.val(roleIds.split(",")).trigger("change");
+            }, 50);
         });
     });
     //-->
@@ -83,6 +87,15 @@
                                                 <input type="hidden" id="dept_id" name="departmentId" value="${requestScope.user.departmentId}"/>
                                                 <input type="text" id="user_dept" class="layui-input" placeholder="请点击选择部门"
                                                        value="${requestScope.user.deptName}" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label" for="role_option">角色</label>
+                                            <div class="layui-input-block">
+                                                <select id="role_option" class="layui-input" name="roleId" lay-ignore style="display: none"
+                                                        multiple="multiple" data-placeholder="请选择角色">
+                                                </select>
                                             </div>
                                         </div>
 

@@ -7,7 +7,7 @@ define(["jquery", "select2", "select2-zh-CN"], function($, select, zh) {
             // 处理元素
             if (ele) {
                 var str = ele.substr(0, 1);
-                if (str != "." && str != "#") {
+                if (str !== "." && str !== "#") {
                     return "#" + ele;
                 } else {
                     return ele;
@@ -37,7 +37,7 @@ define(["jquery", "select2", "select2-zh-CN"], function($, select, zh) {
 
                 selectUtil.selectEle = $control.select2(settings);
 
-                if (!serverFind || serverFind == false) {
+                if (!serverFind || serverFind === false) {
                     selectUtil.loadData($control, url);
                 }
             }
