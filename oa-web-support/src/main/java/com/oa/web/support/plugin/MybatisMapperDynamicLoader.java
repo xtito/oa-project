@@ -72,7 +72,7 @@ public class MybatisMapperDynamicLoader implements DisposableBean, InitializingB
         private static final String XML_RESOURCE_PATTERN = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX + "mapper/*.xml";
         private final ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
 
-        public Scanner() throws IOException {
+        Scanner() throws IOException {
             Resource[] resources = findResource();
             if (resources != null) {
                 for (Resource resource : resources) {
@@ -83,7 +83,7 @@ public class MybatisMapperDynamicLoader implements DisposableBean, InitializingB
             }
         }
 
-        public void reloadXML() throws Exception {
+        void reloadXML() throws Exception {
             SqlSessionFactory factory = context.getBean(SqlSessionFactory.class);
             Configuration configuration = factory.getConfiguration();
             removeConfig(configuration);
@@ -105,7 +105,7 @@ public class MybatisMapperDynamicLoader implements DisposableBean, InitializingB
             clearMap(classConfig, configuration, "parameterMaps");
             clearMap(classConfig, configuration, "keyGenerators");
             clearMap(classConfig, configuration, "sqlFragments");
-            clearSet(classConfig, configuration, "loadedResources");
+            clearSet(classConfig, configuration);
         }
 
         private void clearMap(Class<?> classConfig, Configuration configuration, String fieldName) throws Exception {
@@ -114,8 +114,8 @@ public class MybatisMapperDynamicLoader implements DisposableBean, InitializingB
             ((Map) field.get(configuration)).clear();
         }
 
-        private void clearSet(Class<?> classConfig, Configuration configuration, String fieldName) throws Exception {
-            Field field = classConfig.getDeclaredField(fieldName);
+        private void clearSet(Class<?> classConfig, Configuration configuration) throws Exception {
+            Field field = classConfig.getDeclaredField("loadedResources");
             field.setAccessible(true);
             ((Set) field.get(configuration)).clear();
         }
