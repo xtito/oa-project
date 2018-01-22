@@ -23,7 +23,7 @@ define(["jquery"], function($) {
 
                 // 循环取IFrame，得到当前页面的父级IFrame
                 for (var i = 0; i < tempIFrame.length; i++) {
-                    if (tempIFrame[i].contentWindow == window) {
+                    if (tempIFrame[i].contentWindow === window) {
                         IFrame = tempIFrame[i];
                         break
                     }
@@ -35,7 +35,7 @@ define(["jquery"], function($) {
 
                 resize.logger("iframe -- >id:" + IFrame.id, 2);
 
-                if (b && typeof b == "object") {
+                if (b && typeof b === "object") {
                 } else {
                     // 此处如果重置初始值为0，部分IE8会获取不到文档高度，导致计算页面高度失败
                     $(IFrame).attr("height", 5);
@@ -51,7 +51,7 @@ define(["jquery"], function($) {
                     calculationHeight = 700
                 }
 
-                if (b && typeof b == "object" && b[0]) {
+                if (b && typeof b === "object" && b[0]) {
                     calculationHeight = b[0].scrollHeight > calculationHeight ? b[0].scrollHeight : calculationHeight;
                     b.height(calculationHeight);
                     resize.logger("resize Object id :" + b.attr("id") + ": height:" + calculationHeight + "px")
@@ -78,7 +78,7 @@ define(["jquery"], function($) {
                 resize.logger("iframe -- >id:" + IFrame.id + ", resize:" + calculationHeight + "px", 1);
 
 
-                if (top.location != location) {
+                if (top.location !== location) {
                     window.parent.resize();
                 }
 
@@ -94,11 +94,11 @@ define(["jquery"], function($) {
         },
         logger: function(str, type) {
             try {
-                if (!type || type == 1) {
+                if (!type || type === 1) {
                     console.log(str);
-                } else if (type == 2) {
+                } else if (type === 2) {
                     console.info(str);
-                } else if (type == 3) {
+                } else if (type === 3) {
                     console.error(str);
                 } else {
                     console.log(str);
