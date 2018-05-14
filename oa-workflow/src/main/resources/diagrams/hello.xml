@@ -1,0 +1,113 @@
+<definitions typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/test" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI">
+
+    <process id="newForm" name="測試流程" isExecutable="true">
+        <extensionElements>
+            <activiti:executionListener class="com.hg.iot.web.modules.flow.FlowExecutionListener" event="end"/>
+        </extensionElements>
+        <startEvent id="startEvent1" activiti:initiator="applyUserId" name="开始" activiti:formKey="test.form"/>
+        <userTask id="userTask2" name="用户任务" activiti:assignee="${applyUserId}" activiti:dueDate=""
+                  activiti:formKey="test.form">
+            <documentation/>
+            <extensionElements>
+                <activiti:taskListener event="create" class="com.iot.flow.workflow.task.TaskEvent_create"/>
+                <activiti:taskListener event="assignment" class="com.iot.flow.workflow.task.TaskEvent_assignment"/>
+                <activiti:taskListener event="complete" class="com.iot.flow.workflow.task.TaskEvent_complete"/>
+            </extensionElements>
+        </userTask>
+        <exclusiveGateway id="exclusiveGateway3" name="条件判断"/>
+        <userTask id="userTask4" name="用户任务" activiti:assignee="${applyUserId}" activiti:dueDate=""
+                  activiti:formKey="test.form">
+            <documentation/>
+            <extensionElements>
+                <activiti:taskListener event="create" class="com.iot.flow.workflow.task.TaskEvent_create"/>
+                <activiti:taskListener event="assignment" class="com.iot.flow.workflow.task.TaskEvent_assignment"/>
+                <activiti:taskListener event="complete" class="com.iot.flow.workflow.task.TaskEvent_complete"/>
+            </extensionElements>
+        </userTask>
+        <endEvent id="endEvent5" name="结束"/>
+        <sequenceFlow id="line1" name="标签" sourceRef="startEvent1" targetRef="userTask2"/>
+        <sequenceFlow id="line2" name="标签" sourceRef="userTask2" targetRef="exclusiveGateway3"/>
+        <sequenceFlow id="line4" name="标签" sourceRef="userTask4" targetRef="endEvent5"/>
+        <sequenceFlow id="line5" name="是" sourceRef="exclusiveGateway3" targetRef="userTask4">
+            <conditionExpression xsi:type="tFormalExpression">
+                <![CDATA[${manager_approve == '是'}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="line7" name="否" sourceRef="exclusiveGateway3" targetRef="endEvent5">
+            <conditionExpression xsi:type="tFormalExpression">
+                <![CDATA[${manager_approve == '否'}]]></conditionExpression>
+        </sequenceFlow>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_newForm">
+        <bpmndi:BPMNPlane bpmnElement="newForm" id="BPMNPlane_newForm">
+            <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+                <omgdc:Bounds height="40" width="40" x="97" y="79"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="userTask2" id="BPMNShape_userTask2">
+                <omgdc:Bounds height="44" width="102" x="168" y="167"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="exclusiveGateway3" id="BPMNShape_exclusiveGateway3">
+                <omgdc:Bounds height="40" width="40" x="408" y="211"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="userTask4" id="BPMNShape_userTask4">
+                <omgdc:Bounds height="38" width="102" x="163" y="321"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="endEvent5" id="BPMNShape_endEvent5">
+                <omgdc:Bounds height="40" width="40" x="455" y="436"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="line1" id="BPMNEdge_line1">
+                <omgdi:waypoint x="97" y="79"/>
+                <omgdi:waypoint x="152.5" y="144"/>
+                <omgdi:waypoint x="152.5" y="144"/>
+                <omgdi:waypoint x="152.5" y="144"/>
+                <omgdi:waypoint x="168" y="167"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="100.0" x="10.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="line2" id="BPMNEdge_line2">
+                <omgdi:waypoint x="168" y="167"/>
+                <omgdi:waypoint x="339" y="210"/>
+                <omgdi:waypoint x="339" y="210"/>
+                <omgdi:waypoint x="339" y="210"/>
+                <omgdi:waypoint x="408" y="211"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="100.0" x="10.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="line4" id="BPMNEdge_line4">
+                <omgdi:waypoint x="163" y="321"/>
+                <omgdi:waypoint x="360" y="398"/>
+                <omgdi:waypoint x="360" y="398"/>
+                <omgdi:waypoint x="360" y="398"/>
+                <omgdi:waypoint x="455" y="436"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="100.0" x="10.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="line5" id="BPMNEdge_line5">
+                <omgdi:waypoint x="408" y="211"/>
+                <omgdi:waypoint x="336.5" y="285.5"/>
+                <omgdi:waypoint x="336.5" y="285.5"/>
+                <omgdi:waypoint x="336.5" y="285.5"/>
+                <omgdi:waypoint x="163" y="321"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="100.0" x="10.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="line7" id="BPMNEdge_line7">
+                <omgdi:waypoint x="408" y="211"/>
+                <omgdi:waypoint x="451.5" y="343.5"/>
+                <omgdi:waypoint x="451.5" y="343.5"/>
+                <omgdi:waypoint x="451.5" y="343.5"/>
+                <omgdi:waypoint x="455" y="436"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="100.0" x="10.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

@@ -1,4 +1,4 @@
-package com.oa.workflow.demo;
+package com.oa.workflow.z_demo;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;
