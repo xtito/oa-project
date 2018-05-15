@@ -4,12 +4,15 @@ import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.history.HistoricVariableInstance;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.junit.Test;
+import org.springframework.util.CollectionUtils;
 
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by [张渊]
@@ -81,12 +84,25 @@ public class ProcessVariablesTest {
         // 与任务（正在进行）
         TaskService taskService = processEngine.getTaskService();
         // 任务ID
-        String taskId = "52502";
+        String taskId = "60004";
 
         // 设置流程变量，使用基本的数据类型
-        taskService.setVariableLocal(taskId, "请假天数", 5);
-        taskService.setVariable(taskId, "请假日期", new Date());
-        taskService.setVariable(taskId, "请假原因", "回家探亲，一起吃个饭");
+//        taskService.setVariableLocal(taskId, "请假天数", 5);
+//        taskService.setVariable(taskId, "请假日期", new Date());
+//        taskService.setVariable(taskId, "请假原因", "回家探亲，一起吃个饭");
+
+
+        /* 设置流程变量，使用JavaBean类型
+            当一个JavaBean（实现序列化）旋转到流程变量中，要求JavaBean的属性不能再发生变化
+            如果发生变化，再获取的时候，抛出异常
+
+            解决方案：在Person对象中实现 Serializable 添加 private static final long serialVersionUID = 477145303085981384L;
+        */
+        Person p = new Person();
+        p.setId(20);
+        p.setName("翠花");
+
+        taskService.setVariable(taskId, "人员信息（添加固定版本）", p);
 
         System.out.println("流程变量设置成功");
     }
@@ -102,16 +118,21 @@ public class ProcessVariablesTest {
         // 与任务（正在进行）
         TaskService taskService = processEngine.getTaskService();
         // 任务ID
-        String taskId = "52502";
+        String taskId = "60004";
 
         // 获取流程变量，使用基本数据类型
-        Integer days = (Integer) taskService.getVariable(taskId, "请假天数");
-        Date date = (Date) taskService.getVariable(taskId, "请假日期");
-        String resean = (String) taskService.getVariable(taskId, "请假原因");
+//        Integer days = (Integer) taskService.getVariable(taskId, "请假天数");
+//        Date date = (Date) taskService.getVariable(taskId, "请假日期");
+//        String resean = (String) taskService.getVariable(taskId, "请假原因");
+//
+//        System.out.println("请假天数：" + days);
+//        System.out.println("请假日期：" + date);
+//        System.out.println("请假原因：" + resean);
 
-        System.out.println("请假天数：" + days);
-        System.out.println("请假日期：" + date);
-        System.out.println("请假原因：" + resean);
+
+        // 获取流程变量，使用JavaBean类型
+        Person p = (Person) taskService.getVariable(taskId, "人员信息（添加固定版本）");
+        System.out.println(p.getId() + " : " + p.getName());
 
     }
 
@@ -177,6 +198,27 @@ public class ProcessVariablesTest {
                 .complete(taskId);
 
         System.out.println("完成任务，任务ID是：" + taskId);
+
+    }
+
+
+    /**
+     * 查询流程变量的历史表
+     */
+    @Test
+    public void findHistoryProcessVariables() {
+
+        List<HistoricVariableInstance> list = processEngine.getHistoryService()
+                .createHistoricVariableInstanceQuery()// 创建一个历史的流程变量查询对象
+                .variableName("请假天数")
+                .list();
+
+        if (!CollectionUtils.isEmpty(list)) {
+            for (HistoricVariableInstance hvi : list) {
+                System.out.println(hvi.getId() + " : " + hvi.getProcessInstanceId() + " : " + hvi.getVariableName() + " : " + hvi.getVariableTypeName());
+                System.out.println("###################################");
+            }
+        }
 
     }
 
