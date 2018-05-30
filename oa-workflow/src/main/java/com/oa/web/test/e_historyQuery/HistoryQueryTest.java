@@ -1,4 +1,4 @@
-package com.oa.workflow.test.e_historyQuery;
+package com.oa.web.test.e_historyQuery;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;

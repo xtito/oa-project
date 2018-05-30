@@ -1,4 +1,4 @@
-package com.oa.workflow.test.d_processVariables;
+package com.oa.web.test.d_processVariables;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;

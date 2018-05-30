@@ -1,4 +1,4 @@
-package com.oa.workflow.test.z_demo;
+package com.oa.web.test.z_demo;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;

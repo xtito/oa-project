@@ -71,6 +71,12 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.oa.project</groupId>
+            <artifactId>oa-workflow</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- taglibs -->
         <dependency>
             <groupId>taglibs</groupId>
