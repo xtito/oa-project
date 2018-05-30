@@ -1,4 +1,4 @@
-package com.oa.workflow.d_processVariables;
+package com.oa.workflow.test.d_processVariables;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 
 import java.io.InputStream;
-import java.util.Date;
 import java.util.List;
 
 /**

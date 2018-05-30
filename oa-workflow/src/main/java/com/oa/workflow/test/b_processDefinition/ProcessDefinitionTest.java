@@ -1,4 +1,4 @@
-package com.oa.workflow.b_processDefinition;
+package com.oa.workflow.test.b_processDefinition;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;

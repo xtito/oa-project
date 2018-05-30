@@ -1,4 +1,4 @@
-package com.oa.workflow.f_sequenceFlow;
+package com.oa.workflow.test.f_sequenceFlow;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;

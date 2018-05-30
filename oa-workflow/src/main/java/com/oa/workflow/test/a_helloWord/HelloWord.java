@@ -1,4 +1,4 @@
-package com.oa.workflow.a_helloWord;
+package com.oa.workflow.test.a_helloWord;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;

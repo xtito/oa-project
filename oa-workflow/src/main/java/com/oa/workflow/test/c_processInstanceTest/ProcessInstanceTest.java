@@ -1,4 +1,4 @@
-package com.oa.workflow.c_processInstanceTest;
+package com.oa.workflow.test.c_processInstanceTest;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;

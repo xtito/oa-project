@@ -1,4 +1,4 @@
-package com.oa.workflow.d_processVariables;
+package com.oa.workflow.test.d_processVariables;
 
 import java.io.Serializable;
 
