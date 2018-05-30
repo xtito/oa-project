@@ -7,17 +7,17 @@
     <!-- spring负责创建流程引擎的配置文件 -->
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
         <!-- 数据源 -->
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
         <!-- 配置事务管理器，统一事务 -->
-        <property name="transactionManager" ref="transactionManager" />
+        <property name="transactionManager" ref="transactionManager"/>
         <!-- 设置建表策略，如果没有表，自动创建表 -->
-        <property name="databaseSchemaUpdate" value="true" />
-        <property name="jobExecutorActivate" value="false" />
-        <property name="history" value="full" />
-        <property name="processDefinitionCacheLimit" value="10" />
+        <property name="databaseSchemaUpdate" value="true"/>
+        <property name="jobExecutorActivate" value="false"/>
+        <property name="history" value="full"/>
+        <property name="processDefinitionCacheLimit" value="10"/>
 
         <!-- 生成流程图的字体 -->
-        <property name="activityFontName" value="宋体" />
+        <property name="activityFontName" value="宋体"/>
 
         <!-- 自定义表单字段类型-->
         <!--<property name="customFormTypes">-->
@@ -30,14 +30,14 @@
 
     <!-- 创建流程引擎对象 -->
     <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
-        <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
     </bean>
 
     <!-- 由流程引擎对象，提供的方法，创建项目中使用的Activiti工作流的Service -->
-    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />
-    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService" />
-    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />
-    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />
-    <bean id="formService" factory-bean="processEngine" factory-method="getFormService" />
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+    <bean id="formService" factory-bean="processEngine" factory-method="getFormService"/>
 
 </beans>
