@@ -132,6 +132,12 @@
                         </dd>
                         <dd>
                             <a href="javascript:;">
+                                <i class="ito ito-icon ito-menu-setting"></i>
+                                <span>流程管理</span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">
                                 <i class="ito ito-icon ito-dict"></i>
                                 <span>数据字典</span>
                             </a>
