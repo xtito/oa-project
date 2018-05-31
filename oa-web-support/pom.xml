@@ -29,8 +29,28 @@
             <version>${project.version}</version>
             <exclusions>
                 <exclusion>
-                    <artifactId>*</artifactId>
-                    <groupId>*</groupId>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-jdbc</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-webmvc</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.pagehelper</groupId>
+                    <artifactId>pagehelper</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -39,12 +59,36 @@
             <groupId>com.oa.project</groupId>
             <artifactId>oa-bean</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>com.oa.project</groupId>
             <artifactId>oa-service</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.oa.project</groupId>
+                    <artifactId>oa-web-parent</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.oa.project</groupId>
+                    <artifactId>oa-bean</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.oa.project</groupId>
+                    <artifactId>oa-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
