@@ -44,7 +44,7 @@ activitiModeler
         
         // Initialize angular-translate
         $translateProvider.useStaticFilesLoader({
-            prefix: './editor-app/i18n/',
+            prefix: 'activiti-editor/editor-app/i18n/',
             suffix: '.json'
         });
 

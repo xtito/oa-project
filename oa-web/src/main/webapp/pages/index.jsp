@@ -131,7 +131,7 @@
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;">
+                            <a href="javascript:;" data-url="${ctx}/modeler.html">
                                 <i class="ito ito-icon ito-menu-setting"></i>
                                 <span>流程管理</span>
                             </a>

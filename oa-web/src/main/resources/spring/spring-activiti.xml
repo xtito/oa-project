@@ -15,6 +15,8 @@
         <property name="jobExecutorActivate" value="false"/>
         <property name="history" value="full"/>
         <property name="processDefinitionCacheLimit" value="10"/>
+        <property name="enableDatabaseEventLogging" value="false"/>
+        <!--<property name="databaseType" value=""/>-->
 
         <!-- 生成流程图的字体 -->
         <property name="activityFontName" value="宋体"/>
@@ -29,7 +31,7 @@
 
 
     <!-- 创建流程引擎对象 -->
-    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean" destroy-method="destroy">
         <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
     </bean>
 
@@ -37,7 +39,9 @@
     <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
     <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
     <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
-    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
     <bean id="formService" factory-bean="processEngine" factory-method="getFormService"/>
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/>
+    <bean id="identityService" factory-bean="processEngine" factory-method="getIdentityService"/>
 
 </beans>
