@@ -69,14 +69,8 @@
 
         <dependency>
             <groupId>com.oa.project</groupId>
-            <artifactId>oa-mapper</artifactId>
+            <artifactId>oa-workflow</artifactId>
             <version>${project.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
