@@ -131,7 +131,7 @@
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/modeler.html">
+                            <a href="javascript:;" data-url="${ctx}/mvc/workFlowCtr/model/edit?key=1222">
                                 <i class="ito ito-icon ito-menu-setting"></i>
                                 <span>流程管理</span>
                             </a>
