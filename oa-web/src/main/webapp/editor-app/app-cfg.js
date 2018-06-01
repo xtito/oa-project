@@ -25,5 +25,5 @@ ACTIVITI.CONFIG = {
         var pathName = document.location.pathname;
         var index = pathName.substr(1).indexOf("/");
         return pathName.substr(0, index + 1);
-    })() + "/"
+    })()
 };
