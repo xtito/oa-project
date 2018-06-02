@@ -29,6 +29,8 @@
         <!--</property>-->
     </bean>
 
+    <!-- Activiti-modeler所需 -->
+    <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
 
     <!-- 创建流程引擎对象 -->
     <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean" destroy-method="destroy">
