@@ -22,6 +22,7 @@ var ACTIVITI = ACTIVITI || {};
 
 ACTIVITI.CONFIG = {
     'contextRoot' : (function () {
+        console.log("adfsafdasfsaf");
         var pathName = document.location.pathname;
         var index = pathName.substr(1).indexOf("/");
         return pathName.substr(0, index + 1);
