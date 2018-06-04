@@ -15,7 +15,7 @@
                 table.render({
                     elem: '#win_role_table'
                     , id: 'win_assign_role_table'
-                    , url: ctx + '/mvc/sysRole/mgr/role/win/list'
+                    , url: ctx + '/sysRole/mgr/role/win/list'
                     , method: "post"
                     , where: {userId: $("#user_id").val()}
                     , width: 412

@@ -16,7 +16,7 @@
                     view: {showIcon: false, showLine: false},
                     async: {
                         enable: true,
-                        url: ctx + "/mvc/sysDepartment/mgr/list/tree",
+                        url: ctx + "/sysDepartment/mgr/list/tree",
                         autoParam: ["id", "level"],
                         dataFilter: function (treeId, parentNode, childNodes) {
                             if (!childNodes) return null;

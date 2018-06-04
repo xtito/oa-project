@@ -10,7 +10,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                 table.render({
                     elem: '#data_table'
                     , id: 'assign_pms_table'
-                    , url: ctx + '/mvc/sysRole/mgr/role/pms/list'
+                    , url: ctx + '/sysRole/mgr/role/pms/list'
                     , method: "post"
                     , page: true
                     , cellMinWidth: 100
@@ -33,7 +33,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                     if (obj.event === 'del') {
                         var delMsg = '您确定要清空 ' + data.name + " 的用户角色吗？";
                         layer.confirm(delMsg, function (index) {
-                            $.post(ctx + "/mvc/sysPermission/mgr/clear/role/pms", {roleId: data.id}, function (json) {
+                            $.post(ctx + "/sysPermission/mgr/clear/role/pms", {roleId: data.id}, function (json) {
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);
@@ -73,7 +73,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
             });
         },
         loadRoleWinList: function (uid) {
-            $.post(ctx + "/mvc/sysPermission/mgr/assign/pms/page", {roleId: uid}, function (html) {
+            $.post(ctx + "/sysPermission/mgr/assign/pms/page", {roleId: uid}, function (html) {
                 layui.use('layer', function (layer) {
                     var table = layui.table;
                     var roleId = uid;
@@ -116,7 +116,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                     pmsJs.assignRoleValida(obj.roleId, ids);
 
                     $.ajax({
-                        url: ctx + "/mvc/sysPermission/mgr/assign/pms",
+                        url: ctx + "/sysPermission/mgr/assign/pms",
                         type: "POST",
                         data: {roleId: obj.roleId, pmsId: ids},
                         dataType: "json",

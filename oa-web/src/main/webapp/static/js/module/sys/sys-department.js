@@ -10,7 +10,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                 table.render({
                     elem: '#data_table'
                     , id: 'table_reload'
-                    , url: ctx + '/mvc/sysDepartment/mgr/list'
+                    , url: ctx + '/sysDepartment/mgr/list'
                     , method: "post"
                     , page: true
                     , cellMinWidth: 100
@@ -35,7 +35,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                     if (obj.event === 'del') {
                         var delMsg = '您确定要删除 ' + data.name + " 吗？";
                         layer.confirm(delMsg, function (index) {
-                            $.post(ctx + "/mvc/sysDepartment/mgr/delete", {id: data.id}, function (json) {
+                            $.post(ctx + "/sysDepartment/mgr/delete", {id: data.id}, function (json) {
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);
@@ -108,9 +108,9 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         saveOrUpdateForm: function (type) {
 
-            var url = ctx + "/mvc/sysDepartment/mgr/save";
+            var url = ctx + "/sysDepartment/mgr/save";
             if (type === "update") {
-                url = ctx + "/mvc/sysDepartment/mgr/update";
+                url = ctx + "/sysDepartment/mgr/update";
             }
 
             var layer = layui.layer;
@@ -160,7 +160,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                commonJs.loadContent(ctx + "/mvc/sysDepartment/mgr/update/ui", {id: id});
+                commonJs.loadContent(ctx + "/sysDepartment/mgr/update/ui", {id: id});
             } else {
                 layui.use('layer', function (layer) {
                     layer.msg("跳转部门更新页面异常，丢失id");

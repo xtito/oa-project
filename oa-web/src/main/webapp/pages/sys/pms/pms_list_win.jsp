@@ -15,7 +15,7 @@
                 table.render({
                     elem: '#win_pms_table'
                     , id: 'win_assign_pms_table'
-                    , url: ctx + '/mvc/sysPermission/mgr/pms/win/list'
+                    , url: ctx + '/sysPermission/mgr/pms/win/list'
                     , method: "post"
                     , where: {roleId: $("#role_id").val()}
                     , width: 600

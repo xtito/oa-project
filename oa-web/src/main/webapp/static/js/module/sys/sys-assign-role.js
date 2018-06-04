@@ -10,7 +10,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                 table.render({
                     elem: '#data_table'
                     , id: 'assign_role_table'
-                    , url: ctx + '/mvc/sysUser/mgr/user/role/list'
+                    , url: ctx + '/sysUser/mgr/user/role/list'
                     , method: "post"
                     , page: true
                     , cellMinWidth: 100
@@ -34,7 +34,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                     if (obj.event === 'del') {
                         var delMsg = '您确定要清空 ' + data.nickname + " 的用户角色吗？";
                         layer.confirm(delMsg, function (index) {
-                            $.post(ctx + "/mvc/sysRole/mgr/clear/user/roles", {userId: data.id}, function (json) {
+                            $.post(ctx + "/sysRole/mgr/clear/user/roles", {userId: data.id}, function (json) {
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);
@@ -74,7 +74,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
             });
         },
         loadRoleWinList: function (uid) {
-            $.post(ctx + "/mvc/sysRole/mgr/assign/roles/page", {userId: uid}, function (html) {
+            $.post(ctx + "/sysRole/mgr/assign/roles/page", {userId: uid}, function (html) {
                 layui.use('layer', function (layer) {
                     var table = layui.table;
                     var userId = uid;
@@ -117,7 +117,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                     fpJs.assignRoleValida(obj.userId, ids);
 
                     $.ajax({
-                        url: ctx + "/mvc/sysRole/mgr/assign/roles",
+                        url: ctx + "/sysRole/mgr/assign/roles",
                         type: "POST",
                         data: {userId: obj.userId, roleId: ids},
                         dataType: "json",

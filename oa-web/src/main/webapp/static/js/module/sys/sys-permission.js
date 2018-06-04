@@ -11,7 +11,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                 table.render({
                     elem: '#data_table'
                     , id: 'pms_table'
-                    , url: ctx + '/mvc/sysPermission/mgr/list'
+                    , url: ctx + '/sysPermission/mgr/list'
                     , method: "post"
                     , page: true
                     //, cellMinWidth: 100
@@ -36,7 +36,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                     if (obj.event === 'del') {
                         var delMsg = '您确定要删除 ' + data.name + " 吗？";
                         layer.confirm(delMsg, function (index) {
-                            $.post(ctx + "/mvc/sysPermission/mgr/delete", {id: data.id}, function (json) {
+                            $.post(ctx + "/sysPermission/mgr/delete", {id: data.id}, function (json) {
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);
@@ -109,9 +109,9 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         saveOrUpdateForm: function (type) {
 
-            var url = ctx + "/mvc/sysPermission/mgr/save";
+            var url = ctx + "/sysPermission/mgr/save";
             if (type === "update") {
-                url = ctx + "/mvc/sysPermission/mgr/update";
+                url = ctx + "/sysPermission/mgr/update";
             }
 
             var layer = layui.layer;
@@ -170,7 +170,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                commonJs.loadContent(ctx + "/mvc/sysPermission/mgr/update/ui", {id: id}, function () {
+                commonJs.loadContent(ctx + "/sysPermission/mgr/update/ui", {id: id}, function () {
                     pmsJs.initBindEvent();
                 });
             } else {

@@ -23,6 +23,10 @@
                 });
             });
         }
+
+        function loginOut() {
+            window.location.href = "${ctx}/login/mgr/loginOut";
+        }
         //-->
     </script>
 </head>
@@ -61,7 +65,7 @@
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="${ctx}/mvc/login/mgr/loginOut">退了</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" onclick="loginOut()">退了</a></li>
         </ul>
     </div>
 
@@ -131,7 +135,7 @@
                             </a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="${ctx}/mvc/workFlowCtr/model/edit?key=1222">
+                            <a href="javascript:;" data-url="${ctx}/workFlowCtr/model/edit?key=1222">
                                 <i class="ito ito-icon ito-menu-setting"></i>
                                 <span>流程管理</span>
                             </a>

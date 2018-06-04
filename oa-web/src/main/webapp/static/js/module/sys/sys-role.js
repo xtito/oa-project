@@ -11,7 +11,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                 table.render({
                     elem: '#data_table'
                     , id: 'role_table'
-                    , url: ctx + '/mvc/sysRole/mgr/list'
+                    , url: ctx + '/sysRole/mgr/list'
                     , method: "post"
                     , page: true
                     //, cellMinWidth: 100
@@ -36,7 +36,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
                     if (obj.event === 'del') {
                         var delMsg = '您确定要删除 ' + data.name + " 吗？";
                         layer.confirm(delMsg, function (index) {
-                            $.post(ctx + "/mvc/sysRole/mgr/delete", {id: data.id}, function (json) {
+                            $.post(ctx + "/sysRole/mgr/delete", {id: data.id}, function (json) {
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);
@@ -77,9 +77,9 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         },
         saveOrUpdateForm: function (type) {
 
-            var url = ctx + "/mvc/sysRole/mgr/save";
+            var url = ctx + "/sysRole/mgr/save";
             if (type === "update") {
-                url = ctx + "/mvc/sysRole/mgr/update";
+                url = ctx + "/sysRole/mgr/update";
             }
 
             var layer = layui.layer;
@@ -129,7 +129,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common"], function ($, lay
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                commonJs.loadContent(ctx + "/mvc/sysRole/mgr/update/ui", {id: id});
+                commonJs.loadContent(ctx + "/sysRole/mgr/update/ui", {id: id});
             } else {
                 layui.use('layer', function (layer) {
                     layer.msg("跳转用户更新页面异常，丢失id");

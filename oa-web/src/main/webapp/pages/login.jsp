@@ -23,7 +23,7 @@
                     $(document).ready(function () {
                         $("#sub_btn").click(function () {
                             $.ajax({
-                                url: "${ctx}/mvc/login/mgr/login",
+                                url: "${ctx}/login/mgr/login",
                                 type: "POST",
                                 data: $("#data_form").serialize(),
                                 dataType: "json",
@@ -68,7 +68,7 @@
         <div class="login-wrap">
             <div class="title"></div>
             <div class="login-content">
-                <form id="data_form" action="${ctx}/mvc/login/mgr/login" method="post">
+                <form id="data_form" method="post">
                     <div class="login-group mb20">
                         <div class="group-con">
                             <div class="input-group input-group-lg">

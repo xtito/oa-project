@@ -12,7 +12,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
                 table.render({
                     elem: '#data_table'
                     , id: 'user_table'
-                    , url: ctx + '/mvc/sysUser/mgr/list'
+                    , url: ctx + '/sysUser/mgr/list'
                     , method: "post"
                     , page: true
                     //, cellMinWidth: 100
@@ -43,7 +43,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
                     } else if (obj.event === 'del') {
                         var delMsg = '您确定要删除 ' + data.loginName + " 吗？";
                         layer.confirm(delMsg, function (index) {
-                            $.post(ctx + "/mvc/sysUser/mgr/delete/user", {id: data.id}, function (json) {
+                            $.post(ctx + "/sysUser/mgr/delete/user", {id: data.id}, function (json) {
                                 if (json.success) {
                                     obj.del();
                                     layer.close(index);
@@ -120,9 +120,9 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
         },
         saveOrUpdateForm: function (type) {
 
-            var url = ctx + "/mvc/sysUser/mgr/save/user";
+            var url = ctx + "/sysUser/mgr/save/user";
             if (type === "update") {
-                url = ctx + "/mvc/sysUser/mgr/update/user";
+                url = ctx + "/sysUser/mgr/update/user";
             }
 
             var layer = layui.layer;
@@ -226,7 +226,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
         },
         viewUserDetail: function (id) {
             if (id) {
-                $.post(ctx + "/mvc/sysUser/mgr/view/detail", {id: id}, function (text) {
+                $.post(ctx + "/sysUser/mgr/view/detail", {id: id}, function (text) {
                     var title = "<span><i class='ito ito-user'></i><span class='ml6'>用户详细信息</span></span>";
                     layui.use('layer', function(layer) {
                         layer.open({
@@ -250,7 +250,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
         jumpToUpdatePage: function (id) {
             // 请求跳转到更新页面
             if (id) {
-                commonJs.loadContent(ctx + "/mvc/sysUser/mgr/update/ui", {id: id});
+                commonJs.loadContent(ctx + "/sysUser/mgr/update/ui", {id: id});
             } else {
                 layui.use('layer', function (layer) {
                     layer.msg("跳转用户更新页面异常，丢失id");
@@ -271,7 +271,7 @@ define(["jquery", "lay-ui", "ito-validation", "module-common", "load-select"], f
             ];
 
             if ($("#role_option").length > 0) {
-                var url = ctx + "/mvc/sysRole/mgr/load/role";
+                var url = ctx + "/sysRole/mgr/load/role";
                 userJs.selectEle = selectJs.bindSelect("#role_option", url);
             }
 
