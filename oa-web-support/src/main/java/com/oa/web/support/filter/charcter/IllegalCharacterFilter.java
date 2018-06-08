@@ -42,7 +42,7 @@ public class IllegalCharacterFilter implements Filter {
         java.util.Enumeration params = request.getParameterNames();
 
         String param = "";
-        String paramValue = "";
+        StringBuilder paramValue = new StringBuilder();
 
         for (String characterParam : characterParams) {
             if (url.contains(characterParam)) {
@@ -72,18 +72,18 @@ public class IllegalCharacterFilter implements Filter {
             }
 
             String[] values = request.getParameterValues(param);
-            paramValue = "";
+            paramValue = new StringBuilder();
 
 
             if (OK) {// 过滤字符串为0个时 不对字符过滤
 
                 for (String value : values) {
-                    paramValue = paramValue + value;
+                    paramValue.append(value);
                 }
 
-                if (StringUtil.isNotNull(paramValue)) {
+                if (StringUtil.isNotNull(paramValue.toString())) {
                     for (String characterParam : characterParams) {
-                        if (paramValue.contains(characterParam)) {
+                        if (paramValue.toString().contains(characterParam)) {
                             status = true;
                             break;
                         }

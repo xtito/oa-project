@@ -47,7 +47,7 @@
 
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/xtito"
+                        connectionURL="jdbc:mysql://localhost:3306/big-screen"
                         userId="root"
                         password="root">
         </jdbcConnection>
@@ -89,7 +89,51 @@
         <!--<table schema="" tableName="sys_user"/>-->
         <!--<table schema="" tableName="sys_role"/>-->
         <!--<table schema="" tableName="sys_permission"/>-->
-        <table schema="" tableName="sys_department"/>
+        <table schema="" tableName="qc_cxcjqcdyb"/>
+        <table schema="" tableName="qc_qcazwz"/>
+        <table schema="" tableName="qc_qccgjh"/>
+        <table schema="" tableName="qc_qccgjhmx"/>
+        <table schema="" tableName="qc_qcckd"/>
+        <table schema="" tableName="qc_qcckdmx"/>
+        <table schema="" tableName="qc_qcckqd"/>
+        <table schema="" tableName="qc_qccqbg"/>
+        <table schema="" tableName="qc_qccqbgmx"/>
+        <table schema="" tableName="qc_qcdbd"/>
+        <table schema="" tableName="qc_qcdbdmx"/>
+        <table schema="" tableName="qc_qcdkd"/>
+        <table schema="" tableName="qc_qcdkdmx"/>
+        <table schema="" tableName="qc_qcjbxxdyb"/>
+        <table schema="" tableName="qc_qcjbxxfl"/>
+        <table schema="" tableName="qc_qcjbxxkz"/>
+        <table schema="" tableName="qc_qckc"/>
+        <table schema="" tableName="qc_qckchz"/>
+        <table schema="" tableName="qc_qckcmx"/>
+        <table schema="" tableName="qc_qckf"/>
+        <table schema="" tableName="qc_qckfjg"/>
+        <table schema="" tableName="qc_qckfmx"/>
+        <table schema="" tableName="qc_qcpc"/>
+        <table schema="" tableName="qc_qcpkd"/>
+        <table schema="" tableName="qc_qcpkdmx"/>
+        <table schema="" tableName="qc_qcqld"/>
+        <table schema="" tableName="qc_qcqldmx"/>
+        <table schema="" tableName="qc_qcrkd"/>
+        <table schema="" tableName="qc_qcrkdmx"/>
+        <table schema="" tableName="qc_qcrkqd"/>
+        <table schema="" tableName="qc_qctp"/>
+        <table schema="" tableName="qc_qcxhdj"/>
+        <table schema="" tableName="qc_qczbbz"/>
+        <table schema="" tableName="qc_qczh"/>
+        <table schema="" tableName="qc_qczh_history"/>
+        <table schema="" tableName="qc_sccjqcdyb"/>
+        <table schema="" tableName="qc_syzb_kz"/>
+        <table schema="" tableName="qc_wlzt"/>
+        <table schema="" tableName="qc_wzzb"/>
+        <table schema="" tableName="qc_wzzb_history"/>
+        <table schema="" tableName="qc_zbqcdyb"/>
+        <table schema="" tableName="qc_zmcsh"/>
+        <table schema="" tableName="qc_zmcshmx"/>
+        <table schema="" tableName="zbbz_s_ty_qcjcxxb"/>
+        <table schema="" tableName="zzll_bd"/>
 
     </context>
 </generatorConfiguration>
