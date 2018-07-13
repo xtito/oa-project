@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Created by [张渊]
- * 2017/11/25 17:10
+ * 2018/07/09 17:10
  */
 @Component
 public interface SysDepartmentMapper {

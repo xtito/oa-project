@@ -7,7 +7,7 @@ import java.util.Date;
  * 部门实体
  *
  * Created by [张渊]
- * 2017/11/25 16:48
+ * 2018/07/09 16:48
  */
 public class SysDepartment implements Serializable {
 

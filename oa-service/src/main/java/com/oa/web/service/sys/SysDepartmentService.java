@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Created by [张渊]
- * 2017/11/25 16:48
+ * 2018/07/09 16:48
  */
 public interface SysDepartmentService extends BaseService<SysDepartment> {
 

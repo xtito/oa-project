@@ -12,7 +12,7 @@ import java.util.Set;
  * 权限 Mapper
  *
  * Created by [张渊]
- * 2017/10/29 15:42
+ * 2018/07/05 15:42
  */
 @Component
 public interface SysPermissionMapper {

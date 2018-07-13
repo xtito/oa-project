@@ -15,7 +15,7 @@ import java.util.Map;
  * 角色 Service
  *
  * Created by [张渊]
- * 2017/10/29 15:39
+ * 2018/07/06 15:39
  */
 public interface SysRoleService extends BaseService<SysRole> {
 
