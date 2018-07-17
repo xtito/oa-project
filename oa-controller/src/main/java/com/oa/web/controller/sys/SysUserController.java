@@ -151,7 +151,7 @@ public class SysUserController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
             success = false;
-            info = "更新用户异常，请联系管理员！";
+            info = e.getMessage();
         }
 
         return parseJsonStr(success, info);
