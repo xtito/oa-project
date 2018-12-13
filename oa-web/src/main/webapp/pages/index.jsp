@@ -97,6 +97,23 @@
                 <li class="layui-nav-item"><a href="javascript:;">云市场</a></li>
                 <li class="layui-nav-item"><a href="javascript:;">发布商品</a></li>
                 <li class="layui-nav-item">
+                    <a href="javascript:;">流程管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="${ctx}/pages/workflow/ProcessDef/workflow_model_list.jsp">
+                                <i class="ito ito-icon ito-product-type-setting"></i>
+                                <span>流程管理</span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="${ctx}/pages/workflow/form/workflow_form_list.jsp">
+                                <i class="ito ito-icon ito-shopping-list"></i>
+                                <span>表单管理</span>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
                     <a href="javascript:;">部门/帐户/权限</a>
                     <dl class="layui-nav-child">
                         <dd>

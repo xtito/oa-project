@@ -11,12 +11,13 @@ import com.oa.core.exception.ValidateException;
 import com.oa.core.utils.StringUtil;
 import com.oa.web.service.sys.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -158,6 +159,21 @@ public class SysDepartmentController extends BaseController {
         }
 
         return JSONArray.toJSONString(treeNodes);
+    }
+
+
+    @GetMapping(value = "/list/tree/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Object listTree(@PathVariable("id") String id) {
+
+        List<TreeNode> treeNodes = null;
+
+        if (StringUtil.isEmpty(id)) {
+            treeNodes = this.service.listRootTree();
+        } else {
+            treeNodes = this.service.listChildTree(id);
+        }
+
+        return new ResponseEntity<List<TreeNode>>(treeNodes, HttpStatus.OK);
     }
 
 }
