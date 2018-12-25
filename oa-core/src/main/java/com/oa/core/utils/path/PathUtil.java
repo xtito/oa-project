@@ -70,7 +70,7 @@ public class PathUtil {
         try {
             path = URLDecoder.decode(path, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            LoggerUtil.getLogger(PathUtil.class).error("exception", e);
+            LoggerUtil.error(PathUtil.class,"exception", e);
         }
 
         if (path.endsWith("bin")) {

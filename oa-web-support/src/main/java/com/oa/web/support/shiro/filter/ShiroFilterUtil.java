@@ -42,7 +42,7 @@ public class ShiroFilterUtil {
             out = response.getWriter();
             out.println(JSONObject.toJSON(resultMap).toString());
         } catch (Exception e) {
-            LoggerUtil.fmtError(ShiroFilterUtil.class, "输出JSON报错。", e);
+            LoggerUtil.error(ShiroFilterUtil.class, "输出JSON报错。", e);
         } finally {
             if (null != out) {
                 out.flush();

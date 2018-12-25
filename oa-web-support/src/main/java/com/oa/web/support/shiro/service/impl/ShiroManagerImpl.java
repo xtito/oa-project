@@ -77,7 +77,7 @@ public class ShiroManagerImpl implements ShiroManager {
         try {
             ini = new INI4j(cp.getFile());
         } catch (IOException e) {
-            LoggerUtil.fmtError(getClass(), "加载文件出错。file:[%s]", e, fileName);
+            LoggerUtil.error(getClass(), "加载文件出错。file:{}", fileName, e);
         }
         String section = "base_auth";
         StringBuilder sb = new StringBuilder();

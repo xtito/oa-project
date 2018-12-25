@@ -49,7 +49,7 @@ public class JedisShiroSessionRepository implements ShiroSessionRepository {
             Long expireTime = sessionTimeOut + SESSION_VAL_TIME_SPAN + (5 * 60);
             this.getJedisManager().saveValueByKey(DB_INDEX, key, value, expireTime.intValue());
         } catch (Exception e) {
-            LoggerUtil.fmtError(getClass(), "save session error，id:[%s]", e, session.getId());
+            LoggerUtil.error(getClass(), "save session error，id:{}", session.getId(), e);
         }
     }
 
@@ -61,7 +61,7 @@ public class JedisShiroSessionRepository implements ShiroSessionRepository {
         try {
             this.getJedisManager().deleteByKey(DB_INDEX, SerializeUtil.serialize(buildRedisSessionKey(id)));
         } catch (Exception e) {
-            LoggerUtil.fmtError(getClass(), "删除session出现异常，id:[%s]", e, id);
+            LoggerUtil.error(getClass(), "删除session出现异常，id:{}", id, e);
         }
     }
 
@@ -78,7 +78,7 @@ public class JedisShiroSessionRepository implements ShiroSessionRepository {
             byte[] value = this.getJedisManager().getValueByKey(DB_INDEX, SerializeUtil.serialize(buildRedisSessionKey(id)));
             session = SerializeUtil.deserialize(value, Session.class);
         } catch (Exception e) {
-            LoggerUtil.fmtError(getClass(), "获取session异常，id:[%s]", e, id);
+            LoggerUtil.error(getClass(), "获取session异常，id:{}", id, e);
         }
         return session;
     }
@@ -89,7 +89,7 @@ public class JedisShiroSessionRepository implements ShiroSessionRepository {
         try {
             sessions = this.getJedisManager().AllSession(DB_INDEX, REDIS_SHIRO_SESSION);
         } catch (Exception e) {
-            LoggerUtil.fmtError(getClass(), "获取全部session异常", e);
+            LoggerUtil.error(getClass(), "获取全部session异常", e);
         }
 
         return sessions;

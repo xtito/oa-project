@@ -3,6 +3,7 @@ package com.oa.core.utils.algorithm;
 import com.oa.core.LoggerUtil;
 import com.oa.core.utils.StringUtil;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.MessageDigest;
 
@@ -14,7 +15,7 @@ import java.security.MessageDigest;
  */
 public class AlgorithmsUtil {
 
-    private static Logger logger = LoggerUtil.getLogger(AlgorithmsUtil.class);
+    private static Logger logger = LoggerFactory.getLogger(AlgorithmsUtil.class);
 
     private AlgorithmsUtil() {
     }

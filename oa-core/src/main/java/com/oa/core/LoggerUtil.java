@@ -1,187 +1,232 @@
 package com.oa.core;
 
-import com.oa.core.utils.StringUtil;
-import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoggerUtil {
 
-    /**
-     * 是否开启Debug
-     */
-    public static boolean isDebug = Logger.getLogger(LoggerUtil.class).isDebugEnabled();
-
-    public static org.slf4j.Logger getLogger(Class<?> clazz) {
-        return LoggerFactory.getLogger(clazz);
-    }
-
-    public static void info(Class<?> clazz, String msg) {
-        getLogger(clazz).info(msg);
-    }
-
-    public static void info(Class<?> clazz, String msg, Throwable ex) {
-        getLogger(clazz).info(msg, ex);
-    }
-
-    public static void info(Class<?> clazz, String msg, Object param) {
-        getLogger(clazz).info(msg, param);
-    }
-
-    public static void info(Class<?> clazz, String msg, Object param, Throwable ex) {
-        getLogger(clazz).info(msg, param, ex);
-    }
-
-    public static void info(Class<?> clazz, String msg, Object[] param) {
-        getLogger(clazz).info(msg, param);
-    }
-
-    public static void info(Class<?> clazz, String msg, Object[] param, Throwable ex) {
-        getLogger(clazz).info(msg, param, ex);
-    }
-
+    // 缓存
+    private static Map<String, org.slf4j.Logger> loggerMap = new HashMap<String, org.slf4j.Logger>();
 
     /**
-     * Debug 输出
-     *
-     * @param clazz   目标.Class
-     * @param msg 输出信息
+     * debug级日志输出
      */
     public static void debug(Class<?> clazz, String msg) {
-        if (!isDebug) return;
-        getLogger(clazz).debug(msg);
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isDebugEnabled()) {
+            log.debug(msg);
+        }
     }
 
-    public static void debug(Class<?> clazz, String msg, Throwable ex) {
-        if (!isDebug) return;
-        getLogger(clazz).debug(msg, ex);
+    public static void debug(Class<?> clazz, String msg, Throwable e) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isDebugEnabled()) {
+            log.debug(msg, e);
+        }
     }
+
+    public static void debug(Class<?> clazz, String msg, Object arg) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isDebugEnabled()) {
+            log.debug(msg, arg);
+        }
+    }
+
+    public static void debug(Class<?> clazz, String msg, Object arg, Throwable e) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isDebugEnabled()) {
+            log.debug(msg, arg, e);
+        }
+    }
+
+    public static void debug(Class<?> clazz, String msg, Object[] arg) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isDebugEnabled()) {
+            log.debug(msg, arg);
+        }
+    }
+
+    public static void debugTag(Class<?> clazz, String tag, Object msg) {
+        debug(clazz, "【" + tag + msg + "】");
+    }
+
+    public static void debugTag(Class<?> clazz, String tag, String msg, Throwable e) {
+        debug(clazz, "【" + tag + msg + "】", e);
+    }
+
+    public static void debugTag(Class<?> clazz, String tag, String msg, Object arg, Throwable e) {
+        debug(clazz, "【" + tag + msg + "】", arg, e);
+    }
+
 
     /**
-     * Debug 输出
-     *
-     * @param clazz     目标.Class
-     * @param fmtString 输出信息key
-     * @param value     输出信息value
+     * info级日志输出
      */
-    public static void fmtDebug(Class<?> clazz, String fmtString, Object... value) {
-        if (!isDebug) return;
-        if (StringUtil.isBlank(fmtString)) {
-            return;
+    public static void info(Class<?> clazz, String msg) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isInfoEnabled()) {
+            log.info(msg);
         }
-        if (null != value && value.length != 0) {
-            fmtString = String.format(fmtString, value);
+    }
+
+    public static void info(Class<?> clazz, String msg, Throwable e) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isInfoEnabled()) {
+            log.info(msg, e);
         }
-        debug(clazz, fmtString);
     }
 
-    public static void debug(Class<?> clazz, String msg, Object param) {
-        getLogger(clazz).debug(msg, param);
+    public static void info(Class<?> clazz, String msg, Object arg) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isInfoEnabled()) {
+            log.info(msg, arg);
+        }
     }
 
-    public static void debug(Class<?> clazz, String msg, Object param, Throwable ex) {
-        getLogger(clazz).debug(msg, param, ex);
+    public static void info(Class<?> clazz, String msg, Object arg, Throwable e) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isInfoEnabled()) {
+            log.info(msg, arg, e);
+        }
     }
 
-    public static void debug(Class<?> clazz, String msg, Object[] param) {
-        getLogger(clazz).debug(msg, param);
+    public static void info(Class<?> clazz, String msg, Object[] arg) {
+        org.slf4j.Logger log = getLogger(clazz.getName());
+        if (log.isInfoEnabled()) {
+            log.info(msg, arg);
+        }
     }
 
-    public static void debug(Class<?> clazz, String msg, Object[] param, Throwable ex) {
-        getLogger(clazz).debug(msg, param, ex);
+    public static void infoTag(Class<?> clazz, String tag, Object msg) {
+        info(clazz, "【" + tag + msg + "】");
+    }
+
+    public static void infoTag(Class<?> clazz, String tag, String msg, Throwable e) {
+        info(clazz, "【" + tag + msg + "】", e);
+    }
+
+    public static void infoTag(Class<?> clazz, String tag, String msg, Object arg, Throwable e) {
+        info(clazz, "【" + tag + msg + "】", arg, e);
     }
 
 
+    /**
+     * warn级日志输出
+     */
     public static void warn(Class<?> clazz, String msg) {
-        getLogger(clazz).warn(msg);
+        getLogger(clazz.getName()).warn(msg);
     }
 
-    public static void warn(Class<?> clazz, String msg, Throwable ex) {
-        getLogger(clazz).warn(msg, ex);
+    public static void warn(Class<?> clazz, String msg, Throwable e) {
+        getLogger(clazz.getName()).warn(msg, e);
     }
 
-    public static void warn(Class<?> clazz, String msg, Object param) {
-        getLogger(clazz).warn(msg, param);
+    public static void warn(Class<?> clazz, String msg, Object arg) {
+        getLogger(clazz.getName()).warn(msg, arg);
     }
 
-    public static void warn(Class<?> clazz, String msg, Object param, Throwable ex) {
-        getLogger(clazz).warn(msg, param, ex);
+    public static void warn(Class<?> clazz, String msg, Object arg, Throwable e) {
+        getLogger(clazz.getName()).warn(msg, arg, e);
     }
 
-    public static void warn(Class<?> clazz, String msg, Object[] param) {
-        getLogger(clazz).warn(msg, param);
+    public static void warn(Class<?> clazz, String msg, Object[] arg) {
+        getLogger(clazz.getName()).warn(msg, arg);
     }
 
-    public static void warn(Class<?> clazz, String msg, Object[] param, Throwable ex) {
-        getLogger(clazz).warn(msg, param, ex);
+    public static void warnTag(Class<?> clazz, String tag, Object msg) {
+        warn(clazz, "【" + tag + "】" + msg);
+    }
+
+    public static void warnTag(Class<?> clazz, String tag, String msg, Throwable e) {
+        warn(clazz, "【" + tag + msg + "】", e);
+    }
+
+    public static void warnTag(Class<?> clazz, String tag, String msg, Object arg, Throwable e) {
+        warn(clazz, "【" + tag + msg + "】", arg, e);
     }
 
 
-
+    /**
+     * warn级日志输出
+     */
     public static void error(Class<?> clazz, String msg) {
-        getLogger(clazz).error(msg);
+        getLogger(clazz.getName()).error(msg);
+    }
+
+    public static void error(Class<?> clazz, String msg, Throwable e) {
+        getLogger(clazz.getName()).error(msg, e);
+    }
+
+    public static void error(Class<?> clazz, String msg, Object arg) {
+        getLogger(clazz.getName()).error(msg, arg);
+    }
+
+    public static void error(Class<?> clazz, String msg, Object arg, Throwable e) {
+        getLogger(clazz.getName()).error(msg, arg, e);
+    }
+
+    public static void error(Class<?> clazz, String msg, Object[] arg) {
+        getLogger(clazz.getName()).error(msg, arg);
+    }
+
+    public static void errorTag(Class<?> clazz, String tag, Object msg) {
+        error(clazz, "【" + tag + "】" + msg);
+    }
+
+    public static void errorTag(Class<?> clazz, String tag, String msg, Throwable e) {
+        error(clazz, "【" + tag + msg + "】", e);
+    }
+
+    public static void errorTag(Class<?> clazz, String tag, String msg, Object arg, Throwable e) {
+        error(clazz, "【" + tag + msg + "】", arg, e);
+    }
+
+
+    /**
+     * 获取最开始的调用者所在类
+     *
+     * @return 全类名
+     */
+    private static String getClassName() {
+        Throwable th = new Throwable();
+        StackTraceElement[] stes = th.getStackTrace();
+        if (stes != null && stes.length > 0) {
+            StackTraceElement ste = stes[stes.length - 1];
+            return ste.getClassName();
+        }
+        return "";
     }
 
     /**
-     * Error 输出
+     * 根据类名获得logger对象
      *
-     * @param clazz   目标.Class
-     * @param msg 输出信息
-     * @param ex      异常信息
+     * @return logger对象
      */
-    public static void error(Class<?> clazz, String msg, Throwable ex) {
-        getLogger(clazz).error(msg, ex);
-    }
-
-    public static void error(Class<?> clazz, String msg, Object param) {
-        getLogger(clazz).error(msg, param);
-    }
-
-    public static void error(Class<?> clazz, String msg, Object param, Throwable ex) {
-        getLogger(clazz).error(msg, param, ex);
-    }
-
-    public static void error(Class<?> clazz, String msg, Object[] param) {
-        getLogger(clazz).error(msg, param);
-    }
-
-    public static void error(Class<?> clazz, String msg, Object[] param, Throwable ex) {
-        getLogger(clazz).error(msg, param, ex);
+    private static org.slf4j.Logger getLogger() {
+        String className = getClassName();
+        return getLogger(className);
     }
 
     /**
-     * 异常填充值输出
+     * 根据类名获得logger对象
      *
-     * @param clazz     目标.Class
-     * @param fmtString 输出信息key
-     * @param value     输出信息value
+     * @param className 全类名
+     * @return logger对象
      */
-    public static void fmtError(Class<?> clazz, String fmtString, Object... value) {
-        if (StringUtil.isBlank(fmtString)) {
-            return;
+    public static org.slf4j.Logger getLogger(String className) {
+        org.slf4j.Logger log = null;
+        if (loggerMap.containsKey(className)) {
+            log = loggerMap.get(className);
+        } else {
+            try {
+                log = LoggerFactory.getLogger(Class.forName(className));
+                loggerMap.put(className, log);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-        if (null != value && value.length != 0) {
-            fmtString = String.format(fmtString, value);
-        }
-        error(clazz, fmtString);
+        return log;
     }
-
-    /**
-     * 异常填充值输出
-     *
-     * @param clazz     目标.Class
-     * @param fmtString 输出信息key
-     * @param e         异常类
-     * @param value     输出信息value
-     */
-    public static void fmtError(Class<?> clazz, String fmtString, Throwable e, Object... value) {
-        if (StringUtil.isBlank(fmtString)) {
-            return;
-        }
-        if (null != value && value.length != 0) {
-            fmtString = String.format(fmtString, value);
-        }
-        error(clazz, fmtString, e);
-    }
-
-
 }

@@ -11,6 +11,7 @@ import com.oa.core.utils.StringUtil;
 import com.oa.core.utils.date.DateUtil;
 import com.oa.web.support.tag.ItoFunctionTag;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import java.util.Map;
  */
 public class SystemInfoTask implements Runnable {
 
-    private static Logger logger = LoggerUtil.getLogger(SystemInfoTask.class);
+    private static Logger logger = LoggerFactory.getLogger(SystemInfoTask.class);
 
     private static JdbcTemplate dao;
 

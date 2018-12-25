@@ -50,7 +50,7 @@ public class LoginController extends BaseController {
              * 我们平常用的获取上一个请求的方式，在Session不一致的情况下是获取不到的
              * String url = (String) request.getAttribute(WebUtils.FORWARD_REQUEST_URI_ATTRIBUTE);
              */
-            LoggerUtil.fmtDebug(getClass(), "获取登录之前的URL:[%s]", url);
+            LoggerUtil.debug(getClass(), "获取登录之前的URL:{}", url);
             // 如果登录之前没有地址，那么就跳转到首页。
             if (StringUtil.isBlank(url)) {
                 url = request.getContextPath() + "/pages/index.jsp";
@@ -88,7 +88,7 @@ public class LoginController extends BaseController {
             resultMap.put("status", 200);
         } catch (Exception e) {
             resultMap.put("status", 500);
-            LoggerUtil.fmtError(getClass(), "退出出现错误，%s。", e, e.getMessage());
+            LoggerUtil.error(getClass(), "退出出现错误，{}。", e.getMessage(), e);
         }
         return resultMap;
     }

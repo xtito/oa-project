@@ -32,7 +32,7 @@ public class SerializeUtil {
             bos.close();
             rv = bos.toByteArray();
         } catch (Exception e) {
-            LoggerUtil.fmtError(CLAZZ, "serialize error %s", e, JSONObject.parse(value.toString()));
+            LoggerUtil.error(CLAZZ, "serialize error %s", JSONObject.parse(value.toString()), e);
         } finally {
             close(os);
             close(bos);
@@ -57,7 +57,7 @@ public class SerializeUtil {
                 rv = is.readObject();
             }
         } catch (Exception e) {
-            LoggerUtil.fmtError(CLAZZ, "serialize error %s", e, Arrays.toString(in));
+            LoggerUtil.error(CLAZZ, "serialize error %s", Arrays.toString(in), e);
         } finally {
             close(is);
             close(bis);
@@ -70,7 +70,7 @@ public class SerializeUtil {
             try {
                 closeable.close();
             } catch (IOException e) {
-                LoggerUtil.fmtError(CLAZZ, "close stream error");
+                LoggerUtil.error(CLAZZ, "close stream error");
             }
         }
     }

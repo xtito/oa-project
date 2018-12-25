@@ -172,7 +172,7 @@ public class CustomSessionManager {
             map.put("sessionStatusText", status ? "踢出" : "激活");
             map.put("sessionStatusTextTd", status ? "有效" : "已踢出");
         } catch (Exception e) {
-            LoggerUtil.fmtError(getClass(), "改变Session状态错误，sessionId[%s]", e, sessionIds);
+            LoggerUtil.error(getClass(), "改变Session状态错误，sessionId{}", sessionIds, e);
             map.put("status", 500);
             map.put("message", "改变失败，有可能Session不存在，请刷新再试！");
         }
