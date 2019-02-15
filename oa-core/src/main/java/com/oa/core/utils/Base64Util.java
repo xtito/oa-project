@@ -14,6 +14,9 @@ import java.net.URL;
  */
 public class Base64Util {
 
+    /**
+     * base64 图片前缀正则
+     */
     public static final String BASE64_REGEX = "data:image/(png|jpeg|gif);base64,";
 
     /**
