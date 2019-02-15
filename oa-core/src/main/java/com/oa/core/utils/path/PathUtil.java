@@ -41,8 +41,7 @@ public class PathUtil {
         if (rootPath.contains("/webapps")) {
             rootPath = rootPath.substring(0, rootPath.indexOf("/webapps"));
         } else {
-            File filePath = new File(new File(rootPath).getParent());
-            rootPath = filePath.getParent();
+            rootPath = rootPath.substring(0, rootPath.lastIndexOf("/") + 1);
         }
 
         return rootPath;

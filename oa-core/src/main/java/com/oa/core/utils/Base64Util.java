@@ -2,6 +2,7 @@ package com.oa.core.utils;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -18,6 +19,18 @@ public class Base64Util {
      * base64 图片前缀正则
      */
     public static final String BASE64_REGEX = "data:image/(png|jpeg|gif);base64,";
+
+    private static final String BASE64_PREFIX = "data:image/png;base64,";
+
+
+    /**
+     * 将指定路径图片转换为带前缀，页面可识别的 base64 字符串
+     * @param imageFilePath 图片地址
+     * @return 页面识别的 base64 字符串
+     */
+    public static String getImageBase64(String imageFilePath) {
+        return BASE64_PREFIX + ImageToBase64ByLocal(imageFilePath);
+    }
 
     /**
      * 将本地图片转换成 base64 字符串
@@ -117,6 +130,26 @@ public class Base64Util {
      * 对字节数组字符串进行 Base64 解码并生成图片
      *
      * @param imageBase64 图片 base64 字符串
+     * @param saveDirPath 图片存储文件夹路径
+     * @param fileName 图片存储名称
+     * @return 转换后图片存储结果
+     */
+    public static boolean Base64ToImage(String imageBase64, String saveDirPath, String fileName) {
+
+        File dirFile = new File(saveDirPath);
+        if(!dirFile.exists()){
+            boolean state = dirFile.mkdirs();
+        }
+
+        String imageSavePath = dirFile.getPath() + "/" + fileName;
+        return Base64ToImage(imageBase64, imageSavePath);
+    }
+
+
+    /**
+     * 对字节数组字符串进行 Base64 解码并生成图片
+     *
+     * @param imageBase64 图片 base64 字符串
      * @param imageSavePath 图片存放路径
      * @return 转换后图片存储结果
      */
@@ -131,7 +164,7 @@ public class Base64Util {
 
         try {
             // Base64解码
-            byte[] b = decoder.decodeBuffer(imageSavePath);
+            byte[] b = decoder.decodeBuffer(imageBase64);
             for (int i = 0; i < b.length; ++i) {
                 if (b[i] < 0) {// 调整异常数据
                     b[i] += 256;
