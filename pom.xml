@@ -101,7 +101,7 @@
         <guava.version>23.0</guava.version>
 
         <!-- Apache Shiro -->
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.5.2</shiro.version>
 
 
         <!-- 工具集 -->
