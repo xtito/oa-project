@@ -22,17 +22,17 @@ public class CreateDataUtil {
     public static String nameGenerate() {
         Random random = new Random();
         int length = random.nextInt(2)+1;
-        String name = "";
+        StringBuilder name = new StringBuilder();
 
         if (length == 1) {
-            name += charGenerate();
+            name.append(charGenerate());
         } else {
             for (int i=0; i<length; i++) {
-                name += charGenerate();
+                name.append(charGenerate());
             }
         }
 
-        return name;
+        return name.toString();
     }
 
     /**
@@ -108,7 +108,7 @@ public class CreateDataUtil {
                 "伯", "赏", "墨", "哈", "谯", "笪", "年", "爱",
                 "阳", "佟"};
 
-        Integer index = new Random().nextInt(surnames.length -1);
+        int index = new Random().nextInt(surnames.length -1);
 
         return surnames[index];
     }
@@ -175,7 +175,7 @@ public class CreateDataUtil {
      */
     public static Integer dayByYearOrMonthGenerate(Integer year, Integer month) {
 
-        Integer day = 0;
+        int day = 0;
         // 定义闰年二月最多29天
         int leap2MonthMax = 29;
         // 定义平年二月最多28天
@@ -232,13 +232,8 @@ public class CreateDataUtil {
      * @return 身份证号
      */
     public static String idCardGenerate() {
-        Random random = new Random();
-        Integer beforeNum = random.nextInt(899999) + 100000;
-        Integer afterNum = random.nextInt(8999) + 1000;
-        String before = beforeNum.toString();
         String birth = birthdayGenerate();
-        String after = afterNum.toString();
-        return (before + birth+ after);
+        return idCardGenerate(birth);
     }
 
     /**

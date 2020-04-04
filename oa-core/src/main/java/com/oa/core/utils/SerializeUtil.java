@@ -1,7 +1,8 @@
 package com.oa.core.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.oa.core.LoggerUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Arrays;
@@ -15,54 +16,54 @@ import java.util.Arrays;
  */
 public class SerializeUtil {
 
-    static final Class<?> CLAZZ = SerializeUtil.class;
+    private final static Logger logger = LoggerFactory.getLogger(SerializeUtil.class);
 
+    /**
+     * 序列化
+     */
     public static byte[] serialize(Object value) {
         if (value == null) {
             throw new NullPointerException("Can't serialize null");
         }
-        byte[] rv = null;
+
+        byte[] bytes = null;
         ByteArrayOutputStream bos = null;
-        ObjectOutputStream os = null;
+        ObjectOutputStream oos = null;
         try {
             bos = new ByteArrayOutputStream();
-            os = new ObjectOutputStream(bos);
-            os.writeObject(value);
-            os.close();
-            bos.close();
-            rv = bos.toByteArray();
+            oos = new ObjectOutputStream(bos);
+            oos.writeObject(value);
+            bytes = bos.toByteArray();
         } catch (Exception e) {
-            LoggerUtil.error(CLAZZ, "serialize error %s", JSONObject.parse(value.toString()), e);
+            logger.error("serialize error %s", JSONObject.parse(value.toString()), e);
         } finally {
-            close(os);
             close(bos);
+            close(oos);
         }
-        return rv;
+        return bytes;
     }
 
 
-    public static Object deserialize(byte[] in) {
-        return deserialize(in, Object.class);
-    }
+    /**
+     * 反序列化
+     */
+    public static Object unSerialize(byte[] bytes) {
 
-    @SafeVarargs
-    public static <T> T deserialize(byte[] in, Class<T>... requiredType) {
-        Object rv = null;
-        ByteArrayInputStream bis = null;
-        ObjectInputStream is = null;
+        ByteArrayInputStream bais = null;
+        ObjectInputStream ois = null;
+
         try {
-            if (in != null) {
-                bis = new ByteArrayInputStream(in);
-                is = new ObjectInputStream(bis);
-                rv = is.readObject();
-            }
+            // 反序列化
+            bais = new ByteArrayInputStream(bytes);
+            ois = new ObjectInputStream(bais);
+            return ois.readObject();
         } catch (Exception e) {
-            LoggerUtil.error(CLAZZ, "serialize error %s", Arrays.toString(in), e);
+            logger.error("serialize error %s", Arrays.toString(bytes), e);
         } finally {
-            close(is);
-            close(bis);
+            close(bais);
+            close(ois);
         }
-        return (T) rv;
+        return null;
     }
 
     private static void close(Closeable closeable) {
@@ -70,7 +71,7 @@ public class SerializeUtil {
             try {
                 closeable.close();
             } catch (IOException e) {
-                LoggerUtil.error(CLAZZ, "close stream error");
+                logger.error("close stream error");
             }
         }
     }
