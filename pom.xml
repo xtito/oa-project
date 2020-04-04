@@ -47,7 +47,7 @@
         <jdk.version>1.8</jdk.version>
 
         <!-- spring版本号 -->
-        <spring.version>4.3.9.RELEASE</spring.version>
+        <spring.version>5.2.5.RELEASE</spring.version>
         <!-- spring版本号 -->
         <spring.security.version>4.2.6.RELEASE</spring.security.version>
 
