@@ -120,7 +120,7 @@
         <json.version>2.4</json.version>
         <!-- BeanUtils类，.net.sf.json-lib JSON依赖此包 -->
         <commons.beanutils.version>1.9.2</commons.beanutils.version>
-        <commons.collections.version>3.2.1</commons.collections.version>
+        <commons.collections.version>3.2.2</commons.collections.version>
         <ezmorph.version>1.0.6</ezmorph.version>
         <commons.lang.version>2.5</commons.lang.version>
         <commons.logging.version>1.1.1</commons.logging.version>
