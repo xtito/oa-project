@@ -152,7 +152,7 @@
 
         <activiti.version>5.22.0</activiti.version>
         <avalon.version>4.3</avalon.version>
-        <batik.version>1.10</batik.version>
+        <batik.version>1.14</batik.version>
         <xmlgraphics.commons.version>2.3</xmlgraphics.commons.version>
     </properties>
 
