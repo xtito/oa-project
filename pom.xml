@@ -68,7 +68,7 @@
 
         <!-- 数据库相关变量 -->
         <!-- mysql jdbc版本号 -->
-        <mysql.version>5.1.30</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <!-- SqlServer jdbc版本号 -->
         <mssql.version>5.0.4</mssql.version>
 
