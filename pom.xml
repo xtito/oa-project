@@ -148,7 +148,7 @@
         <log4j.version>1.2.17</log4j.version>
         <alibaba.version>1.2.39</alibaba.version>
 
-        <poi.version>4.0.0</poi.version>
+        <poi.version>4.1.1</poi.version>
 
         <activiti.version>5.22.0</activiti.version>
         <avalon.version>4.3</avalon.version>
