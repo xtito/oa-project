@@ -77,7 +77,7 @@
         <!-- c3p0连接池 -->
         <c3p0.version>0.9.1.2</c3p0.version>
         <!-- dbcp连接池 -->
-        <dbcp.version>1.4</dbcp.version>
+        <dbcp.version>1.5</dbcp.version>
 
         <!-- ehcache缓存 -->
         <ehcache.version>2.6.11</ehcache.version>
